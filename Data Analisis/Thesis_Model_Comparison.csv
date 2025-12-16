@@ -1,0 +1,5 @@
+Model,Architecture,GNN_Type,Weight_Method,SSL_Lambda,Test_Period,Test_R2,Test_RMSE,Test_MAE,Train_Time,Parameters
+OLS Baseline,Linear Regression,-,-,-,2025 Q1-Q2,0.2287,0.8239,0.6365,-,-
+GNN-GTVC,GraphSAGE + Cosine,GraphSAGE,cosine_similarity,0.1,2025 Q1-Q2,0.092,0.8938,0.685,~4s,"61,303"
+GNN-GTWR (baseline),GCN + Learned Attention,GCN,learned_attention,0.1,2025 Jan-Aug (full),0.156,0.8618,0.6593,~96s,"30,121"
+GNN-GTWR (optimized),GAT + Dot Product,GAT,dot_product,0.1,2025 Q1-Q2,0.3003702930194486,0.8445816066175,0.6655057207031427,~150s,"30,097"

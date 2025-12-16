@@ -1,0 +1,14 @@
+Metric,Value
+Total Observations,741
+Train Samples,274
+Validation Samples,156
+Test Samples (Reduced),234
+Test Samples (Full),311
+Number of Provinces,38
+Number of Features,43
+Graph Nodes,741
+Graph Edges,5928
+k-NN Parameter,8
+Best Test R²,0.3004
+Improvement over OLS,0.0717
+Improvement Percentage,31.3%

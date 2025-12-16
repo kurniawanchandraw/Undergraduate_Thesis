@@ -1,0 +1,7 @@
+Category,Model,Architecture,R2,RMSE,MAE,Temporal,Spatial
+Traditional GNN,GAT + dot_product,Graph Attention,0.3004,0.8446,0.6655,❌,✅
+Baseline,OLS,Linear Regression,0.2287,0.8239,0.6365,❌,❌
+Temporal-Spatial,STGCN + Decoupled,STGCN + Decoupled,0.16262155265401235,0.9239923754645539,0.7581174442954048,✅,✅
+Temporal-Spatial,GCN-LSTM + Decoupled,GCN-LSTM + Decoupled,-0.029137412636387472,1.0243401165905162,0.7990581822989421,✅,✅
+Temporal-Spatial,GCN-GRU + Decoupled,GCN-GRU + Decoupled,-0.0331128296066765,1.026316652494504,0.7995392242643204,✅,✅
+Temporal-Spatial,STGCN + Dot Product,STGCN + Dot Product,-0.5593164006116518,1.2608825129089274,1.0769212199912919,✅,✅

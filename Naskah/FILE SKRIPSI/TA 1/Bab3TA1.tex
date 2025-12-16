@@ -1,0 +1,43 @@
+\chapter{RENCANA PENELITIAN}
+
+\section{Rencana Penelitian}
+Penelitian ini berfokus pada analisis spasial-temporal inflasi di Indonesia dengan unit observasi sebanyak 38 provinsi. Pendekatan yang digunakan adalah regresi spasial-temporal dengan koefisien bervariasi dan regresi terboboti yang dikembangkan dengan pembobotan berbasis jaringan saraf graf. Kedua model ini diberi nama \emph{Graph Neural Network-Geographically and Temporally Varying Coefficient} (GNN-GTVC) dan \emph{Graph Neural Network-Geographically and Temporally Weighted Regression} (GNN-GTWR). Tujuannya untuk memahami disparitas inflasi antarprovinsi, faktor-faktor global maupun lokal yang memengaruhinya, serta potensi \textit{spillover} antarwilayah.
+
+\section{Rencana Pengambilan Data}
+Data diambil pada periode Januari 2024 hingga Agustus 2025. Data yang digunakan dalam penelitian ini adalah sebagai berikut.
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Inflasi Provinsi}: Indeks Harga Konsumen (IHK) per provinsi dengan tahun dasar 2022. Satuan: persen (bulanan). Sumber: \href{https://www.bps.go.id/indicator/3/1000/1/indeks-harga-konsumen-ihk-.html}{BPS RI}.
+    \item \textbf{Suku Bunga Kebijakan}: BI 7-Day Reverse Repo Rate. Satuan: persen (bulanan). Sumber: \href{https://www.bi.go.id/id/statistik/moneter/bi-7day-rr-rate/Default.aspx}{Bank Indonesia}.
+    \item \textbf{Nilai Tukar Rupiah/USD}: Kurs JISDOR, diagregasi bulanan. Satuan: Rupiah/USD. Sumber: \href{https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/Default.aspx}{Bank Indonesia}.
+    \item \textbf{Uang Beredar (M2)}: Jumlah uang beredar luas. Satuan: triliun rupiah. Sumber: \href{https://www.bi.go.id/id/statistik/moneter/uang-beredar/Default.aspx}{Bank Indonesia}.
+    \item \textbf{Harga Pangan Strategis}: Harga beras, cabai, bawang, minyak goreng, dan daging ayam (rata-rata bulanan). Satuan: rupiah/kg atau liter. Sumber: \href{https://www.bi.go.id/hargapangan}{Pusat Informasi Harga Pangan Nasional}.
+    \item \textbf{Variabel Struktural Provinsi}: PDRB, tingkat kemiskinan, UMP. Satuan: beragam (juta rupiah, persen, rupiah). Sumber: \href{https://www.bps.go.id/}{BPS RI}.
+    \item \textbf{Statistik Ekonomi dan Keuangan Daerah (SEKDA)}: Kredit dan simpanan per provinsi. Satuan: miliar rupiah. Sumber: \href{https://www.bi.go.id/id/statistik/seki/terkini/ekonomi-keuangan-daerah/Default.aspx}{Bank Indonesia}.
+\end{enumerate}
+
+\section{Rencana Jadwal Penelitian}
+Jadwal penelitian dirangkum pada Tabel \ref{tab:jadwal} berikut.
+
+\begin{table}[H]
+\centering
+\caption{Jadwal Penelitian Agustus 2025 -- Januari 2026}
+\label{tab:jadwal}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Bulan} & \textbf{Kegiatan 1} & \textbf{Kegiatan 2} & \textbf{Kegiatan 3} \\ \hline
+Ags 2025 & \checkmark &  &  \\ \hline
+Sep 2025 & \checkmark & \checkmark &  \\ \hline
+Okt 2025 & \checkmark & \checkmark &  \\ \hline
+Nov 2025 &  & \checkmark & \checkmark \\ \hline
+Des 2025 &  &  & \checkmark \\ \hline
+Jan 2026 &  &  & \checkmark \\ \hline
+\end{tabular}
+\end{table}
+
+Dengan keterangan kegiatan sebagai berikut.
+\begin{enumerate}[label=(\alph*)]
+    \item Kegiatan 1 adalah studi literatur, penyusunan proposal, pengumpulan dan pembersihan data, serta analisis deskriptif awal.
+    \item Kegiatan 2 adalah pengembangan model GNN-GTVC dan GNN-GTWR, serta estimasi model.
+    \item Kegiatan 3 adalah analisis menyeluruh dan penulisan laporan akhir penelitian.
+\end{enumerate}

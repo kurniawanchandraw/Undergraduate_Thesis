@@ -1,0 +1,6 @@
+Configuration,R2,RMSE,Status
+GAT + dot_product (λ=0.1),0.2781,0.8579,🏆 Best
+GraphSAGE + dot_product (λ=0.1),0.2741,0.8603,✅ Good
+GCN + dot_product (λ=0.1),0.2287,0.8868,✅ OK
+GraphSAGE + cosine (λ=0.1),-0.1253,1.0711,❌ Poor
+GraphSAGE + dot_product (λ=0.0),-1.8348,1.7001,❌ Failed

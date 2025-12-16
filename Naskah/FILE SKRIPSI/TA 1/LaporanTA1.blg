@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: LaporanTA1.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: apacite.bst
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: references1.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--`others' not consistent with 6th ed. of the APA Manual
+You've used 64 entries,
+            6951 wiz_defined-function locations,
+            1661 strings with 22485 characters,
+and the built_in function-call counts, 129987 in all, are:
+= -- 16169
+> -- 1125
+< -- 6211
++ -- 6331
+- -- 131
+* -- 8447
+:= -- 23373
+add.period$ -- 284
+call.type$ -- 64
+change.case$ -- 1120
+chr.to.int$ -- 0
+cite$ -- 128
+duplicate$ -- 3563
+empty$ -- 5085
+format.name$ -- 1861
+if$ -- 24802
+int.to.chr$ -- 0
+int.to.str$ -- 196
+missing$ -- 0
+newline$ -- 1719
+num.names$ -- 512
+pop$ -- 2538
+preamble$ -- 1
+purify$ -- 258
+quote$ -- 0
+skip$ -- 8019
+stack$ -- 0
+substring$ -- 6899
+swap$ -- 2070
+text.length$ -- 184
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 6080
+warning$ -- 1
+while$ -- 643
+width$ -- 0
+write$ -- 2172
+(There was 1 warning)

@@ -1,0 +1,628 @@
+\chapter{PENGEMBANGAN PEMBOBOTAN BERBASIS JARINGAN SARAF GRAF UNTUK REGRESI SPASIAL-TEMPORAL}
+
+\section{Kajian Literatur Terkait}
+
+Kajian mengenai regresi berbobot spasial dan spasial-temporal telah berkembang pesat dalam beberapa dekade terakhir. Evolusi model dapat ditelusuri mulai dari regresi klasik berbasis kernel, regresi berbobot geografis, hingga integrasi dengan pembelajaran mesin dan \emph{neural network} serta \emph{graph neural network}. Bagian ini memaparkan secara kronologis penelitian-penelitian terdahulu yang relevan dengan metodologi yang diusulkan.
+
+\subsection{\textit{Geographically Weighted Artificial Neural Network} (GWANN)}
+
+Sebagai upaya mengintegrasikan \emph{deep learning} ke dalam kerangka geografis, \citet{hagenauer2022gwann} mengusulkan \textit{Geographically Weighted Artificial Neural Network} (GWANN). Pada GWANN, setiap lokasi memiliki model \emph{artificial neural network} (ANN) lokal:
+\begin{equation}
+y_i = f(\bm{x}_i; \boldsymbol{\theta}(\mathbf{s}_i)) + \varepsilon_i,
+\end{equation}
+dengan parameter $\boldsymbol{\theta}(\mathbf{s}_i)$ dipengaruhi oleh bobot kernel spasial.  
+ANN lokal ini menggantikan model linear pada GWR, sehingga mampu menangkap hubungan non-linear antara kovariat dan respon. Kekurangannya adalah biaya komputasi yang tinggi karena ANN dilatih berulang pada tiap lokasi, serta ketidakstabilan parameter jika data lokal terbatas.
+
+\subsection{\textit{Spatial and Attribute Neural Network Weighted Regression} (SANNWR)}
+
+\citet{ni2022sannwr} memperkenalkan \textit{Spatial and Attribute Neural Network Weighted Regression} (SANNWR), yang memperluas GWR dengan bobot berbasis gabungan jarak spasial dan atribut. Estimasi regresi tetap menggunakan formulasi WLS, tetapi bobot $w_{ij}$ dihitung melalui \emph{neural network} yang mempelajari fungsi non-linear dari $(d_{ij}^{\mathrm{spatial}}, d_{ij}^{\mathrm{attribute}})$:
+\begin{equation}
+w_{ij} = \frac{\exp(\mathrm{NN}(d_{ij}^{\mathrm{spatial}}, d_{ij}^{\mathrm{attribute}}))}{\sum_{k} \exp(\mathrm{NN}(d_{ik}^{\mathrm{spatial}}, d_{ik}^{\mathrm{attribute}}))}.
+\end{equation}
+Dengan demikian, bobot tidak lagi berupa fungsi kernel yang kaku, melainkan dipelajari secara adaptif. Inovasi ini menegaskan peran \emph{deep learning} dalam merepresentasikan kedekatan spasial dan atribut secara simultan.
+
+\subsection{\textit{Spatial Regression Graph Convolutional Neural Networks} (SRGCNN)}
+
+\citet{zhu2022srgcnn} mengusulkan \textit{Spatial Regression Graph Convolutional Neural Network} (SRGCNN), yang menggabungkan regresi spasial dengan konvolusi graf. Model ini merumuskan dependensi spasial dengan operator \emph{graph convolutional network} (GCN), yaitu
+\begin{equation}
+\bm{H}^{(\ell+1)} = \sigma\!\left(\widetilde{\mathbf{D}}^{-1/2}\widetilde{\mathbf{A}}\widetilde{\mathbf{D}}^{-1/2}\bm{H}^{(\ell)}\mathbf{W}^{(\ell)}\right),
+\end{equation}
+dan kemudian menghubungkannya dengan regresi linear autoregresif spasial (SAR), yaitu
+\begin{equation}
+\bm{y} = \bm{X}\boldsymbol{\beta} + \rho \mathbf{W}\bm{y} + \bm{\varepsilon},
+\end{equation}
+sehingga efek lag spasial dan heterogenitas dapat ditangkap sekaligus. SRGCNN menandai transisi eksplisit penggunaan \emph{graph neural network} dalam konteks regresi spasial. Sebagai catatan, SRGCNN tidak mengadopsi bobot yang dipelajari melalui GNN, melainkan menggunakan GNN untuk mengekstrak fitur spasial yang memiliki kemiripan dengan efek lag spasial pada model SAR.
+
+\subsection{\textit{Spatio-Temporal Graph Convolutional Networks} (ST-GCN)}
+
+Dalam domain peramalan deret waktu spasiotemporal, \citet{yu2018stgcn} mengusulkan \textit{Spatio-Temporal GCN} (ST-GCN). Model ini mengintegrasikan konvolusi graf spasial dengan konvolusi temporal berbasis deret:
+\begin{equation}
+\bm{H}^{(\ell+1)} = \sigma\!\big(\mathrm{ConvTemporal}(\widetilde{\mathbf{A}}\bm{H}^{(\ell)}\mathbf{W}^{(\ell)})\big).
+\end{equation}
+ST-GCN dan variannya (ASTGCN, T-GCN) banyak digunakan untuk memprediksi lalu lintas, konsumsi energi, dan dinamika jaringan kompleks. Kontribusinya adalah menunjukkan bahwa \emph{graph neural network} dapat diperluas secara alami ke dimensi waktu.
+
+\subsection{\textit{Geographically Neural Network Weighted Regression} (GNNWR)}
+
+Salah satu perkembangan mutakhir dalam literatur regresi spasial adalah pengenalan \textit{Geographically Neural Network Weighted Regression} (GNNWR) oleh \citet{yin2024gnnwr}. Model ini berangkat dari keterbatasan \textit{Geographically Weighted Regression} (GWR) yang menggunakan fungsi \emph{kernel} parametrik untuk menghitung bobot spasial. Pada GWR, estimator koefisien lokal diberikan oleh
+\begin{equation}
+\widehat{\boldsymbol{\beta}}(u_i,v_i) = \left(\mathbf{X}^\top \mathbf{W}(u_i,v_i)\mathbf{X}\right)^{-1}\mathbf{X}^\top \mathbf{W}(u_i,v_i)\bm{y}, 
+\label{eq:GWR}
+\end{equation}
+dengan $\mathbf{W}(u_i,v_i)$ matriks bobot \emph{kernel} spasial berbasis jarak Euclidean antara titik observasi $i$ dan titik lainnya. Namun, pemilihan \emph{kernel} yang kaku sering gagal menangkap heterogenitas non-linear. Untuk itu, GNNWR mengganti $\mathbf{W}(u_i,v_i)$ dengan bobot yang dipelajari oleh \emph{spatial weighted neural network} (SWNN). Secara umum, model GNNWR memandang koefisien lokal sebagai skala dari koefisien global,
+\begin{equation}
+\beta_k^{\mathrm{Lokal}}(u_i,v_i) = w_k(u_i,v_i)\,\beta_k^{\mathrm{Global}}, 
+\quad \sum_{k=1}^p w_k(u_i,v_i)=1, \quad w_k \geq 0,
+\label{eq:GNNWR-local}
+\end{equation}
+dengan $\beta_k^{\mathrm{Global}}$ diperoleh dari model OLS \emph{baseline}. Hubungan ini memastikan bahwa koefisien global dapat diinterpretasikan sebagai rata-rata tertimbang dari koefisien lokal.
+
+Bobot $w_k(u_i,v_i)$ dipelajari menggunakan \emph{neural network} yang menerima input berupa jarak spasial antar unit:
+\begin{equation}
+\mathbf{W}(u_i,v_i) = \mathrm{SWNN}\!\big(d^S_{i1},d^S_{i2},\dots,d^S_{in};\boldsymbol{\theta}\big),
+\label{eq:SWNN}
+\end{equation}
+dengan $d^S_{ij}$ jarak spasial antara unit $i$ dan $j$, serta $\boldsymbol{\theta}$ parameter jaringan saraf. Oleh karena itu, prediksi $\hat{y}_i$ dapat dituliskan sebagai
+\begin{equation}
+\hat{y}_i = \bm{x}_i^\top \mathbf{W}(u_i,v_i) \left(\bm{X}^\top \bm{X}\right)^{-1}\bm{X}^\top \bm{y}, 
+\quad i=1,\dots,n.
+\label{eq:GNNWR-pred}
+\end{equation}
+Persamaan \eqref{eq:GNNWR-pred} dapat dipadatkan menjadi bentuk matriks
+\begin{equation}
+\hat{\bm{y}} = \mathbf{S}\,\bm{y},
+\end{equation}
+dengan $\mathbf{S}$ bergantung pada bobot $\mathbf{W}(u_i,v_i)$ yang dilatih melalui \emph{neural network}.
+
+\citet{yin2024gnnwr} kemudian memperluas kerangka ini menjadi \textit{Geographically and Temporally Neural Network Weighted Regression} (GTNNWR), yang memasukkan dimensi waktu ke dalam pembobotan. Estimator GTNNWR ditulis sebagai
+\begin{equation}
+\hat{y}_i = \sum_{k=1}^p w_k(u_i,v_i,t)\,\beta_k^{\mathrm{Global}}\,x_{ik} + \varepsilon_i,
+\label{eq:GTNNWR}
+\end{equation}
+dengan bobot spasiotemporal
+\begin{equation}
+\mathbf{W}(u_i,v_i,t) = \mathrm{STWNN}\!\big(d^{ST}_{i1},d^{ST}_{i2},\dots,d^{ST}_{in};\boldsymbol{\theta}_1\big),
+\label{eq:STWNN}
+\end{equation}
+di mana jarak spasiotemporal $d^{ST}_{ij}$ diperoleh melalui \emph{spatiotemporal proximity neural network} (STPNN), yaitu
+\begin{equation}
+d^{ST}_{ij} = \mathrm{STPNN}\!\big(d^S_{ij},d^T_{ij};\boldsymbol{\theta}_2\big).
+\label{eq:STPNN}
+\end{equation}
+Dengan demikian, GTNNWR melibatkan dua tahap pembelajaran, yaitu STPNN untuk menyintesis jarak spasiotemporal dari komponen spasial dan temporal dan STWNN untuk mengubah jarak tersebut menjadi bobot regresi. Diagram kerangka kerja GTNNWR ditunjukkan pada Gambar \ref{fig:gtnnwr}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Gambar/The_estimation_process_of_GTNNWR_model.jpeg}
+    \caption{Diagram Kerangka Kerja GTNNWR \citep{yin2024gnnwr}}
+    \label{fig:gtnnwr}
+\end{figure}
+
+Sebagaimana pada GWR, prediksi $\hat{\bm{y}}$ dalam GNNWR dan GTNNWR tetap dapat dipandang melalui matriks $\mathbf{S}\bm{y}$. Akan tetapi, $\mathbf{W}$ kini dihasilkan secara endogen melalui \emph{neural network}. Fungsi kerugian yang umum digunakan adalah \emph{mean squared error} (MSE), yaitu
+\begin{equation}
+\mathrm{MSE} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2,
+\end{equation}
+serta kriteria informasi seperti \emph{Akaike Information Criterion} (AIC) dan AICc untuk menghindari \emph{overfitting}, yaitu
+\begin{equation}
+\mathrm{AIC}_c = 2k - 2\ln(L) + \frac{2k(k+1)}{n-k-1},
+\end{equation}
+dengan $k$ jumlah parameter efektif dan $L$ adalah \emph{likelihood} model.
+
+Metode GNNWR dan GTNNWR telah diaplikasikan pada berbagai domain, antara lain pemodelan kualitas udara (PM$_{2.5}$ dan AOD), pemetaan nutrien laut (\emph{dissolved silicate}), serta estimasi emisi karbon perkotaan. Studi-studi tersebut menunjukkan bahwa dengan menggantikan kernel spasial konvensional dengan \emph{neural network}, model mampu menangkap heterogenitas spasiotemporal yang lebih kompleks, sekaligus mempertahankan interpretabilitas koefisien lokal sebagaimana pada GWR.
+
+\section{Kerangka Metodologis}
+
+Bagian ini menjelaskan kerangka metodologis yang digunakan dalam pengembangan dua model utama, yaitu \textit{Graph Neural Network-Geogra-phically and Temporally Varying Coefficient} (GNN-GTVC) dan \textit{Graph Neural Network-Geogra-phically and Temporally Weighted Regression} (GNN-GTWR).  
+Kedua model dikembangkan untuk menangkap heterogenitas spasial dan temporal yang kompleks dengan mengintegrasikan kemampuan representasi \textit{Graph Neural Network} (GNN) ke dalam kerangka regresi spasiotemporal berbobot.
+
+Keterbatasan utama pendekatan kernel pada GWR/GTWR \citep{fotheringham2002,huang2010} adalah penggunaan fungsi jarak parametrik yang kaku, sehingga sering gagal menangkap heterogenitas spasio–temporal yang non-linear. Literatur mutakhir seperti GWANN, SANNWR, dan SRGCNN menunjukkan manfaat \textit{deep learning} untuk mempelajari kedekatan efektif yang adaptif. Namun, terdapat celah metodologis penting, yaitu GNNWR/GTNNWR (sebagaimana dipaparkan dalam \citealt{yin2024gnnwr}) tidak melakukan estimasi koefisien lokal melalui WLS sebagaimana GWR/GTWR klasik, melainkan mengadopsi \emph{skema multiplicative} yang pada hakikatnya adalah \textit{varying-coefficient model} (VCM) \citet{hastie1993varying}. Di sisi lain, belum ada kerangka yang secara sistematik menggabungkan dua paradigma tersebut, yaitu bobot dipelajari secara multiplikatif dalam VCM dan bobot yang dipelajari dalam rumus estimator WLS dalam satu metodologi yang konsisten, transparan, dan dapat dianalisis.
+
+\subsection{Kerangka Umum dan Alur Metodologi}
+
+Secara umum, rancangan metodologi penelitian ini mengikuti alur yang ditunjukkan pada Gambar~\ref{fig:flow-metodologi}.  
+\emph{Pipeline} model dibangun untuk memetakan data panel spasiotemporal ke dalam bentuk graf dinamis, mengekstraksi representasi spasial dan temporal melalui GNN, kemudian mengonversi hasil representasi tersebut menjadi bobot adaptif yang digunakan dalam proses estimasi koefisien regresi.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{GAMBAR/Flowchart GNN GTVC GTWR.png}
+    \caption{Alur metodologi GNN-GTVC dan GNN-GTWR. (Sumber: Dokumen penulis)}
+    \label{fig:flow-metodologi}
+\end{figure}
+
+Secara garis besar, kerangka metodologi ini terdiri atas lima tahapan utama yang saling berkaitan:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Konstruksi data dan graf spasiotemporal.} Data berbentuk panel dengan $N$ unit spasial (misal provinsi) dan $T$ periode waktu. Relasi spasial dibentuk menggunakan \textit{$k$-nearest neighbors} (k-NN) berdasarkan jarak geografis antarunit, sedangkan relasi temporal menghubungkan setiap simpul $(i,t)$ dengan $(i,t-1)$ dan $(i,t+1)$. Kombinasi kedua relasi tersebut menghasilkan graf spasiotemporal dinamis $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ dengan $\mathcal{V} = \{(i,t)\}$ sebagai himpunan simpul.
+    \item \textbf{Pembelajaran representasi graf melalui GNN.} Setiap simpul $(i,t)$ memiliki vektor fitur $\*x_{i,t}$ dan target $y_{i,t}$. Melalui operasi konvolusi graf, GNN menghasilkan representasi laten (\textit{embedding}) $\*h_{i,t}$ yang merepresentasikan hubungan spasial dan temporal secara adaptif. Tiga arsitektur yang digunakan adalah GCN, GAT, dan GraphSAGE.
+    \item \textbf{Pemetaan representasi ke bobot regresi.} Representasi laten $\*h_{i,t}$ diproyeksikan menjadi bobot $w$, baik dalam bentuk bobot antar-koefisien (pada GNN-GTVC) maupun bobot antar-tetangga (pada GNN-GTWR). Pemetaan ini dirancang agar bobot yang dihasilkan bersifat nonnegatif, ternormalisasi, dan dapat diinterpretasikan secara probabilistik.
+    \item \textbf{Regresi spasiotemporal dengan koefisien bervariasi atau terboboti.} Bobot hasil pembelajaran GNN digunakan dalam dua kerangka regresi. Pada GNN-GTVC, bobot mengatur kontribusi relatif setiap kovariat terhadap respon di setiap lokasi dan waktu, menghasilkan model dengan koefisien lokal yang bervariasi. Pada GNN-GTWR, bobot mengatur pengaruh observasi lain dalam estimasi parameter lokal melalui pendekatan \textit{weighted least squares} (WLS).
+    \item \textbf{Pelatihan dan optimisasi model.} Parameter jaringan, baik pada bagian GNN maupun regresi, dilatih dengan meminimalkan fungsi kerugian total yang menggabungkan komponen terawasi (\textit{supervised loss}) dan regularisasi spasiotemporal. Tahap ini juga dapat diperluas dengan mekanisme pembelajaran semi-terawasi (\textit{semi-supervised learning}, SSL) untuk memanfaatkan data tak berlabel.
+\end{enumerate}
+
+\subsection{Alur Pembelajaran GNN-GTVC dan GNN-GTWR}
+
+Kedua model memiliki struktur pembelajaran yang serupa, tetapi berbeda dalam penerapan bobot hasil GNN.  
+Pada GNN-GTVC, pembobotan dilakukan pada tingkat koefisien, sedangkan pada GNN-GTWR, pembobotan dilakukan pada tingkat observasi.  
+
+Pada GNN-GTVC, GNN terlebih dahulu mempelajari representasi spasiotemporal $\*h_{i,t}$ untuk setiap simpul $(i,t)$. Representasi tersebut kemudian diproyeksikan ke dalam simplex bobot $\mathbf{w}_{i,t}\in\Delta^{p-1}$ menggunakan fungsi softmax berbasis \textit{dot-product}, \textit{cosine similarity}, atau \emph{multilayer perceptron} (MLP). Bobot $\mathbf{w}_{i,t}$ ini mengatur proporsi kontribusi masing-masing kovariat $x_{ik,t}$ terhadap respon $y_{i,t}$ melalui relasi
+\begin{equation}
+y_{i,t} = \sum_{k=1}^{p} w_{i,t}^{(k)} \beta_k^{\text{global}} x_{ik,t} + \varepsilon_{i,t}.
+\end{equation}
+Koefisien global $\beta_k^{\text{global}}$ diperoleh melalui estimasi OLS, sedangkan bobot $\mathbf{w}_{i,t}$ dilatih melalui propagasi balik berdasarkan fungsi kerugian model. Koefisien OLS dapat diganti dengan koefisien dari model regresi lain, seperti Ridge atau Lasso, sesuai kebutuhan.
+
+Pada GNN-GTWR, representasi spasiotemporal $\bm{h}_{i,t}$ diperoleh melalui GNN dan dibandingkan dengan representasi simpul lain (misalnya tetangga terdekat) untuk menghasilkan bobot lokal $\tilde{w}_{(i,t)\to(j,s)}$, sebagai contoh menggunakan fungsi softmax berbasis \textit{dot-product} yaitu
+\begin{equation}
+\tilde{w}_{(i,t)\to(j,s)} =
+\frac{\exp(\bm{h}_{i,t}^\top \bm{h}_{j,s} / \tau)}
+{\sum_{(k,r)\in\mathcal{N}(i,t)} \exp(\bm{h}_{i,t}^\top \bm{h}_{k,r} / \tau)}.
+\end{equation}
+Bobot ini kemudian disusun ke dalam matriks diagonal $W_{i,t}$ untuk memperkirakan koefisien lokal melalui metode WLS:
+\begin{equation}
+\hat{\boldsymbol{\beta}}_{i,t}
+= (\bm X^\top \mathbf{W}_{i,t}\bm X)^{-1}\bm X^\top \mathbf{W}_{i,t}\bm y.
+\end{equation}
+Prediksi lokal diperoleh dengan $\hat{y}_{i,t} = \bm{x}_{i,t}^\top \hat{\boldsymbol{\beta}}_{i,t}$, dan gradien kerugian dipropagasikan kembali ke parameter GNN untuk memperbarui bobot jaringan.
+
+\subsection{Perbandingan Konseptual Awal}
+
+Kedua model berangkat dari prinsip yang sama, yaitu memperkaya model regresi spasiotemporal dengan pembobotan adaptif berbasis graf.  
+Perbedaannya terletak pada tingkat penerapan bobot yang dihasilkan.  
+GNN-GTVC mempelajari bobot antar-koefisien (\textit{coefficient-level weighting}), sehingga lebih sesuai untuk menelusuri dinamika kontribusi variabel terhadap respon pada setiap lokasi dan waktu.  
+Sebaliknya, GNN-GTWR mempelajari bobot antar-observasi (\textit{sample-level weighting}), yang lebih dekat dengan pendekatan klasik GWR atau GTWR namun dengan mekanisme pembobotan nonparametrik yang adaptif.  
+Kedua pendekatan tersebut bersifat saling melengkapi.  
+Model GTVC menekankan interpretabilitas koefisien lokal, sedangkan GTWR menekankan stabilitas estimasi dan kemampuan generalisasi spasial.  
+Bagian selanjutnya akan membahas formulasi matematis dan komputasional masing-masing model secara lebih rinci, dimulai dari GNN-GTVC pada Bagian~\ref{sec:gtvc} dan dilanjutkan dengan GNN-GTWR pada Bagian~\ref{sec:gtwr}.
+
+
+\section{Regresi Spasial-Temporal Berkoefisien Bervariasi berbasis GNN (GNN-GTVC)}
+\label{sec:gtvc}
+
+Bagian ini menguraikan secara rinci formulasi matematis, pembentukan bobot koefisien lokal, serta proses estimasi dan interpretasi pada model GNN-GTVC.  
+Model ini dikembangkan sebagai perluasan dari konsep \textit{varying coefficient model} yang parameter lokalnya dipelajari secara adaptif melalui jaringan saraf graf.  
+Pendekatan ini memungkinkan setiap lokasi dan waktu memiliki kombinasi kovariat yang berbeda-beda, dengan pembobotan yang diatur secara endogen oleh representasi spasiotemporal.
+
+\subsection{Formulasi Matematis}
+
+Misalkan tersedia himpunan observasi spasiotemporal $\mathcal{V}=\{(i,t)\mid i=1,\dots,N;~t=1,\dots,T\}$ dengan respon $y_{i,t}$ dan kovariat $\mathbf{x}_{i,t}=(x_{i1,t},x_{i2,t},\dots,x_{ip,t})^\top$.  
+Model GNN-GTVC dituliskan dalam bentuk umum
+\begin{equation}
+y_{i,t} = \sum_{k=1}^{p} \beta_k(z_{i,t})\,x_{ik,t} + \varepsilon_{i,t}, \qquad z_{i,t}=(u_i,v_i,t),
+\label{eq:gtvc-general}
+\end{equation}
+dengan $\beta_k(z_{i,t})$ merupakan koefisien yang bervariasi secara spasiotemporal dan $\varepsilon_{i,t}$ adalah komponen galat dengan $\mathbb{E}[\varepsilon_{i,t}\mid X]=0$.
+
+Untuk menghubungkan model ini dengan jaringan graf, koefisien lokal $\beta_k(z_{i,t})$ diparametrisasi sebagai fungsi dari koefisien global $\beta_k^{\mathrm{global}}$ dan bobot adaptif $w_k(z_{i,t})$:
+\begin{equation}
+\beta_k(z_{i,t}) = w_k(z_{i,t})\,\beta_k^{\mathrm{global}}, \qquad 
+w_k(z_{i,t}) \ge 0,~~\sum_{k=1}^{p} w_k(z_{i,t})=1.
+\label{eq:gtvc-weight}
+\end{equation}
+Dengan substitusi persamaan di atas ke dalam model umum (\ref{eq:gtvc-general}) diperoleh bentuk regresi
+\begin{equation}
+y_{i,t} = \sum_{k=1}^{p} w_k(z_{i,t})\,\beta_k^{\mathrm{global}}\,x_{ik,t} + \varepsilon_{i,t}.
+\label{eq:gtvc-main}
+\end{equation}
+Koefisien global $\beta_k^{\mathrm{global}}$ dapat diestimasi terlebih dahulu menggunakan regresi OLS pada seluruh data, kemudian bobot $w_k(z_{i,t})$ dilatih menggunakan jaringan saraf graf agar fungsi pembobotan mampu menangkap pola variasi lokal yang kompleks.
+
+\subsection{Pembentukan Bobot Koefisien Lokal melalui Representasi Graf}
+
+Pada tahap ini, setiap simpul $(i,t)$ dalam graf spasiotemporal memiliki representasi laten $\mathbf{h}_{i,t}\in\mathbb{R}^{d}$ yang dihasilkan oleh jaringan GNN.  
+Representasi tersebut kemudian diproyeksikan ke dalam \emph{simplex} berdimensi $p$ untuk menghasilkan bobot antar-koefisien $\mathbf{w}_{i,t}=(w_{i,t}^{(1)},\dots,w_{i,t}^{(p)})^\top$.  
+Beberapa bentuk pemetaan yang dapat digunakan antara lain
+\begin{align}
+w_{i,t}^{(k)} &= 
+\frac{\exp(\mathbf{h}_{i,t}^\top \mathbf{v}_k / \tau)}
+{\sum_{j=1}^{p} \exp(\mathbf{h}_{i,t}^\top \mathbf{v}_j / \tau)}, 
+\label{eq:dotproj}\\
+w_{i,t}^{(k)} &=
+\frac{\exp\!\left(-\|\mathbf{h}_{i,t}-\mathbf{v}_k\|^2 / (2\sigma^2)\right)}
+{\sum_{j=1}^{p}\exp\!\left(-\|\mathbf{h}_{i,t}-\mathbf{v}_j\|^2 / (2\sigma^2)\right)},
+\label{eq:rbfproj}
+\end{align}
+masing-masing merepresentasikan proyeksi berbasis \textit{dot-product} dan kernel Gaussian.  
+Vektor $\mathbf{v}_k$ merupakan representasi yang dipelajari untuk kovariat ke-$k$, sedangkan $\tau$ dan $\sigma$ adalah parameter penghalus yang mengatur ketajaman distribusi bobot.
+
+Proses ini memastikan bahwa seluruh bobot bernilai nonnegatif dan ternormalisasi, sehingga setiap $\mathbf{w}_{i,t}$ dapat ditafsirkan sebagai distribusi probabilitas atas kovariat.  
+Dengan demikian, setiap lokasi-waktu memiliki kombinasi unik dari kovariat yang berkontribusi terhadap respon, bergantung pada struktur spasiotemporal yang dipelajari GNN.
+
+\subsection{Estimasi Koefisien Global dan Prediksi}
+
+Koefisien global $\boldsymbol{\beta}^{\mathrm{global}}=(\beta_1^{\mathrm{global}},\dots,\beta_p^{\mathrm{global}})^\top$ diestimasi dengan meminimalkan jumlah kuadrat kesalahan secara keseluruhan:
+\begin{equation}
+\hat{\boldsymbol{\beta}}^{\mathrm{global}}
+= \arg\min_{\boldsymbol{\beta}}
+\sum_{i,t}\big(y_{i,t}-\mathbf{x}_{i,t}^\top \mathbf{W}_{i,t}\boldsymbol{\beta}\big)^2,
+\label{eq:beta-global}
+\end{equation}
+dengan $\mathbf{W}_{i,t}=\mathrm{diag}(w_{i,t}^{(1)},\dots,w_{i,t}^{(p)})$.  
+Prediksi pada titik $(i,t)$ diperoleh melalui
+\begin{equation}
+\hat{y}_{i,t} = \sum_{k=1}^{p} w_{i,t}^{(k)} \hat{\beta}_k^{\mathrm{global}} x_{ik,t}.
+\label{eq:gtvc-pred}
+\end{equation}
+Seluruh parameter jaringan $\Theta = \{\mathbf{v}_k,\text{parameter GNN}\}$ dioptimalkan secara bersamaan menggunakan propagasi balik dengan meminimalkan fungsi kerugian total yang akan dibahas pada Bagian~4.7.
+
+\section{Regresi Spasial-Temporal Terboboti berbasis GNN (GNN-GTWR)}
+\label{sec:gtwr}
+
+Bagian ini menjelaskan formulasi matematis, pembentukan bobot antartetangga, serta proses estimasi dan prediksi pada model GNN-GTWR.  
+Model ini dikembangkan sebagai perluasan dari \textit{Geographically and Temporally Weighted Regression} (GTWR) klasik dengan pembobotan yang dipelajari secara adaptif melalui jaringan saraf graf.  
+Pendekatan ini memungkinkan bobot spasiotemporal tidak lagi ditentukan oleh fungsi kernel parametrik, melainkan dipelajari langsung dari struktur relasi antarsampel menggunakan GNN.
+
+\subsection{Formulasi Estimator WLS pada Konteks Graf}
+
+Misalkan tersedia pasangan observasi $(\mathbf{x}_{i,t}, y_{i,t})$ dengan $i=1,\dots,N$ dan $t=1,\dots,T$.  
+Pada model GTWR klasik, koefisien lokal di lokasi-waktu $(i,t)$ diperoleh melalui estimasi \textit{weighted least squares} (WLS) sebagai berikut:
+\begin{equation}
+\hat{\boldsymbol{\beta}}_{i,t} =
+\big(\mathbf{X}^\top \mathbf{W}_{i,t} \mathbf{X}\big)^{-1}
+\mathbf{X}^\top \mathbf{W}_{i,t} \mathbf{y},
+\label{eq:wls-classic}
+\end{equation}
+dengan $\mathbf{W}_{i,t}=\mathrm{diag}(w_{(i,t)\to(j,s)})$ merupakan matriks bobot spasiotemporal yang mencerminkan kedekatan antara titik $(i,t)$ dan seluruh observasi $(j,s)$.  
+Dalam GNN-GTWR, matriks bobot ini tidak lagi ditentukan oleh jarak Euclidean atau \emph{kernel} tetap, tetapi dihasilkan secara endogen melalui mekanisme pembelajaran graf.
+
+\subsection{Pembobotan Antartetangga dengan Representasi GNN}
+
+Pembobotan pada GNN-GTWR dibangun dari representasi laten setiap simpul $(i,t)$ yang diperoleh melalui GNN.  
+Representasi $\bm{h}_{i,t}\in\mathbb{R}^{d}$ berfungsi sebagai penyandi (encoding) kedekatan spasial dan temporal.  
+Bobot antar-simpul kemudian ditentukan dengan mengukur kesamaan antarrepresentasi, yang dinormalisasi agar bersifat stokastik baris:
+\begin{equation}
+\tilde{w}_{(i,t)\to(j,s)} =
+\frac{\exp(\bm{h}_{i,t}^\top \bm{h}_{j,s}/\tau)}
+{\sum_{(k,r)\in\mathcal{N}(i,t)}
+\exp(\mathbf{h}_{i,t}^\top \mathbf{h}_{k,r}/\tau)},
+\label{eq:gnn-weight}
+\end{equation}
+dengan $\tau>0$ sebagai parameter suhu (\textit{temperature}) yang mengatur ketajaman distribusi bobot.  
+Himpunan $\mathcal{N}(i,t)$ menunjukkan tetangga-tetangga terdekat dari simpul $(i,t)$ yang ditentukan melalui kriteria spasial dan temporal.  
+Prosedur ini menghasilkan matriks bobot $\mathbf{W}_{i,t}$ yang jarang (\textit{sparse}) dan lokal, sehingga komputasi estimasi tetap efisien.
+
+\section{Arsitektur Jaringan Graf untuk Pembelajaran Bobot}
+
+Dalam penelitian ini digunakan tiga arsitektur utama jaringan saraf graf, yaitu \emph{Graph Convolutional Network} (GCN), \emph{Graph Attention Network} (GAT), dan GraphSAGE. Ketiganya berperan dalam mengekstraksi representasi laten spasiotemporal dari data panel yang telah dipetakan ke graf.
+
+GCN merupakan arsitektur dasar yang memperbarui representasi setiap simpul dengan merata-ratakan informasi dari tetangga, menggunakan propagasi
+\begin{equation}
+\bm{H}^{(\ell+1)} = \sigma\!\left(\mathbf{\tilde{D}}^{-1/2}\mathbf{\tilde{A}}\mathbf{\tilde{D}}^{-1/2}\bm{H}^{(\ell)}\mathbf{W}^{(\ell)}\right),
+\end{equation}
+dengan $\mathbf{\tilde{A}} = \mathbf{A} + \mathbf{I}$ dan $\mathbf{\tilde{D}}$ matriks derajat diagonal. Arsitektur ini sederhana dan efisien, namun kurang fleksibel dalam membedakan pengaruh tiap tetangga.
+
+GAT memperkenalkan mekanisme perhatian (\textit{attention}) sehingga setiap simpul dapat memberi bobot berbeda pada tetangganya. Koefisien perhatian dihitung sebagai
+\begin{align}
+\alpha_{ij}^{(\ell)} &=
+\frac{
+\exp\!\left(\mathrm{LeakyReLU}\!\left(\bm{a}^\top[\mathbf{W} \bm{h}_i^{(\ell)} \,\Vert\, \mathbf{W} \bm{h}_j^{(\ell)}]\right)\right)
+}{
+\sum_{k\in\mathcal{N}(i)}
+\exp\!\left(\mathrm{LeakyReLU}\!\left(\bm{a}^\top[\mathbf{W} \bm{h}_i^{(\ell)} \,\Vert\, \mathbf{W} \bm{h}_k^{(\ell)}]\right)\right)
+},\\
+\bm{h}_i^{(\ell+1)} &=
+\sigma\!\left(\sum_{j\in\mathcal{N}(i)} \alpha_{ij}^{(\ell)}\,\mathbf{W} \bm{h}_j^{(\ell)}\right).
+\end{align}
+Dengan demikian, GAT lebih adaptif dalam menangkap ketergantungan dinamis antar simpul.
+
+Sementara itu, GraphSAGE mengagregasi informasi tetangga menggunakan fungsi agregasi terparametrisasi, misalnya rata-rata, \emph{pooling}, atau LSTM, dan memperbarui \emph{embedding} dengan
+\begin{equation}
+\bm{h}_i^{(\ell+1)} =
+\phi\!\left(
+\bm{h}_i^{(\ell)} \,\Vert\,
+\mathrm{AGGREGATE}\big(\{\bm{h}_j^{(\ell)} : j\in\mathcal{N}(i)\}\big)
+\right),
+\end{equation}
+dengan $\phi$ \emph{multilayer perceptron} kecil. GraphSAGE cocok untuk generalisasi ke simpul atau waktu baru.
+
+Ketiga arsitektur ini menghasilkan \emph{embedding} $\bm{h}_{i,t}$ yang kemudian diproyeksikan menjadi bobot regresi adaptif sesuai kebutuhan model.
+
+\section{Pilihan Pemetaan Representasi ke Bobot}
+
+Pemetaan \emph{embedding} hasil GNN ke bobot regresi dapat dilakukan dengan beberapa metode utama berikut, beserta keunggulan dan interpretasinya:
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{\emph{Dot-product}:} 
+    \begin{equation}
+    w_{i,t}^{(k)} = \frac{\exp(\bm{h}_{i,t}^\top \mathbf{v}_k / \tau)}{\sum_{j=1}^p \exp(\bm{h}_{i,t}^\top \mathbf{v}_j / \tau)}
+    \end{equation}
+    Keunggulan utama pendekatan ini terletak pada kesederhanaan dan efisiensi komputasi, karena hanya memerlukan operasi perkalian vektor dan normalisasi softmax. Secara konseptual, metode ini merepresentasikan kemiripan linear antara \emph{embedding node} $h_{i,t}$ dan vektor representasi koefisien $v_k$, sehingga bobot yang dihasilkan akan lebih besar apabila kedua vektor tersebut memiliki arah yang sejalan dalam ruang fitur.
+
+    \item \textbf{\emph{Cosine similarity}:}
+    \begin{equation}
+    w_{i,t}^{(k)} = \frac{\exp\left(\frac{\bm{h}_{i,t}^\top \mathbf{v}_k}{\|\bm{h}_{i,t}\|\|\mathbf{v}_k\|\tau}\right)}{\sum_{j=1}^p \exp\left(\frac{\bm{h}_{i,t}^\top \mathbf{v}_j}{\|\bm{h}_{i,t}\|\|\mathbf{v}_j\|\tau}\right)}
+    \end{equation}
+    Pendekatan \emph{cosine similarity} memiliki keunggulan invariansi terhadap skala vektor, sehingga hanya mempertimbangkan arah relatif antara \emph{embedding} dan vektor koefisien. Hal ini menjadikan metode ini lebih \emph{robust} terhadap variasi \emph{magnitude embedding}, dan secara interpretatif bobot yang dihasilkan mencerminkan kedekatan arah (sudut) antara dua vektor dalam ruang fitur.
+
+    \item \textbf{Gaussian (RBF) kernel:}
+    \begin{equation}
+    w_{i,t}^{(k)} = \frac{\exp\left(-\|\bm{h}_{i,t}-\mathbf{v}_k\|^2/(2\sigma^2)\right)}{\sum_{j=1}^p \exp\left(-\|\bm{h}_{i,t}-\mathbf{v}_j\|^2/(2\sigma^2)\right)}
+    \end{equation}
+    Keunggulan utama kernel Gaussian terletak pada kemampuannya menangkap hubungan nonlinear antara \emph{embedding} dan vektor koefisien, karena bobot ditentukan berdasarkan jarak Euclidean di ruang fitur. Secara interpretatif, bobot yang tinggi diberikan pada pasangan \emph{embedding} dan vektor koefisien yang letaknya berdekatan, sehingga metode ini sensitif terhadap kemiripan lokal dalam representasi laten.
+
+    \item \textbf{MLP (\emph{Multilayer Perceptron}):}
+    \begin{equation}
+    \bm{w}_{i,t} = \mathrm{softmax}(\mathrm{MLP}(\bm{h}_{i,t}))
+    \end{equation}
+    Penggunaan \emph{multilayer perceptron} (MLP) sebagai pemetaan dari \emph{embedding} ke bobot memungkinkan model mempelajari fungsi nonlinear yang sangat kompleks tanpa asumsi eksplisit mengenai bentuk hubungan antara \emph{embedding} dan bobot. Keunggulan metode ini terletak pada kapasitas representasi yang tinggi, sehingga mampu mengakomodasi pola interaksi yang rumit dalam data spasiotemporal.
+\end{enumerate}
+
+\subsection{Fungsi Objektif dan Proses Pelatihan}
+
+Setelah \emph{embedding} dipetakan menjadi bobot $\mathbf{W}$, tahap selanjutnya adalah pelatihan model melalui optimisasi fungsi objektif. Fungsi objektif ini dirancang untuk mengukur deviasi antara nilai aktual $y$ dan prediksi $\hat{y}$ yang dihasilkan oleh model GTVC maupun GTWR.
+
+Fungsi objektif utama yang digunakan adalah \emph{mean squared error} (\emph{MSE}), yang didefinisikan sebagai
+\begin{equation}
+\mathcal{L}_{\text{MSE}} = \frac{1}{n}\sum_{i=1}^n \big(y_i - \hat{y}_i\big)^2,
+\label{eq:mse}
+\end{equation}
+dengan $n$ menyatakan jumlah observasi, $y_i$ merupakan nilai aktual, dan $\hat{y}_i$ adalah prediksi yang dihasilkan model. Formulasi \eqref{eq:mse} bersifat umum dan dapat diterapkan baik pada GTVC maupun GTWR.
+
+Sebagai alternatif, beberapa literatur mengadopsi kriteria informasi seperti \emph{Akaike Information Criterion} terkoreksi (\emph{AICc}) untuk mengendalikan kompleksitas model:
+\begin{equation}
+\text{AIC}_c = 2k - 2\ln(L) + \frac{2k(k+1)}{n-k-1},
+\label{eq:aicc}
+\end{equation}
+dengan $k$ menyatakan jumlah parameter efektif dan $L$ adalah nilai \emph{likelihood} model. Kriteria ini relevan terutama untuk mencegah \emph{overfitting} pada model dengan banyak parameter bobot yang dipelajari.
+
+Untuk meningkatkan stabilitas, fungsi objektif dapat dilengkapi dengan komponen regularisasi berikut:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Entropi bobot:} 
+    \begin{equation}
+    \mathcal{R}_{\text{entropy}} = -\sum_{i}\sum_{j} \mathbf{w}_{ij}\log \mathbf{w}_{ij},
+    \end{equation}
+    yang berfungsi untuk mencegah distribusi bobot menjadi terlalu tajam (\emph{over-confident}).
+    \item \textbf{Regularisasi kelancaran spasiotemporal:} 
+    \begin{equation}
+    \mathcal{R}_{\text{smooth}} = \sum_{(i,t)\sim (j,s)} \mathbf{w}_{(i,t),(j,s)} \,\|\boldsymbol{\beta}_{i,t}-\boldsymbol{\beta}_{j,s}\|^2,
+    \end{equation}
+    yang mendorong agar koefisien pada lokasi dan waktu yang berdekatan tidak berbeda secara ekstrem, sesuai prinsip kontinuitas spasiotemporal.
+\end{enumerate}
+Dengan demikian, fungsi objektif total dapat dituliskan sebagai
+\begin{equation}
+\mathcal{L} = \mathcal{L}_{\text{MSE}} + \lambda_1 \mathcal{R}_{\text{entropy}} + \lambda_2 \mathcal{R}_{\text{smooth}},
+\label{eq:loss-total}
+\end{equation}
+dengan $\lambda_1,\lambda_2 \ge 0$ sebagai parameter regularisasi.
+
+Proses pelatihan dilakukan menggunakan algoritma \emph{stochastic gradient descent} (\emph{SGD}). Dua algoritma populer yang digunakan adalah:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{\emph{Stochastic Gradient Descent} (SGD):}
+    \begin{equation}
+    \boldsymbol{\theta}^{(t+1)} = \boldsymbol{\theta}^{(t)} - \eta \nabla_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta}^{(t)}),
+    \end{equation}
+    dengan $\eta$ sebagai laju pembelajaran (\emph{learning rate}) dan $\boldsymbol{\theta}$ parameter model.
+    \item \textbf{\emph{Adam optimizer}:} varian adaptif dari \emph{SGD} yang memperbarui parameter dengan estimasi momentum gradien pertama dan kedua:
+    \begin{equation}
+    \mathbf{m}^{(t+1)} = \beta_1 \mathbf{m}^{(t)} + (1-\beta_1)\nabla_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta}^{(t)}),
+    \end{equation}
+    \begin{equation}
+    \mathbf{v}^{(t+1)} = \beta_2 \mathbf{v}^{(t)} + (1-\beta_2)\big(\nabla_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta}^{(t)})\big)^2,
+    \end{equation}
+    \begin{equation}
+    \boldsymbol{\theta}^{(t+1)} = \boldsymbol{\theta}^{(t)} - \eta \frac{\mathbf{m}^{(t+1)}/(1-\beta_1^{t+1})}{\sqrt{\mathbf{v}^{(t+1)}/(1-\beta_2^{t+1})} + \epsilon}.
+    \end{equation}
+\end{enumerate}
+\emph{Adam} banyak digunakan karena memberikan stabilitas dalam pelatihan jaringan saraf dalam, termasuk GNN.
+
+\section{Pembelajaran Semi-Terawasi (\emph{Semi-Supervised Learning}, SSL)}
+
+Dalam praktiknya, tidak seluruh unit spasio-temporal memiliki data berlabel secara lengkap.  
+Pada konteks empiris, hanya sebagian wilayah atau periode waktu yang memiliki nilai respon terobservasi, sedangkan sisanya tidak tersedia.  
+Kondisi ini mendorong penerapan pembelajaran semi-terawasi (\emph{semi-supervised learning}, SSL),  
+yang bertujuan memanfaatkan struktur data tak berlabel guna meningkatkan proses estimasi parameter dan memperkuat generalisasi model.  
+Pendekatan ini menjadi relevan terutama ketika data spasio-temporal memiliki keterhubungan yang kuat antarlokasi maupun antarperiode,  
+sehingga informasi dari titik berlabel dapat disebarkan melalui struktur graf ke titik yang belum berlabel.
+
+\subsection{Kerangka Dasar dan Asumsi Fundamental}
+
+Secara umum, pembelajaran semi-terawasi memanfaatkan dua himpunan data,  
+yaitu himpunan data berlabel $\mathcal{D}_\ell = \{(\bm{x}_i, y_i)\}_{i=1}^{\ell}$  
+dan himpunan data tak berlabel $\mathcal{D}_u = \{\bm{x}_j\}_{j=\ell+1}^{n}$,  
+dengan $u = n - \ell \gg \ell$.  
+Tujuan SSL adalah mempelajari fungsi prediksi $f_\theta: \mathcal{X}\to\mathcal{Y}$ yang memanfaatkan informasi dari kedua himpunan tersebut.  
+Formulasi optimisasi secara umum dituliskan sebagai
+\begin{equation}
+\min_{\theta}
+\left[
+\frac{1}{\ell}\sum_{i=1}^{\ell} \mathcal{L}_{\mathrm{sup}}(f_\theta(\bm{x}_i), y_i)
++ \lambda_u \mathcal{L}_{\mathrm{unsup}}(f_\theta; \mathcal{D}_u)
++ \lambda_r \mathcal{R}(\theta)
+\right],
+\label{eq:ssl-general}
+\end{equation}
+dengan $\mathcal{L}_{\mathrm{sup}}$ merupakan fungsi kerugian terawasi,  
+$\mathcal{L}_{\mathrm{unsup}}$ merupakan fungsi kerugian yang mengekstraksi informasi dari data tak berlabel,  
+dan $\mathcal{R}(\theta)$ adalah regularisasi parameter model.  
+Parameter $\lambda_u$ dan $\lambda_r$ mengatur keseimbangan antar komponen.
+
+\subsection{Fungsi Kerugian Semi-Terawasi}
+
+Fungsi kerugian semi-terawasi terdiri atas dua komponen utama, yaitu komponen terawasi $\mathcal{L}_{\mathrm{sup}}$ dan komponen tak berlabel $\mathcal{L}_{\mathrm{unsup}}$, yang dihubungkan melalui parameter keseimbangan $\lambda_u$.  
+Pada regresi spasio-temporal, komponen terawasi tetap menggunakan \emph{mean squared error} (MSE) sebagaimana pada fungsi objektif sebelumnya:
+\begin{equation}
+\mathcal{L}_{\mathrm{sup}} =
+\frac{1}{\ell}
+\sum_{(i,t)\in\mathcal{D}_\ell}
+\left(y_{i,t} - \hat{y}_{i,t}\right)^2.
+\label{eq:ssl-sup}
+\end{equation}
+
+Komponen tak berlabel $\mathcal{L}_{\mathrm{unsup}}$ dapat dirancang dalam berbagai bentuk sesuai dengan asumsi yang ingin dimanfaatkan dari data tak berlabel.  
+Beberapa pendekatan utama yang digunakan dalam penelitian ini meliputi kerugian entropi, kerugian konsistensi, dan regularisasi berbasis graf Laplacian .
+
+Kerugian entropi mendorong model agar menghasilkan prediksi yang lebih pasti (berentropi rendah) pada data tak berlabel.  
+Fungsinya dituliskan sebagai
+\begin{equation}
+\mathcal{L}_{\mathrm{entropy}} =
+-\frac{1}{u}\sum_{(i,t)\in\mathcal{D}_u}
+\sum_{k=1}^{p}
+w_{i,t}^{(k)} \log w_{i,t}^{(k)},
+\label{eq:ssl-entropy}
+\end{equation}
+yang secara konsep serupa dengan regularisasi entropi pada bagian sebelumnya, namun di sini diterapkan pada unit yang tidak memiliki label respon.  
+Nilai yang rendah menunjukkan distribusi bobot yang lebih tajam, yang mengindikasikan keyakinan model terhadap struktur hubungan antarvariabel maupun antarwilayah.
+
+Pendekatan lain menggunakan prinsip konsistensi (\emph{consistency regularization}),  
+yang berasumsi bahwa prediksi model seharusnya stabil terhadap gangguan kecil pada \emph{input} atau representasi.  
+Jika $\tau(\cdot)$ menyatakan operator augmentasi atau perturbasi (misalnya penambahan \emph{noise} atau \emph{dropout}),  
+maka kerugian konsistensi dapat diformulasikan sebagai
+\begin{equation}
+\mathcal{L}_{\mathrm{consistency}} =
+\frac{1}{u}\sum_{(i,t)\in\mathcal{D}_u}
+\left\|\hat{y}_{i,t} - \hat{y}_{i,t}^{(\tau)}\right\|^2,
+\label{eq:ssl-consistency}
+\end{equation}
+dengan $\hat{y}_{i,t}^{(\tau)}$ adalah hasil prediksi untuk data yang telah diperturbasi.  
+Kerugian ini mendorong model untuk menghasilkan prediksi yang tidak berubah secara signifikan terhadap variasi kecil,  
+sehingga menghasilkan representasi yang lebih halus dan tahan terhadap gangguan.
+
+Untuk memanfaatkan struktur graf yang mendasari data spasio-temporal,  
+diterapkan pula regularisasi berbasis Laplacian graf.  
+Diberikan matriks bobot $\mathbf{W}=[w_{ij}]$ dan Laplacian $\mathbf{L} = \mathbf{D} - \mathbf{W}$,  
+regularisasi ini dituliskan sebagai
+\begin{equation}
+\mathcal{L}_{\mathrm{graph}} =
+\frac{1}{2}\sum_{i,j} w_{ij}
+\left\|\hat{y}_i - \hat{y}_j\right\|^2
+= \hat{\mathbf{y}}^\top \mathbf{L} \hat{\mathbf{y}},
+\label{eq:ssl-graph}
+\end{equation}
+yang menegakkan asumsi kehalusan pada manifold graf.  
+Jika dua simpul terhubung dengan bobot besar, maka selisih prediksi antara keduanya didorong agar kecil.  
+Dengan demikian, prediksi pada wilayah yang berdekatan atau periode waktu yang berurutan akan memiliki pola yang konsisten.
+
+Berdasarkan ketiga pendekatan tersebut, komponen tak berlabel yang digunakan dalam model ini dirumuskan sebagai kombinasi linear
+\begin{equation}
+\mathcal{L}_{\mathrm{unsup}} =
+\alpha_1 \mathcal{L}_{\mathrm{entropy}} +
+\alpha_2 \mathcal{L}_{\mathrm{consistency}} +
+\alpha_3 \mathcal{L}_{\mathrm{graph}},
+\label{eq:ssl-unsup}
+\end{equation}
+dengan $\alpha_1$, $\alpha_2$, dan $\alpha_3$ sebagai bobot penyeimbang yang ditentukan melalui validasi.
+
+\subsection{Integrasi SSL ke dalam Pelatihan GNN-GTVC dan GNN-GTWR}
+
+Integrasi SSL ke dalam model GNN dilakukan dengan menambahkan komponen kerugian tak berlabel (\ref{eq:ssl-unsup}) ke dalam fungsi objektif utama.  
+Fungsi kerugian total untuk model semi-terawasi dapat dituliskan sebagai
+\begin{equation}
+\mathcal{L}_{\mathrm{total}} =
+\mathcal{L}_{\mathrm{sup}} +
+\lambda_u \mathcal{L}_{\mathrm{unsup}} +
+\lambda_r \mathcal{R}(\theta),
+\label{eq:ssl-total}
+\end{equation}
+dengan $\mathcal{R}(\theta)$ mencakup regularisasi entropi dan kehalusan spasio-temporal sebagaimana telah dijelaskan pada Bagian~4.7.  
+Dalam implementasinya, parameter $\lambda_u$ mengatur sejauh mana informasi dari data tak berlabel memengaruhi pembaruan parameter jaringan.
+
+Pada model GNN-GTVC, kerugian tak berlabel diterapkan terutama pada vektor bobot $\mathbf{w}_{i,t}$,  
+sehingga pembelajaran pada simpul yang tidak memiliki nilai respon tetap dapat diarahkan oleh pola kedekatan antarunit yang teramati dalam graf.  
+Sementara itu, pada model GNN-GTWR, komponen $\mathcal{L}_{\mathrm{unsup}}$ berperan untuk menstabilkan matriks bobot antarobservasi $\mathbf{W}_{i,t}$,  
+agar tetap mengikuti pola spasio-temporal yang halus meskipun sebagian besar titik tidak berlabel.  
+Dengan demikian, informasi dari simpul berlabel dapat menyebar secara halus ke simpul tak berlabel melalui proses propagasi graf.
+
+Proses estimasi titik di luar dari data latih dilakukan dengan menggunakan pelatihan ulang pada semua data. Hal ini berarti graf dibentuk dengan melihat data latih dan data uji, tetapi variabel $y$ dari data uji tidak digunakan untuk melatih model. Pendekatan ini digunakan juga oleh \citealp{yin2024gnnwr}.
+
+\section{Hasil Sementara}
+
+Bagian ini menyajikan hasil sementara dari implementasi metodologi GNN-GTWR dan GNN-GTVC yang telah dikembangkan berdasarkan data riil inflasi Indonesia periode Januari 2024 hingga Agustus 2025. Penelitian ini menggunakan \textit{framework} komprehensif yang telah diuji pada 38 provinsi dengan total 779 observasi spasio-temporal, memanfaatkan 43 indikator ekonomi yang bersumber dari berbagai data resmi Badan Pusat Statistik (BPS) dan Bank Indonesia.
+
+\subsection{Pengaturan Eksperimen dan Karakteristik Data}
+
+Eksperimen dilakukan dengan menggunakan data panel spasio-temporal inflasi Indonesia yang memiliki karakteristik khusus. Data mencakup unit spasial berupa 38 provinsi Indonesia sebagai representasi heterogenitas geografis negara kepulauan yang luas. Dimensi temporal terdiri atas 20 periode bulanan dari Januari 2024 hingga Agustus 2025, yang memberikan total observasi sebanyak 779 titik data spasio-temporal. 
+
+Variabel prediktor yang digunakan mencakup spektrum indikator ekonomi yang luas, tetapi untuk analisis sementara ini hanya meliputi variabel yang bervariasi secara lokal, yaitu harga-harga pangan dan data SEKDA, seperti investasi, kredit, giro, tabungan, dan lain-lain. Variabel-variabel ini dipilih karena memiliki dampak langsung terhadap dinamika inflasi di tingkat provinsi. Pada studi kasus lanjutan, dapat dilakukan analisis lebih mendalam dengan variabel makroekonomi yang bersifat global.
+
+\subsection{Analisis Konfigurasi Model GNN-GTVC dan GNN-GTWR}
+Pada bagian ini, beberapa metode konfigurasi model GNN-GTVC dan GNN-GTWR dieksplorasi untuk memperoleh kombinasi arsitektur dan skema pembobotan terbaik. Tiga arsitektur GNN utama yang diuji adalah GCN, GAT, dan GraphSAGE, masing-masing dikombinasikan dengan empat skema pembobotan, yaitu \emph{dot-product}, \emph{cosine similarity}, Gaussian RBF, dan \emph{multilayer perceptron} (MLP). Evaluasi dilakukan secara sistematis untuk menilai pengaruh setiap kombinasi terhadap kinerja prediksi. Hasil eksperimen tersajikan dalam gambar \ref{fig:config-results}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png}
+    \caption{Perbandingan kinerja berbagai konfigurasi arsitektur GNN dan skema pembobotan pada model GNN-GTVC dan GNN-GTWR.}
+    \label{fig:config-results}
+\end{figure}
+
+Hasil eksperimen menunjukkan bahwa model GTVC lebih unggul dibandingkan dengan GTWR dalam konteks data spasio-temporal inflasi Indonesia. Hal ini mengindikasikan bahwa bobot regresi yang bersifat variabel terhadap lokasi dan waktu memberikan fleksibilitas yang lebih besar dalam menangkap dinamika inflasi yang kompleks. Selain itu, arsitektur GCN secara konsisten menunjukkan kinerja terbaik di antara ketiga arsitektur yang diuji, baik pada GTVC maupun GTWR. Hal ini mungkin disebabkan oleh kesederhanaan dan efisiensi GCN dalam mengekstraksi informasi dari struktur graf, yang sangat sesuai dengan karakteristik data spasio-temporal yang digunakan. Meskipun demikian, arsitektur GAT juga menunjukkan potensi yang baik, tetapi variansi hasilnya lebih tinggi, yang mungkin disebabkan oleh sensitivitas terhadap parameter perhatian yang perlu dioptimalkan lebih lanjut.
+
+Skema pembobotan \emph{dot-product} muncul sebagai yang paling efektif dalam menghasilkan bobot regresi adaptif. Pendekatan ini tidak hanya sederhana secara komputasi, tetapi juga mampu menangkap hubungan linear yang cukup baik antara representasi laten dan koefisien regresi. Skema lain seperti \emph{cosine similarity} dan MLP menunjukkan kinerja yang kompetitif, tetapi dengan kompleksitas komputasi yang lebih tinggi dan kebutuhan akan penyesuaian parameter yang lebih rumit. Di sisi lain, skema Gaussian memiliki performa yang lebih rendah dibandingkan dengan ketiga skema lainnya.
+
+Dari segi fungsi kerugian yang digunakan, terlihat bahwa fungsi kerugian dari SSL lebih unggul dibandingkan dengan fungsi kerugian MSE standar. Hal ini menegaskan pentingnya memanfaatkan informasi dari data tak berlabel dalam konteks spasio-temporal, di mana keterkaitan antarunit dapat memberikan kontribusi signifikan terhadap akurasi prediksi. Kombinasi komponen kerugian yang melibatkan entropi, konsistensi, dan regularisasi graf Laplacian memberikan keseimbangan yang baik antara eksploitasi data berlabel dan eksplorasi struktur data tak berlabel.
+
+\subsection{Perbandingan Performa dengan Metode Lainnya}
+
+Evaluasi terhadap metode-metode tradisional dilakukan dengan menggunakan implementasi dalam bahasa pemrograman R melalui paket \texttt{GWmodel} dan \texttt{GTWR}. Pendekatan ini dipilih untuk memastikan konsistensi dengan literatur akademik yang telah mapan dalam bidang ekonometrika spasial. Hasil evaluasi menunjukkan variasi kinerja yang signifikan antar metode, sebagaimana disajikan dalam Tabel~\ref{tab:metode-tradisional}.
+
+\begin{table}[h!]
+\centering
+\caption{Kinerja Metode Tradisional}
+\label{tab:metode-tradisional}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Metode} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{MAE} \\
+\midrule
+OLS & 0.152 & 0.641 & 0.474 \\
+WLS & 0.150 & 0.642 & 0.470 \\
+GWR Adaptif & 0.197 & 0.624 & 0.467 \\
+GWR Tetap & 0.171 & 0.634 & 0.471 \\
+\textbf{GTWR Adaptif} & \textbf{0.678} & \textbf{0.395} & \textbf{0.270} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Hasil evaluasi mengungkapkan bahwa GTWR Adaptif menunjukkan kinerja yang paling unggul di antara seluruh metode tradisional dengan koefisien determinasi $R^2 = 0.678$. Temuan ini mengonfirmasi hipotesis bahwa dimensi temporal memainkan peran krusial dalam pemodelan inflasi regional, mengingat inflasi merupakan fenomena ekonomi yang inherently memiliki karakteristik spasio-temporal yang kompleks. Performa superior GTWR dibandingkan dengan metode spasial murni seperti GWR menunjukkan bahwa heterogenitas tidak hanya terjadi lintas ruang, tetapi juga lintas waktu.
+
+Evaluasi terhadap berbagai metode \textit{machine learning} menunjukkan peningkatan kinerja yang substansial. Hasil evaluasi disajikan dalam Tabel~\ref{tab:metode-ml}.
+
+\begin{table}[h!]
+\centering
+\caption{Kinerja Metode \textit{Machine Learning}}
+\label{tab:metode-ml}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Metode} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{MAE} \\
+\midrule
+Ridge & 0.116 & 0.845 & 0.668 \\
+Lasso & 0.098 & 0.854 & 0.675 \\
+\textit{Random Forest} & 0.532 & 0.615 & 0.486 \\
+\textbf{\textit{Gradient Boosting}} & \textbf{0.724} & \textbf{0.472} & \textbf{0.374} \\
+SVR & 0.594 & 0.573 & 0.453 \\
+MLP & 0.374 & 0.711 & 0.562 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\textit{Gradient Boosting} menunjukkan kinerja terbaik dengan $R^2 = 0.724$, berhasil mengungguli seluruh metode tradisional non-spasial.
+
+Evaluasi terhadap berbagai konfigurasi model GNN menunjukkan kinerja yang secara konsisten superior dibandingkan dengan seluruh metode pembanding, sebagaimana disajikan dalam Tabel~\ref{tab:hasil-gnn}.
+
+\begin{table}[h!]
+\centering
+\caption{Kinerja Model GNN-GTWR/GTVC}
+\label{tab:hasil-gnn}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Model} & \textbf{Konfigurasi} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{MAE} \\
+\midrule
+GNN-GTWR & GCN-\textit{Cosine} & 0.798 & 0.403 & 0.320 \\
+GNN-GTWR & GAT-\textit{Dot Product} & 0.810 & 0.391 & 0.310 \\
+GNN-GTVC & GCN-\textit{Gaussian} & 0.823 & 0.377 & 0.300 \\
+\textbf{GNN-GTVC} & \textbf{GAT-\textit{Cosine}} & \textbf{0.841} & \textbf{0.358} & \textbf{0.285} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Konfigurasi terbaik dicapai oleh model GNN-GTVC dengan \textit{backbone} GAT dan skema pembobotan \textit{Cosine Similarity}, yang berhasil mencapai koefisien determinasi $R^2 = 0.841$. Hasil ini menunjukkan bahwa model mampu menjelaskan 84,1\% varians dalam data inflasi regional, dengan \textit{Mean Absolute Error} (MAE) sebesar 0.285 poin persentase. Kinerja ini mengindikasikan tingkat akurasi prediksi yang sangat tinggi untuk konteks pemodelan ekonomi makro regional.
+
+Hasil komparasi menyeluruh dapat dilihat pada Gambar~\ref{fig:all-methods-comparison}.
+
+Secara keseluruhan, model yang diajukan memiliki keunggulan utama dalam menangkap heterogenitas spasial dan temporal yang kompleks pada data inflasi Indonesia. Model GNN-GTVC dan GNN-GTWR tidak hanya mampu meningkatkan akurasi prediksi secara signifikan dibandingkan metode tradisional dan machine learning konvensional, tetapi juga memberikan interpretasi yang lebih kaya terkait dinamika kontribusi variabel pada setiap lokasi dan waktu.
+
+Pada model GNN-GTVC, analisis bobot koefisien lokal memungkinkan peneliti untuk mengidentifikasi variabel mana yang paling berpengaruh terhadap inflasi di masing-masing provinsi dan periode. Hal ini sangat bermanfaat untuk perumusan kebijakan berbasis bukti (\emph{evidence-based policy}), karena dapat mengarahkan intervensi secara lebih spesifik sesuai karakteristik wilayah dan waktu tertentu.
+
+Sementara itu, model GNN-GTWR menawarkan stabilitas estimasi dan kemampuan generalisasi yang lebih baik, terutama pada wilayah atau periode dengan data terbatas. Pembobotan adaptif antar-observasi yang dihasilkan oleh GNN memungkinkan model untuk memanfaatkan informasi dari tetangga spasial dan temporal secara optimal.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png}
+    \caption{Perbandingan kinerja keseluruhan metode yang diuji.}
+    \label{fig:all-methods-comparison}
+\end{figure}
+
+Keunggulan lain dari pendekatan berbasis GNN adalah kemampuannya untuk diintegrasikan dengan pembelajaran semi-terawasi, sehingga model tetap dapat belajar secara efektif meskipun sebagian besar data tidak berlabel. Hal ini sangat relevan dalam konteks data spasio-temporal di Indonesia yang seringkali tidak lengkap atau tidak seragam antarwilayah.
+
+Secara metodologis, hasil ini menegaskan pentingnya integrasi antara representasi graf dan pembobotan adaptif dalam regresi spasio-temporal. Model yang dikembangkan dapat menjadi kerangka dasar untuk aplikasi lain di bidang ekonomi regional, epidemiologi, pemetaan lingkungan, dan bidang lain yang memerlukan analisis spasio-temporal dengan heterogenitas tinggi. Adapun analisis lanjutan akan disajikan pada Bab selanjutnya.

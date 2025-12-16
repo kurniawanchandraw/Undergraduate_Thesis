@@ -1,0 +1,1521 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.4)  9 DEC 2025 16:22
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex"
+(d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-07-20>
+(skripsistatugm.cls
+
+LaTeX Warning: You have requested document class `skripsistatugm',
+               but the document class provides `skripsiactugm'.
+
+Document Class: skripsiactugm 2013/06/07 v2.0 The Universitas Gadjah Mada Mathematics Thesis Class
+(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@chapter=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2025/08/03 v25.12 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+\babel@savecnt=\count284
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2045.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2047.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2049.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2050.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2051.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2053.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2078.
+\U@D=\dimen149
+\l@unhyphenated=\language79
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count285
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 12.
+)
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 108.
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/babel-indonesian\bahasa.ldf
+Language: bahasa 2025/06/01 v1.0n Bahasa Indonesia support from the babel system
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/babel-indonesian\indonesian.ldf
+Language: indonesian 2025/06/01 v1.0n Bahasa Indonesia support from the babel system
+))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
+Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen150
+\Gin@req@width=\dimen151
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks18
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen152
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/06/16 v2.17y AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen153
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count286
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count287
+\leftroot@=\count288
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count289
+\DOTSCASE@=\count290
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen154
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count291
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count292
+\dotsspace@=\muskip17
+\c@parentequation=\count293
+\dspbrk@lvl=\count294
+\tag@help=\toks20
+\row@=\count295
+\column@=\count296
+\maxfields@=\count297
+\andhelp@=\toks21
+\eqnshift@=\dimen155
+\alignsep@=\dimen156
+\tagshift@=\dimen157
+\tagwidth@=\dimen158
+\totwidth@=\dimen159
+\lineht@=\dimen160
+\@envbody=\toks22
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2949.
+LaTeX Info: Redefining \] on input line 2950.
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks24
+\thm@bodyfont=\toks25
+\thm@headfont=\toks26
+\thm@notefont=\toks27
+\thm@headpunct=\toks28
+\thm@preskip=\skip54
+\thm@postskip=\skip55
+\thm@headsep=\skip56
+\dth@everypar=\toks29
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count298
+\lst@gtempboxa=\box55
+\lst@token=\toks30
+\lst@length=\count299
+\lst@currlwidth=\dimen161
+\lst@column=\count300
+\lst@pos=\count301
+\lst@lostspace=\dimen162
+\lst@width=\dimen163
+\lst@newlines=\count302
+\lst@lineno=\count303
+\lst@maxwidth=\dimen164
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+\c@lstnumber=\count304
+\lst@skipnumbers=\count305
+\lst@framebox=\box56
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2024/09/23 1.10c listings configuration
+))
+Package: listings 2024/09/23 1.10c (Carsten Heinz)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count306
+\float@exts=\toks31
+\float@box=\box57
+\@float@everytoks=\toks32
+\@floatcapt=\box58
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
+\LTleft=\skip57
+\LTright=\skip58
+\LTpre=\skip59
+\LTpost=\skip60
+\LTchunksize=\count307
+\LTcapwidth=\dimen165
+\LT@head=\box59
+\LT@firsthead=\box60
+\LT@foot=\box61
+\LT@lastfoot=\box62
+\LT@gbox=\box63
+\LT@cols=\count308
+\LT@rows=\count309
+\c@LT@tables=\count310
+\c@LT@chunks=\count311
+\LT@p@ftn=\toks33
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\enumerate.sty
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks34
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip61
+\multirow@cntb=\count312
+\multirow@dima=\skip62
+\bigstrutjot=\dimen166
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen167
+\captionmargin=\dimen168
+\caption@leftmargin=\dimen169
+\caption@rightmargin=\dimen170
+\caption@width=\dimen171
+\caption@indent=\dimen172
+\caption@parindent=\dimen173
+\caption@hangindent=\dimen174
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count313
+\c@continuedfloat=\count314
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
+Package: pdfpages 2025/07/23 v0.6g Insert pages of external PDF documents (AM)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count315
+\calc@Bcount=\count316
+\calc@Adimen=\dimen175
+\calc@Bdimen=\dimen176
+\calc@Askip=\skip63
+\calc@Bskip=\skip64
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count317
+\calc@Cskip=\skip65
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
+\ESO@tempdima=\dimen177
+\ESO@tempdimb=\dimen178
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count318
+)
+\AM@pagewidth=\dimen179
+\AM@pageheight=\dimen180
+\AM@fboxrule=\dimen181
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
+File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count319
+\AM@pagebox=\box64
+\AM@global@opts=\toks35
+\AM@pagecnt=\count320
+\AM@toc@title=\toks36
+\AM@lof@heading=\toks37
+\c@AM@survey=\count321
+\AM@templatesizebox=\box65
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+\pgfutil@everybye=\toks38
+\pgfutil@tempdima=\dimen182
+\pgfutil@tempdimb=\dimen183
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+\pgfutil@abb=\box66
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks39
+\pgfkeys@temptoks=\toks40
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks41
+))
+\pgf@x=\dimen184
+\pgf@y=\dimen185
+\pgf@xa=\dimen186
+\pgf@ya=\dimen187
+\pgf@xb=\dimen188
+\pgf@yb=\dimen189
+\pgf@xc=\dimen190
+\pgf@yc=\dimen191
+\pgf@xd=\dimen192
+\pgf@yd=\dimen193
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count322
+\c@pgf@countb=\count323
+\c@pgf@countc=\count324
+\c@pgf@countd=\count325
+\t@pgf@toka=\toks42
+\t@pgf@tokb=\toks43
+\t@pgf@tokc=\toks44
+\pgf@sys@id@count=\count326
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count327
+\pgfsyssoftpath@bigbuffer@items=\count328
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+LaTeX Info: Redefining \color on input line 762.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+\pgfmath@dimen=\dimen194
+\pgfmath@count=\count329
+\pgfmath@box=\box67
+\pgfmath@toks=\toks45
+\pgfmath@stack@operand=\toks46
+\pgfmath@stack@operation=\toks47
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count330
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen195
+\pgf@picmaxx=\dimen196
+\pgf@picminy=\dimen197
+\pgf@picmaxy=\dimen198
+\pgf@pathminx=\dimen199
+\pgf@pathmaxx=\dimen256
+\pgf@pathminy=\dimen257
+\pgf@pathmaxy=\dimen258
+\pgf@xx=\dimen259
+\pgf@xy=\dimen260
+\pgf@yx=\dimen261
+\pgf@yy=\dimen262
+\pgf@zx=\dimen263
+\pgf@zy=\dimen264
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen265
+\pgf@path@lasty=\dimen266
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen267
+\pgf@shorten@start@additional=\dimen268
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box68
+\pgf@hbox=\box69
+\pgf@layerbox@main=\box70
+\pgf@picture@serial@count=\count331
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen269
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen270
+\pgf@pt@y=\dimen271
+\pgf@pt@temp=\dimen272
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen273
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen274
+\pgf@sys@shading@range@num=\count332
+\pgf@shadingcount=\count333
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box71
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box72
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen275
+\pgf@nodesepend=\dimen276
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen277
+\pgffor@skip=\dimen278
+\pgffor@stack=\toks48
+\pgffor@toks=\toks49
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count334
+\pgfplotmarksize=\dimen279
+)
+\tikz@lastx=\dimen280
+\tikz@lasty=\dimen281
+\tikz@lastxsaved=\dimen282
+\tikz@lastysaved=\dimen283
+\tikz@lastmovetox=\dimen284
+\tikz@lastmovetoy=\dimen285
+\tikzleveldistance=\dimen286
+\tikzsiblingdistance=\dimen287
+\tikz@figbox=\box73
+\tikz@figbox@bg=\box74
+\tikz@tempbox=\box75
+\tikz@tempbox@bg=\box76
+\tikztreelevel=\count335
+\tikznumberofchildren=\count336
+\tikznumberofcurrentchild=\count337
+\tikz@fig@count=\count338
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count339
+\pgfmatrixcurrentcolumn=\count340
+\pgf@matrix@numberofcolumns=\count341
+)
+\tikz@expandcount=\count342
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/cases\cases.sty
+Package: cases 2020/03/29 ver 3.2
+\numc@numwid=\dimen288
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\arrowsize=\dimen289
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip66
+\enit@outerparindent=\dimen290
+\enit@toks=\toks50
+\enit@inbox=\box77
+\enit@count@id=\count343
+\enitdp@description=\count344
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/apacite\apacite.sty
+Package: apacite 2013/07/21 v6.03 APA citation
+\c@BibCnt=\count345
+\bibleftmargin=\skip67
+\bibindent=\skip68
+\bibparsep=\skip69
+\bibitemsep=\skip70
+\biblabelsep=\skip71
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip72
+\bibsep=\skip73
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count346
+)
+LaTeX Info: Redefining \BBA on input line 31.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen291
+\lightrulewidth=\dimen292
+\cmidrulewidth=\dimen293
+\belowrulesep=\dimen294
+\belowbottomsep=\dimen295
+\aboverulesep=\dimen296
+\abovetopsep=\dimen297
+\cmidrulesep=\dimen298
+\cmidrulekern=\dimen299
+\defaultaddspace=\dimen300
+\@cmidla=\count347
+\@cmidlb=\count348
+\@aboverulesep=\dimen301
+\@belowrulesep=\dimen302
+\@thisruleclass=\count349
+\@lastruleclass=\count350
+\@thisrulewidth=\dimen303
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box78
+\beforetitleunit=\skip74
+\aftertitleunit=\skip75
+\ttl@plus=\dimen304
+\ttl@minus=\dimen305
+\ttl@toksa=\toks51
+\titlewidth=\dimen306
+\titlewidthlast=\dimen307
+\titlewidthfirst=\dimen308
+)
+\c@teorema=\count351
+\c@algoritma=\count352
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count353
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen309
+\Hy@linkcounter=\count354
+\Hy@pagecounter=\count355
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count356
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `bookmarks' set `true' on input line 4066.
+Package hyperref Info: Hyper figures OFF on input line 4195.
+Package hyperref Info: Link nesting OFF on input line 4200.
+Package hyperref Info: Hyper index ON on input line 4203.
+Package hyperref Info: Plain pages OFF on input line 4210.
+Package hyperref Info: Backreferencing OFF on input line 4215.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4462.
+\c@Hy@tempcnt=\count357
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4801.
+\XeTeXLinkMargin=\dimen310
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count358
+\Field@Width=\dimen311
+\Fld@charsize=\dimen312
+Package hyperref Info: Hyper figures OFF on input line 6078.
+Package hyperref Info: Link nesting OFF on input line 6083.
+Package hyperref Info: Hyper index ON on input line 6086.
+Package hyperref Info: backreferencing OFF on input line 6093.
+Package hyperref Info: Link coloring OFF on input line 6098.
+Package hyperref Info: Link coloring with OCG OFF on input line 6103.
+Package hyperref Info: PDF/A mode OFF on input line 6108.
+\Hy@abspage=\count359
+\c@Item=\count360
+\c@Hfootnote=\count361
+)
+Package hyperref Info: Driver: hpdftex.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
+\Fld@listcount=\count362
+\c@bookmark@seq@number=\count363
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip76
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tikz-cd\tikz-cd.sty
+Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tikz-cd\tikzlibrarycd.code.tex (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen313
+\pgfarrowlength=\dimen314
+\pgfarrowwidth=\dimen315
+\pgfarrowlinewidth=\dimen316
+)))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
+Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup7
+\symboldletters=\mathgroup8
+\symboldsymbols=\mathgroup9
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+\symboldlasy=\mathgroup10
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 29.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count364
+) (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.aux)
+\openout1 = `TA2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count365
+\scratchdimen=\dimen317
+\scratchbox=\box79
+\nofMPsegments=\count366
+\nofMParguments=\count367
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count368
+\MPscratchDim=\dimen318
+\MPnumerator=\count369
+\makeMPintoPDFobject=\count370
+\everyMPtoPDFconversion=\toks53
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+\c@lstlisting=\count371
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+\c@maskedRefs=\count372
+
+
+Package apacite Warning: No suitable language definition file (bahasa.apc) found.
+
+Package hyperref Info: Link coloring OFF on input line 29.
+(d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.out) (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.out)
+\@outlinefile=\write4
+\openout4 = `TA2.out'.
+
+<logougm.png, id=357, 110.5731pt x 112.2594pt>
+File: logougm.png Graphic file (type png)
+<use logougm.png>
+Package pdftex.def Info: logougm.png  used on input line 30.
+(pdftex.def)             Requested size: 156.49014pt x 158.89041pt.
+
+
+[1
+
+{C:/Users/ASUS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./logougm.png>]
+File: logougm.png Graphic file (type png)
+<use logougm.png>
+Package pdftex.def Info: logougm.png  used on input line 30.
+(pdftex.def)             Requested size: 156.49014pt x 158.89041pt.
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.32 \approvalpage
+                   [1]
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 32.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 32.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 32.
+
+Overfull \hbox (38.22636pt too wide) in paragraph at lines 32--32
+ [][] 
+ []
+
+
+Overfull \hbox (38.22636pt too wide) in paragraph at lines 32--32
+ [][] 
+ []
+
+
+Overfull \hbox (38.22636pt too wide) in paragraph at lines 32--32
+ [][] 
+ []
+
+
+
+[2]
+LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 33.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8.43146> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 33.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 33.
+
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6.02249> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 33.
+
+Overfull \hbox (34.4054pt too wide) in paragraph at lines 33--33
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+
+ []
+
+
+Overfull \hbox (15.67642pt too wide) in paragraph at lines 33--33
+[][] 
+ []
+
+
+
+[3]
+
+[4
+
+
+]
+
+[5
+
+
+]
+
+[6
+
+] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.toc
+
+[7
+
+]
+Overfull \hbox (4.13866pt too wide) in paragraph at lines 58--58
+ [][] [][]\OT1/ptm/m/it/12 Geographically We-i-ghted Ar-ti-fi-ci-al Ne-u-ral Ne-twork \OT1/ptm/m/n/12 (GWANN)[] [][]  
+ []
+
+
+
+[8])
+\tf@toc=\write5
+\openout5 = `TA2.toc'.
+
+
+
+[9] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.lot)
+\tf@lot=\write6
+\openout6 = `TA2.lot'.
+
+
+
+[10
+
+] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.lof)
+\tf@lof=\write7
+\openout7 = `TA2.lof'.
+
+
+
+[11
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 134--137
+
+ []
+
+
+
+[12
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 145--148
+
+ []
+
+
+
+[13
+
+
+] (../BAB 1, 2, 5/Bab1.tex
+BAB I.
+
+
+[1
+
+
+]
+
+[2]
+
+[3]
+Overfull \hbox (2.54811pt too wide) in paragraph at lines 23--24
+[]\OT1/ptm/m/n/12.045 mengevaluasi ki-ner-ja mo-del ter-ha-dap mo-del kon-ven-sio-nal (GTWR dan GWR)
+ []
+
+
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--44
+
+ []
+
+) (../BAB 1, 2, 5/Bab2.tex
+
+[5]
+BAB II.
+
+
+[6
+
+]
+Overfull \hbox (5.41139pt too wide) in paragraph at lines 52--54
+\OT1/ptm/m/n/12.045 Dengan de-mi-ki-an, ke-be-ra-da-an in-vers adi-tif dan in-vers per-ka-li-an ju-ga ter-ja-min. Akhir-
+ []
+
+
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+Overfull \hbox (3.87686pt too wide) in paragraph at lines 157--158
+[][]\OT1/ptm/b/n/12.045 Teorema 2.1.11 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Karakterisasi Ba-sis, ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Se-bu-ah \OT1/ptm/m/n/12.045 list \OT1/ptm/m/it/12.045 da-ri vektor-vektor
+ []
+
+
+Overfull \hbox (0.74353pt too wide) in paragraph at lines 163--165
+\OT1/ptm/b/n/12.045 Bukti. \OT1/ptm/m/n/12.045 Per-ta-ma an-da-ik-an bah-wa $\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]$ \OT1/ptm/m/n/12.045 ada-lah ba-sis da-ri $\OML/cmm/m/it/12 V$\OT1/ptm/m/n/12.045 . Se-bab $\OMS/cmsy/m/n/12 f\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]\OMS/cmsy/m/n/12 g$
+ []
+
+
+
+[11]
+Overfull \hbox (10.56091pt too wide) in paragraph at lines 192--194
+[][]\OT1/ptm/b/n/12.045 Definisi 2.1.13 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Dimensi ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Di-men-si da-ri su-a-tu ru-ang vek-tor berdimensi-
+ []
+
+
+
+[12]
+
+[13]
+
+[14]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+
+[19]
+
+[20]
+
+[21]
+Overfull \hbox (18.56406pt too wide) detected at line 606
+[] [] [] []
+ []
+
+
+
+[22]
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 731.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 731.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (3.53163pt too wide) in paragraph at lines 736--737
+[][]\OT1/ptm/b/n/12.045 Definisi 2.1.38 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/it/12.045 Null Spa-ce\OT1/ptm/b/n/12.045 , \OT1/ptm/b/it/12.045 Ra-nge\OT1/ptm/b/n/12.045 , dan \OT1/ptm/b/it/12.045 Rank\OT1/ptm/b/n/12.045 , ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Un-tuk $\OML/cmm/m/it/12 T \OMS/cmsy/m/n/12 2 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V; W\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
+ []
+
+
+
+[23]
+
+[24]
+
+[25]
+
+[26]
+
+[27]
+Overfull \hbox (1.80821pt too wide) in paragraph at lines 987--988
+ [][] 
+ []
+
+
+
+[28]
+Overfull \hbox (3.88951pt too wide) in paragraph at lines 1044--1045
+[][]\OT1/ptm/b/n/12.045 Teorema 2.1.49 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Keberadaan Ni-lai Ei-gen pa-da Ru-ang Vek-tor Kom-pleks, ([]Axler[],
+ []
+
+
+
+[29]
+
+[30]
+
+[31]
+
+[32]
+Overfull \hbox (11.83537pt too wide) in paragraph at lines 1145--1146
+\OT1/ptm/m/n/12.045 Dalam ka-sus $\OML/cmm/m/it/12 p \OT1/cmr/m/n/12 = 2$\OT1/ptm/m/n/12.045 , su-bru-ang da-ri $\OML/cmm/m/it/12 G$ \OT1/ptm/m/n/12.045 yang di-ha-silk-an da-ri vektor-vektor $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]; [] ; x[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 ,
+ []
+
+
+Overfull \hbox (22.27591pt too wide) in paragraph at lines 1176--1178
+[][]\OT1/ptm/b/n/12.045 Definisi 2.1.59 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Ruang Ten-sor, ([]Gre-ub[], []1978[]; []Hack-bu-sch[], []2012[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Mi-salk-an $\OML/cmm/m/it/12 V[]; [] ; V[]$
+ []
+
+
+
+[33]
+
+[34]
+Overfull \hbox (0.4096pt too wide) in paragraph at lines 1225--1226
+[][]\OT1/ptm/b/n/12.045 Definisi 2.1.63 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Tensor Mur-ni dan \OT1/ptm/b/it/12.045 Rank\OT1/ptm/b/n/12.045 , ([]Hack-bu-sch[], []2012[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Se-bu-ah ten-sor $[] \OMS/cmsy/m/n/12 2
+ []
+
+
+Overfull \hbox (15.00334pt too wide) in paragraph at lines 1246--1254
+[][]\OT1/ptm/b/n/12.045 Definisi 2.1.65 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Matrisasi dan $\OML/cmm/m/it/12 j$\OT1/ptm/b/n/12.045 -\OT1/ptm/b/it/12.045 rank\OT1/ptm/b/n/12.045 , ([]Hack-bu-sch[], []2012[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Mi-salk-an $[] \OMS/cmsy/m/n/12 2 [][] \OML/cmm/m/it/12 K[]$
+ []
+
+
+
+[35]
+
+[36]
+
+[37]
+
+[38]
+Overfull \hbox (2.62349pt too wide) in paragraph at lines 1503--1508
+\OT1/ptm/m/n/12.045 Matriks se-gi-ti-ga atas $\OT1/cmr/bx/n/12 R$ \OT1/ptm/m/n/12.045 di-pe-ro-leh da-ri ko-e-fi-si-en Gram--Schmidt, yak-ni $\OML/cmm/m/it/12 r[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 a[]\OMS/cmsy/m/n/12 k \OT1/cmr/m/n/12 =
+ []
+
+
+
+[39]
+
+[40]
+Overfull \hbox (9.1378pt too wide) detected at line 1566
+\OT1/cmr/bx/n/12 u[] \OT1/cmr/m/n/12 = [] \OT1/cmr/bx/n/12 A  [] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ;  \OT1/cmr/bx/n/12 u[] \OT1/cmr/m/n/12 = [] \OT1/cmr/bx/n/12 A  [] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ;
+ []
+
+
+
+[41]
+
+[42]
+<GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png, id=1136, 232.20084pt x 129.14917pt>
+File: GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png Graphic file (type png)
+<use GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png>
+Package pdftex.def Info: GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png  used on input line 1649.
+(pdftex.def)             Requested size: 199.16928pt x 110.78233pt.
+
+
+[43 <./GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png>]
+Overfull \hbox (4.70235pt too wide) in paragraph at lines 1676--1685
+[]\OT1/ptm/m/n/12.045 Dalam ke-rang-ka Tuc-ke-r/HO-SVD, pro-se-dur di-la-kuk-an de-ngan mem-ben-tangk-
+ []
+
+
+
+[44]
+
+[45]
+
+[46]
+
+[47]
+
+[48]
+
+[49]
+
+[50]
+
+[51]
+Overfull \hbox (5.27391pt too wide) in paragraph at lines 1972--1973
+[][]\OT1/ptm/b/n/12.045 Definisi 2.2.6 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Model Re-gre-si Li-ne-ar de-ngan He-te-ros-ke-das-ti-si-tas, ([]Gre-e-ne[], []2002[];
+ []
+
+
+
+[52]
+
+[53]
+
+[54]
+
+[55]
+Overfull \hbox (1.33002pt too wide) in paragraph at lines 2122--2123
+[]$\OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$ \OT1/ptm/m/it/12.045 me-ru-pak-an ko-e-fi-si-en yang ber-va-ri-a-si un-tuk va-ri-a-bel ke-$\OML/cmm/m/it/12 k$ \OT1/ptm/m/it/12.045 se-ba-gai fung-
+ []
+
+
+
+[56]
+
+[57]
+Overfull \hbox (3.74452pt too wide) in paragraph at lines 2178--2180
+\OT1/ptm/b/n/12.045 Bukti. \OT1/ptm/m/n/12.045 Mi-salk-an mo-del ko-e-fi-si-en ber-va-ri-a-si $\OML/cmm/m/it/12 Y[] \OT1/cmr/m/n/12 = \OML/cmm/b/it/12 x[]^^L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 "[]$ \OT1/ptm/m/n/12.045 de-ngan $\OML/cmm/m/it/12 "[] \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; ^^[[]\OT1/cmr/m/n/12 )$
+ []
+
+
+
+[58]
+
+[59]
+
+[60]
+
+[61]
+
+[62]
+
+[63]
+
+[64]
+
+[65]
+
+[66]
+
+[67]
+Overfull \hbox (1.94777pt too wide) in paragraph at lines 2496--2498
+[]\OT1/ptm/m/n/12.045 Dengan nor-ma-li-sa-si yang te-pat, di-pe-ro-leh ha-sil akhir bah-wa $[][] \OMS/cmsy/m/n/12 ^^X \OML/cmm/m/it/12 ^^_[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 )$
+ []
+
+
+
+[68]
+
+[69]
+Overfull \hbox (11.35492pt too wide) in paragraph at lines 2550--2552
+\OT1/ptm/m/it/12.045 dengan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 dan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 ada-lah ni-lai ei-gen ter-be-sar dan ter-ke-cil da-ri ma-triks $\OML/cmm/b/it/12 X[]\OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 X$\OT1/ptm/m/it/12.045 .
+ []
+
+
+
+[70]
+
+[71]
+
+[72]
+
+[73]
+Overfull \hbox (1.66049pt too wide) in paragraph at lines 2700--2703
+\OT1/ptm/m/n/12.045 tuk meng-hi-tung gra-di-en fung-si ke-ru-gi-an $\OML/cmm/m/it/12 L$\OT1/ptm/m/n/12.045 . De-ngan no-ta-si $\OML/cmm/b/it/12 z[] \OT1/cmr/m/n/12 = \OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 a[] \OT1/cmr/m/n/12 +
+ []
+
+
+
+[74]
+
+[75]
+
+[76]
+
+[77]
+
+[78]
+
+[79]
+
+[80]
+Overfull \hbox (35.99084pt too wide) in paragraph at lines 2915--2918
+\OT1/ptm/m/it/12.045 disebut ma-triks ke-te-tang-ga-an. Ma-triks de-ra-jat di-de-fi-ni-sik-an se-ba-gai $\OT1/cmr/bx/n/12 D \OT1/cmr/m/n/12 = [](\OML/cmm/m/it/12 d[]; [] ; d[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
+ []
+
+
+
+[81]
+Overfull \hbox (19.2864pt too wide) in paragraph at lines 2921--2922
+[][]\OT1/ptm/b/n/12.045 Contoh 2.4.2 []\OT1/ptm/m/n/12.045 Graf $\OMS/cmsy/m/n/12 G \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 V\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 E\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 de-ngan $\OMS/cmsy/m/n/12 jVj \OT1/cmr/m/n/12 = 4$ \OT1/ptm/m/n/12.045 dan si-si $\OMS/cmsy/m/n/12 E \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (3\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 4)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (4\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1)\OMS/cmsy/m/n/12 g$
+ []
+
+
+
+[82]
+
+[83]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3020.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+
+[84]
+Overfull \hbox (21.09961pt too wide) in paragraph at lines 3031--3032
+[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
+ []
+
+
+
+[85]
+Overfull \hbox (21.09961pt too wide) in paragraph at lines 3062--3063
+[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
+ []
+
+
+
+[86]
+
+[87]
+
+[88]
+
+[89]
+
+[90]
+
+[91]
+
+[92]
+
+[93]
+
+[94]
+Overfull \hbox (2.75977pt too wide) in paragraph at lines 3305--3306
+\OT1/ptm/m/n/12.045 ber-a-da pa-da Ma-ni-fo-ld ber-di-men-si ja-uh le-bih ren-dah. SSL yang me-man-fa-atk-an asum-
+ []
+
+
+
+[95]
+Overfull \hbox (6.80952pt too wide) in paragraph at lines 3322--3323
+[]$\OML/cmm/m/it/12 ^^U[]; ^^U[] > \OT1/cmr/m/n/12 0$ \OT1/ptm/m/it/12.045 ada-lah hyper-pa-ra-me-ter yang meng-on-trol kon-tri-bu-si masing-masing
+ []
+
+
+
+[96]
+
+[97]
+Overfull \hbox (5.70284pt too wide) in paragraph at lines 3389--3390
+[][]\OT1/ptm/b/n/12.045 Contoh 2.6.15 []\OT1/ptm/m/n/12.045 Mi-salk-an mo-del memp-re-dik-si dis-tri-bu-si pro-ba-bi-li-tas $\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 05\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 15\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 80]$
+ []
+
+
+
+[98]) (Bab3TA2.tex
+
+[99]
+BAB III.
+
+
+[100
+
+]
+Overfull \hbox (1.34743pt too wide) in paragraph at lines 29--31
+\OT1/ptm/m/n/12.045 dan ke-mu-di-an meng-hu-bung-kan-nya de-ngan re-gre-si li-ne-ar au-to-re-gre-sif spa-si-al (SAR),
+ []
+
+
+
+[101]
+
+[102]
+<Gambar/The_estimation_process_of_GTNNWR_model.jpeg, id=1891, 1204.5pt x 609.27625pt>
+File: Gambar/The_estimation_process_of_GTNNWR_model.jpeg Graphic file (type jpg)
+<use Gambar/The_estimation_process_of_GTNNWR_model.jpeg>
+Package pdftex.def Info: Gambar/The_estimation_process_of_GTNNWR_model.jpeg  used on input line 94.
+(pdftex.def)             Requested size: 318.67207pt x 161.19711pt.
+
+
+[103]
+
+[104 <./Gambar/The_estimation_process_of_GTNNWR_model.jpeg>]
+
+[105]
+<GAMBAR/Flowchart GNN GTVC GTWR.png, id=1926, 1421.0691pt x 594.5412pt>
+File: GAMBAR/Flowchart GNN GTVC GTWR.png Graphic file (type png)
+<use GAMBAR/Flowchart GNN GTVC GTWR.png>
+Package pdftex.def Info: GAMBAR/Flowchart GNN GTVC GTWR.png  used on input line 125.
+(pdftex.def)             Requested size: 358.50227pt x 149.98665pt.
+
+
+[106 <./GAMBAR/Flowchart GNN GTVC GTWR.png>]
+
+[107]
+
+[108]
+Overfull \hbox (12.0985pt too wide) in paragraph at lines 183--185
+\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; [] ; N\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 t \OT1/cmr/m/n/12 = 1\OML/cmm/m/it/12 ; [] ; T\OMS/cmsy/m/n/12 g$ \OT1/ptm/m/n/12.045 de-ngan res-pon $\OML/cmm/m/it/12 y[]$ \OT1/ptm/m/n/12.045 dan ko-va-ri-at $\OT1/cmr/bx/n/12 x[] \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 )[]$\OT1/ptm/m/n/12.045 .
+ []
+
+
+Overfull \hbox (9.7005pt too wide) in paragraph at lines 191--192
+[]\OT1/ptm/m/n/12.045 Untuk meng-hu-bungk-an mo-del ini de-ngan ja-ring-an graf, ko-e-fi-si-en lo-kal $\OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$
+ []
+
+
+Overfull \hbox (5.11198pt too wide) in paragraph at lines 191--192
+\OT1/ptm/m/n/12.045 di-pa-ra-me-tri-sa-si se-ba-gai fung-si da-ri ko-e-fi-si-en glo-bal $\OML/cmm/m/it/12 ^^L[]$ \OT1/ptm/m/n/12.045 dan bo-bot adap-tif $\OML/cmm/m/it/12 w[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 : 
+ []
+
+
+
+[109]
+
+[110]
+Overfull \hbox (4.42819pt too wide) in paragraph at lines 258--261
+\OT1/ptm/m/n/12.045 men-cer-mink-an ke-de-kat-an an-ta-ra ti-tik $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 i; t\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 dan se-lu-ruh ob-se-rva-si $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j; s\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 . Da-lam GNN-
+ []
+
+
+
+[111]
+Overfull \hbox (1.99017pt too wide) in paragraph at lines 288--289
+[]\OT1/ptm/m/n/12.045 GAT mem-per-ke-nalk-an me-ka-nis-me per-ha-ti-an (\OT1/ptm/m/it/12.045 at-ten-tion\OT1/ptm/m/n/12.045 ) se-hing-ga se-ti-ap sim-
+ []
+
+
+
+[112]
+
+[113]
+
+[114]
+Overfull \hbox (3.97948pt too wide) in paragraph at lines 362--363
+[]\OT1/ptm/m/n/12.045 Untuk me-ning-katk-an sta-bi-li-tas, fung-si ob-jek-tif da-pat di-leng-ka-pi de-ngan kom-
+ []
+
+
+
+[115]
+
+[116]
+
+[117]
+
+[118]
+
+[119]) (Bab4TA2.tex
+
+[120]
+BAB IV.
+<GAMBAR/patrick.jpeg, id=2048, 259.97125pt x 194.7275pt>
+File: GAMBAR/patrick.jpeg Graphic file (type jpg)
+<use GAMBAR/patrick.jpeg>
+Package pdftex.def Info: GAMBAR/patrick.jpeg  used on input line 13.
+(pdftex.def)             Requested size: 239.00557pt x 179.02368pt.
+
+
+[121
+
+ <./GAMBAR/patrick.jpeg>]
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 23.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12.045> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 23.
+) (../BAB 1, 2, 5/Bab5.tex
+
+[122]
+BAB V.
+)
+
+[123
+
+] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.bbl
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 135.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 2334) in paragraph at lines 123--138
+\OT1/ptm/m/n/12 Uni-ver-si-ty Press.  Di-am-bil da-ri []$\OT1/pcr/m/n/12 https :// www [] .microsoft [] .com /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--138
+\OT1/pcr/m/n/12 en [] -us / research / publication / neural [] -networks [] -for []
+ []
+
+
+
+[124
+
+]
+
+[125]
+
+[126])
+
+[127]
+LAMPIRAN A.
+
+
+[128
+
+]
+LAMPIRAN B.
+(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang2.sty
+File: lstlang2.sty 2024/09/23 1.10c listings language file
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang3.sty
+File: lstlang3.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 191.
+ (syntax R template.R)
+
+[129
+
+] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-07-20>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.98875pt have occurred.
+
+Package rerunfilecheck Info: File `TA2.out' has not changed.
+(rerunfilecheck)             Checksum: 706A3051304F7A9676DBBA39A2116778;18409.
+ ) 
+Here is how much of TeX's memory you used:
+ 31184 strings out of 468134
+ 573275 string characters out of 5431224
+ 1120666 words of memory out of 5000000
+ 58329 multiletter control sequences out of 15000+600000
+ 680002 words of font info for 169 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,18n,111p,1131b,1801s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on "d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.pdf" (143 pages, 1808469 bytes).
+PDF statistics:
+ 2415 PDF objects out of 2487 (max. 8388607)
+ 892 named destinations out of 1000 (max. 500000)
+ 742 words of extra memory for PDF output out of 10000 (max. 10000000)
+

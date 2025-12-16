@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Graph Neural Networks Geographically and Temporally Varying Coefficients (GNN-GTVC): Sebuah Paradigma Pembelajaran Representasi Spasial dan Temporal untuk Skema Pembobotan Model Regresi Koefisien Bervariasi</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="Draft GTWR GNN_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Draft GTWR GNN_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Draft GTWR GNN_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Draft GTWR GNN_files/libs/quarto-html/popper.min.js"></script>
+<script src="Draft GTWR GNN_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Draft GTWR GNN_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Draft GTWR GNN_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Draft GTWR GNN_files/libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Draft GTWR GNN_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Draft GTWR GNN_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Draft GTWR GNN_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong><em>Graph Neural Networks Geographically and Temporally Varying Coefficients</em> (GNN-GTVC): Sebuah Paradigma Pembelajaran Representasi Spasial dan Temporal untuk Skema Pembobotan Model Regresi Koefisien Bervariasi</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="abstrak" class="level2">
+<h2 class="anchored" data-anchor-id="abstrak"><strong>Abstrak</strong></h2>
+<p>Model regresi spasio-temporal klasik seperti GTWR (<em>Geographically and Temporally Weighted Regression</em>) menggunakan bobot kernel tetap berdasarkan jarak spasial dan temporal. Namun, pendekatan ini terbatas dalam menangkap heterogenitas non-linear dan hubungan kompleks antar unit. Analisis ini memperkenalkan GTWR-GNN, sebuah kerangka yang memanfaatkan <em>Graph Neural Network</em> (GNN) untuk mempelajari bobot adaptif antar unit spasio-temporal. Dengan tetap mempertahankan interpretabilitas koefisien lokal, pendekatan ini menawarkan keseimbangan antara fleksibilitas representasi modern dan interpretasi ekonometrika klasik. Berikut ini disajikan teori dasar, keterkaitan dengan studi terdahulu, formulasi matematis, serta implementasi <em>end-to-end</em> dalam Python.</p>
+</section>
+<section id="pendahuluan" class="level2">
+<h2 class="anchored" data-anchor-id="pendahuluan"><strong>1. Pendahuluan</strong></h2>
+</section>
+<section id="dasar-teori" class="level2">
+<h2 class="anchored" data-anchor-id="dasar-teori"><strong>2. Dasar Teori</strong></h2>
+<section id="regresi-linear-biasa-ols" class="level3">
+<h3 class="anchored" data-anchor-id="regresi-linear-biasa-ols"><strong>2.1. Regresi Linear Biasa (OLS)</strong></h3>
+<p>Regresi Linear Biasa (Ordinary Least Squares - OLS) adalah metode statistik yang digunakan untuk memodelkan hubungan antara satu variabel dependen dan satu atau lebih variabel independen. Model OLS berasumsi bahwa hubungan antara variabel-variabel tersebut bersifat linier dan koefisien regresi tetap di seluruh ruang data.</p>
+<p>Model OLS dapat dinyatakan sebagai berikut. <span class="math display">\[
+y_i = \beta_0 + \sum_{k=1}^{p} \beta_k x_{ik} + \epsilon_i, \quad i = 1, 2, \ldots, n, \tag{1}
+\]</span> dengan <span class="math inline">\(y_i\)</span> adalah nilai variabel dependen pada observasi ke-<span class="math inline">\(i\)</span>, <span class="math inline">\(x_{ik}\)</span> adalah nilai variabel independen ke-<span class="math inline">\(k\)</span> pada observasi ke-<span class="math inline">\(i\)</span>, <span class="math inline">\(\beta_0\)</span> adalah intercept, <span class="math inline">\(\beta_k\)</span> adalah koefisien regresi untuk variabel independen ke-<span class="math inline">\(k\)</span>, dan <span class="math inline">\(\epsilon_i\)</span> adalah error term yang diasumsikan berdistribusi normal dengan mean nol dan varians konstan.</p>
+<p>Penduga koefisien regresi <span class="math inline">\(\beta_k\)</span> diperoleh dengan meminimalkan jumlah kuadrat dari residual (selisih antara nilai aktual dan nilai prediksi) sebagai berikut. <span class="math display">\[
+\hat{\beta} = \arg\min_{\beta} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2, \tag{2}
+\]</span> dengan <span class="math inline">\(\hat{y}_i\)</span> adalah nilai prediksi dari model OLS.</p>
+</section>
+<section id="varying-coefficient-model-vcm" class="level3">
+<h3 class="anchored" data-anchor-id="varying-coefficient-model-vcm"><strong>2.2. <em>Varying Coefficient Model</em> (VCM)</strong></h3>
+<p><em>Varying Coefficient Model</em> (VCM) adalah ekstensi dari model regresi linear yang memungkinkan koefisien regresi untuk bervariasi sebagai fungsi dari satu atau lebih variabel kovariat. Hal ini memungkinkan model untuk menangkap hubungan non-linear dan heterogenitas dalam data. Model VCM dapat dinyatakan sebagai berikut. <span class="math display">\[
+y_i = \beta_0(z_i) + \sum_{k=1}^{p} \beta_k(z_i) x_{ik} + \epsilon_i, \quad i = 1, 2, \ldots, n, \tag{3}
+\]</span> dengan <span class="math inline">\(z_i\)</span> adalah variabel kovariat yang mempengaruhi koefisien regresi, dan <span class="math inline">\(\beta_k(z_i)\)</span> adalah fungsi koefisien yang bervariasi berdasarkan nilai <span class="math inline">\(z_i\)</span>. Penduga koefisien regresi <span class="math inline">\(\beta_k(z_i)\)</span> dapat diperoleh menggunakan metode seperti kernel smoothing atau splines.</p>
+</section>
+<section id="geographically-and-temporally-weighted-regression-gtwr" class="level3">
+<h3 class="anchored" data-anchor-id="geographically-and-temporally-weighted-regression-gtwr"><strong>2.3. <em>Geographically and Temporally Weighted Regression</em> (GTWR)</strong></h3>
+<p><em>Geographically and Temporally Weighted Regression</em> (GTWR) adalah ekstensi dari model VCM yang memperhitungkan variasi koefisien regresi berdasarkan lokasi geografis dan waktu. GTWR memungkinkan koefisien regresi untuk bervariasi secara spasial dan temporal, sehingga dapat menangkap heterogenitas dalam data yang memiliki dimensi spasial dan temporal. Model GTWR dapat dinyatakan sebagai berikut. <span class="math display">\[
+y_i = \beta_0(u_i, v_i, t_i) + \sum_{k=1}^{p} \beta_k(u_i, v_i, t_i) x_{ik} + \epsilon_i, \quad i = 1, 2, \ldots, n, \tag{4}
+\]</span> dengan <span class="math inline">\((u_i, v_i)\)</span> adalah koordinat geografis dari observasi ke-<span class="math inline">\(i\)</span>, <span class="math inline">\(t_i\)</span> adalah waktu dari observasi ke-<span class="math inline">\(i\)</span>, dan <span class="math inline">\(\beta_k(u_i, v_i, t_i)\)</span> adalah fungsi koefisien yang bervariasi berdasarkan lokasi dan waktu. Penduga koefisien regresi <span class="math inline">\(\beta_k(u_i, v_i, t_i)\)</span> dapat diperoleh menggunakan metode seperti kernel smoothing dengan bobot yang bergantung pada jarak spasial dan temporal.</p>
+</section>
+</section>
+<section id="penelitian-sebelumnya" class="level2">
+<h2 class="anchored" data-anchor-id="penelitian-sebelumnya"><strong>3. Penelitian Sebelumnya</strong></h2>
+<section id="geographically-neural-networks-weighted-regression-gnnwr" class="level3">
+<h3 class="anchored" data-anchor-id="geographically-neural-networks-weighted-regression-gnnwr"><strong>3.1. <em>Geographically Neural Networks Weighted Regression (GNNWR)</em></strong></h3>
+<p>Du, dkk. (2020) memperkenalkan <em>Geographically Neural Networks Weighted Regression (GNNWR)</em>, sebuah model yang menggabungkan konsep jaringan saraf tiruan dengan regresi berbobot geografis. GNNWR menggunakan jaringan saraf untuk mempelajari bobot adaptif berdasarkan jarak spasial antar unit, memungkinkan model untuk menangkap hubungan non-linear dan kompleks dalam data spasial. Model ini mempertahankan interpretabilitas koefisien lokal, sehingga dapat digunakan untuk analisis ekonometrika. Du menyebutkan bahwa ketidakstabilan koefisien global dapat dinyatakan sebagai simpangan-simpangan pada koefisien lokal, yaitu <span class="math display">\[
+\beta_k^{\text{Lokal}}(u_i,v_i) = w_k(u_i, v_i) \cdot \beta_k^{\text{Global}}, \tag{5}
+\]</span> dengan syarat bahwa <span class="math inline">\(\sum_{k=1}^{p} w_k = 1\)</span> dan <span class="math inline">\(w_k \geq 0\)</span> untuk semua <span class="math inline">\(k\)</span>, maka <span class="math inline">\(\beta_k^{\text{Global}}\)</span> dapat diinterpretasikan sebagai rata-rata tertimbang dari koefisien lokal <span class="math inline">\(\beta_k^{\text{Lokal}}\)</span>. Sebagai contoh, apabila <em>baseline</em> yang digunakan adalah OLS, maka koefisien OLS dianggap sebagai rata-rata tertimbang dari fluktuasi koefisien-koefisien lokal.</p>
+<p>Du menggunakan jaringan saraf tiruan untuk memprediksi <span class="math inline">\(w_k (u_i,v_i)\)</span>. Konsep ini juga dapat diperluas ke dalam konteks regresi terboboti geografis dan temporal, yaitu koefisien yang bervariasi secara spasial dan temporal. Secara umum, model GNNWR dapat dituliskan sebagai berikut. <span class="math display">\[
+\hat{\bm{y}} =
+\begin{pmatrix}
+    \hat{y}_1 \\ \hat{y}_2 \\ \vdots \\ \hat{y}_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+    \bm{x}_1^\top \mathbf{W}(u_1, v_1) \bm{\beta}^{\text{Global}} \\
+    \bm{x}_2^\top \mathbf{W}(u_2, v_2) \bm{\beta}^{\text{Global}} \\
+    \vdots \\
+    \bm{x}_n^\top \mathbf{W}(u_n, v_n) \bm{\beta}^{\text{Global}}
+\end{pmatrix}.
+\]</span> Apabila <em>baseline</em> model adalah OLS, maka <span class="math display">\[
+\hat{\bm{y}} =
+\begin{pmatrix}
+    \bm{x}_1^\top \mathbf{W}(u_1, v_1) (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \bm{y} \\
+    \bm{x}_2^\top \mathbf{W}(u_2, v_2) (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \bm{y} \\
+    \vdots \\
+    \bm{x}_n^\top \mathbf{W}(u_n, v_n) (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \bm{y}
+\end{pmatrix}
+=
+\begin{pmatrix}
+    \bm{x}_1^\top \mathbf{W}(u_1, v_1)(\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top\\
+    \bm{x}_2^\top \mathbf{W}(u_2, v_2)(\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \\
+    \vdots \\
+    \bm{x}_n^\top \mathbf{W}(u_n, v_n)(\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top
+\end{pmatrix} \bm{y}
+= \mathbf{S} \bm{y},
+\]</span> dengan <span class="math inline">\(\mathbf{S}\)</span> adalah matriks <em>hat</em> yang bergantung pada bobot spasial yang dipelajari oleh jaringan saraf tiruan.</p>
+<p>Pada model GNNWR, bobot spasial <span class="math inline">\(\mathbf{W}(u_i, v_i)\)</span> dipelajari menggunakan jaringan saraf tiruan yang mengambil sebagai input jarak spasial antar unit, yaitu <span class="math display">\[
+\mathbf{W}(u_i, v_i) = \text{SWNN}(d_{i1}^\text{S}, d_{i2}^\text{S}, \ldots, d_{in}^\text{S}; \boldsymbol{\theta}), \tag{6}
+\]</span> dengan <span class="math inline">\(d_{ij}^\text{S}\)</span> adalah jarak spasial antara unit ke-<span class="math inline">\(i\)</span> dan unit ke-<span class="math inline">\(j\)</span>, serta <span class="math inline">\(\boldsymbol{\theta}\)</span> adalah parameter-parameter jaringan saraf tiruan yang dipelajari selama proses pelatihan. Sedangkan dalam GTNNWR, bobot spasial dan temporal <span class="math inline">\(\mathbf{W}(u_i, v_i, t_i)\)</span> dipelajari menggunakan jaringan saraf tiruan yang mengambil sebagai input jarak spasial dan temporal antar unit. Aproksimasi atau <em>proximity</em> dari jarak spasial dan temporal juga dikalkulasi dengan menggunakan jaringan saraf. <span class="math display">\[
+\mathbf{W}(u_i, v_i, t_i) = \text{STWNN}(d_{i1}^\text{ST}, d_{i2}^\text{ST}, \ldots, d_{in}^\text{ST}; \boldsymbol{\theta}_1), \tag{7}
+\]</span> dengan <span class="math display">\[
+d_{ij}^\text{ST} = \text{STPNN}\left(d_{ij}^\text{S}, d_{ij}^\text{T}; \boldsymbol{\theta}_2\right), \tag{8}
+\]</span> dengan <span class="math inline">\(d_{ij}^\text{T}\)</span> adalah jarak temporal antara unit ke-<span class="math inline">\(i\)</span> dan unit ke-<span class="math inline">\(j\)</span>, serta <span class="math inline">\(\boldsymbol{\theta}_1\)</span> dan <span class="math inline">\(\boldsymbol{\theta}_2\)</span> adalah parameter-parameter jaringan saraf tiruan yang dipelajari selama proses pelatihan.</p>
+</section>
+<section id="spatial-regression-graph-convolutional-neural-networks-srgcnn" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-regression-graph-convolutional-neural-networks-srgcnn"><strong>3.2. <em>Spatial Regression Graph Convolutional Neural Networks (SRGCNN)</em></strong></h3>
+<p>Zhu, dkk. (2021) memperkenalkan <em>Spatial Regression Graph Convolutional Neural Networks (SRGCNN)</em>, sebuah model yang menggabungkan konsep regresi spasial dengan jaringan saraf konvolusional berbasis graf. SRGCNN menggunakan lapisan konvolusi graf untuk menangkap hubungan spasial antar unit, memungkinkan model untuk mempelajari representasi fitur yang lebih kaya dan kompleks dalam data spasial. Dasar dari model ini adalah <em>spatial durbin model</em> (SDM) yang dapat dituliskan sebagai berikut. <span class="math display">\[
+\bm{y} = \rho \mathbf{W} \bm{y} + \bm{x} \bm{\beta} + \mathbf{W} \bm{X} \bm{\delta} + \bm{\varepsilon}, \tag{9}
+\]</span> dengan <span class="math inline">\(\rho\)</span> adalah parameter spasial yang mengukur efek spasial <em>lag</em> dari variabel dependen, <span class="math inline">\(\mathbf{W}\)</span> adalah matriks bobot spasial yang merepresentasikan hubungan antar unit, <span class="math inline">\(\bm{\beta}\)</span> adalah koefisien regresi untuk variabel independen, <span class="math inline">\(\bm{\delta}\)</span> adalah koefisien regresi untuk variabel independen yang di-<em>lag</em> dengan matriks bobot spasial, dan <span class="math inline">\(\bm{\varepsilon}\)</span> adalah <em>error term</em> yang diasumsikan berdistribusi normal dengan mean nol dan varians konstan.</p>
+<p>Model SRGCNN memanfaatkan proses konvolusi graf untuk mempelajari representasi fitur dari data spasial. Proses konvolusi graf dalam SRGCNN dapat dinyatakan sebagai berikut. <span class="math display">\[
+\bm{X}^{(\ell + 1)} = \sigma\left(\widetilde{\mathbf{D}}^{-\frac{1}{2}} \widetilde{\mathbf{A}} \widetilde{\mathbf{D}}^{-\frac{1}{2}} \bm{X}^{(\ell)} \mathbf{W}^{(\ell)}\right) = \sigma\left(\mathbf{A}_L\bm{X}^{(\ell)}\mathbf{W}^{(\ell)}\right), \tag{10}
+\]</span> dengan <span class="math inline">\(\bm{X}^{(\ell)}\)</span> adalah representasi fitur pada lapisan ke-<span class="math inline">\(\ell\)</span>, <span class="math inline">\(\widetilde{\mathbf{A}} = \mathbf{A} + \mathbf{I}\)</span> adalah matriks <em>adjacency</em> yang telah ditambahkan dengan matriks identitas untuk memasukkan informasi diri sendiri, <span class="math inline">\(\widetilde{\mathbf{D}}\)</span> adalah matriks diagonal yang berisi derajat dari setiap node pada graf, <span class="math inline">\(\mathbf{W}^{(\ell)}\)</span> adalah matriks bobot yang dipelajari pada lapisan ke-<span class="math inline">\(\ell\)</span>, dan <span class="math inline">\(\sigma\)</span> adalah fungsi aktivasi non-linear seperti ReLU. Secara intuitif, <em>output</em> dari GCNN dengan <span class="math inline">\(m\)</span>-lapisan adalah <span class="math inline">\(\hat{\bm{y}} = \bm{X}^{(m)}\)</span> dengan <span class="math inline">\(\bm{X}^{(0)} = \bm{X}\)</span>. Oleh karena itu, misalkan <span class="math inline">\(f\)</span> adalah fungsi jaringan saraf yang menggabungkan proses konvolusi graf dan lapisan-lapisan <em>fully connected</em>, maka model SRGCNN dapat dituliskan sebagai berikut. <span class="math display">\[
+\hat{\bm{y}} = f(\sigma(\widetilde{\mathbf{D}}^{-\frac{1}{2}} \widetilde{\mathbf{A}} \widetilde{\mathbf{D}}^{-\frac{1}{2}} \bm{X} \mathbf{W}^{(0)}), \mathbf{W}^{(1)}, \ldots, \mathbf{W}^{(m)}), \tag{11}
+\]</span> atau <span class="math display">\[
+\hat{\bm{y}} = \sigma\left(\mathbf{A}_L\left(\sigma\left(\dots \sigma\left(\bm{X}^{(0)}\bm{W}^{(0)}\right) \mathbf{W}^{(m-1)}\right)\mathbf{W}^{(m)}\right)\right), \tag{12}
+\]</span> dengan <span class="math inline">\(\mathbf{W}^{(0)}, \mathbf{W}^{(1)}, \ldots, \mathbf{W}^{(m)}\)</span> adalah parameter-parameter jaringan saraf yang dipelajari selama proses pelatihan.</p>
+<p>Apabila dibandingkan dengan Persamaan (9), model SRGCNN memiliki kemiripan dengan SDM, di mana proses konvolusi graf dalam SRGCNN dapat dianggap sebagai cara untuk memodelkan efek spasial <em>lag</em> dari variabel dependen dan variabel independen. Namun, SRGCNN menawarkan fleksibilitas yang lebih besar dalam menangkap hubungan non-linear dan kompleks dalam data spasial melalui penggunaan jaringan saraf.</p>
+</section>
+</section>
+<section id="pengembangan-model-graph-neural-networks-geographically-and-temporally-varying-coefficient-gnn-gtvc" class="level2">
+<h2 class="anchored" data-anchor-id="pengembangan-model-graph-neural-networks-geographically-and-temporally-varying-coefficient-gnn-gtvc"><strong>4. Pengembangan Model <em>Graph Neural Networks Geographically and Temporally Varying Coefficient</em> (GNN-GTVC)</strong></h2>
+<p>Pada tesis ini, akan diusulkan sebuah model pengembangan dari GTNNWR yang menggunakan konsep dari GNN untuk mempelajari bobot adaptif antar unit spasio-temporal. Model ini akan disebut sebagai <em>Graph Neural Networks Geographically and Temporally Varying Coefficient</em> (GNN-GTVC). Model GNN-GTVC mempertahankan interpretabilitas koefisien lokal seperti pada GTWR, namun dengan kemampuan yang lebih baik dalam menangkap hubungan non-linear dan kompleks dalam data spasio-temporal.</p>
+<section id="formulasi-matematis" class="level3">
+<h3 class="anchored" data-anchor-id="formulasi-matematis"><strong>4.1. Formulasi Matematis</strong></h3>
+<p>Model GNN-GTVC mempunyai dasar yang sangat serupa dengan GTNNWR, tetapi dengan pendekatan teori <em>varying coefficient models</em>. VCM secara umum dapat dituliskan sebagai berikut. <span class="math display">\[
+y_i = \beta_0(z_i) + \sum_{k=1}^{p} \beta_k(z_i) x_{ik} + \epsilon_i, \quad i = 1, 2, \ldots, n, \tag{12}
+\]</span> dengan <span class="math inline">\(z_i\)</span> adalah variabel kovariat yang mempengaruhi koefisien regresi, dan <span class="math inline">\(\beta_k(z_i)\)</span> adalah fungsi koefisien yang bervariasi berdasarkan nilai <span class="math inline">\(z_i\)</span>. Penduga koefisien regresi <span class="math inline">\(\beta_k(z_i)\)</span> dapat diperoleh menggunakan metode seperti kernel smoothing atau splines. Dapat diperhatikan bahwa VCM mempunyai koefisien yang bervariasi berdasarkan nilai dari <span class="math inline">\(z_i\)</span>. Pada implementasi ini, variabel kovariat <span class="math inline">\(z_i\)</span> akan merepresentasikan informasi spasial dan temporal dari unit ke-<span class="math inline">\(i\)</span>, yaitu koordinat geografis <span class="math inline">\((u_i, v_i)\)</span> dan waktu <span class="math inline">\(t_i\)</span>, serta mengikuti formulasi Du (2020) dalam pengembangan GNNWR, yaitu sebagai proporsi dari bobot <em>baseline</em>, atau secara matematis dapat dituliskan sebagai berikut. <span class="math display">\[
+\beta_k(z_i) = w_k(z_i) \cdot \beta_k^{\text{Global}}, \tag{13}
+\]</span> dengan <span class="math inline">\(z_i\)</span> di sini merepresentasikan informasi spasial dan temporal dari unit ke-<span class="math inline">\(i\)</span>, yaitu koordinat geografis <span class="math inline">\((u_i, v_i)\)</span> dan waktu <span class="math inline">\(t_i\)</span>. Dengan demikian, model GNN-GTVC dapat dituliskan sebagai berikut. <span class="math display">\[
+y_i = \sum_{k=1}^{p} w_k(u_i, v_i, t_i) \cdot \beta_k^{\text{Global}} x_{ik} + \epsilon_i, \quad i = 1, 2, \ldots, n, \tag{14}
+\]</span> dengan syarat bahwa <span class="math inline">\(\sum_{k=1}^{p} w_k = 1\)</span> dan <span class="math inline">\(w_k \geq 0\)</span> untuk semua <span class="math inline">\(k\)</span>, maka <span class="math inline">\(\beta_k^{\text{Global}}\)</span> dapat diinterpretasikan sebagai rata-rata tertimbang dari koefisien lokal <span class="math inline">\(\beta_k(u_i, v_i, t_i)\)</span>. Persamaan (14) sama dengan formulasi GTNNWR oleh Du (2020) pada Persamaan (5).</p>
+<p>Pada model GNN-GTVC, bobot spasial dan temporal <span class="math inline">\(w_k(u_i, v_i, t_i)\)</span> dipelajari menggunakan jaringan saraf graf yang menggunakan kerangka <em>message passing neural networks</em>. Pada subseksi selanjutnya akan dijelaskan beberapa arsitektur dalam kerangka <em>message passing neural networks</em> yang dapat digunakan untuk mempelajari bobot spasial dan temporal dalam model GNN-GTVC.</p>
+</section>
+<section id="arsitektur-jaringan-saraf-graf-untuk-memodelkan-bobot-spasial-dan-temporal" class="level3">
+<h3 class="anchored" data-anchor-id="arsitektur-jaringan-saraf-graf-untuk-memodelkan-bobot-spasial-dan-temporal"><strong>4.2. Arsitektur Jaringan Saraf Graf untuk Memodelkan Bobot Spasial dan Temporal</strong></h3>
+<section id="graph-convolutional-networks-gcn" class="level4">
+<h4 class="anchored" data-anchor-id="graph-convolutional-networks-gcn"><strong>4.2.1. <em>Graph Convolutional Networks</em> (GCN)</strong></h4>
+<p>Secara umum, menurut Kipf dan Welling (2017), proses konvolusi graf dalam GCN dapat dinyatakan sebagai berikut. <span class="math display">\[
+\bm{h}^{(\ell + 1)} = \sigma\left(\widetilde{\mathbf{D}}^{-\frac{1}{2}} \widetilde{\mathbf{A}} \widetilde{\mathbf{D}}^{-\frac{1}{2}} \bm{h}^{(\ell)} \mathbf{W}^{(\ell)}\right) = \sigma\left(\mathbf{A}_L\bm{h}^{(\ell)}\mathbf{W}^{(\ell)}\right), \tag{15}
+\]</span> dengan <span class="math inline">\(\bm{h}^{(\ell)}\)</span> adalah representasi fitur pada lapisan ke-<span class="math inline">\(\ell\)</span>, <span class="math inline">\(\widetilde{\mathbf{A}} = \mathbf{A} + \mathbf{I}\)</span> adalah matriks <em>adjacency</em> yang telah ditambahkan dengan matriks identitas untuk memasukkan informasi diri sendiri, <span class="math inline">\(\widetilde{\mathbf{D}}\)</span> adalah matriks diagonal yang berisi derajat dari setiap node pada graf, <span class="math inline">\(\mathbf{W}^{(\ell)}\)</span> adalah matriks bobot yang dipelajari pada lapisan ke-<span class="math inline">\(\ell\)</span>, dan <span class="math inline">\(\sigma\)</span> adalah fungsi aktivasi non-linear seperti ReLU.</p>
+</section>
+<section id="graph-attention-networks-gat" class="level4">
+<h4 class="anchored" data-anchor-id="graph-attention-networks-gat"><strong>4.2.2. <em>Graph Attention Networks</em> (GAT)</strong></h4>
+<p>Secara umum, menurut Veličković, dkk. (2018), proses perhatian dalam GAT dapat dinyatakan sebagai berikut. <span class="math display">\[
+\bm{h}_i^{(\ell + 1)} = \sigma\left(\sum_{j \in \mathcal{N}(i)} \alpha_{ij} \mathbf{W} \bm{h}_j^{(\ell)}\right), \tag{16}
+\]</span> dengan <span class="math inline">\(\bm{h}_i^{(\ell)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(\ell\)</span>, <span class="math inline">\(\mathcal{N}(i)\)</span> adalah himpunan tetangga dari node ke-<span class="math inline">\(i\)</span>, <span class="math inline">\(\alpha_{ij}\)</span> adalah koefisien perhatian yang mengukur pentingnya tetangga <span class="math inline">\(j\)</span> terhadap node <span class="math inline">\(i\)</span>, <span class="math inline">\(\mathbf{W}\)</span> adalah matriks bobot yang dipelajari, dan <span class="math inline">\(\sigma\)</span> adalah fungsi aktivasi non-linear seperti ReLU. Koefisien perhatian <span class="math inline">\(\alpha_{ij}\)</span> dihitung menggunakan mekanisme perhatian sebagai berikut. <span class="math display">\[
+\alpha_{ij} = \frac{\exp\left(\text{LeakyReLU}\left(\mathbf{a}^\top [\mathbf{W} \bm{h}_i^{(\ell)} \, || \, \mathbf{W} \bm{h}_j^{(\ell)}]\right)\right)}{\sum_{k \in \mathcal{N}(i)} \exp\left(\text{LeakyReLU}\left(\mathbf{a}^\top [\mathbf{W} \bm{h}_i^{(\ell)} \, || \, \mathbf{W} \bm{h}_k^{(\ell)}]\right)\right)}, \tag{17}
+\]</span> dengan <span class="math inline">\(\mathbf{a}\)</span> adalah vektor bobot yang dipelajari, dan <span class="math inline">\(||\)</span> adalah operator konkatenasi.</p>
+<p>Perbedaan antara GCN dan GAT terletak pada cara mereka mengagregasi informasi dari tetangga. GCN menggunakan bobot yang sama untuk semua tetangga, sedangkan GAT menggunakan mekanisme perhatian untuk memberikan bobot yang berbeda kepada tetangga berdasarkan pentingnya mereka terhadap node target. Di sisi lain, terdapat pula GraphSAGE (Hamilton, dkk., 2017) yang menggunakan pendekatan <em>sampling</em> tetangga untuk mengurangi kompleksitas komputasi pada graf besar. Namun, dalam konteks model GNN-GTVC, GCN dan GAT lebih sesuai karena kemampuannya dalam menangkap hubungan spasial dan temporal secara efektif.</p>
+</section>
+</section>
+<section id="penentuan-bobot-berdasarkan-representasi-fitur" class="level3">
+<h3 class="anchored" data-anchor-id="penentuan-bobot-berdasarkan-representasi-fitur"><strong>4.3. Penentuan Bobot berdasarkan Representasi Fitur</strong></h3>
+<p>Perlu diperhatikan bahwa arsitektur jaringan saraf pada subseksi sebelumnya menghasilkan representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>. Namun, dalam konteks model GNN-GTVC, yang dibutuhkan adalah bobot <span class="math inline">\(\mathbf{W}\)</span> yang akan digunakan untuk mengalikan koefisien regresi global <span class="math inline">\(\bm{\beta}^{\text{Global}}\)</span>. Oleh karena itu, perlu ada proses tambahan untuk mengubah representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span> menjadi bobot <span class="math inline">\(\mathbf{W}\)</span>. Proses untuk mendapatkan bobot <span class="math inline">\(\mathbf{W}\)</span> dari representasi <span class="math inline">\(\bm{h}^{(m)}\)</span> yang dihasilkan dari GCN merupakan tantangan tersendiri dalam formulasi GCN-GTVC. Terdapat beberapa pendekatan yang dapat digunakan untuk mengatasi tantangan ini, di antaranya adalah sebagai berikut.</p>
+<section id="dot-product-similarity" class="level4">
+<h4 class="anchored" data-anchor-id="dot-product-similarity"><strong>4.3.1. <em>Dot-Product Similarity</em></strong></h4>
+<p><em>Dot-product similarity</em> adalah metode yang umum digunakan untuk mengukur kesamaan antara dua vektor. Dalam konteks GNN-GTVC, pendekatan ini dapat digunakan untuk menentukan bobot <span class="math inline">\(\mathbf{W}\)</span> berdasarkan representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span>. Misalkan <span class="math inline">\(\bm{h}_i^{(m)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>, maka bobot <span class="math inline">\(w_{ik}\)</span> untuk koefisien regresi ke-<span class="math inline">\(k\)</span> dapat dihitung sebagai berikut. <span class="math display">\[
+w_{ik} = \frac{\exp(\bm{h}_i^{(m)} \cdot \bm{v}_k)}{\sum_{j=1}^{p} \exp(\bm{h}_i^{(m)} \cdot \bm{v}_j)}, \tag{18}
+\]</span> dengan <span class="math inline">\(\bm{v}_k\)</span> adalah vektor representasi yang dipelajari untuk koefisien regresi ke-<span class="math inline">\(k\)</span>. Pendekatan ini memastikan bahwa bobot <span class="math inline">\(w_{ik}\)</span> bersifat non-negatif dan jumlahnya sama dengan satu, sehingga memenuhi syarat yang ditetapkan sebelumnya.</p>
+</section>
+<section id="cosine-similarity" class="level4">
+<h4 class="anchored" data-anchor-id="cosine-similarity"><strong>4.3.2. <em>Cosine Similarity</em></strong></h4>
+<p><em>Cosine similarity</em> adalah metode lain yang dapat digunakan untuk mengukur kesamaan antara dua vektor. Dalam konteks GNN-GTVC, pendekatan ini juga dapat digunakan untuk menentukan bobot <span class="math inline">\(\mathbf{W}\)</span> berdasarkan representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span>. Misalkan <span class="math inline">\(\bm{h}_i^{(m)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>, maka bobot <span class="math inline">\(w_{ik}\)</span> untuk koefisien regresi ke-<span class="math inline">\(k\)</span> dapat dihitung sebagai berikut. <span class="math display">\[
+w_{ik} = \frac{\exp\left(\frac{\bm{h}_i^{(m)} \cdot \bm{v}_k}{\|\bm{h}_i^{(m)}\| \|\bm{v}_k\|}\right)}{\sum_{j=1}^{p} \exp\left(\frac{\bm{h}_i^{(m)} \cdot \bm{v}_j}{\|\bm{h}_i^{(m)}\| \|\bm{v}_j\|}\right)}, \tag{19}
+\]</span> dengan <span class="math inline">\(\bm{v}_k\)</span> adalah vektor representasi yang dipelajari untuk koefisien regresi ke-<span class="math inline">\(k\)</span>. Pendekatan ini juga memastikan bahwa bobot <span class="math inline">\(w_{ik}\)</span> bersifat non-negatif dan jumlahnya sama dengan satu.</p>
+</section>
+<section id="kernel-gaussian" class="level4">
+<h4 class="anchored" data-anchor-id="kernel-gaussian"><strong>4.3.3. Kernel Gaussian</strong></h4>
+<p>Kernel Gaussian adalah metode yang dapat digunakan untuk menentukan bobot berdasarkan jarak antara representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span> dan vektor representasi <span class="math inline">\(\bm{v}_k\)</span>. Misalkan <span class="math inline">\(\bm{h}_i^{(m)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>, maka bobot <span class="math inline">\(w_{ik}\)</span> untuk koefisien regresi ke-<span class="math inline">\(k\)</span> dapat dihitung sebagai berikut. <span class="math display">\[
+w_{ik} = \frac{\exp\left(-\frac{\|\bm{h}_i^{(m)} - \bm{v}_k\|^2}{2\sigma^2}\right)}{\sum_{j=1}^{p} \exp\left(-\frac{\|\bm{h}_i^{(m)} - \bm{v}_j\|^2}{2\sigma^2}\right)}, \tag{20}
+\]</span> dengan <span class="math inline">\(\bm{v}_k\)</span> adalah vektor representasi yang dipelajari untuk koefisien regresi ke-<span class="math inline">\(k\)</span>, dan <span class="math inline">\(\sigma\)</span> adalah parameter bandwidth yang mengontrol lebar dari kernel Gaussian. Pendekatan ini juga memastikan bahwa bobot <span class="math inline">\(w_{ik}\)</span> bersifat non-negatif dan jumlahnya sama dengan satu.</p>
+</section>
+<section id="dekomposisi-tensor-cp" class="level4">
+<h4 class="anchored" data-anchor-id="dekomposisi-tensor-cp"><strong>4.3.4. Dekomposisi Tensor CP</strong></h4>
+<p>Dekomposisi tensor CP (CANDECOMP/PARAFAC) adalah metode yang dapat digunakan untuk memodelkan hubungan multi-dimensi dalam data. Dalam konteks GNN-GTVC, pendekatan ini dapat digunakan untuk menentukan bobot <span class="math inline">\(\mathbf{W}\)</span> berdasarkan representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span>. Misalkan <span class="math inline">\(\bm{h}_i^{(m)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>, maka bobot <span class="math inline">\(w_{ik}\)</span> untuk koefisien regresi ke-<span class="math inline">\(k\)</span> dapat dihitung sebagai berikut. <span class="math display">\[
+w_{ik} = \frac{\exp\left(\sum_{r=1}^{R} \lambda_r h_{ir}^{(m)} v_{kr}\right)}{\sum_{j=1}^{p} \exp\left(\sum_{r=1}^{R} \lambda_r h_{ir}^{(m)} v_{jr}\right)}, \tag{21}
+\]</span> dengan <span class="math inline">\(\lambda_r\)</span> adalah bobot skalar untuk komponen ke-<span class="math inline">\(r\)</span>, <span class="math inline">\(h_{ir}^{(m)}\)</span> adalah elemen ke-<span class="math inline">\(r\)</span> dari representasi fitur <span class="math inline">\(\bm{h}_i^{(m)}\)</span>, dan <span class="math inline">\(v_{kr}\)</span> adalah elemen ke-<span class="math inline">\(r\)</span> dari vektor representasi yang dipelajari untuk koefisien regresi ke-<span class="math inline">\(k\)</span>. Pendekatan ini juga memastikan bahwa bobot <span class="math inline">\(w_{ik}\)</span> bersifat non-negatif dan jumlahnya sama dengan satu.</p>
+</section>
+<section id="dekomposisi-tensor-tucker" class="level4">
+<h4 class="anchored" data-anchor-id="dekomposisi-tensor-tucker"><strong>4.3.5. Dekomposisi Tensor TUCKER</strong></h4>
+<p>Dekomposisi tensor TUCKER adalah metode lain yang dapat digunakan untuk memodelkan hubungan multi-dimensi dalam data. Dalam konteks GNN-GTVC, pendekatan ini juga dapat digunakan untuk menentukan bobot <span class="math inline">\(\mathbf{W}\)</span> berdasarkan representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span>. Misalkan <span class="math inline">\(\bm{h}_i^{(m)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>, maka bobot <span class="math inline">\(w_{ik}\)</span> untuk koefisien regresi ke-<span class="math inline">\(k\)</span> dapat dihitung sebagai berikut. <span class="math display">\[
+w_{ik} = \frac{\exp\left(\sum_{r=1}^{R} \sum_{s=1}^{S} \lambda_{rs} h_{ir}^{(m)} v_{ks}\right)}{\sum_{j=1}^{p} \exp\left(\sum_{r=1}^{R} \sum_{s=1}^{S} \lambda_{rs} h_{ir}^{(m)} v_{js}\right)}, \tag{22}
+\]</span> dengan <span class="math inline">\(\lambda_{rs}\)</span> adalah elemen dari inti tensor untuk komponen ke-<span class="math inline">\(r\)</span> dan ke-<span class="math inline">\(s\)</span>, <span class="math inline">\(h_{ir}^{(m)}\)</span> adalah elemen ke-<span class="math inline">\(r\)</span> dari representasi fitur <span class="math inline">\(\bm{h}_i^{(m)}\)</span>, dan <span class="math inline">\(v_{ks}\)</span> adalah elemen ke-<span class="math inline">\(s\)</span> dari vektor representasi yang dipelajari untuk koefisien regresi ke-<span class="math inline">\(k\)</span>. Pendekatan ini juga memastikan bahwa bobot <span class="math inline">\(w_{ik}\)</span> bersifat non-negatif dan jumlahnya sama dengan satu.</p>
+</section>
+<section id="multilayer-perceptron" class="level4">
+<h4 class="anchored" data-anchor-id="multilayer-perceptron"><strong>4.3.6. <em>Multilayer Perceptron</em></strong></h4>
+<p>Pendekatan lain yang dapat digunakan untuk menentukan bobot <span class="math inline">\(\mathbf{W}\)</span> adalah dengan menggunakan <em>multilayer perceptron</em> (MLP). Dalam konteks GNN-GTVC, pendekatan ini dapat digunakan untuk memetakan representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span> ke dalam bobot <span class="math inline">\(\mathbf{W}\)</span>. Misalkan <span class="math inline">\(\bm{h}_i^{(m)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>, maka bobot <span class="math inline">\(w_{ik}\)</span> untuk koefisien regresi ke-<span class="math inline">\(k\)</span> dapat dihitung sebagai berikut. <span class="math display">\[
+w_{ik} = \frac{\exp(\text{MLP}(\bm{h}_i^{(m)})_k)}{\sum_{j=1}^{p} \exp(\text{MLP}(\bm{h}_i^{(m)})_j)}, \tag{23}
+\]</span> dengan <span class="math inline">\(\text{MLP}(\bm{h}_i^{(m)})_k\)</span> adalah output dari MLP untuk koefisien regresi ke-<span class="math inline">\(k\)</span>. Pendekatan ini juga memastikan bahwa bobot <span class="math inline">\(w_{ik}\)</span> bersifat non-negatif dan jumlahnya sama dengan satu.</p>
+</section>
+<section id="learned-attention" class="level4">
+<h4 class="anchored" data-anchor-id="learned-attention"><strong>4.3.7. <em>Learned Attention</em></strong></h4>
+<p>Pendekatan terakhir yang dapat digunakan untuk menentukan bobot <span class="math inline">\(\mathbf{W}\)</span> adalah dengan menggunakan mekanisme perhatian yang dipelajari (<em>learned attention</em>). Dalam konteks GNN-GTVC, pendekatan ini dapat digunakan untuk mempelajari bobot <span class="math inline">\(\mathbf{W}\)</span> secara langsung dari representasi fitur <span class="math inline">\(\bm{h}^{(m)}\)</span>. Misalkan <span class="math inline">\(\bm{h}_i^{(m)}\)</span> adalah representasi fitur dari node ke-<span class="math inline">\(i\)</span> pada lapisan ke-<span class="math inline">\(m\)</span>, maka bobot <span class="math inline">\(w_{ik}\)</span> untuk koefisien regresi ke-<span class="math inline">\(k\)</span> dapat dihitung sebagai berikut. <span class="math display">\[
+w_{ik} = \frac{\exp(\mathbf{a}_k^\top \bm{h}_i^{(m)})}{\sum_{j=1}^{p} \exp(\mathbf{a}_j^\top \bm{h}_i^{(m)})}, \tag{24}
+\]</span> dengan <span class="math inline">\(\mathbf{a}_k\)</span> adalah vektor bobot perhatian yang dipelajari untuk koefisien regresi ke-<span class="math inline">\(k\)</span>. Pendekatan ini juga memastikan bahwa bobot <span class="math inline">\(w_{ik}\)</span> bersifat non-negatif dan jumlahnya sama dengan satu.</p>
+</section>
+</section>
+<section id="loss-function-dan-proses-pelatihan" class="level3">
+<h3 class="anchored" data-anchor-id="loss-function-dan-proses-pelatihan"><strong>4.4. <em>Loss Function</em> dan Proses Pelatihan</strong></h3>
+<p>Proses pelatihan model GNN-GTVC melibatkan optimisasi parameter-parameter jaringan saraf untuk meminimalkan <em>loss function</em> yang mengukur perbedaan antara nilai aktual dan nilai prediksi. Salah satu <em>loss function</em> yang umum digunakan dalam regresi adalah <em>Mean Squared Error</em> (MSE), yang dapat dinyatakan sebagai berikut. <span class="math display">\[
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2, \tag{25}
+\]</span> dengan <span class="math inline">\(y_i\)</span> adalah nilai aktual dari variabel dependen pada observasi ke-<span class="math inline">\(i\)</span>, dan <span class="math inline">\(\hat{y}_i\)</span> adalah nilai prediksi dari model GNN-GTVC pada observasi ke-<span class="math inline">\(i\)</span>.</p>
+<p>Di sisi lain, Du (2020) menggunakan <em>loss function</em> berupa AIC terkoreksi atau (<span class="math inline">\(\text{AIC}_c)\)</span> yang dapat dinyatakan sebagai berikut. <span class="math display">\[
+\text{AIC}_c = 2k - 2\ln(L) + \frac{2k(k+1)}{n-k-1}, \tag{26}
+\]</span> dengan <span class="math inline">\(k\)</span> adalah jumlah parameter dalam model, <span class="math inline">\(L\)</span> adalah likelihood dari model, dan <span class="math inline">\(n\)</span> adalah jumlah observasi. AIC terkoreksi digunakan untuk menghindari overfitting pada model dengan jumlah parameter yang besar.</p>
+<p>Proses pelatihan model GNN-GTVC dapat dilakukan menggunakan algoritma optimisasi seperti <em>Stochastic Gradient Descent</em> (SGD) atau <em>Adam</em>. Algoritma ini akan memperbarui parameter-parameter jaringan saraf berdasarkan gradien dari <em>loss function</em> terhadap parameter-parameter tersebut. Proses ini akan diulang hingga konvergensi tercapai atau hingga jumlah iterasi maksimum tercapai.</p>
+</section>
+</section>
+<section id="implementasi-praktis" class="level2">
+<h2 class="anchored" data-anchor-id="implementasi-praktis"><strong>5. Implementasi Praktis</strong></h2>
+<section id="pengaturan-data-dan-pra-pemrosesan" class="level3">
+<h3 class="anchored" data-anchor-id="pengaturan-data-dan-pra-pemrosesan"><strong>5.1. Pengaturan Data dan Pra-pemrosesan</strong></h3>
+<p>Pada bagian ini, akan dilakukan pengaturan data dan pra-pemrosesan yang diperlukan untuk mengimplementasikan model GNN-GTVC. Data yang digunakan harus memiliki informasi spasial dan temporal yang cukup untuk memodelkan hubungan antar unit. Selain itu, data juga harus memiliki variabel dependen dan variabel independen yang relevan dengan masalah yang ingin diselesaikan.</p>
+<p>Sebelum memulai komputasi, pustaka-pustaka yang diperlukan harus diimpor terlebih dahulu. Beberapa pustaka yang umum digunakan dalam implementasi model GNN-GTVC antara lain adalah sebagai berikut.</p>
+<div id="4a8ffb38" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.1-1: Import Pustaka yang Diperlukan</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric.data <span class="im">import</span> Data</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch_geometric.nn <span class="im">import</span> GCNConv, GATConv</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Selanjutnya, akan dilakukan impor data dan pra-pemrosesan data.</p>
+<div id="30b141a9" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.1-2: Impor Data dan Pra-pemrosesan Data</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">"Data BPS Laporan KP - Coded.xlsx"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Provinsi</th>
+<th data-quarto-table-cell-role="th">Kabupaten/Kota</th>
+<th data-quarto-table-cell-role="th">Tahun</th>
+<th data-quarto-table-cell-role="th">X1</th>
+<th data-quarto-table-cell-role="th">X2</th>
+<th data-quarto-table-cell-role="th">X3</th>
+<th data-quarto-table-cell-role="th">X4</th>
+<th data-quarto-table-cell-role="th">X5</th>
+<th data-quarto-table-cell-role="th">X6</th>
+<th data-quarto-table-cell-role="th">X7</th>
+<th data-quarto-table-cell-role="th">X8</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Banten</td>
+<td>Pandeglang</td>
+<td>2019</td>
+<td>60.88</td>
+<td>1211.909</td>
+<td>9.42</td>
+<td>6.96</td>
+<td>751019.662518</td>
+<td>64.49</td>
+<td>13.46</td>
+<td>64.91</td>
+<td>8.672358</td>
+<td>-6.314835</td>
+<td>106.103897</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Banten</td>
+<td>Pandeglang</td>
+<td>2020</td>
+<td>60.28</td>
+<td>1270.090</td>
+<td>9.92</td>
+<td>7.10</td>
+<td>860017.244871</td>
+<td>73.10</td>
+<td>13.47</td>
+<td>65.00</td>
+<td>9.152847</td>
+<td>-6.314835</td>
+<td>106.103897</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Banten</td>
+<td>Pandeglang</td>
+<td>2021</td>
+<td>62.32</td>
+<td>1284.640</td>
+<td>10.72</td>
+<td>7.11</td>
+<td>832619.912423</td>
+<td>73.22</td>
+<td>13.49</td>
+<td>65.17</td>
+<td>7.699244</td>
+<td>-6.314835</td>
+<td>106.103897</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Banten</td>
+<td>Pandeglang</td>
+<td>2022</td>
+<td>61.66</td>
+<td>1298.850</td>
+<td>9.32</td>
+<td>7.13</td>
+<td>980956.031534</td>
+<td>73.63</td>
+<td>13.72</td>
+<td>65.84</td>
+<td>9.240705</td>
+<td>-6.314835</td>
+<td>106.103897</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Banten</td>
+<td>Pandeglang</td>
+<td>2023</td>
+<td>60.33</td>
+<td>1312.770</td>
+<td>9.27</td>
+<td>7.15</td>
+<td>945775.640416</td>
+<td>74.01</td>
+<td>13.73</td>
+<td>66.42</td>
+<td>9.045241</td>
+<td>-6.314835</td>
+<td>106.103897</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Model akan diimplementasikan dengan formula <code>y ~ X1 + X2 + ... + Xp</code>, di mana <code>y</code> adalah variabel dependen, dan <code>X1, X2, ..., Xp</code> adalah variabel independen. Selain itu, data juga harus memiliki informasi spasial dan temporal yang diperlukan untuk memodelkan hubungan antar unit.</p>
+<div id="cd46f594" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 5.1-2: Impor Data dan Pra-pemrosesan Data</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

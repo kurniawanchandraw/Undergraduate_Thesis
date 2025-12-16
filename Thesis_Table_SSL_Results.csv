@@ -1,0 +1,6 @@
+Model,Architecture,Uses Graph,N_Labels,Train_R²,Test_R²,RMSE,MAE
+Ridge Regression (α=10),Linear,No,468,0.174,-0.57,0.758,N/A
+Random Forest (100 trees),Tree Ensemble,No,468,N/A,-0.95,0.845,N/A
+MLP (2-hidden layers),Feedforward NN,No,468,-0.015,-0.08,0.628,N/A
+GNN Supervised (100% labels),GraphSAGE,Yes,468,0.51,-0.091,0.632,0.486
+"GNN SSL (50% labels, λ=0.2)",GraphSAGE + SSL,Yes,234,0.51,0.033,0.595,0.457

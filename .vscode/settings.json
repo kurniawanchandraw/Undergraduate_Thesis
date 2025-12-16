@@ -1,0 +1,63 @@
+{
+  // =========================
+  // BASIC LOOK & FEEL
+  // =========================
+  "editor.wordWrap": "on",                   // auto wrap biar ga scroll kanan
+  "editor.rulers": [80, 100],                // garis panduan kaya di Overleaf
+  "editor.renderWhitespace": "boundary",     // kelihatan spasi/tab
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  // =========================
+  // FORMATTER
+  // =========================
+  "editor.defaultFormatter": "James-Yu.latex-workshop", 
+  "latex-workshop.latexindent.enabled": true, 
+  "latex-workshop.latexindent.args": [
+    "-c", "%DIR%/", 
+    "%TMPFILE%",
+    "-y=defaultIndent: '  '"
+  ],
+
+  // =========================
+  // BUILD & SYNC
+  // =========================
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.outDir": "./out",           // hasil build ke folder out
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.view.pdf.viewer": "tab",          // viewer PDF di tab VS Code
+  "latex-workshop.synctex.synctexjs.enabled": true,
+  "latex-workshop.synctex.synctexjs.reverse": true, // Ctrl+Click di PDF -> source
+  "latex-workshop.synctex.synctexjs.forward": true, // dari source -> PDF
+  "latex-workshop.view.pdf.internal.synctex.keybinding": "ctrl-click", 
+
+  // =========================
+  // HOVER PREVIEW
+  // =========================
+  "latex-workshop.hover.preview.math.enable": true,
+  "latex-workshop.hover.preview.math.autoShow": true,
+  "latex-workshop.hover.preview.math.newcommand.parse": true,
+
+  // custom delimiters (biar $...$, $$...$$, equation, align, dll. kepreview)
+  "latex-workshop.hover.preview.math.delimiters": [
+    { "left": "\\(", "right": "\\)", "pattern": "\\\\(.*?\\\\)" },
+    { "left": "\\[", "right": "\\]", "pattern": "\\\\[.*?\\\\]" },
+    { "left": "$", "right": "$", "pattern": "\\$(.*?[^\\\\])\\$" },
+    { "left": "$$", "right": "$$", "pattern": "\\$\\$(.*?)\\$\\$" },
+    { "left": "\\begin{equation}", "right": "\\end{equation}", "pattern": "\\\\begin\\{equation\\}([\\s\\S]*?)\\\\end\\{equation\\}" },
+    { "left": "\\begin{align}", "right": "\\end{align}", "pattern": "\\\\begin\\{align\\}([\\s\\S]*?)\\\\end\\{align\\}" },
+    { "left": "\\begin{align*}", "right": "\\end{align*}", "pattern": "\\\\begin\\{align\\*\\}([\\s\\S]*?)\\\\end\\{align\\*\\}" },
+    { "left": "\\begin{gather}", "right": "\\end{gather}", "pattern": "\\\\begin\\{gather\\}([\\s\\S]*?)\\\\end\\{gather\\}" },
+    { "left": "\\begin{multline}", "right": "\\end{multline}", "pattern": "\\\\begin\\{multline\\}([\\s\\S]*?)\\\\end\\{multline\\}" }
+  ],
+
+  // =========================
+  // CLEANUP
+  // =========================
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux", "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof",
+    "*.lot", "*.out", "*.toc", "*.acn", "*.acr", "*.alg",
+    "*.glg", "*.glo", "*.gls", "*.fls", "*.log", "*.fdb_latexmk",
+    "*.snm", "*.synctex(busy)", "*.synctex.gz", "*.nav"
+  ]
+}
