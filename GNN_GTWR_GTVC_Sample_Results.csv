@@ -1,7 +1,0 @@
-model_type,backbone,weighting,loss_type,train_r2,test_r2,status
-GTWR,GCN,dot_product,supervised,0.8874540118847363,0.8926071459614875,success
-GTWR,GCN,cosine,combined,0.9231993941811405,0.8397987726295555,success
-GTWR,GAT,gaussian,supervised,0.8656018640442437,0.7733991780504303,success
-GTVC,GCN,mlp,combined,0.8558083612168199,0.8799264218662403,success
-GTVC,GraphSAGE,dot_product,supervised,0.9101115011743208,0.8562108866694068,success
-GTVC,GAT,cosine,combined,0.8520584494295802,0.8954864778242991,success

@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex out/TA2"] 1763108155.8194 "out/TA2.aux" "out/TA2.bbl" "out/TA2" 1765272182.1288 0
+["bibtex out/TA2"] 1763108155.8194 "out/TA2.aux" "out/TA2.bbl" "out/TA2" 1766799729.49589 0
   "./references2.bib" 1759879376 24856 2613d72b7a100b1b2418931adce60e63 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/bibtex/bst/apacite/apacite.bst" 1374952728 146156 9d7b79dbf9d91133318126032cff8c27 ""
-  "out/TA2.aux" 1765272180 25981 e4a998df212539dce7c405b1eed995bb "pdflatex"
+  "out/TA2.aux" 1766799728 25981 e4a998df212539dce7c405b1eed995bb "pdflatex"
   (generated)
   "out/TA2.bbl"
   "out/TA2.blg"
   (rewritten before read)
-["pdflatex"] 1765272171.1544 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex" "out/TA2.pdf" "TA2" 1765272182.12981 0
+["pdflatex"] 1766799718.14924 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex" "out/TA2.pdf" "TA2" 1766799729.49647 0
   "../BAB 1, 2, 5/Bab1.tex" 1759889719 9550 b34361cf5bd9019a7dcfaffac22cd780 ""
   "../BAB 1, 2, 5/Bab2.tex" 1765272168 187741 0eb97f4b8c047d1a4f6cc2694ac7f896 ""
   "../BAB 1, 2, 5/Bab5.tex" 1759537914 306 96933ad69c4dcb5df6f179c995c0450e ""
@@ -274,15 +274,15 @@
   "GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png" 1759537914 20776 fbd2b283aca0411fb606b769e017ee2e ""
   "GAMBAR/patrick.jpeg" 1759537914 13061 8367fe6623089996f82b185cd8a786e1 ""
   "Gambar/The_estimation_process_of_GTNNWR_model.jpeg" 1759797864 136419 5d53d432de9bb54b02407cbb11638c37 ""
-  "TA2.tex" 1763108570 9345 e1ba96e82c74081d1630f4762fe91d3a ""
-  "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex" 1763108570 9345 e1ba96e82c74081d1630f4762fe91d3a ""
+  "TA2.tex" 1766799728 9274 52710ab69ca21ef657ff6b237ec0e867 ""
+  "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex" 1766799728 9274 52710ab69ca21ef657ff6b237ec0e867 ""
   "logougm.png" 1759537914 71376 6444378f2f87455011c1a2cc67b1629f ""
-  "out/TA2.aux" 1765272180 25981 e4a998df212539dce7c405b1eed995bb "pdflatex"
+  "out/TA2.aux" 1766799728 25981 e4a998df212539dce7c405b1eed995bb "pdflatex"
   "out/TA2.bbl" 1763108156 26817 6f3c299e7fff75264e13040fe22585c4 "bibtex out/TA2"
-  "out/TA2.lof" 1765272180 1744 d0cbc7e79eb89b15363757032c6a5d98 "pdflatex"
-  "out/TA2.lot" 1765272180 228 f0e46f6c6273db1d145a45111af1c0d6 "pdflatex"
-  "out/TA2.out" 1765272180 18409 706a3051304f7a9676dbba39a2116778 "pdflatex"
-  "out/TA2.toc" 1765272180 8396 77572671201aa166894f321c9720ace2 "pdflatex"
+  "out/TA2.lof" 1766799728 1744 d0cbc7e79eb89b15363757032c6a5d98 "pdflatex"
+  "out/TA2.lot" 1766799728 228 f0e46f6c6273db1d145a45111af1c0d6 "pdflatex"
+  "out/TA2.out" 1766799728 18409 706a3051304f7a9676dbba39a2116778 "pdflatex"
+  "out/TA2.toc" 1766799728 8396 77572671201aa166894f321c9720ace2 "pdflatex"
   "skripsistatugm.cls" 1763108016 16686 cd2d526eed0c5d4d3089c5a7d19586a1 ""
   "syntax R template.R" 1759537914 23 4a3aeca355ee0b0a078ca428223167dc ""
   (generated)
