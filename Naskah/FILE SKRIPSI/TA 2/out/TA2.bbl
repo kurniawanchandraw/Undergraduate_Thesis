@@ -80,33 +80,26 @@ Axler, S.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Bengio%
-, Courville%
-\BCBL {}\ \BBA {} Vincent%
+Billingsley%
 }{%
-Bengio%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2013}}%
+Billingsley%
+}{%
+{\protect \APACyear {1995}}%
 }]{%
-bengio2013}
+billingsley1995}
 \APACinsertmetastar {%
-bengio2013}%
+billingsley1995}%
 \begin{APACrefauthors}%
-Bengio, Y.%
-, Courville, A.%
-\BCBL {}\ \BBA {} Vincent, P.%
+Billingsley, P.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2013}{}{}.
+\APACrefYear{1995}.
 \newblock
-{\BBOQ}\APACrefatitle {Representation Learning: A Review and New Perspectives}
-  {Representation learning: A review and new perspectives}.{\BBCQ}
+\APACrefbtitle {Probability and Measure} {Probability and measure}\
+  (\PrintOrdinal{3rd}\ \BEd).
 \newblock
-\APACjournalVolNumPages{IEEE Transactions on Pattern Analysis and Machine
-  Intelligence}{35}{8}{1798--1828}.
-\newblock
-\begin{APACrefDOI} \doi{10.1109/TPAMI.2013.50} \end{APACrefDOI}
+\APACaddressPublisher{New York}{Wiley}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -164,32 +157,6 @@ Bronstein, M\BPBI M.%
   gauges.}
 \newblock
 \begin{APACrefURL} \url{https://arxiv.org/abs/2104.13478} \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Chapelle%
-, Sch{\"o}lkopf%
-\BCBL {}\ \BBA {} Zien%
-}{%
-Chapelle%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2006}}%
-}]{%
-chapelle2006}
-\APACinsertmetastar {%
-chapelle2006}%
-\begin{APACrefauthors}%
-Chapelle, O.%
-, Sch{\"o}lkopf, B.%
-\BCBL {}\ \BBA {} Zien, A.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYear{2006}.
-\newblock
-\APACrefbtitle {Semi-Supervised Learning} {Semi-supervised learning}.
-\newblock
-\APACaddressPublisher{Cambridge, MA}{MIT Press}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -266,6 +233,28 @@ Dhrymes, P\BPBI J.%
 \APACaddressPublisher{New York}{Springer}.
 \newblock
 \begin{APACrefDOI} \doi{10.1007/978-1-4614-8145-4} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Dudley%
+}{%
+Dudley%
+}{%
+{\protect \APACyear {2002}}%
+}]{%
+dudley2002}
+\APACinsertmetastar {%
+dudley2002}%
+\begin{APACrefauthors}%
+Dudley, R\BPBI M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2002}.
+\newblock
+\APACrefbtitle {Real Analysis and Probability} {Real analysis and probability}.
+\newblock
+\APACaddressPublisher{Cambridge}{Cambridge University Press}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -355,34 +344,6 @@ Goodfellow, I.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Grandvalet%
-\ \BBA {} Bengio%
-}{%
-Grandvalet%
-\ \BBA {} Bengio%
-}{%
-{\protect \APACyear {2005}}%
-}]{%
-grandvalet2005semi}
-\APACinsertmetastar {%
-grandvalet2005semi}%
-\begin{APACrefauthors}%
-Grandvalet, Y.%
-\BCBT {}\ \BBA {} Bengio, Y.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2005}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Semi-Supervised Learning by Entropy Minimization}
-  {Semi-supervised learning by entropy minimization}.{\BBCQ}
-\newblock
-\BIn{} \APACrefbtitle {Advances in Neural Information Processing Systems}
-  {Advances in neural information processing systems}\ (\BVOL~17, \BPGS\
-  529--536).
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
 Greene%
 }{%
 Greene%
@@ -406,29 +367,6 @@ Greene, W\BPBI H.%
   Analysis}}\ (\PrintOrdinal{5th}\ \BEd).
 \newblock
 \APACaddressPublisher{Upper Saddle River, New Jersey}{Pearson Education}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Greub%
-}{%
-Greub%
-}{%
-{\protect \APACyear {1978}}%
-}]{%
-greub}
-\APACinsertmetastar {%
-greub}%
-\begin{APACrefauthors}%
-Greub, W.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYear{1978}.
-\newblock
-\APACrefbtitle {Multilinear Algebra} {Multilinear algebra}\
-  (\PrintOrdinal{2nd}\ \BEd).
-\newblock
-\APACaddressPublisher{New York}{Springer-Verlag}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -660,42 +598,6 @@ Huang, B.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Jiang%
-, Huang%
-, Zhao%
-\BCBL {}\ \BBA {} Deng%
-}{%
-Jiang%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2020}}%
-}]{%
-Jiang_2020}
-\APACinsertmetastar {%
-Jiang_2020}%
-\begin{APACrefauthors}%
-Jiang, T\BHBI X.%
-, Huang, T\BHBI Z.%
-, Zhao, X\BHBI L.%
-\BCBL {}\ \BBA {} Deng, L\BHBI J.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2020}{{\APACmonth{07}}}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Multi-dimensional imaging data recovery via minimizing
-  the partial sum of tubal nuclear norm} {Multi-dimensional imaging data
-  recovery via minimizing the partial sum of tubal nuclear norm}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Journal of Computational and Applied
-  Mathematics}{372}{}{112680}.
-\newblock
-\begin{APACrefURL} \url{http://dx.doi.org/10.1016/j.cam.2019.112680}
-  \end{APACrefURL}
-\newblock
-\begin{APACrefDOI} \doi{10.1016/j.cam.2019.112680} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
 Kipf%
 \ \BBA {} Welling%
 }{%
@@ -869,6 +771,28 @@ Ni, X.%
 \newblock
 \APACjournalVolNumPages{International Journal of Geographical Information
   Science}{36}{7}{1401--1426}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+van~der Vaart%
+}{%
+van~der Vaart%
+}{%
+{\protect \APACyear {1998}}%
+}]{%
+vandervaart1998}
+\APACinsertmetastar {%
+vandervaart1998}%
+\begin{APACrefauthors}%
+van~der Vaart, A\BPBI W.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1998}.
+\newblock
+\APACrefbtitle {Asymptotic Statistics} {Asymptotic statistics}.
+\newblock
+\APACaddressPublisher{Cambridge}{Cambridge University Press}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

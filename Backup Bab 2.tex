@@ -2,11 +2,13 @@
 
 Pada bab ini akan dibahas mengenai konsep, teori, dan referensi yang menjadi
 dasar dalam melakukan analisis suatu metode statistik. Konsep dasar yang
-dibahas pada bab ini adalah aljabar matriks, teori ukuran dan probabilitas, konvergensi dan laju pertumbuhan, teori probabilitas asimtotik, statistika inferensial, analisis regresi linear, analisis regresi spasial, jaringan saraf tiruan, dan jaringan saraf graf.
+dibahas pada bab ini adalah ...
 
 \section{Aljabar Matriks}
 Aljabar linear merupakan salah satu fondasi matematis terpenting dalam
-statistika, ekonometrika, serta pembelajaran mesin. Banyak metode statistika tradisional maupun modern dapat direpresentasikan dalam aljabar matriks, seperti jaringan saraf graf atau \textit{graph neural networks} (GNN). Oleh karena itu, pemahaman yang kuat mengenai struktur vektor dan matriks serta sifat-sifat aljabarnya diperlukan sebelum membahas metode regresi terboboti geografis.
+statistika, ekonometrika, serta pembelajaran mesin. Banyak metode regresi
+spasial maupun spasial-temporal, termasuk model berbasis jaringan saraf graf
+atau \emph{graph neural networks} (GNN), dapat diformulasikan dalam kerangka operasi matriks. Oleh karena itu, pemahaman yang kuat mengenai struktur vektor dan matriks serta sifat-sifat aljabarnya diperlukan sebelum membahas metode regresi terboboti geografis.
 
 \subsection{Ruang Vektor dan Matriks}
 Pembahasan aljabar linear umumnya berangkat dari konsep lapangan atau
@@ -1456,6 +1458,266 @@ dikenakan transformasi $T$, melainkan hanya mengalami skala sebesar $\lambda$.
     \]
 \end{contoh}
 
+% \begin{definisi}[\textbf{Subruang Invarian \citep{axler}}]
+%     Subruang $U \subseteq V$ disebut invarian terhadap $T$ jika $T(U) \subseteq U$. Jika $\*v$ adalah vektor eigen dengan nilai $\lambda$, maka span$\{\*v\}$ adalah subruang invarian.
+% \end{definisi}
+
+% \begin{contoh}
+%     Pertimbangkan matriks rotasi
+%     \[
+%         \*R = \begin{bmatrix}
+%             \cos \theta & -\sin \theta \\
+%             \sin \theta & \cos \theta
+%         \end{bmatrix}.
+%     \]
+%     Jika $\theta = 0$, semua vektor adalah vektor eigen dengan $\lambda = 1$. Jika
+%     $\theta = \pi$, semua vektor adalah vektor eigen dengan $\lambda = -1$. Jika
+%     $\theta \notin \{0,\pi\}$, maka $R$ tidak memiliki nilai eigen real, tetapi
+%     memiliki nilai eigen kompleks $e^{i\theta}$ dan $e^{-i\theta}$.
+% \end{contoh}
+
+% \subsection{Tensor}
+% Suatu vektor $\*v$ memiliki elemen $v_i$ dengan satu indeks dan suatu matriks
+% $\*M$ memiliki elemen $M_{ij}$ dengan dua indeks. Suatu tensor merupakan
+% generalisasi dari vektor dan matriks yang memiliki $d\in\mathbb{N}$ indeks.
+% Pembahasan klasik mengenai tensor dibahas dalam aljabar multilinear oleh
+% \citet{greub}. Pengenalan tentang tensor diawali dengan konsep pemetaan
+% multilinear.
+% \begin{definisi}[\textbf{Pemetaan Bilinear, \citep{greub}}]
+%     Misalkan tiga ruang vektor $E,F,$ dan $G$. Definisikan suatu pemetaan
+%     $$
+%         \varphi:E\times F\to G.
+%     $$
+%     $\varphi$ disebut bilinear apabila linear terhadap masing-masing argumen ketika yang lain dianggap tetap, yaitu
+%     \begin{enumerate}[label=(\alph*)]
+%         \item linear terhadap argumen pertama atau
+%               \begin{equation}
+%                   \varphi(\lambda x_1 + \mu x_2,y) = \lambda\varphi(x_1,y)+\mu\varphi(x_2,y), \qquad x_1,x_2\in E,\, y\in F,
+%               \end{equation}
+%               dengan $\lambda, \mu \in \Gamma$ merupakan skalar; dan
+%         \item linear terhadap argumen kedua atau
+%               \begin{equation}
+%                   \varphi(x,\, \lambda y_1 + \mu y_2) = \lambda\, \varphi(x,\, y_1) + \mu\varphi(x,\,y_2), \qquad x\in E,\, y_1,y_2 \in F.
+%               \end{equation}
+%     \end{enumerate}
+%     Apabila $G = \Gamma$, maka $\varphi$ dikatakan sebagai fungsi bilinear.
+% \end{definisi}
+% \begin{contoh}
+%     Perkalian dalam atau \emph{dot product} merupakan salah satu contoh dari fungsi bilinear. Ambil $E=F=\R^2$ dan $G = \R$. Definisikan
+%     \begin{equation}
+%         \varphi(\*x,\*y) = \*x^\top\cdot \*y,
+%     \end{equation}
+%     yaitu \emph{dot product}. Jika $\*x=(x_1,x_2)$ dan $\*y = (y_1,y_2)$, maka
+%     \begin{equation}
+%         \varphi(\*x,\*y) = \langle\*x,\*y\rangle= x_1y_1 + x_2y_2.
+%     \end{equation}
+%     Dapat ditunjukkan bahwa fungsi tersebut linear terhadap $\*x$ dan linear terhadap $\*y$, karena
+%     \begin{align}
+%         \varphi(\lambda\*x^{(1)} + \mu\*x^{(2)},\, \*y) & = \sum\limits_{i=1}^n\left(\lambda x^{(1)}_i + \mu x^{(2)}_i\right)y_i \notag            \\
+%                                                         & = \sum\limits_{i=1}^n \lambda x^{(1)}_iy_i + \sum\limits_{i=1}^n \mu x^{(2)}_iy_i \notag \\
+%                                                         & =  \lambda \varphi(\*x^{(1)},\*y) + \mu\varphi(\*x^{(2)},\*y).
+%     \end{align} Analog untuk kasus linear terhadap $\*y$.
+% \end{contoh}
+% \begin{contoh}
+%     Satu contoh fungsi bilinear lainnya adalah perkalian luar atau \emph{outer product}. Ambil $\*x \in \R^m$ dan $\*y \in \R^n$. \emph{Outer product} didefinisikan sebagai $\*x \otimes \*y \in \R^{m\times n}$ dengan elemen $(\*x \otimes \*y)_{ij} = x_iy_j$. Pada kasus dimensi dua, $\*x \otimes \*y = \*x\*y^\top$. Dapat diperhatikan bahwa
+%     \begin{equation}
+%         (\lambda\*x^{(1)} + \mu\*x^{(2)}) \otimes \*y = \lambda (\*x^{(1)} \otimes\*y) + \mu(\*x^{(2)} \otimes \*y),
+%     \end{equation}
+%     karena elemen dari $(\lambda\*x^{(1)} + \mu\*x^{(2)}) \otimes \*y$ adalah $\left[(\lambda x^{(1)} + \mu x^{(2)}) \*y\right]_{ij} = (\lambda x^{(1)}y + \mu x^{(2)}y)_{ij}$ yang sama dengan elemen dari $\lambda (\*x^{(1)} \otimes\*y) + \mu(\*x^{(2)} \otimes \*y)$. Analog untuk kasus linear terhadap $\*y$.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Pemetaan Multilinear, \citep{greub}}]
+%     Misalkan terdapat $p+1$ ruang vektor $E_i$ ($i=1,2,\dots,p$) dan $G$. Suatu pemetaan $\varphi:E_1\times E_2 \times \dots \times E_p \to G$ disebut sebagai linear-$p$ apabila $\forall i$ ($1\le i \le p$) berlaku
+%     \begin{align}
+%         \varphi(x_1,\dots,x_{i-1},\, \lambda x_i + \mu y_i, x_{i+1},\dots,x_{p})= & \,\lambda \varphi(x_1,\dots,x_i,\dots,x_p) \notag \\
+%                                                                                   & \, + \mu\varphi(x_1,\dots,y_i,\dots,y_p),
+%     \end{align}
+%     dengan $x_i,y_i\in E,\, \lambda,\mu\in \Gamma$. Jika $G = \Gamma$, maka $\varphi$ disebut sebagai fungsi linear-$p$.
+% \end{definisi}
+% \noindent Dalam kasus $p=2$, subruang dari $G$ yang dihasilkan dari vektor-vektor $\varphi(x_1,\dots,x_p)$, $x_i\in E_i$ dinotasikan sebagai $\mathrm{Im}\, \varphi$.
+
+% \begin{definisi}[\textbf{Sifat Universal, \citep{greub}}]
+%     Misalkan terdapat ruang vektor $E$ dan $F$ dan pemetaan bilinear $\otimes$ dari $E\times F$ ke ruang vektor $T$. $\otimes$ dapat dikatakan memiliki sifat universal apabila untuk setiap pemetaan bilineaer $\varphi:E\times F \to H$, terdapat satu pemetaan linear yang unik $f:T\to H$ sehingga diagram di bawah ini terpenuhi.
+%     \begin{figure}[H]
+%         \centering
+%         \[
+%             \begin{tikzcd}
+%                 E \times F \arrow[rr, "\varphi"] \arrow[d, "\otimes"'] & & H \\
+%                 T \arrow[urr, "f"'] & &
+%             \end{tikzcd}
+%         \]
+%         \caption{Diagram sifat universal. \\ (Sumber: Dokumen penulis)}
+%         \label{fig:tensor-universal}
+%     \end{figure}
+% \end{definisi}
+
+% \begin{definisi}[\textbf{Isomorfisme}]
+%     Suatu pemetaan linear $T$ disebut isomorfisme apabila kedua kondisi di bawah ini terpenuhi.
+%     \begin{enumerate}[label=(\alph*)]
+%         \item $T$ bersifat satu-satu, yaitu jika $T(\*x)=T(\*y)$, maka $\*x = \*y$.
+%         \item $T$ merupakan fungsi \emph{onto}, yaitu jika $\*w\in W$, maka terdapat $\*v\in V$ sedemikian sehingga $T(\*v)=\*w$.
+%     \end{enumerate}
+%     Dua subruang yang memiliki isomorfisme di atas disebut sebagai isomorfik.
+% \end{definisi}
+
+% \begin{definisi}[\textbf{Produk Tensor, \citep{greub}}]
+%     Suatu produk tensor atau \emph{tensor product} dari dua ruang vektor $E$ dan $F$ adalah pasangan $(T,\otimes)$, dengan $\otimes:E\times F\to T$ merupakan pemetaan linear dengan sifat universal. Ruang $T$ yang secara unik ditentukan oleh $E$ dan $F$ hingga isomorfisme disebut sebagai produk tensor dari $E$ dan $F$, dinotasikan dengan $E\otimes F$.
+% \end{definisi}
+
+% \begin{definisi}[\textbf{Ruang Tensor, \citep{greub,hackbusch}}]
+%     Misalkan $V_1,\dots,V_d$ ruang vektor atas suatu lapangan $K$.
+%     \emph{Ruang tensor} orde-$d$ didefinisikan sebagai hasil produk tensor
+%     \[
+%         V_1 \otimes V_2 \otimes \cdots \otimes V_d,
+%     \]
+%     yang dibangun dari kombinasi linear \emph{tensor murni}
+%     \[
+%         \*v_1 \otimes \*v_2 \otimes \cdots \otimes \*v_d, \quad \*v_i\in V_i.
+%     \]
+% \end{definisi}
+
+% \begin{teorema}[\textbf{Sifat Universal Produk Tensor, \citep{greub}}]
+%     Diberikan pemetaan multilinear
+%     \[
+%         \varphi: V_1 \times \cdots \times V_d \to W,
+%     \]
+%     maka terdapat pemetaan linear unik $\widetilde{\varphi}: V_1 \otimes \cdots
+%         \otimes V_d \to W$ sedemikian sehingga
+%     \begin{equation}
+%         \varphi(\*v_1,\dots,\*v_d)=\widetilde{\varphi}(\*v_1\otimes\cdots\otimes \*v_d).
+%     \end{equation}
+% \end{teorema}
+
+% \begin{contoh}
+%     Berikut ini adalah contoh untuk beberapa dimensi $d$.
+%     \begin{enumerate}
+%         \item Untuk $d=1$, diperoleh $V_1$, sehingga tensor orde-1 identik dengan vektor.
+%         \item Untuk $d=2$, diperoleh $V_1\otimes V_2$, yang isomorfik dengan ruang matriks
+%               $\dim(V_1)\times \dim(V_2)$. Matriks adalah tensor orde-2.
+%         \item Untuk $d=3$ dan $V=\mathbb{R}^n$, setiap $\bt{T}\in V^{\otimes 3}$ ditulis
+%               \[
+%                   \bt{T}=\sum_{i,j,k=1}^n t_{ijk}\, \*e_i\otimes \*e_j\otimes \*e_k,
+%               \]
+%               dengan $e_i$ basis standar dan $t_{ijk}\in\mathbb{R}$.
+%     \end{enumerate}
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Basis dan Dimensi Tensor, \citep{hackbusch}}]
+%     Jika $\{\*e_i\}_{i=1}^n$ basis $V$, maka
+%     \[
+%         \{\, e_{i_1}\otimes e_{i_2}\otimes \cdots \otimes e_{i_d} : 1\le i_1,\dots,i_d \le n \,\}
+%     \]
+%     adalah basis dari $V^{\otimes d}$, dan
+%     \begin{equation}
+%         \dim(V^{\otimes d})=(\dim V)^d.
+%     \end{equation}
+% \end{definisi}
+
+% \begin{definisi}[\textbf{Tensor Murni dan \emph{Rank}, \citep{hackbusch}}]
+%     Sebuah tensor $\bt{X}\in V_1\otimes\cdots\otimes V_d$ disebut \emph{murni} jika
+%     \[
+%         \bt{X}=\*v_1\otimes\cdots\otimes \*v_d.
+%     \]
+%     Tensor umum dapat ditulis sebagai kombinasi linear hingga
+%     \[
+%         \bt{X}=\sum_{r=1}^R \*v_1^{(r)}\otimes\cdots\otimes \*v_d^{(r)},
+%     \]
+%     dan $R$ minimum yang mungkin disebut \emph{rank} dari $\bt{X}$.
+% \end{definisi}
+
+% \begin{contoh}
+%     Ambil $V=\mathbb{R}^2$ dengan basis $\*e_1,\*e_2$.
+%     Tensor
+%     \[
+%         \bt{X}=\*e_1\otimes \*e_1\otimes \*e_2+\*e_2\otimes \*e_1\otimes \*e_1
+%     \]
+%     memerlukan dua suku murni, sehingga $\mathrm{rank}(\bt{X})=2$.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Matrisasi dan $j$-\emph{rank}, \citep{hackbusch}}]
+%     Misalkan $\bt{X}\in\bigotimes_{j=1}^d K^{I_j}$ adalah tensor orde-$d$ dengan ukuran
+%     $I_1\times I_2 \times \cdots \times I_d$.
+%     \emph{Matrisasi mode-$j$} dari $\bt{X}$, ditulis $M_j(\bt{X})$,
+%     adalah matriks dalam $K^{I_j\times I_{[j]}}$ dengan
+%     $I_{[j]}=\prod_{k\neq j} I_k$,
+%     yang diperoleh dengan meratakan tensor sepanjang mode-$j$.
+%     Dengan kata lain, indeks $i_j$ dibiarkan tetap sebagai indeks baris, sedangkan gabungan semua indeks lainnya $(i_1,\dots,i_{j-1},i_{j+1},\dots,i_d)$ dipetakan menjadi indeks kolom.
+%     Rank dari matriks $M_j(\bt{X})$ disebut \emph{$j$-rank} dari $\bt{X}$.
+% \end{definisi}
+
+% \begin{contoh}
+%     Ambil tensor orde-3 $\bt{T}\in \R^{2\times 3\times 4}$.
+%     Matrisasi mode-1 menghasilkan matriks $M_1(\bt{T})\in \R^{2\times 12}$,
+%     dengan baris menyatakan dimensi pertama ($i_1=1,2$)
+%     dan kolom merupakan penggabungan dari indeks dimensi kedua ($i_2=1,2,3$)
+%     dan ketiga ($i_3=1,\dots,4$).
+%     Secara skematis, tensor berbentuk balok $2\times 3\times 4$ diubah menjadi matriks berukuran $2\times 12$.
+% \end{contoh}
+% \begin{figure}[h]
+% \centering
+% \begin{tikzpicture}[scale=0.8]
+
+% % === Draw tensor as a Rubik-like cube ===
+% % front face (2x3 grid)
+% \foreach \i in {0,1,2,3} {
+%   \draw (0,\i,0) -- (2,\i,0);
+% }
+% \foreach \j in {0,1,2} {
+%   \draw (\j,0,0) -- (\j,3,0);
+% }
+% \draw[thick,fill=blue!15,opacity=0.8] (0,0,0) -- (2,0,0) -- (2,3,0) -- (0,3,0) -- cycle;
+
+% \foreach \i in {0,1,2} {
+%     \draw (\i,3,0) -- (\i,3,-4);
+% }
+% \foreach \i in {0,1,2,3,4} {
+%     \draw (0,3,-\i) -- (2,3,-\i);
+% }
+% \foreach \i in {0,1,2,3,4}{
+%     \draw (2,0,-\i) -- (2,3,-\i);
+% }
+% \foreach \i in {0,1,2,3}{
+%     \draw (2,\i,0) -- (2,\i,-4);
+% }
+
+% % top face
+% \draw[fill=blue!10,opacity=0.5] (0,3,0) -- (2,3,0) -- (2,3,-4) -- (0,3,-4) -- cycle;
+% % side face
+% \draw[fill=blue!25,opacity=0.5] (2,0,0) -- (2,3,0) -- (2,3,-4) -- (2,0,-4) -- cycle;
+
+% % label inside cube
+% \node at (4.5,2,-2) {$\bt{T}\in\R^{2\times 3\times 4}$};
+
+% % === Arrow ===
+% \draw[->,thick] (2,1,-2) -- (7,1,-2) node[midway,above] {matrisasi mode-1};
+
+% % === Matrix unfolding result (2 x 12 grid) ===
+% \draw[fill=green!10,opacity=0.7] (7,1) rectangle (13,1);
+
+% % horizontal grid lines
+% \draw (7,1) -- (13,1);
+
+% % vertical grid lines (12 columns)
+% \foreach \x in {0,1,...,12} {
+%   \draw (7+\x/1,0) -- (7+\x/1,2);
+% }
+
+% % label
+% \node at (10,1) {$M_1(\bt{T})\in \R^{2\times 12}$};
+
+% % labels tensor dims
+% \node at (1,-0.3,0) {$i_1=2$};
+% \node at (2.3,1,0) {$i_2=3$};
+% \node at (1,2.3,1) {$i_3=4$};
+
+% % labels matrix dims
+% \node at (7,-0.4) {baris $= i_1$};
+% \node at (13,-0.4) {kolom $=(i_2,i_3)$};
+
+% \end{tikzpicture}
+% \caption{Ilustrasi matrisasi mode-1 dari tensor $2\times 3\times 4$ menjadi matriks $2\times 12$. Tensor digambarkan sebagai kubus Rubik kecil, lalu setiap slice dilipat menjadi kolom-kolom matriks hasil unfolding.}
+% \end{figure}
+
 \subsection{Perkalian Kronecker}
 
 Perkalian Kronecker merupakan operasi matriks yang menghasilkan matriks blok dengan ukuran yang lebih besar dari kedua matriks operandnya. Berbeda dengan perkalian matriks biasa yang mensyaratkan kesesuaian dimensi (jumlah kolom matriks pertama harus sama dengan jumlah baris matriks kedua), perkalian Kronecker dapat dilakukan pada dua matriks dengan ukuran sembarang. Operasi ini memiliki peran penting dalam berbagai aplikasi, termasuk pemrosesan sinyal, analisis sistem linear, dan representasi tensor. Dalam konteks pembelajaran mesin dan jaringan saraf graf, perkalian Kronecker sering digunakan untuk mengkonstruksi matriks bobot yang merepresentasikan interaksi antar fitur atau simpul secara efisien.
@@ -1506,6 +1768,317 @@ Perkalian Kronecker merupakan operasi matriks yang menghasilkan matriks blok den
     \end{equation}
     Hasilnya adalah matriks berukuran $4\times 4$ karena $\*A$ berukuran $2\times 2$ dan $\*B$ juga $2\times 2$, sehingga ukurannya $2\cdot 2 \times 2\cdot 2 = 4\times 4$.
 \end{contoh}
+
+% \subsection{Dekomposisi Matriks dan Tensor}
+
+% Dekomposisi matriks merupakan representasi suatu matriks sebagai hasil kali
+% atau gabungan matriks-matriks lain yang bentuknya lebih sederhana dan
+% terstruktur. Seiring berkembangnya analisis data multidimensi, konsep
+% dekomposisi meluas dari matriks ke tensor. Oleh karena itu, pemahaman yang
+% sistematis terhadap dekomposisi matriks dan tensor menjadi esensial dalam
+% penelitian ini. Namun, sebelum membahas masing-masing dekomposisi, bagian
+% berikut memberikan definisi-definisi yang digunakan dalam proses dekomposisi.
+
+% \begin{definisi}[\textbf{Hasil Kali Dalam, \citep{axler}}]
+%     Misalkan $V$ ruang vektor atas $F$ ($F = \R$ atau $F = \C$). Suatu fungsi
+%     \(\langle \cdot,\cdot\rangle : V\times V\to F\) disebut hasil kali dalam (\textit{inner product})
+%     jika untuk semua $\*u,\*v,\*w\in V$ dan $\lambda\in F$ berlaku
+%     \begin{enumerate}[label=(\alph*)]
+%         \item $\langle \*v,\*v\rangle \ge 0$;
+%         \item $\langle \*v,\*v\rangle=0 \iff \*v=\*0$;
+%         \item $\langle \*u+\*v,\*w\rangle=\langle \*u,\*w\rangle+\langle \*v,\*w\rangle$, dan $\langle \lambda \*u,\*v\rangle = \lambda \langle \*u,\*v\rangle$; dan
+%         \item $\langle \*u,\*v\rangle = \overline{\langle \*v,\*u\rangle}$.
+%     \end{enumerate}
+% \end{definisi}
+
+% \begin{definisi}[\textbf{\textit{Adjoint}, \citep{axler}}]
+%     Untuk operator linear $T:V\to W$ antar ruang berhasil kali dalam, \textit{adjoint} $T^\ast:W\to V$
+%     didefinisikan sebagai pemetaan unik yang memenuhi
+%     \begin{equation}
+%         \langle T\*v,\*w\rangle = \langle \*v,T^\ast \*w\rangle
+%     \end{equation}
+%     untuk semua $\*v\in V$, $\*w\in W$.
+% \end{definisi}
+
+% \begin{definisi}[\textbf{Matriks \textit{Unitary} dan Ortogonal, \citep{axler}}]
+%     Matriks persegi $\*Q\in\C^{n\times n}$ disebut \emph{unitary} jika $\*Q^\ast \*Q = \*I$.
+%     Jika $\*Q$ real, syarat ini setara dengan $\*Q^\top \*Q = \*I$, dan $\*Q$ disebut \emph{ortogonal}.
+% \end{definisi}
+
+% \begin{definisi}[\textbf{Matriks Hermitian, \citep{axler}}]
+%     Matriks $\*A\in\C^{n\times n}$ disebut \emph{Hermitian} jika $\*A^\ast=\*A$.
+%     Jika $\*A$ real, syarat ini setara dengan $\*A^\top=\*A$ atau simetris.
+% \end{definisi}
+
+% \begin{definisi}[\textbf{Dekomposisi Eigen, \citep{axler}}]
+%     Misalkan $\*A \in \mathbb{C}^{n\times n}$. Jika $\*A$ memiliki $n$ buah vektor eigen bebas linear,
+%     maka matriks $\*A$ disebut \emph{diagonalisabel}. Dalam hal ini, terdapat matriks invertibel $\*P$
+%     yang kolom-kolomnya merupakan vektor-vektor eigen $\*A$, serta matriks diagonal $\bs\Lambda = \mathrm{diag}(\lambda_1,\dots,\lambda_n)$ yang berisi nilai-nilai eigen $\lambda_i$ pada diagonal utamanya, sehingga
+%     \begin{equation}
+%         \*A = \*P \Lambda \*P^{-1}.
+%     \end{equation}
+%     Faktorisasi ini disebut \emph{dekomposisi eigen} atau \emph{eigendecomposition}.
+% \end{definisi}
+% \begin{contoh}
+%     Pertimbangkan matriks
+%     \[
+%         \*A = \begin{pmatrix}5 & 4 \\ 1 & 2\end{pmatrix}.
+%     \]
+%     Karakteristik polinomial dari $\*A$ adalah \(\det(\*A - \lambda I) = \lambda^2
+%     - 7\lambda + 6\), sehingga diperoleh nilai eigen $\lambda_1 = 6$ dan $\lambda_2
+%         = 1$. Untuk $\lambda_1=6$, persamaan $(\*A - 6I)\*v = 0$ menghasilkan vektor
+%     eigen $\*v_1 = (4,1)^\top$. Sementara itu, untuk $\lambda_2=1$, persamaan $(\*A
+%         - I)\*v = 0$ memberikan vektor eigen $\*v_2 = (-1,1)^\top$. Dengan demikian,
+%     dapat dibentuk matriks
+%     \[
+%         \*P = \begin{pmatrix}4 & -1 \\ 1 & 1\end{pmatrix},
+%     \]
+%     yang kolom-kolomnya adalah vektor-vektor eigen $\*A$, serta matriks diagonal
+%     \[
+%         \bs\Lambda = \begin{pmatrix}6 & 0 \\ 0 & 1\end{pmatrix},
+%     \]
+%     yang berisi nilai-nilai eigen pada diagonal utamanya. Oleh karena itu, $\*A$
+%     dapat dituliskan dalam bentuk
+%     \[
+%         \*A = \*P \bs\Lambda \*P^{-1},
+%     \]
+%     yang merupakan dekomposisi eigen dari matriks $\*A$. Dalam hal ini, dekomposisi
+%     menunjukkan bahwa transformasi linear yang direpresentasikan oleh $\*A$
+%     ekuivalen dengan transformasi basis ke arah vektor-vektor eigen, dilanjutkan
+%     dengan transformasi diagonal, kemudian dikembalikan lagi ke basis semula
+%     melalui $\*P^{-1}$.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Faktorisasi QR, \citep{axler,hackbusch}}]
+%     Untuk setiap $\*A\in\mathbb{F}^{m\times n}$, terdapat matriks unitary atau ortogonal $\*Q$ dan segitiga atas $\*R$ sehingga
+%     \begin{equation}
+%         \*A=\*Q\*R.
+%     \end{equation}
+%     QR dapat dikonstruksi melalui Algoritma Gram–Schmidt atau Householder. Pemakaian Gram–Schmidt dan penyelesaian $\*A\*x=\*b$ dengan $\*R\*x=\*Q^\ast\*b$ dibahas di \citep{axler}. Kompleksitas dan varian numeriknya, yaitu \emph{pivoted} QR dan Householder dirangkum di \citep{hackbusch}.
+% \end{definisi}
+% \begin{contoh}
+%     Pertimbangkan matriks
+%     \[
+%         \*A=\begin{pmatrix}1&1\\[2pt] 1&0\\[2pt] 0&1\end{pmatrix},
+%     \]
+%     dengan kolom-kolom $\*a_1=(1,1,0)^\top$ dan $\*a_2=(1,0,1)^\top$. Prosedur
+%     Gram--Schmidt dimulai dengan menormalkan kolom pertama, sehingga
+%     \[
+%         \|\*a_1\|=\sqrt{1^2+1^2+0^2}=\sqrt{2},
+%         \qquad
+%         \*q_1=\frac{\*a_1}{\|\*a_1\|}=\tfrac{1}{\sqrt2}(1,1,0)^\top.
+%     \]
+%     Selanjutnya, kolom kedua diortogonalisasi terhadap $\*q_1$ melalui proyeksi;
+%     koefisien proyeksinya adalah
+%     \[
+%         r_{12}=\langle \*q_1,\*a_2\rangle
+%         =\tfrac{1}{\sqrt2}(1\cdot 1+1\cdot 0+0\cdot 1)=\tfrac{1}{\sqrt2},
+%     \]
+%     sehingga vektor residu menjadi
+%     \[
+%         \widehat{\*a}_2=\*a_2-r_{12}\*q_1
+%         =(1,0,1)^\top-\tfrac{1}{2}(1,1,0)^\top
+%         =\bigl(\tfrac12,-\tfrac12,1\bigr)^\top.
+%     \]
+%     Normalisasi residu tersebut menghasilkan
+%     \[
+%         \|\widehat{\*a}_2\|
+%         =\sqrt{(\tfrac12)^2+(-\tfrac12)^2+1^2}
+%         =\sqrt{\tfrac32},
+%         \qquad
+%         \*q_2=\frac{\widehat{\*a}_2}{\|\widehat{\*a}_2\|}
+%         =\Bigl(\tfrac{1}{\sqrt6},-\tfrac{1}{\sqrt6},\tfrac{2}{\sqrt6}\Bigr)^\top.
+%     \]
+%     Dengan demikian, kolom-kolom ortonormal terkumpul dalam
+%     \[
+%         \*Q=\begin{pmatrix}
+%             \tfrac{1}{\sqrt2} & \tfrac{1}{\sqrt6}  \\[4pt]
+%             \tfrac{1}{\sqrt2} & -\tfrac{1}{\sqrt6} \\[4pt]
+%             0                 & \tfrac{2}{\sqrt6}
+%         \end{pmatrix}.
+%     \]
+%     Matriks segitiga atas $\*R$ diperoleh dari koefisien Gram--Schmidt, yakni
+%     $r_{11}=\|\*a_1\|=\sqrt2$, $r_{12}=\langle
+%         \*q_1,\*a_2\rangle=\tfrac{1}{\sqrt2}$, dan
+%     $r_{22}=\|\widehat{\*a}_2\|=\sqrt{\tfrac32}$, dengan $r_{21}=0$, sehingga
+%     \[
+%         \*R=\begin{pmatrix}
+%             \sqrt2 & \tfrac{1}{\sqrt2} \\[4pt]
+%             0      & \sqrt{\tfrac32}
+%         \end{pmatrix}.
+%     \]
+%     Terlihat bahwa $\*A=\*Q\*R$ dengan $\*Q$ berkolom ortonormal dan $\*R$ segitiga
+%     atas, sesuai definisi faktorisasi QR.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Dekomposisi Nilai Tunggal atau \emph{Singular Value Decomposition} (SVD), \citep{axler,hackbusch}}]
+%     Untuk $\*A\in\mathbb{F}^{m\times n}$ terdapat unitary atau ortogonal $\*U\in\mathbb{F}^{m\times m}$, $\*V\in\mathbb{F}^{n\times n}$, dan diagonal taknegatif $\boldsymbol{\Sigma}\in\mathbb{R}^{m\times n}$ sehingga
+%     \begin{equation}
+%         \*A=\*U\boldsymbol{\Sigma}\*V^\ast,
+%     \end{equation}
+%     dengan nilai singular $\sigma_1\ge\dots\ge \sigma_r>0$.
+% \end{definisi}
+
+% \begin{contoh}[SVD pada matriks $2\times 2$]
+%     Pertimbangkan matriks
+%     \[
+%         \*A=\begin{pmatrix}3&0\\ 4&5\end{pmatrix}.
+%     \]
+%     Perhitungan SVD diawali dengan membentuk $\*A^\top\*A$, yaitu
+%     \[
+%         \*A^\top\*A
+%         =\begin{pmatrix}3&4\\0&5\end{pmatrix}
+%         \begin{pmatrix}3&0\\4&5\end{pmatrix}
+%         =\begin{pmatrix}25&20\\20&25\end{pmatrix}.
+%     \]
+%     Matriks simetris ini memiliki polinomial karakteristik
+%     \[
+%         \det\left(\begin{pmatrix}25-\lambda&20\\20&25-\lambda\end{pmatrix}\right)
+%         =(25-\lambda)^2-400=0,
+%     \]
+%     sehingga nilai eigennya adalah $\lambda_1=45$ dan $\lambda_2=5$. Nilai singular
+%     $\sigma_i$ diperoleh sebagai akar kuadrat positif dari nilai eigen tersebut,
+%     yakni
+%     \[
+%         \sigma_1=\sqrt{45}=3\sqrt{5}, \qquad \sigma_2=\sqrt{5}.
+%     \]
+
+%     Vektor-vektor singular kanan adalah eigenvektor dari $\*A^\top\*A$. Untuk
+%     $\lambda_1=45$ persamaan \( (\*A^\top\*A-45\*I)\*v=\*0 \) memberikan ruang
+%     eigen yang dibentang oleh $(1,1)^\top$, sedangkan untuk $\lambda_2=5$
+%     memberikan ruang eigen yang dibentang oleh $(1,-1)^\top$. Dengan
+%     mengortonormalkan keduanya, dapat diambil
+%     \[
+%         \*V=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\[2pt]1&-1\end{pmatrix}.
+%     \]
+%     Selanjutnya, vektor-vektor singular kiri ditentukan dari rumus \(
+%     \*u_i=\frac{1}{\sigma_i}\*A\*v_i \). Substitusi menghasilkan
+%     \[
+%         \*u_1=\frac{1}{3\sqrt5}\,\*A\!\left(\tfrac{1}{\sqrt2}\!\begin{pmatrix}1\\[1pt]1\end{pmatrix}\!\right)
+%         =\begin{pmatrix}\tfrac{1}{\sqrt{10}}\\[3pt]\tfrac{3}{\sqrt{10}}\end{pmatrix},
+%         \qquad
+%         \*u_2=\frac{1}{\sqrt5}\,\*A\!\left(\tfrac{1}{\sqrt2}\!\begin{pmatrix}1\\[1pt]-1\end{pmatrix}\!\right)
+%         =\begin{pmatrix}\tfrac{3}{\sqrt{10}}\\[3pt]-\tfrac{1}{\sqrt{10}}\end{pmatrix},
+%     \]
+%     yang keduanya saling ortonormal. Dengan demikian,
+%     \[
+%         \*U=\begin{pmatrix}
+%             \frac{1}{\sqrt{10}} & \frac{3}{\sqrt{10}}  \\[4pt]
+%             \frac{3}{\sqrt{10}} & -\frac{1}{\sqrt{10}}
+%         \end{pmatrix},
+%         \qquad
+%         \boldsymbol{\Sigma}=\begin{pmatrix}3\sqrt5&0\\[2pt]0&\sqrt5\end{pmatrix},
+%         \qquad
+%         \*V=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\[2pt]1&-1\end{pmatrix},
+%     \]
+%     sehingga faktorisasi nilai tunggal \( \*A=\*U\,\boldsymbol{\Sigma}\,\*V^\top \)
+%     terbentuk. Interpretasi faktorisasi ini adalah bahwa transformasi linear yang
+%     direpresentasikan oleh $\*A$ ekuivalen dengan perubahan basis ke arah
+%     vektor-vektor singular kanan, diikuti oleh penskalaan diagonal oleh nilai-nilai
+%     singular, lalu dilanjutkan dengan pemetaan kembali melalui basis vektor
+%     singular kiri.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Dekomposisi Cholesky, \citep{axler,hackbusch}}]
+%     Jika $\*A\in\mathbb{R}^{n\times n}$ simetris dan positif definit, maka terdapat \emph{unik} segitiga bawah $\*L$ dengan diagonal positif sehingga
+%     $\*A=\*L\*L^\top$ (atau $\*A=\*R^\ast\*R$ dengan $\*R$ segitiga atas).
+% \end{definisi}
+
+% \begin{contoh}[Dekomposisi Cholesky pada matriks $2\times 2$]
+%     Pertimbangkan matriks simetris positif definit
+%     \[
+%         \*A=\begin{pmatrix}4&2\\[2pt]2&3\end{pmatrix}.
+%     \]
+%     Sebab determinan minor utamanya bernilai positif, yakni $\det(4)=4>0$ dan
+%     $\det(\*A)=4\cdot 3-2\cdot 2=8>0$, maka $\*A$ memang positif definit.
+%     Dekomposisi Cholesky mencari segitiga bawah \( \*L=\begin{pmatrix}\ell_{11}&0\\ \ell_{21}&\ell_{22}\end{pmatrix}
+%     \)
+%     dengan diagonal positif sehingga $\*A=\*L\*L^\top$.
+%     Dengan menyamakan entri pada
+%     \[
+%         \*L\*L^\top
+%         =
+%         \begin{pmatrix}
+%             \ell_{11}^2        & \ell_{11}\ell_{21}      \\
+%             \ell_{11}\ell_{21} & \ell_{21}^2+\ell_{22}^2
+%         \end{pmatrix}
+%         =
+%         \begin{pmatrix}4&2\\[2pt]2&3\end{pmatrix},
+%     \]
+%     diperoleh berturut-turut $\ell_{11}^2=4$ sehingga $\ell_{11}=2$,
+%     $\ell_{11}\ell_{21}=2$ sehingga $\ell_{21}=1$, dan $\ell_{21}^2+\ell_{22}^2=3$
+%     sehingga $\ell_{22}=\sqrt{2}$. Dengan demikian,
+%     \[
+%         \*L=\begin{pmatrix}2&0\\[2pt]1&\sqrt{2}\end{pmatrix}
+%         \quad\text{dan}\quad
+%         \*A=\*L\*L^\top.
+%     \]
+% \end{contoh}
+
+% Untuk tensor, dinotasikan tensor orde-3 sebagai $\bt{X}\in\mathbb{R}^{I\times
+%         J\times K}$. Mode-$n$ product ditulis $\bt{X}\times_n \*A$, yaitu .
+
+% \begin{definisi}[\textbf{Dekomposisi CP dan Tucker, \citep{hackbusch}}]
+%     Dua pendekatan yang paling umum digunakan untuk mendekomposisi tensor berorde lebih tinggi adalah dekomposisi CP (\textit{Canonical Polyadic} atau CANDECOMP) dan dekomposisi Tucker atau \textit{High-Order Singular Value Decomposition} (HOSVD).
+
+%     Dekomposisi CP bertujuan menuliskan suatu tensor $\bt{X}\in \mathbb{R}^{I\times
+%             J\times K}$ sebagai jumlah terbatas dari tensor dengan \textit{rank} satu,
+%     yaitu
+%     \begin{equation}
+%         \bt{X}\approx \sum_{r=1}^R \*a_r\otimes \*b_r\otimes \*c_r,
+%     \end{equation}
+%     dengan $\*a_r\in\mathbb{R}^I$, $\*b_r\in\mathbb{R}^J$, dan $\*c_r\in\mathbb{R}^K$.
+%     Jumlah komponen $R$ disebut \emph{rank CP} dari tensor, dan dekomposisi ini sering dipandang sebagai generalisasi langsung dari dekomposisi eigen untuk matriks, karena setiap komponen merupakan analogi vektor eigen yang membentuk rank-one tensor.
+
+%     Sementara itu, dekomposisi Tucker atau HOSVD menuliskan tensor $\bt{X}$ dalam
+%     bentuk
+%     \begin{equation}
+%         \bt{X}\approx \bt{G}\times_1 \*A \times_2 \*B \times_3 \*C,
+%     \end{equation}
+%     dengan $\bt{G}$ merupakan \emph{tensor inti} yang berukuran lebih kecil dan $\*A,\*B,\*C$ adalah matriks faktor ortonormal. Tidak seperti CP yang memaksa representasi dalam bentuk jumlah \textit{rank} satu, dekomposisi Tucker memperbolehkan adanya interaksi yang lebih kompleks di dalam tensor inti $\bt{G}$. HOSVD menjamin bahwa matriks faktor diperoleh dari dekomposisi nilai tunggal (SVD) pada matriks hasil pembentangan (\textit{unfolding}) tensor sepanjang setiap mode. Dekomposisi ini juga dikenal bersifat \emph{quasi-optimal}, dalam arti bahwa jika dilakukan pemotongan (\textit{truncation}) pada \textit{singular values}, maka kesalahan aproksimasi yang diperoleh tetap terkendali secara teoretis.
+% \end{definisi}
+
+% Perhatikan ilustrasi di bawah ini untuk penjelasan terkait dekomposisi CP dan
+% Tucker secara visual.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\linewidth]{GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png}
+%     \caption{Ilustrasi (a) Dekomposisi Tucker dan (b) Dekomposisi CP pada Tensor. (Sumber: \citealp{Jiang_2020})}
+%     \label{fig:CPTuckerDecomposition}
+% \end{figure}
+
+% \begin{contoh}
+%     Sebagai ilustrasi, ambil tensor $\bt{X}\in\mathbb{R}^{2\times 2\times 2}$ dengan entri
+%     \[
+%         \bt{X}_{ijk}=
+%         \begin{cases}
+%             1, & \text{jika } i=j=k, \\
+%             0, & \text{selainnya}.
+%         \end{cases}
+%     \]
+%     Tensor ini hanya bernilai $1$ pada posisi diagonal $(1,1,1)$ dan $(2,2,2)$,
+%     sedangkan seluruh elemen lainnya bernilai $0$.
+
+%     Dalam kerangka CP, tensor ini dapat direpresentasikan sebagai jumlah dari dua
+%     rank-one tensors:
+%     \[
+%         \bt{X} \approx \*e_1 \otimes \*e_1 \otimes \*e_1 \;+\; \*e_2 \otimes \*e_2 \otimes \*e_2,
+%     \]
+%     dengan $\*e_1=(1,0)^\top$ dan $\*e_2=(0,1)^\top$. Setiap komponen di sini
+%     langsung menangkap satu “garis diagonal” dari tensor, sehingga rank CP-nya
+%     adalah $2$. Hal ini mirip dengan menyatakan sebuah matriks diagonal sebagai
+%     jumlah dari matriks-matriks \textit{rank} satu.
+
+%     Dalam kerangka Tucker/HOSVD, prosedur dilakukan dengan membentangkan tensor
+%     $\bt{X}$ ke dalam tiga matriks \textit{unfolding} sesuai mode-1, mode-2, dan
+%     mode-3. Masing-masing matriks kemudian dikenai dekomposisi nilai tunggal (SVD)
+%     sehingga diperoleh faktor ortonormal $\*A$, $\*B$, dan $\*C$. Tensor inti
+%     $\bt{G}$ diperoleh dengan mengalikan $\bt{X}$ berturut-turut dengan $\*A^\top$,
+%     $\*B^\top$, dan $\*C^\top$ pada mode yang sesuai. Dalam contoh ini,
+%     faktor-faktor ortonormal yang muncul berkorespondensi langsung dengan basis
+%     standar $\*e_1,\*e_2$, sedangkan inti $\bt{G}$ akan berukuran $2\times 2\times
+%         2$ dengan entri yang lebih terkonsentrasi pada diagonal.
+% \end{contoh}
 
 \subsection{Diferensial Vektor dan Matriks}
 
@@ -1644,439 +2217,41 @@ hasil.
 \end{contoh}
 
 \section{Teori Ukuran dan Probabilitas}
-
-Teori probabilitas modern dibangun di atas fondasi teori ukuran, di mana
-probabilitas dipandang sebagai suatu ukuran terstandarisasi pada kelas himpunan
-tertentu. Pendekatan ini memungkinkan formulasi yang rigor terhadap variabel
-acak umum, integrasi ekspektasi, serta analisis limit yang menjadi dasar
-inferensi statistik asimtotik \citep{billingsley1995,dudley2002}.
-
-\subsection{Ruang Ukur dan Ukuran Probabilitas}
-
-\begin{definisi}[\textbf{$\sigma$-Aljabar}, \citep{billingsley1995}]
-    Misalkan $\Omega$ adalah suatu himpunan tak kosong. Suatu koleksi
-    $\mathcal{F} \subseteq 2^\Omega$ disebut sebagai $\sigma$-aljabar apabila
-    memenuhi:
-    \begin{enumerate}[label=(\alph*)]
-        \item $\Omega \in \mathcal{F}$;
-        \item Jika $A \in \mathcal{F}$ maka $A^c \in \mathcal{F}$;
-        \item Jika $\{A_n\}_{n=1}^\infty \subseteq \mathcal{F}$, maka
-              $\bigcup_{n=1}^\infty A_n \in \mathcal{F}$.
-    \end{enumerate}
-\end{definisi}
-
-\noindent Pasangan $(\Omega,\mathcal{F})$ disebut sebagai \emph{ruang ukur}.
-
-\begin{definisi}[\textbf{Ukuran Probabilitas}, \citep{billingsley1995}]
-    Suatu fungsi $P:\mathcal{F}\to[0,1]$ disebut sebagai ukuran probabilitas
-    apabila:
-    \begin{enumerate}[label=(\alph*)]
-        \item $P(\Omega)=1$;
-        \item $P(A)\ge0$ untuk semua $A\in\mathcal{F}$;
-        \item Untuk setiap barisan himpunan saling lepas
-              $\{A_n\}_{n=1}^\infty \subseteq \mathcal{F}$ berlaku
-        \begin{equation}
-            P\!\left(\bigcup_{n=1}^\infty A_n\right)
-            =\sum_{n=1}^\infty P(A_n).
-        \end{equation}
-    \end{enumerate}
-\end{definisi}
-
-\noindent Tripel $(\Omega,\mathcal{F},P)$ disebut sebagai \emph{ruang probabilitas}.
-
-\subsection{Variabel Acak sebagai Fungsi Terukur}
-
-\begin{definisi}[\textbf{Variabel Acak}, \citep{dudley2002}]
-    Diberikan ruang probabilitas $(\Omega,\mathcal{F},P)$ dan ruang terukur
-    $(\mathbb{R},\mathcal{B}(\mathbb{R}))$. Suatu fungsi
-    $X:\Omega\to\mathbb{R}$ disebut sebagai variabel acak apabila $X$ terukur,
-    yaitu untuk setiap $B\in\mathcal{B}(\mathbb{R})$ berlaku
-    \begin{equation}
-        X^{-1}(B)=\{\omega\in\Omega:X(\omega)\in B\}\in\mathcal{F}.
-    \end{equation}
-\end{definisi}
-
-\noindent Pendefinisian ini memungkinkan penggunaan teori integrasi Lebesgue
-untuk mendefinisikan ekspektasi dan momen variabel acak secara umum.
-
-\subsection{Distribusi dan Ekspektasi}
-
-\begin{definisi}[\textbf{Distribusi Variabel Acak}, \citep{billingsley1995}]
-    Distribusi dari variabel acak $X$ adalah ukuran probabilitas
-    $P_X$ pada $(\mathbb{R},\mathcal{B}(\mathbb{R}))$ yang didefinisikan oleh
-    \begin{equation}
-        P_X(B)=P(X\in B), \qquad B\in\mathcal{B}(\mathbb{R}).
-    \end{equation}
-\end{definisi}
-
-\begin{definisi}[\textbf{Ekspektasi Lebesgue}, \citep{dudley2002}]
-    Jika $X$ adalah variabel acak terintegralkan, maka ekspektasi $X$
-    didefinisikan sebagai integral Lebesgue
-    \begin{equation}
-        \mathbb{E}[X]=\int_\Omega X(\omega)\,dP(\omega)
-        =\int_{\mathbb{R}} x\,dP_X(x).
-    \end{equation}
-\end{definisi}
-
-\subsection{Momen, Variansi, dan Kovariansi}
-
-\begin{definisi}[\textbf{Momen dan Variansi}, \citep{billingsley1995}]
-    Untuk variabel acak $X$ dengan $\mathbb{E}[|X|^2]<\infty$, variansi
-    didefinisikan sebagai
-    \begin{equation}
-        \mathrm{Var}(X)=\mathbb{E}\big[(X-\mathbb{E}[X])^2\big].
-    \end{equation}
-\end{definisi}
-
-\begin{definisi}[\textbf{Kovariansi}, \citep{dudley2002}]
-    Untuk dua variabel acak $X$ dan $Y$ dengan momen orde dua hingga,
-    kovariansi didefinisikan sebagai
-    \begin{equation}
-        \mathrm{Cov}(X,Y)
-        =\mathbb{E}\big[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])\big].
-    \end{equation}
-\end{definisi}
-
+\subsection{Ruang Ukur dan $\sigma$-Aljabar}
+\subsection{Ukuran dan Ukuran Probabilitas}
+\subsection{Ruang Probabilitas}
+\subsection{Variabel Random sebagai Fungsi Terukur}
+\subsection{Distribusi, Fungsi Distribusi, dan Densitas}
+\subsection{Ekspektasi dalam Integral Lebesgue}
+\subsection{Variansi, Kovariansi, dan Momen}
 \subsection{Independensi dan Ketergantungan}
-
-\begin{definisi}[\textbf{Independensi}, \citep{billingsley1995}]
-    Variabel acak $X$ dan $Y$ dikatakan independen apabila untuk setiap
-    himpunan Borel $A,B\subseteq\mathbb{R}$ berlaku
-    \begin{equation}
-        P(X\in A,\,Y\in B)=P(X\in A)\,P(Y\in B).
-    \end{equation}
-\end{definisi}
-
-\noindent Ketergantungan antar variabel acak merupakan aspek fundamental
-dalam pemodelan statistik, khususnya dalam analisis spasial dan data bertautan,
-di mana asumsi independensi sering kali tidak terpenuhi.
-
+\subsection{Urutan Variabel Random dan Notasi Dasar}
 
 \section{Konvergensi dan Laju Pertumbuhan}
-
-Analisis asimtotik dalam statistika memerlukan pemahaman yang jelas mengenai
-perilaku barisan variabel random ketika ukuran sampel meningkat. Konsep
-konvergensi dan notasi laju pertumbuhan menyediakan bahasa formal untuk
-menyatakan konsistensi, distribusi limit, serta ukuran galat dari suatu
-estimator. Pembahasan dalam section ini mengikuti kerangka teori probabilitas
-klasik dan statistik asimtotik sebagaimana dikembangkan oleh Billingsley (1995),
-Dudley (2002), dan van der Vaart (1998).
-
 \subsection{Barisan Variabel Random}
-
-Suatu \emph{barisan variabel random} adalah koleksi variabel random
-$\{X_n\}_{n\ge1}$ yang didefinisikan pada ruang probabilitas yang sama
-$(\Omega,\mathcal{F},P)$. Dalam konteks statistika, barisan ini biasanya
-merepresentasikan estimator yang bergantung pada ukuran sampel $n$
-\citep{billingsley1995}.
-
-\subsection{Konvergensi Hampir Pasti dan dalam Probabilitas}
-
-\begin{definisi}[\textbf{Konvergensi Hampir Pasti}, \citep{billingsley1995}]
-    Barisan variabel random $\{X_n\}$ dikatakan konvergen hampir pasti ke $X$,
-    ditulis $X_n \to X$ a.s., apabila
-    \begin{equation}
-        P\bigl(\{\omega : \lim_{n\to\infty} X_n(\omega)=X(\omega)\}\bigr)=1.
-    \end{equation}
-\end{definisi}
-
-\begin{definisi}[\textbf{Konvergensi dalam Probabilitas}, \citep{dudley2002}]
-    Barisan $\{X_n\}$ dikatakan konvergen dalam probabilitas ke $X$, ditulis
-    $X_n \xrightarrow{p} X$, apabila untuk setiap $\varepsilon>0$ berlaku
-    \begin{equation}
-        \lim_{n\to\infty} P(|X_n-X|>\varepsilon)=0.
-    \end{equation}
-\end{definisi}
-
-\noindent Konvergensi dalam probabilitas merupakan konsep utama dalam pembahasan
-konsistensi estimator, sedangkan konvergensi hampir pasti sering digunakan
-sebagai alat teknis dalam pembuktian teorema limit.
-
+\subsection{Konvergensi Hampir Pasti}
+\subsection{Konvergensi dalam Probabilitas}
 \subsection{Konvergensi dalam Distribusi}
-
-\begin{definisi}[\textbf{Konvergensi dalam Distribusi}, \citep{billingsley1995}]
-    Barisan $\{X_n\}$ dikatakan konvergen dalam distribusi ke $X$, ditulis
-    $X_n \Rightarrow X$, apabila
-    \begin{equation}
-        \lim_{n\to\infty} \mathbb{E}[f(X_n)] = \mathbb{E}[f(X)]
-    \end{equation}
-    untuk setiap fungsi kontinu terbatas $f$.
-\end{definisi}
-
-\noindent Konvergensi dalam distribusi memungkinkan pendekatan distribusi
-sampling yang kompleks dengan distribusi limit yang lebih sederhana, dan
-merupakan dasar utama Teorema Limit Pusat.
-
 \subsection{Hubungan Antar Mode Konvergensi}
-
-Hubungan antar berbagai jenis konvergensi diberikan oleh implikasi berikut:
-\begin{equation}
-    X_n \to X \text{ a.s.}
-    \;\Longrightarrow\;
-    X_n \xrightarrow{p} X
-    \;\Longrightarrow\;
-    X_n \Rightarrow X,
-\end{equation}
-dengan implikasi sebaliknya tidak berlaku secara umum
-\citep{billingsley1995,dudley2002}.
-
-\subsection{Notasi Big-$\mathcal{O}$ dan Little-$\mathcal{o}$ (Deterministik)}
-
-Misalkan $\{a_n\}$ dan $\{b_n\}$ adalah barisan bilangan real dengan $b_n>0$.
-Dikatakan
-\begin{equation}
-    a_n = O(b_n),
-\end{equation}
-jika terdapat konstanta $C>0$ dan $n_0$ sehingga
-\begin{equation}
-    |a_n| \le C b_n, \quad \forall n \ge n_0.
-\end{equation}
-
-Selanjutnya,
-\begin{equation}
-    a_n = o(b_n)
-\end{equation}
-jika
-\begin{equation}
-    \lim_{n\to\infty} \frac{a_n}{b_n}=0.
-\end{equation}
-
-Notasi ini digunakan untuk menyatakan laju pertumbuhan dan tingkat
-ketakterabaian suatu besaran deterministik dalam analisis asimtotik.
-
-\subsection{Notasi Big-$\mathcal{O}$ dan Little-$\mathcal{o}$ dalam Probabilitas}
-
-\begin{definisi}[\textbf{Notasi $O_p$}, \citep{vandervaart1998}]
-    Barisan variabel random $\{X_n\}$ dikatakan
-    \begin{equation}
-        X_n = O_p(a_n),
-    \end{equation}
-    apabila untuk setiap $\varepsilon>0$ terdapat $M>0$ sehingga
-    \begin{equation}
-        \sup_n P(|X_n|>M a_n) < \varepsilon.
-    \end{equation}
-\end{definisi}
-
-\begin{definisi}[\textbf{Notasi $o_p$}, \citep{vandervaart1998}]
-    Dikatakan
-    \begin{equation}
-        X_n = o_p(a_n)
-    \end{equation}
-    apabila
-    \begin{equation}
-        \frac{X_n}{a_n} \xrightarrow{p} 0.
-    \end{equation}
-\end{definisi}
-
-\noindent Notasi ini merupakan perluasan alami dari notasi deterministik
-$O(\cdot)$ dan $o(\cdot)$ ke dalam konteks stokastik, dan digunakan secara luas
-dalam perumusan representasi asimtotik estimator
-\citep{vandervaart1998}.
-
+\subsection{Notasi O-besar dan o-kecil Deterministik}
+\subsection{Notasi O-besar dan o-kecil dalam Probabilitas}
 
 \section{Teori Probabilitas Asimtotik}
-
-Teori probabilitas asimtotik mempelajari perilaku limit dari barisan variabel
-random dan estimator ketika ukuran sampel menuju tak hingga. Dalam statistika,
-hasil-hasil asimtotik digunakan sebagai pendekatan terhadap distribusi sampling
-yang umumnya sulit diperoleh secara eksak. Pembahasan dalam section ini mengikuti
-kerangka statistik asimtotik sebagaimana dikembangkan oleh van der Vaart (1998),
-dengan fondasi probabilitas dari Billingsley (1995).
-
 \subsection{Hukum Bilangan Besar}
-
-\begin{teorema}[\textbf{Weak Law of Large Numbers}, \citep{billingsley1995}]
-    Misalkan $\{X_i\}_{i=1}^\infty$ adalah barisan variabel random i.i.d.
-    dengan $\mathbb{E}[X_1]=\mu$ dan $\mathbb{E}[|X_1|]<\infty$. Maka
-    \begin{equation}
-        \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{p} \mu.
-    \end{equation}
-\end{teorema}
-
-\noindent Hukum Bilangan Besar memberikan dasar probabilistik bagi konsistensi
-estimator berbasis rata-rata sampel.
-
 \subsection{Konsistensi Estimator}
-
-\begin{definisi}[\textbf{Konsistensi}, \citep{vandervaart1998}]
-    Suatu estimator $\hat{\theta}_n$ untuk parameter $\theta$ dikatakan
-    konsisten apabila
-    \begin{equation}
-        \hat{\theta}_n \xrightarrow{p} \theta.
-    \end{equation}
-\end{definisi}
-
-\noindent Konsistensi sering diperoleh sebagai konsekuensi langsung dari Hukum
-Bilangan Besar, khususnya untuk estimator yang dapat diekspresikan sebagai fungsi
-rata-rata sampel.
-
 \subsection{Teorema Limit Pusat Klasik}
-
-\begin{teorema}[\textbf{Central Limit Theorem}, \citep{billingsley1995}]
-    Misalkan $\{X_i\}_{i=1}^\infty$ adalah barisan variabel random i.i.d.
-    dengan $\mathbb{E}[X_1]=\mu$ dan $\mathrm{Var}(X_1)=\sigma^2<\infty$. Maka
-    \begin{equation}
-        \sqrt{n}\left(
-        \frac{1}{n}\sum_{i=1}^n X_i - \mu
-        \right)
-        \Rightarrow \mathcal{N}(0,\sigma^2).
-    \end{equation}
-\end{teorema}
-
-\noindent Teorema Limit Pusat merupakan hasil fundamental yang memungkinkan
-pendekatan distribusi normal terhadap rata-rata sampel, dan menjadi dasar utama
-inferensi statistik asimtotik.
-
 \subsection{Teorema Limit Pusat untuk Triangular Arrays}
-
-Dalam banyak aplikasi statistik, khususnya estimator berbobot dan estimator lokal, observasi tidak lagi identik terdistribusi. Hal ini memotivasi penggunaan CLT untuk triangular arrays.
-
-\begin{teorema}[\textbf{CLT untuk Triangular Arrays}, \citep{vandervaart1998}]
-    Misalkan $\{X_{n,i}: i=1,\dots,n\}$ adalah triangular array variabel random
-    dengan $\mathbb{E}[X_{n,i}]=0$ dan varians total
-    \begin{equation}
-        \sum_{i=1}^n \mathrm{Var}(X_{n,i}) \to \sigma^2.
-    \end{equation}
-    Jika kondisi Lindeberg terpenuhi, maka
-    \begin{equation}
-        \sum_{i=1}^n X_{n,i} \Rightarrow \mathcal{N}(0,\sigma^2).
-    \end{equation}
-\end{teorema}
-
-\noindent Hasil ini sangat relevan untuk analisis asimtotik estimator lokal, di mana kontribusi masing-masing observasi bergantung pada $n$.
-
 \subsection{Asimtotik Normal}
-
-\begin{definisi}[\textbf{Asimtotik Normal}, \citep{vandervaart1998}]
-    Estimator $\hat{\theta}_n$ dikatakan asimtotik normal apabila terdapat
-    skala $r_n \to \infty$ dan matriks kovariansi $\Sigma$ sehingga
-    \begin{equation}
-        r_n(\hat{\theta}_n - \theta)
-        \Rightarrow \mathcal{N}(0,\Sigma).
-    \end{equation}
-\end{definisi}
-
-\noindent Asimtotik normal memungkinkan pembentukan standard error, interval kepercayaan, dan uji hipotesis secara asimtotik.
-
 \subsection{Metode Delta}
 
-\begin{teorema}[\textbf{Delta Method}, \citep{vandervaart1998}]
-    Misalkan
-    \begin{equation}
-        \sqrt{n}(\hat{\theta}_n - \theta)
-        \Rightarrow \mathcal{N}(0,\Sigma),
-    \end{equation}
-    dan $g$ adalah fungsi terdiferensialkan di $\theta$. Maka
-    \begin{equation}
-        \sqrt{n}\bigl(g(\hat{\theta}_n)-g(\theta)\bigr)
-        \Rightarrow \mathcal{N}\bigl(0, g'(\theta)\Sigma g'(\theta)^\top\bigr).
-    \end{equation}
-\end{teorema}
-
-\noindent Metode Delta digunakan untuk memperoleh distribusi limit dari transformasi halus suatu estimator.
-
 \section{Statistika Inferensial}
-
-Statistika inferensial bertujuan untuk menarik kesimpulan mengenai parameter
-populasi berdasarkan data sampel. Dalam kerangka statistik asimtotik, prosedur
-inferensi umumnya didasarkan pada distribusi limit dari estimator ketika ukuran
-sampel menuju tak hingga. Pendekatan ini memungkinkan pembentukan interval
-kepercayaan dan pengujian hipotesis meskipun distribusi sampling eksak dari
-estimator tidak diketahui \citep{vandervaart1998}.
-
 \subsection{Parameter, Estimator, dan Target Inferensi}
-
-Misalkan $\theta \in \Theta \subset \mathbb{R}^p$ adalah parameter populasi yang
-tidak diketahui, dan $\hat{\theta}_n$ adalah estimator berbasis sampel ukuran $n$.
-
-Target inferensi statistik bukan hanya estimasi titik terhadap $\theta$, tetapi
-juga kuantifikasi ketidakpastian dari $\hat{\theta}_n$, yang direpresentasikan
-melalui distribusi sampling atau pendekatan asimtotiknya
-\citep{vandervaart1998}.
-
 \subsection{Distribusi Sampling dan Pendekatan Asimtotik}
-
-Distribusi sampling dari estimator $\hat{\theta}_n$ umumnya tidak diketahui
-secara eksplisit. Oleh karena itu, inferensi statistik sering didasarkan pada
-distribusi limit dari $\hat{\theta}_n$ ketika $n \to \infty$.
-
-\begin{proposisi}[\textbf{Pendekatan Asimtotik Distribusi Sampling}]
-    Misalkan terdapat skala $r_n \to \infty$ dan variabel random $Z$ sehingga
-    \[
-        r_n(\hat{\theta}_n - \theta) \Rightarrow Z.
-    \]
-    Maka distribusi $Z$ dapat digunakan sebagai pendekatan terhadap distribusi
-    sampling dari $\hat{\theta}_n$ untuk ukuran sampel besar.
-\end{proposisi}
-
 \subsection{Asimtotik Normal dan Standard Error}
-
-\begin{proposisi}[\textbf{Normalitas Asimtotik Estimator}]
-    Estimator $\hat{\theta}_n$ dikatakan asimtotik normal apabila
-    \[
-        \sqrt{n}(\hat{\theta}_n - \theta)
-        \Rightarrow \mathcal{N}(0,\Sigma),
-    \]
-    untuk suatu matriks kovariansi asimtotik $\Sigma$.
-\end{proposisi}
-
-\begin{proposisi}[\textbf{Standard Error Asimtotik}]
-    Jika $\hat{\theta}_n$ asimtotik normal dengan kovariansi limit $\Sigma$, maka
-    standard error asimtotik dari $\hat{\theta}_n$ didefinisikan sebagai
-    \[
-        \mathrm{se}(\hat{\theta}_n)
-        =
-        \sqrt{\frac{\Sigma}{n}}.
-    \]
-    Dalam praktik, $\Sigma$ digantikan oleh estimator konsisten
-    $\widehat{\Sigma}$.
-\end{proposisi}
-
 \subsection{Interval Kepercayaan Asimtotik}
-
-\begin{proposisi}[\textbf{Interval Kepercayaan Asimtotik}]
-    Misalkan $\hat{\theta}_n$ adalah estimator skalar yang asimtotik normal, yaitu
-    \[
-        \sqrt{n}(\hat{\theta}_n - \theta)
-        \Rightarrow \mathcal{N}(0,\sigma^2).
-    \]
-    Maka interval
-    \[
-        \hat{\theta}_n
-        \pm
-        z_{\alpha/2}\,
-        \widehat{\mathrm{se}}(\hat{\theta}_n)
-    \]
-    merupakan interval kepercayaan asimtotik tingkat $(1-\alpha)$ untuk $\theta$.
-\end{proposisi}
-
 \subsection{Pengujian Hipotesis Asimtotik}
-
-\begin{proposisi}[\textbf{Uji Wald Asimtotik}]
-    Pertimbangkan pengujian hipotesis nol $H_0:\theta=\theta_0$.
-    Jika $\hat{\theta}_n$ asimtotik normal dengan kovariansi limit $\Sigma$, maka
-    statistik uji
-    \[
-        W_n
-        =
-        (\hat{\theta}_n-\theta_0)^\top
-        \widehat{\Sigma}^{-1}
-        (\hat{\theta}_n-\theta_0)
-    \]
-    memiliki distribusi limit $\chi^2_p$ di bawah $H_0$.
-\end{proposisi}
-
 \subsection{Inferensi Bersyarat dan Asumsi Ideal}
 
-\begin{proposisi}[\textbf{Inferensi Asimtotik Bersyarat}]
-    Prosedur inferensi yang dibangun berdasarkan normalitas asimtotik bersifat
-    bersyarat pada asumsi regularitas model, keberlakuan Teorema Limit Pusat, dan
-    estimasi konsisten dari kovariansi asimtotik.
-\end{proposisi}
-
-\noindent Inferensi ini merupakan aproksimasi yang semakin akurat seiring
-bertambahnya ukuran sampel, dan dapat menjadi tidak valid apabila asumsi-asumsi
-tersebut dilanggar \citep{vandervaart1998}.
 
 \section{Analisis Regresi Linear}
 Analisis regresi merupakan suatu teknik statistik untuk menginvestigasi dan
@@ -2603,6 +2778,30 @@ model.
     dengan $\boldsymbol{\delta}$ adalah vektor parameter untuk lag spasial variabel independen.
 \end{definisi}
 
+% Untuk kasus spasial temporal, model-model di atas dapat diperluas untuk
+% mengakomodasi dimensi waktu.
+
+
+% \begin{definisi}[\textbf{\emph{Space-Time Autoregressive} (STAR), \citep{amri2020}}]
+%     Model STAR merupakan gabungan model autoregresif waktu dan spasial dengan asumsi parameter yang homogen di seluruh lokasi. Bentuk umum model STAR($p$;$\lambda_k$) adalah
+%     \begin{equation}
+%         \bm{z}_t = \sum\limits_{k=1}^p \sum\limits_{\ell = 0}^{\lambda_k} \Phi_k \mathbf{W}^{(\ell)}\bm{z}_{t-k} + \boldsymbol{\varepsilon}_t,
+%     \end{equation}
+%     dengan $\Phi_k$ adalah matriks parameter waktu orde $k$, $\mathbf{W}^{(\ell)}$ adalah matriks bobot spasial orde $\ell$, dan $\boldsymbol{\varepsilon}_t$ adalah vektor galat. Model ini mengasumsikan karakteristik lokasi homogen.
+% \end{definisi}
+
+% \begin{definisi}[\textbf{\emph{Generalized Space-Time Autoregressive} (GSTAR), \citep{amri2020}}]
+%     Model GSTAR merupakan generalisasi dari STAR yang mengizinkan parameter berbeda untuk setiap lokasi (heterogen). Bentuk umum model GSTAR($p$;$\lambda_k$) adalah
+%     \begin{equation}
+%         \bm{y}_t = \sum\limits_{k=1}^p \sum\limits_{\ell = 0}^{\lambda_k} \Phi_k \mathbf{W}^{(\ell)}\bm{y}_{t-k} + \boldsymbol{\varepsilon}_t,
+%     \end{equation}
+%     dengan $\bm{y}_t = \bm{z}_t - \bm{z}_{t-1}$ dan $\bm{y}_{t-k} = \bm{z}_{t-k} - \bm{z}_{t-k-1}$. Model ini memungkinkan variasi parameter spasial di seluruh lokasi.
+% \end{definisi}
+
+% Model-model ini menyediakan kerangka yang fleksibel untuk menangkap dependensi
+% baik dalam dimensi spasial maupun temporal. Pemilihan model bergantung pada
+% karakteristik data dan hipotesis yang ingin diuji. Model STAR cocok untuk kasus dengan parameter homogen antar lokasi, sedangkan GSTAR lebih sesuai ketika terdapat heterogenitas spasial dalam struktur autoregresif.
+
 \subsection{Regresi dengan Heterogenitas Spasial dan Spasial Temporal}
 
 Heterogenitas spasial (\emph{spatial heterogeneity}) terjadi ketika hubungan
@@ -2712,6 +2911,25 @@ Pemilihan \emph{bandwidth} $h$ sangat krusial dalam GWR dan dapat dilakukan mela
         h^* = \arg\min_h \mathrm{CV}(h).
     \end{equation}
 \end{definisi}
+
+% Untuk data panel spasial, GWR dapat diperluas menjadi \emph{Geographically and
+%     Temporally Weighted Regression} (GTWR).
+
+% \begin{definisi}[\textbf{\emph{Geographically and Temporally Weighted Regression} (GTWR)}]
+%     Model GTWR memungkinkan koefisien bervariasi baik secara spasial maupun temporal
+%     \begin{equation}
+%         y_{it} = \beta_0(u_i, v_i, t) + \sum_{k=1}^p \beta_k(u_i, v_i, t) x_{ikt} + \varepsilon_{it}
+%     \end{equation}
+%     dengan estimator
+%     \begin{equation}
+%         \hat{\boldsymbol{\beta}}(u_i, v_i, t) = (\bm{X}^\top \mathbf{W}_{i,t} \bm{X})^{-1} \bm{X}^\top \mathbf{W}_{i,t} \bm{y},
+%     \end{equation}
+%     dengan $\mathbf{W}_{i,t}$ menggabungkan bobot spasial dan temporal, yaitu
+%     \begin{equation}
+%         w_{ij,t} = \exp\left(-\frac{d_{ij}^2}{h_s^2} - \frac{(t_i - t_j)^2}{h_t^2}\right)
+%     \end{equation}
+%     dengan $h_s$ dan $h_t$ adalah \emph{bandwidth} spasial dan temporal secara berturut-turut.
+% \end{definisi}
 
 \begin{teorema}[\textbf{Uji Heterogenitas Spasial}]
     Untuk menguji keberadaan heterogenitas spasial, dapat digunakan uji Breusch-Pagan lokal:
@@ -2830,6 +3048,8 @@ dengan $e_i$ adalah residual GWR di lokasi $i$. Di bawah $H_0$ bahwa tidak ada a
 \end{teorema}
 
 Pengujian-pengujian ini memberikan kerangka diagnostik yang komprehensif untuk memvalidasi model heterogenitas spasial dan memastikan bahwa asumsi-asumsi yang mendasari analisis GWR dan GTWR terpenuhi dengan baik.
+
+\section{Inferensi dalam Model Regresi Terboboti Geografis}
 
 \section{Jaringan Saraf Tiruan}
 
@@ -3408,3 +3628,280 @@ Fungsi $\mathrm{HASH}$ pada algoritma WL berperan sebagai pemetaan yang menggabu
 \begin{teorema}[\textbf{Hubungan dengan Tes WL, \citep{xu2019}}]
     Jika fungsi agregasi $\mathrm{AGGREGATE}$ bersifat injektif terhadap multiset, maka GNN memiliki kekuatan representasi setara dengan tes WL satu dimensi. Dengan kata lain, GNN dapat membedakan graf sejauh tes WL mampu membedakannya, asalkan agregasi dan pembaruan fitur dilakukan secara unik untuk setiap lingkungan simpul.
 \end{teorema}
+
+\section{Inferensi Kausal dengan Pembelajaran Mesin Ganda}
+
+
+% \section{Pembelajaran Representasi}
+
+% Pembelajaran representasi (\textit{representation learning}) bertujuan mempelajari transformasi dari data mentah ke bentuk fitur yang lebih sesuai untuk tugas pembelajaran. Secara formal, algoritma pembelajaran representasi mencari transformasi $\phi$ yang memetakan data observasi $x$ ke representasi $h = \phi(x)$, sehingga prediktor sederhana $f$ dapat memodelkan target $y$ dari $h$ secara efisien.
+
+% Pembelajaran representasi merupakan cabang pembelajaran mesin yang berfokus pada pembentukan representasi data yang memudahkan ekstraksi informasi penting untuk klasifikasi atau prediksi. Pendekatan ini menggantikan rekayasa fitur manual dengan proses otomatis yang mempelajari struktur intrinsik data. Dengan representasi yang baik, model dapat menangkap faktor penyebab utama data dan mengabaikan variasi yang tidak relevan terhadap tugas.
+
+% Tujuan utama pembelajaran representasi adalah memisahkan faktor-faktor variasi yang mendasari data dan merepresentasikannya agar lebih mudah dipisahkan untuk tugas prediksi berikutnya. Representasi yang baik tidak hanya memampatkan informasi, tetapi juga mengorganisasi struktur data sehingga faktor penting dapat diakses secara eksplisit oleh model.
+
+% Dalam pembelajaran mendalam, pembelajaran representasi memegang peran sentral karena memungkinkan sistem secara otomatis menemukan representasi yang diperlukan untuk deteksi fitur atau klasifikasi langsung dari data mentah. Proses ini menghasilkan vektor representasi $\phi(x)$ yang memuat informasi relevan dengan tugas, sekaligus menekan dimensi dan variasi yang tidak diperlukan. Representasi yang baik memudahkan fungsi $f$ sederhana (misalnya regresi linear atau \emph{softmax}) untuk mencapai kinerja tinggi tanpa rekayasa fitur tambahan.
+
+% Secara ringkas, pembelajaran representasi merupakan kerangka umum untuk
+% \begin{enumerate}[label=(\alph*)]
+%     \item mempelajari pemetaan $\phi$ dari data mentah $x$ ke ruang fitur laten $h$,
+%     \item menstrukturkan ulang informasi agar faktor variasi yang relevan menjadi terpisah, dan
+%     \item memfasilitasi pembelajaran fungsi prediksi sederhana $f$ di ruang laten.
+% \end{enumerate}
+% Pendekatan ini menjadi dasar konseptual bagi jaringan saraf tiruan modern dan seluruh keluarga model pembelajaran mendalam.
+
+% \begin{definisi}[\textbf{Sifat Representasi yang Baik}]
+%     Menurut \citet{goodfellow2016}, representasi yang baik adalah transformasi $\phi(x)$ dari data mentah $x$ ke ruang laten yang memenuhi sifat-sifat berikut.
+%     \begin{enumerate}[label=(\alph*)]
+%         \item Invariansi, yaitu Representasi tidak berubah terhadap variasi tak relevan pada input, seperti translasi, rotasi, atau gangguan acak yang tidak memengaruhi makna semantik.
+%         \item \emph{Disentanglement}, yaitu Setiap dimensi dalam ruang laten memuat faktor penyebab utama yang terpisah, sehingga informasi penting tidak tercampur.
+%         \item Efisiensi, yaitu Representasi bersifat jarang (sparse) atau berdimensi rendah, sehingga memudahkan penyimpanan, pemrosesan, dan generalisasi.
+%         \item Transferabilitas, yaitu Representasi dapat digunakan ulang untuk berbagai tugas berbeda tanpa pelatihan ulang yang ekstensif.
+%     \end{enumerate}
+% \end{definisi}
+
+% Suatu transformasi $\phi$ dikatakan menghasilkan representasi yang baik jika:
+% \begin{enumerate}[label=(\alph*)]
+%     \item memisahkan faktor-faktor variasi utama dalam data sehingga fungsi target $f$ dapat dipelajari secara sederhana di ruang laten,
+%     \item membuat prediksi menjadi lebih mudah dan stabil terhadap perubahan kecil pada input yang tidak relevan, dan
+%     \item memungkinkan generalisasi dan transfer ke tugas baru dengan sedikit data berlabel.
+% \end{enumerate}
+
+% \subsection{Landasan Teoretis Representasi}
+
+% \begin{definisi}[\textbf{Invariansi dan Equivariansi, \citealp{goodfellow2016}}]
+%     Suatu representasi $\phi:\mathcal{X}\to\mathcal{Z}$ dikatakan \emph{invarian} terhadap grup transformasi $G$ jika memenuhi
+%     \begin{equation}
+%         \phi(g\cdot x)=\phi(x), \qquad \forall g\in G,\ x\in\mathcal{X}.
+%     \end{equation}
+%     Sebaliknya, $\phi$ disebut \emph{equivariant} terhadap $G$
+%     jika terdapat aksi linear $T_g$ pada $\mathcal{Z}$ sehingga
+%     \begin{equation}
+%         \phi(g\cdot x)=T_g\,\phi(x).
+%     \end{equation}
+% \end{definisi}
+
+% Representasi yang baik seharusnya invarian terhadap faktor-faktor yang tidak memengaruhi konsep target, seperti translasi kecil pada citra atau perubahan kondisi pencahayaan. Invariansi menjadi kunci agar model tidak sensitif terhadap variasi yang tidak bermakna secara semantik.
+
+% \begin{contoh}
+%     Pada klasifikasi digit MNIST, translasi kecil pada posisi angka
+%     tidak boleh mengubah representasi laten digit tersebut.
+%     Dalam jaringan konvolusional, fungsi $\phi$ dirancang
+%     agar bersifat \emph{equivariant} terhadap translasi,
+%     sehingga pergeseran lokasi pada ruang input
+%     hanya memindahkan posisi aktivasi tanpa mengubah nilainya.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Hipotesis Manifold, \citealp{bengio2013}}]
+%     Misalkan data $x\in\mathbb{R}^D$ terdistribusi di sekitar Manifold berdimensi rendah
+%     $\mathcal{M}\subset\mathbb{R}^D$.
+%     Hipotesis Manifold menyatakan bahwa terdapat pemetaan kontinu
+%     \begin{equation}
+%         \phi:\mathbb{R}^D\to\mathbb{R}^d, \quad d\ll D,
+%     \end{equation}
+%     yang memparametrisasi koordinat intrinsik Manifold $\mathcal{M}$,
+%     sehingga setiap titik $x$ dapat direpresentasikan oleh koordinat laten $\phi(x)$.
+% \end{definisi}
+
+% Manifold adalah konsep matematis yang merepresentasikan himpunan titik-titik dalam ruang berdimensi tinggi yang secara lokal menyerupai ruang Euclidean berdimensi lebih rendah. Dalam konteks pembelajaran mesin, Manifold digunakan untuk menjelaskan bahwa data berdimensi tinggi sebenarnya terletak pada atau di sekitar permukaan berdimensi rendah di dalam ruang fitur aslinya. Misalnya, meskipun gambar digital memiliki ribuan piksel (dimensi tinggi), variasi utama seperti pose, pencahayaan, atau ekspresi wajah hanya membentuk beberapa derajat kebebasan (dimensi rendah).
+
+% Hipotesis Manifold menyatakan bahwa data nyata tidak tersebar secara acak di seluruh ruang berdimensi tinggi, melainkan terkonsentrasi di sekitar Manifold berdimensi rendah yang dibentuk oleh faktor-faktor variasi utama. Oleh karena itu, pembelajaran representasi yang efektif bertujuan menemukan koordinat intrinsik Manifold ini, sehingga model dapat memisahkan faktor penyebab utama dan mengabaikan variasi yang tidak relevan. Pendekatan ini mendasari banyak metode modern, seperti \emph{autoencoder}, pembelajaran berbasis graf, dan pembelajaran semi-terawasi, yang semuanya memanfaatkan struktur Manifold untuk meningkatkan generalisasi dan efisiensi model.
+
+% \begin{teorema}[\textbf{Hipotesis Manifold dan Invariansi, \citealp{goodfellow2016}}]
+%     Jika data $x\in\mathbb{R}^D$ berada pada Manifold berdimensi rendah $\mathcal{M}$,
+%     dan grup transformasi $G$ bertindak pada $\mathcal{M}$,
+%     maka terdapat representasi $\phi$ yang \emph{equivariant} terhadap aksi $G$
+%     yang memproyeksikan $\mathcal{M}$ ke koordinat intrinsiknya.  
+%     Secara khusus, $\phi(g\!\cdot\!x)=T_g\,\phi(x)$
+%     dengan $T_g$ aksi linear pada ruang laten.
+% \end{teorema}
+
+% \begin{contoh}
+%     Dalam pengenalan wajah, meskipun setiap gambar memiliki ribuan piksel,
+%     variasi utamanya (arah pandangan, pencahayaan, ekspresi)
+%     dapat dijelaskan oleh beberapa koordinat laten berdimensi rendah.
+%     Fungsi $\phi$ bertugas memetakan gambar beresolusi tinggi tersebut
+%     ke ruang laten yang memuat koordinat intrinsik wajah yang sama
+%     terlepas dari variasi pose dan pencahayaan.
+% \end{contoh}
+
+% \section{Pembelajaran Semi-Terawasi}
+
+% Pembelajaran semi-terawasi (\emph{semi-supervised learning}, SSL) adalah paradigma pembelajaran mesin yang memanfaatkan kombinasi data berlabel dalam jumlah kecil dan data tak berlabel dalam jumlah besar untuk meningkatkan kinerja model. Pendekatan ini sangat relevan dalam konteks praktis karena pelabelan data seringkali memerlukan biaya tinggi, waktu lama, dan keahlian khusus, sementara data tak berlabel dapat diperoleh dengan mudah dan murah. Dengan memanfaatkan struktur intrinsik dari data tak berlabel, SSL dapat menghasilkan model dengan generalisasi lebih baik dibandingkan pembelajaran terawasi murni yang hanya mengandalkan data berlabel terbatas.
+
+% \subsection{Kerangka Dasar}
+
+% Dalam banyak aplikasi pembelajaran mesin, memperoleh label memerlukan intervensi manusia yang mahal atau proses eksperimen yang memakan waktu. Sebagai contoh, dalam klasifikasi dokumen teks, pelabelan manual ribuan artikel memerlukan waktu dan keahlian domain yang signifikan. Sebaliknya, mengumpulkan dokumen tak berlabel dari internet sangat mudah. SSL berupaya menjembatani kesenjangan ini dengan mengekstraksi informasi dari distribusi data tak berlabel untuk memperkaya proses pembelajaran.
+
+% \begin{definisi}[\textbf{Kerangka Pembelajaran Semi-Terawasi, \citep{chapelle2006}}]
+% Diberikan himpunan data berlabel $\mathcal{D}_\ell = \{(\*x_i, y_i)\}_{i=1}^{\ell}$ dan himpunan data tak berlabel $\mathcal{D}_u = \{\*x_j\}_{j=\ell+1}^{n}$, dengan $\*x \in \mathcal{X} \subseteq \mathbb{R}^p$ adalah vektor fitur dan $y \in \mathcal{Y}$ adalah label (diskret untuk klasifikasi atau kontinu untuk regresi). Dalam konteks SSL, jumlah data tak berlabel umumnya jauh lebih besar daripada data berlabel, yaitu $u = n - \ell \gg \ell$.
+
+% Tujuan SSL adalah mempelajari fungsi prediksi $f: \mathcal{X} \to \mathcal{Y}$ yang memanfaatkan informasi dari kedua himpunan data. Formulasi umum masalah optimasi SSL adalah
+% \begin{equation}
+% \min_{f \in \mathcal{F}} \quad \underbrace{\frac{1}{\ell} \sum_{i=1}^{\ell} \mathcal{L}(f(\*x_i), y_i)}_{\text{kerugian terawasi}} + \lambda \underbrace{\mathcal{R}(f; \mathcal{D}_u)}_{\text{regularisasi dari data tak berlabel}},
+% \end{equation}
+% dengan $\mathcal{F}$ adalah kelas fungsi hipotesis, $\mathcal{L}$ adalah fungsi kerugian terawasi, $\mathcal{R}$ adalah term regularisasi yang mengekstrak struktur dari data tak berlabel, dan $\lambda > 0$ adalah parameter yang mengatur trade-off antara kedua komponen tersebut.
+% \end{definisi}
+
+% \begin{contoh}
+% Dalam klasifikasi dokumen, misalkan terdapat 100 dokumen berlabel tentang topik \emph{politik} dan \emph{olahraga}, serta 10{,}000 dokumen tak berlabel. SSL dapat memanfaatkan kemiripan antar dokumen tak berlabel untuk membentuk klaster yang koheren, sehingga model dapat belajar bahwa dokumen dengan kata-kata mirip cenderung memiliki label yang sama, meskipun label eksplisit tidak tersedia untuk sebagian besar dokumen.
+% \end{contoh}
+
+
+% Menurut \citet{chapelle2006}, SSL dapat dikategorikan menjadi dua kerangka sebagai berikut.
+% \begin{enumerate}[label=(\alph*)]
+%     \item Pembelajaran induktif, yaitu model mempelajari fungsi $f:\mathcal{X}\to\mathcal{Y}$ 
+%     yang dapat digeneralisasikan ke data baru di luar himpunan pelatihan.
+%     Ini adalah pendekatan umum yang digunakan dalam kebanyakan aplikasi modern.
+%     \item Pembelajaran transduktif, yang tujuannya hanya untuk memprediksi label dari sejumlah data tak berlabel tertentu
+%     yang telah diketahui selama pelatihan, tanpa menggeneralisasi ke sampel baru.
+% \end{enumerate}
+% \citet{grandvalet2005semi} menambahkan bahwa SSL dapat dilihat
+% sebagai jembatan antara pembelajaran induktif dan transduktif,
+% karena ia memanfaatkan informasi struktur global dari semua data
+% untuk memperbaiki estimasi pada titik tak berlabel yang diamati.
+
+
+% \subsection{Asumsi Fundamental dalam Pembelajaran Semi-Terawasi}
+
+% Keberhasilan SSL bergantung pada asumsi-asumsi tertentu tentang struktur data yang menghubungkan distribusi fitur $p(\*x)$ dengan distribusi label kondisional $p(y \mid \*x)$. Tanpa asumsi ini, data tak berlabel tidak memberikan informasi tambahan yang berguna \citep{chapelle2006}.
+
+% \begin{definisi}[\textbf{Asumsi Kehalusan (\emph{Smoothness Assumption}), \citep{chapelle2006}}]
+% Jika dua titik $\*x_1, \*x_2 \in \mathcal{X}$ berada dalam daerah berdensitas tinggi dan berdekatan satu sama lain, maka label yang bersesuaian $y_1$ dan $y_2$ cenderung sama. Secara formal, fungsi $f$ yang baik harus bersifat halus pada daerah berdensitas tinggi, yaitu
+% \begin{equation}
+% \|\*x_i - \*x_j\|^2 \text{ kecil} \implies |f(\*x_i) - f(\*x_j)| \text{ kecil},
+% \end{equation}
+% untuk $\*x_i, \*x_j$ yang terletak pada daerah dengan $p(\*x)$ tinggi.
+% \end{definisi}
+
+% \begin{contoh}
+% Dalam pengenalan gambar wajah, dua gambar wajah yang hanya berbeda sedikit dalam pencahayaan atau rotasi kecil (jarak Euclidean kecil dalam ruang piksel) seharusnya memiliki identitas yang sama. Asumsi kehalusan menyatakan bahwa fungsi klasifikasi tidak boleh berubah drastis pada perubahan kecil seperti ini.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Asumsi Klaster (\emph{Cluster Assumption}), \citep{chapelle2006}}]
+% Data cenderung membentuk klaster-klaster yang terpisah, dan titik-titik dalam klaster yang sama cenderung memiliki label yang sama. Batas keputusan yang baik seharusnya melewati daerah berdensitas rendah, bukan memotong klaster.
+
+% Secara matematis, jika terdapat jalur $\gamma: [0,1] \to \mathcal{X}$ yang menghubungkan $\*x_i$ dengan $\*x_j$ sedemikian sehingga $p(\gamma(t))$ tinggi untuk semua $t \in [0,1]$, maka $f(\*x_i) \approx f(\*x_j)$.
+% \end{definisi}
+
+% \begin{contoh}
+% Misalkan data terdiri dari dua klaster Gaussian yang terpisah jauh. Jika beberapa titik dari klaster pertama diberi label ``positif'' dan beberapa titik dari klaster kedua diberi label ``negatif'', maka batas keputusan optimal seharusnya berada di antara kedua klaster (daerah berdensitas rendah), bukan memotong salah satu klaster.
+% \end{contoh}
+
+% \begin{definisi}[\textbf{Asumsi Manifold (\emph{Manifold Assumption}), \citep{chapelle2006}}]
+% Data berdimensi tinggi $\*x \in \mathbb{R}^p$ sebenarnya terletak pada atau dekat dengan Manifold berdimensi rendah $\mathcal{M} \subset \mathbb{R}^p$. Fungsi $f$ yang baik seharusnya bervariasi secara halus sepanjang struktur geometri Manifold $\mathcal{M}$ ini, bukan sepanjang ruang ambien $\mathbb{R}^p$.
+
+% Asumsi ini memotivasi penggunaan regularisasi berbasis geometri, seperti Laplasian graf, untuk menekan variasi $f$ sepanjang Manifold yang didefinisikan oleh data.
+% \end{definisi}
+
+% \begin{contoh}
+% Dalam \emph{dataset} gambar wajah, meskipun setiap gambar memiliki ribuan piksel (dimensi tinggi), variasi sesungguhnya (pose, ekspresi, pencahayaan) berada pada Manifold berdimensi jauh lebih rendah. SSL yang memanfaatkan asumsi Manifold akan mempelajari representasi yang menghormati struktur geometri intrinsik ini.
+% \end{contoh}
+
+% \subsection{Fungsi Kerugian untuk Pembelajaran Semi-Terawasi}
+
+% Desain fungsi kerugian yang tepat merupakan aspek krusial dalam SSL karena menentukan bagaimana informasi dari data tak berlabel dimanfaatkan untuk memperbaiki model. Berbeda dengan pembelajaran terawasi yang hanya menggunakan kerugian pada data berlabel, SSL memerlukan komponen tambahan yang mengekstraksi informasi dari data tak berlabel \citep{chapelle2006}.
+
+% \begin{definisi}[\textbf{Struktur Umum Fungsi Kerugian SSL, \citep{chapelle2006}}]
+% Fungsi kerugian total dalam SSL dapat didekomposisi menjadi tiga komponen:
+% \begin{equation}
+% \mathcal{L}_{\text{total}} = \mathcal{L}_{\text{supervised}} + \lambda_u \mathcal{L}_{\text{unsupervised}} + \lambda_r \mathcal{R}(\theta),
+% \end{equation}
+% dengan:
+% \begin{itemize}
+%     \item $\mathcal{L}_{\text{supervised}} = \frac{1}{\ell} \sum_{i=1}^{\ell} \ell(f_\theta(\*x_i), y_i)$ adalah kerugian terawasi standar pada data berlabel,
+%     \item $\mathcal{L}_{\text{unsupervised}}$ adalah kerugian yang mengekstrak informasi dari data tak berlabel,
+%     \item $\mathcal{R}(\theta)$ adalah regularisasi pada parameter model,
+%     \item $\lambda_u, \lambda_r > 0$ adalah hyperparameter yang mengontrol kontribusi masing-masing komponen.
+% \end{itemize}
+% \end{definisi}
+
+% Komponen kunci yang membedakan berbagai metode SSL adalah desain $\mathcal{L}_{\text{unsupervised}}$. Beberapa pendekatan utama akan dijelaskan berikut ini.
+
+% Salah satu prinsip fundamental untuk memanfaatkan data tak berlabel adalah \emph{entropy minimization}, yang didasarkan pada intuisi bahwa model yang baik seharusnya membuat prediksi yang percaya diri (\emph{low entropy}) pada semua data, termasuk data tak berlabel \citep{grandvalet2005semi}.
+
+% \begin{definisi}[\textbf{Kerugian Entropi untuk SSL, \citep{grandvalet2005semi}}]
+% Untuk klasifikasi multi-kelas dengan $C$ kelas, diberikan model probabilistik yang menghasilkan distribusi prediksi $\hat{\*p}(y \mid \*x) = f_\theta(\*x) \in \Delta^{C-1}$ (simplex probabilitas $C$-dimensi). Entropi kondisional dari prediksi adalah
+% \begin{equation}
+% H(y \mid \*x; \theta) = -\sum_{c=1}^{C} \hat{p}_c(\*x; \theta) \log \hat{p}_c(\*x; \theta),
+% \end{equation}
+% dengan $\hat{p}_c(\*x; \theta)$ adalah probabilitas prediksi untuk kelas $c$.
+
+% Fungsi kerugian minimisasi entropi untuk data tak berlabel didefinisikan sebagai rata-rata entropi prediksi:
+% \begin{equation}
+% \mathcal{L}_{\text{entropy}} = \frac{1}{u} \sum_{j=\ell+1}^{n} H(y \mid \*x_j; \theta) = -\frac{1}{u} \sum_{j=\ell+1}^{n} \sum_{c=1}^{C} \hat{p}_c(\*x_j; \theta) \log \hat{p}_c(\*x_j; \theta).
+% \end{equation}
+% Meminimalkan $\mathcal{L}_{\text{entropy}}$ mendorong model untuk membuat prediksi yang lebih percaya diri (puncak distribusi lebih tajam) pada data tak berlabel.
+% \end{definisi}
+
+% \begin{contoh}
+% Untuk klasifikasi biner, misalkan model memprediksi probabilitas kelas positif $\hat{p}(\*x) = 0.5$ untuk suatu titik tak berlabel. Entropi prediksi adalah
+% \[
+% H = -[0.5 \log 0.5 + 0.5 \log 0.5] = -\log 0.5 \approx 0.693 \text{ (maksimum)}.
+% \]
+% Sebaliknya, jika model percaya diri dengan $\hat{p}(\*x) = 0.95$, maka
+% \[
+% H = -[0.95 \log 0.95 + 0.05 \log 0.05] \approx 0.198 \text{ (rendah)}.
+% \]
+% Minimisasi entropi mendorong model menuju prediksi percaya diri seperti kasus kedua.
+% \end{contoh}
+
+% Pendekatan lain yang populer adalah \emph{consistency regularization}, yang didasarkan pada prinsip bahwa prediksi model seharusnya konsisten terhadap perturbasi kecil pada input atau model itu sendiri.
+
+% \begin{definisi}[\textbf{Kerugian Konsistensi, \citep{chapelle2006}}]
+% Untuk augmentasi atau perturbasi $\mathcal{T}$ (misalnya, noise Gaussian, dropout, augmentasi data), kerugian konsistensi didefinisikan sebagai
+% \begin{equation}
+% \mathcal{L}_{\text{consistency}} = \frac{1}{u} \sum_{j=\ell+1}^{n} \mathbb{E}_{\tau \sim \mathcal{T}} \big[\|\hat{\*p}(\tau(\bm{x}_j); \theta) - \hat{\*p}(\bm{x}_j; \theta)\|^2\big],
+% \end{equation}
+% atau dalam bentuk praktis menggunakan sampling:
+% \begin{equation}
+% \mathcal{L}_{\text{consistency}} = \frac{1}{u} \sum_{j=\ell+1}^{n} \|\hat{\*p}(\tau(\bm{x}_j); \theta) - \hat{\*p}(\bm{x}_j; \theta)\|^2.
+% \end{equation}
+% Kerugian ini mendorong model untuk menghasilkan prediksi yang sama untuk input yang telah diperturbasi dan input asli.
+% \end{definisi}
+
+% \begin{contoh}
+% Dalam klasifikasi gambar, augmentasi $\tau$ dapat berupa rotasi kecil, translasi, atau perubahan brightness. Untuk gambar wajah $\bm{x}_j$, jika model memprediksi identitas ``Alice'' dengan probabilitas 0.9, maka setelah rotasi 5 derajat $\tau(\bm{x}_j)$, model seharusnya tetap memprediksi ``Alice'' dengan probabilitas mendekati 0.9. Kerugian konsistensi menghukum deviasi antara kedua prediksi ini.
+% \end{contoh}
+
+% Teknik yang lebih sederhana namun efektif adalah \emph{pseudo-labeling}, di mana model digunakan untuk membuat label sementara untuk data tak berlabel, yang kemudian diperlakukan sebagai label sebenarnya dalam iterasi pelatihan berikutnya.
+
+% \begin{definisi}[\textbf{Kerugian Pseudo-Labeling, \citep{chapelle2006}}]
+% Untuk setiap titik tak berlabel $\*x_j$, definisikan label seementara sebagai prediksi kelas dengan probabilitas tertinggi:
+% \begin{equation}
+% \tilde{y}_j = \arg\max_{c \in \{1, \ldots, C\}} \hat{p}_c(\*x_j; \theta).
+% \end{equation}
+% Kerugian pseudo-labeling adalah:
+% \begin{equation}
+% \mathcal{L}_{\text{pseudo}} = \frac{1}{u} \sum_{j=\ell+1}^{n} \ell(f_\theta(\*x_j), \tilde{y}_j),
+% \end{equation}
+% dengan $\ell$ adalah fungsi kerugian standar (misalnya, cross-entropy).
+% \end{definisi}
+
+% \begin{contoh}
+% Misalkan model memprediksi distribusi probabilitas $[0.05, 0.15, 0.80]$ untuk tiga kelas pada titik tak berlabel $\*x_j$. Pseudo-label adalah $\tilde{y}_j = 3$ (kelas ketiga). Pada iterasi pelatihan berikutnya, titik $\*x_j$ dengan pseudo-label 3 ditambahkan ke set pelatihan dan diperlakukan seolah-olah labelnya adalah 3.
+% \end{contoh}
+
+% Untuk data yang dapat direpresentasikan sebagai graf (atau ketika graf kemiripan dapat dikonstruksi), regularisasi berbasis Laplasian graf menyediakan cara alami untuk mengimplementasikan asumsi kehalusan.
+
+% \begin{definisi}[\textbf{Regularisasi Graf Laplacian, \citep{chapelle2006}}]
+% Diberikan graf kemiripan dengan matriks bobot $\*W$ dan Laplasian $\*L = \*D - \*W$, regularisasi graf untuk fungsi $f$ didefinisikan sebagai
+% \begin{equation}
+% \mathcal{R}_{\text{graph}}(f) = \frac{1}{2} \sum_{i,j=1}^{n} w_{ij} \|f(\*x_i) - f(\*x_j)\|^2 = \*f^\top \*L \*f,
+% \end{equation}
+% dengan $\*f = (f(\bm{x}_1), \ldots, f(\*x_n))^\top$.
+
+% Untuk model \emph{neural} yang menghasilkan representasi laten $\bm{h}_i = \phi_\theta(\*x_i)$, regularisasi graf dapat diterapkan pada representasi:
+% \begin{equation}
+% \mathcal{L}_{\text{graph}} = \frac{1}{2} \sum_{i,j=1}^{n} w_{ij} \|\bm{}_i - \bm{h}_j\|^2.
+% \end{equation}
+% \end{definisi}
+
+% \begin{contoh}
+% Untuk \emph{dataset} dengan 5 titik dan graf kemiripan berbentuk jalur linear $1 - 2 - 3 - 4 - 5$ dengan bobot seragam $w_{ij} = 1$, jika representasi laten adalah $\bm{h} = [0, 0.2, 0.4, 0.6, 1]^\top$, maka
+% \begin{align*}
+% \mathcal{L}_{\text{graph}} &= \frac{1}{2} [|0 - 0.2|^2 + |0.2 - 0.4|^2 + |0.4 - 0.6|^2 + |0.6 - 1|^2] \\
+% &= \frac{1}{2} [0.04 + 0.04 + 0.04 + 0.16] = 0.14.
+% \end{align*}
+% Regularisasi ini mendorong representasi simpul yang berdekatan dalam graf untuk memiliki nilai yang mirip.
+% \end{contoh}

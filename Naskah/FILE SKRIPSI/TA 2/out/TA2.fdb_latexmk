@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex out/TA2"] 1763108155.8194 "out/TA2.aux" "out/TA2.bbl" "out/TA2" 1766799729.49589 0
-  "./references2.bib" 1759879376 24856 2613d72b7a100b1b2418931adce60e63 ""
+["bibtex out/TA2"] 1767155589.86645 "out/TA2.aux" "out/TA2.bbl" "out/TA2" 1767155596.00267 0
+  "./references2.bib" 1767154654 25518 3256670676deb8a6a1f8eb4a7f33d027 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/bibtex/bst/apacite/apacite.bst" 1374952728 146156 9d7b79dbf9d91133318126032cff8c27 ""
-  "out/TA2.aux" 1766799728 25981 e4a998df212539dce7c405b1eed995bb "pdflatex"
+  "out/TA2.aux" 1767155594 28691 ceaa9ebdf4822fd850218a62b41cdbaa "pdflatex"
   (generated)
   "out/TA2.bbl"
   "out/TA2.blg"
   (rewritten before read)
-["pdflatex"] 1766799718.14924 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex" "out/TA2.pdf" "TA2" 1766799729.49647 0
+["pdflatex"] 1767155590.24847 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex" "out/TA2.pdf" "TA2" 1767155596.00325 0
   "../BAB 1, 2, 5/Bab1.tex" 1759889719 9550 b34361cf5bd9019a7dcfaffac22cd780 ""
-  "../BAB 1, 2, 5/Bab2.tex" 1765272168 187741 0eb97f4b8c047d1a4f6cc2694ac7f896 ""
+  "../BAB 1, 2, 5/Bab2.tex" 1767155583 174568 dd2eb680faf6d70f58175ca6717c3dc8 ""
   "../BAB 1, 2, 5/Bab5.tex" 1759537914 306 96933ad69c4dcb5df6f179c995c0450e ""
   "Bab3TA2.tex" 1763108149 39843 4a6c0979be74fafe25976ea5381139e3 ""
   "Bab4TA2.tex" 1759537914 2028 f502f575ad75190eef105d6a65073ac2 ""
@@ -72,7 +72,6 @@
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/tfm/public/latex-fonts/lasy7.tfm" 1136765053 520 a74c6ed8cb48679fdc3ea874d9d34a7e ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/tfm/public/latex-fonts/lasy8.tfm" 1136765053 520 7bb3abb160b19e0ed6ac404bb59052b7 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/tfm/public/latex-fonts/lasyb10.tfm" 1136765053 520 4bf1455197d190cb95c579bde4c2f0ba ""
-  "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbsy10.pfb" 1247596666 34793 ae7a3e2775dc0ce90475eeabcb46f9f1 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb" 1247596666 32166 b0c356b15f19587482a9217ce1d8fa67 ""
@@ -271,18 +270,17 @@
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "GAMBAR/Flowchart GNN GTVC GTWR.png" 1759800308 840127 cb4a746415ab1568886718e8bbc454b6 ""
-  "GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png" 1759537914 20776 fbd2b283aca0411fb606b769e017ee2e ""
   "GAMBAR/patrick.jpeg" 1759537914 13061 8367fe6623089996f82b185cd8a786e1 ""
   "Gambar/The_estimation_process_of_GTNNWR_model.jpeg" 1759797864 136419 5d53d432de9bb54b02407cbb11638c37 ""
   "TA2.tex" 1766799728 9274 52710ab69ca21ef657ff6b237ec0e867 ""
   "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 2/TA2.tex" 1766799728 9274 52710ab69ca21ef657ff6b237ec0e867 ""
   "logougm.png" 1759537914 71376 6444378f2f87455011c1a2cc67b1629f ""
-  "out/TA2.aux" 1766799728 25981 e4a998df212539dce7c405b1eed995bb "pdflatex"
-  "out/TA2.bbl" 1763108156 26817 6f3c299e7fff75264e13040fe22585c4 "bibtex out/TA2"
-  "out/TA2.lof" 1766799728 1744 d0cbc7e79eb89b15363757032c6a5d98 "pdflatex"
-  "out/TA2.lot" 1766799728 228 f0e46f6c6273db1d145a45111af1c0d6 "pdflatex"
-  "out/TA2.out" 1766799728 18409 706a3051304f7a9676dbba39a2116778 "pdflatex"
-  "out/TA2.toc" 1766799728 8396 77572671201aa166894f321c9720ace2 "pdflatex"
+  "out/TA2.aux" 1767155594 28691 ceaa9ebdf4822fd850218a62b41cdbaa "pdflatex"
+  "out/TA2.bbl" 1767155590 24753 85831157b7e0da111830b148d5033a56 "bibtex out/TA2"
+  "out/TA2.lof" 1767155594 1815 304b964def221f14a0ee19b2d6f76cc2 "pdflatex"
+  "out/TA2.lot" 1767155594 228 f0e46f6c6273db1d145a45111af1c0d6 "pdflatex"
+  "out/TA2.out" 1767155594 23173 7e20acd9537d0d8a6e8a10b686c4e67a "pdflatex"
+  "out/TA2.toc" 1767155594 10640 b17e04e136489561cfdc248967412851 "pdflatex"
   "skripsistatugm.cls" 1763108016 16686 cd2d526eed0c5d4d3089c5a7d19586a1 ""
   "syntax R template.R" 1759537914 23 4a3aeca355ee0b0a078ca428223167dc ""
   (generated)

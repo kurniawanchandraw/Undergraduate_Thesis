@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.4)  8 OCT 2025 09:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.4)  31 DEC 2025 10:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -742,7 +742,7 @@ Package hyperref Info: Link coloring OFF on input line 24.
 \@outlinefile=\write4
 \openout4 = `LaporanTA1.out'.
 
-<logougm.png, id=310, 110.5731pt x 112.2594pt>
+<logougm.png, id=306, 110.5731pt x 112.2594pt>
 File: logougm.png Graphic file (type png)
 <use logougm.png>
 Package pdftex.def Info: logougm.png  used on input line 25.
@@ -812,12 +812,12 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6.02249> not available
 
 
 ]
-Overfull \hbox (0.82065pt too wide) in paragraph at lines 48--48
+Overfull \hbox (0.82065pt too wide) in paragraph at lines 47--47
 []|$[]$[]\OT1/ptm/b/n/12.045 PENGEMBANGAN PEM-BO-BOT-AN BER-BA-SIS JA-RING-AN 
  []
 
 
-Overfull \hbox (0.6573pt too wide) in paragraph at lines 51--51
+Overfull \hbox (0.6573pt too wide) in paragraph at lines 50--50
  []| \OT1/ptm/m/n/12.045 4.1.2.  []\OT1/ptm/m/it/12.045 Spa-ti-al and At-tri-bu-te Ne-u-ral Ne-twork We-i-ghted Re-gres-sion \OT1/ptm/m/n/12.045 (SAN- 
  []
 
@@ -827,7 +827,7 @@ Overfull \hbox (0.6573pt too wide) in paragraph at lines 51--51
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.75 ...-GTVC dan GNN-GTWR}{124}{subsection.4.8.2}
+l.76 ...r}{DAFTAR PUSTAKA}{127}{figure.caption.15}
                                                   % [1])
 \tf@toc=\write5
 \openout5 = `LaporanTA1.toc'.
@@ -885,7 +885,7 @@ BAB II.
 [7
 
 ]
-Overfull \hbox (5.41139pt too wide) in paragraph at lines 52--54
+Overfull \hbox (5.41139pt too wide) in paragraph at lines 47--49
 \OT1/ptm/m/n/12.045 Dengan de-mi-ki-an, ke-be-ra-da-an in-vers adi-tif dan in-vers per-ka-li-an ju-ga ter-ja-min. Akhir-
  []
 
@@ -898,19 +898,19 @@ Overfull \hbox (5.41139pt too wide) in paragraph at lines 52--54
 [10]
 
 [11]
-Overfull \hbox (3.87686pt too wide) in paragraph at lines 157--158
+Overfull \hbox (3.87686pt too wide) in paragraph at lines 152--153
 [][]\OT1/ptm/b/n/12.045 Teorema 2.1.11 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Karakterisasi Ba-sis, ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Se-bu-ah \OT1/ptm/m/n/12.045 list \OT1/ptm/m/it/12.045 da-ri vektor-vektor
  []
 
 
-Overfull \hbox (0.74353pt too wide) in paragraph at lines 163--165
+Overfull \hbox (0.74353pt too wide) in paragraph at lines 158--160
 \OT1/ptm/b/n/12.045 Bukti. \OT1/ptm/m/n/12.045 Per-ta-ma an-da-ik-an bah-wa $\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]$ \OT1/ptm/m/n/12.045 ada-lah ba-sis da-ri $\OML/cmm/m/it/12 V$\OT1/ptm/m/n/12.045 . Se-bab $\OMS/cmsy/m/n/12 f\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]\OMS/cmsy/m/n/12 g$
  []
 
 
 
 [12]
-Overfull \hbox (10.56091pt too wide) in paragraph at lines 192--194
+Overfull \hbox (10.56091pt too wide) in paragraph at lines 187--189
 [][]\OT1/ptm/b/n/12.045 Definisi 2.1.13 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Dimensi ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Di-men-si da-ri su-a-tu ru-ang vek-tor berdimensi-
  []
 
@@ -935,120 +935,99 @@ Overfull \hbox (10.56091pt too wide) in paragraph at lines 192--194
 [21]
 
 [22]
-Overfull \hbox (18.56406pt too wide) detected at line 606
+
+[23]
+
+[24]
+Overfull \hbox (18.56406pt too wide) detected at line 735
 [] [] [] []
  []
 
 
 
-[23]
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 731.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 731.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (3.53163pt too wide) in paragraph at lines 736--737
-[][]\OT1/ptm/b/n/12.045 Definisi 2.1.38 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/it/12.045 Null Spa-ce\OT1/ptm/b/n/12.045 , \OT1/ptm/b/it/12.045 Ra-nge\OT1/ptm/b/n/12.045 , dan \OT1/ptm/b/it/12.045 Rank\OT1/ptm/b/n/12.045 , ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Un-tuk $\OML/cmm/m/it/12 T \OMS/cmsy/m/n/12 2 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V; W\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
+[25]
+Overfull \hbox (9.36606pt too wide) in paragraph at lines 791--792
+[][]\OT1/ptm/b/n/12.045 Teorema 2.1.41 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Invers Ma-triks de-ngan Adjo-in\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Ji-ka $\OT1/cmr/bx/n/12 A \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 K[]$ \OT1/ptm/m/it/12.045 de-ngan $[]\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 A\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 6\OT1/cmr/m/n/12 =
  []
 
 
-
-[24]
-
-[25]
 
 [26]
 
 [27]
 
 [28]
-Overfull \hbox (1.80821pt too wide) in paragraph at lines 987--988
- [][] 
+Overfull \hbox (0.95236pt too wide) detected at line 855
+[]\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 A\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 a[]C[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 a[]C[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 a[]C[] \OT1/cmr/m/n/12 = 1 \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 24) + 2 \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 20 + 3 \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 5) = \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 24 + 40 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 15 = 1\OML/cmm/m/it/12 :
+ []
+
+
+Overfull \hbox (25.95924pt too wide) detected at line 866
+[]
  []
 
 
 
 [29]
-Overfull \hbox (3.88951pt too wide) in paragraph at lines 1044--1045
-[][]\OT1/ptm/b/n/12.045 Teorema 2.1.49 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Keberadaan Ni-lai Ei-gen pa-da Ru-ang Vek-tor Kom-pleks, ([]Axler[],
+
+[30]
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 955.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 955.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (3.53163pt too wide) in paragraph at lines 960--961
+[][]\OT1/ptm/b/n/12.045 Definisi 2.1.46 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/it/12.045 Null Spa-ce\OT1/ptm/b/n/12.045 , \OT1/ptm/b/it/12.045 Ra-nge\OT1/ptm/b/n/12.045 , dan \OT1/ptm/b/it/12.045 Rank\OT1/ptm/b/n/12.045 , ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Un-tuk $\OML/cmm/m/it/12 T \OMS/cmsy/m/n/12 2 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V; W\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
  []
 
 
-
-[30]
 
 [31]
 
 [32]
 
 [33]
-Overfull \hbox (11.83537pt too wide) in paragraph at lines 1145--1146
-\OT1/ptm/m/n/12.045 Dalam ka-sus $\OML/cmm/m/it/12 p \OT1/cmr/m/n/12 = 2$\OT1/ptm/m/n/12.045 , su-bru-ang da-ri $\OML/cmm/m/it/12 G$ \OT1/ptm/m/n/12.045 yang di-ha-silk-an da-ri vektor-vektor $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]; [] ; x[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 ,
- []
-
-
-Overfull \hbox (22.27591pt too wide) in paragraph at lines 1176--1178
-[][]\OT1/ptm/b/n/12.045 Definisi 2.1.59 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Ruang Ten-sor, ([]Gre-ub[], []1978[]; []Hack-bu-sch[], []2012[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Mi-salk-an $\OML/cmm/m/it/12 V[]; [] ; V[]$
- []
-
-
 
 [34]
 
 [35]
-Overfull \hbox (0.4096pt too wide) in paragraph at lines 1225--1226
-[][]\OT1/ptm/b/n/12.045 Definisi 2.1.63 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Tensor Mur-ni dan \OT1/ptm/b/it/12.045 Rank\OT1/ptm/b/n/12.045 , ([]Hack-bu-sch[], []2012[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Se-bu-ah ten-sor $[] \OMS/cmsy/m/n/12 2
- []
-
-
-Overfull \hbox (15.00334pt too wide) in paragraph at lines 1246--1254
-[][]\OT1/ptm/b/n/12.045 Definisi 2.1.65 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Matrisasi dan $\OML/cmm/m/it/12 j$\OT1/ptm/b/n/12.045 -\OT1/ptm/b/it/12.045 rank\OT1/ptm/b/n/12.045 , ([]Hack-bu-sch[], []2012[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Mi-salk-an $[] \OMS/cmsy/m/n/12 2 [][] \OML/cmm/m/it/12 K[]$
+Overfull \hbox (1.80821pt too wide) in paragraph at lines 1211--1212
+ [][] 
  []
 
 
 
 [36]
+Overfull \hbox (6.8963pt too wide) in paragraph at lines 1260--1261
+\OT1/ptm/m/n/12.045 vektor-vektor $\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]$ \OT1/ptm/m/n/12.045 yang be-bas li-ne-ar se-de-mi-ki-an se-hing-ga $\OML/cmm/m/it/12 T\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; T\OT1/cmr/bx/n/12 v[]$
+ []
+
+
 
 [37]
 
 [38]
-
-[39]
-Overfull \hbox (2.62349pt too wide) in paragraph at lines 1503--1508
-\OT1/ptm/m/n/12.045 Matriks se-gi-ti-ga atas $\OT1/cmr/bx/n/12 R$ \OT1/ptm/m/n/12.045 di-pe-ro-leh da-ri ko-e-fi-si-en Gram--Schmidt, yak-ni $\OML/cmm/m/it/12 r[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 k\OT1/cmr/bx/n/12 a[]\OMS/cmsy/m/n/12 k \OT1/cmr/m/n/12 =
+Overfull \hbox (3.88951pt too wide) in paragraph at lines 1363--1364
+[][]\OT1/ptm/b/n/12.045 Teorema 2.1.57 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Keberadaan Ni-lai Ei-gen pa-da Ru-ang Vek-tor Kom-pleks, ([]Axler[],
  []
 
 
+
+[39]
 
 [40]
 
 [41]
-Overfull \hbox (9.1378pt too wide) detected at line 1566
-\OT1/cmr/bx/n/12 u[] \OT1/cmr/m/n/12 = [] \OT1/cmr/bx/n/12 A  [] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ;  \OT1/cmr/bx/n/12 u[] \OT1/cmr/m/n/12 = [] \OT1/cmr/bx/n/12 A  [] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ;
- []
-
-
 
 [42]
 
 [43]
-<GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png, id=1077, 232.20084pt x 129.14917pt>
-File: GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png Graphic file (type png)
-<use GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png>
-Package pdftex.def Info: GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png  used on input line 1649.
-(pdftex.def)             Requested size: 199.16928pt x 110.78233pt.
 
-
-[44 <./GAMBAR/The-illustration-of-a-Tucker-decomposition-and-b-CP-factorization-of-an-n-1-n-2-n.png>]
-Overfull \hbox (4.70235pt too wide) in paragraph at lines 1676--1685
-[]\OT1/ptm/m/n/12.045 Dalam ke-rang-ka Tuc-ke-r/HO-SVD, pro-se-dur di-la-kuk-an de-ngan mem-ben-tangk-
- []
-
-
+[44]
 
 [45]
 
@@ -1059,39 +1038,39 @@ Overfull \hbox (4.70235pt too wide) in paragraph at lines 1676--1685
 [48]
 
 [49]
+Overfull \hbox (5.27391pt too wide) in paragraph at lines 2368--2369
+[][]\OT1/ptm/b/n/12.045 Definisi 2.2.6 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Model Re-gre-si Li-ne-ar de-ngan He-te-ros-ke-das-ti-si-tas, ([]Gre-e-ne[], []2002[];
+ []
+
+
 
 [50]
 
 [51]
 
 [52]
-Overfull \hbox (5.27391pt too wide) in paragraph at lines 1972--1973
-[][]\OT1/ptm/b/n/12.045 Definisi 2.2.6 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Model Re-gre-si Li-ne-ar de-ngan He-te-ros-ke-das-ti-si-tas, ([]Gre-e-ne[], []2002[];
- []
-
-
 
 [53]
-
-[54]
-
-[55]
-
-[56]
-Overfull \hbox (1.33002pt too wide) in paragraph at lines 2122--2123
+Overfull \hbox (1.33002pt too wide) in paragraph at lines 2518--2519
 []$\OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$ \OT1/ptm/m/it/12.045 me-ru-pak-an ko-e-fi-si-en yang ber-va-ri-a-si un-tuk va-ri-a-bel ke-$\OML/cmm/m/it/12 k$ \OT1/ptm/m/it/12.045 se-ba-gai fung-
  []
 
 
 
-[57]
+[54]
 
-[58]
-Overfull \hbox (3.74452pt too wide) in paragraph at lines 2178--2180
+[55]
+Overfull \hbox (3.74452pt too wide) in paragraph at lines 2574--2576
 \OT1/ptm/b/n/12.045 Bukti. \OT1/ptm/m/n/12.045 Mi-salk-an mo-del ko-e-fi-si-en ber-va-ri-a-si $\OML/cmm/m/it/12 Y[] \OT1/cmr/m/n/12 = \OML/cmm/b/it/12 x[]^^L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 "[]$ \OT1/ptm/m/n/12.045 de-ngan $\OML/cmm/m/it/12 "[] \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; ^^[[]\OT1/cmr/m/n/12 )$
  []
 
 
+
+[56]
+
+[57]
+
+[58]
 
 [59]
 
@@ -1106,39 +1085,39 @@ Overfull \hbox (3.74452pt too wide) in paragraph at lines 2178--2180
 [64]
 
 [65]
-
-[66]
-
-[67]
-
-[68]
-Overfull \hbox (1.94777pt too wide) in paragraph at lines 2496--2498
+Overfull \hbox (1.94777pt too wide) in paragraph at lines 2892--2894
 []\OT1/ptm/m/n/12.045 Dengan nor-ma-li-sa-si yang te-pat, di-pe-ro-leh ha-sil akhir bah-wa $[][] \OMS/cmsy/m/n/12 ^^X \OML/cmm/m/it/12 ^^_[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 )$
  []
 
 
 
-[69]
+[66]
 
-[70]
-Overfull \hbox (11.35492pt too wide) in paragraph at lines 2550--2552
+[67]
+Overfull \hbox (11.35492pt too wide) in paragraph at lines 2946--2948
 \OT1/ptm/m/it/12.045 dengan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 dan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 ada-lah ni-lai ei-gen ter-be-sar dan ter-ke-cil da-ri ma-triks $\OML/cmm/b/it/12 X[]\OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 X$\OT1/ptm/m/it/12.045 .
  []
 
 
 
+[68]
+
+[69]
+
+[70]
+
 [71]
+Overfull \hbox (1.66049pt too wide) in paragraph at lines 3096--3099
+\OT1/ptm/m/n/12.045 tuk meng-hi-tung gra-di-en fung-si ke-ru-gi-an $\OML/cmm/m/it/12 L$\OT1/ptm/m/n/12.045 . De-ngan no-ta-si $\OML/cmm/b/it/12 z[] \OT1/cmr/m/n/12 = \OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 a[] \OT1/cmr/m/n/12 +
+ []
+
+
 
 [72]
 
 [73]
 
 [74]
-Overfull \hbox (1.66049pt too wide) in paragraph at lines 2700--2703
-\OT1/ptm/m/n/12.045 tuk meng-hi-tung gra-di-en fung-si ke-ru-gi-an $\OML/cmm/m/it/12 L$\OT1/ptm/m/n/12.045 . De-ngan no-ta-si $\OML/cmm/b/it/12 z[] \OT1/cmr/m/n/12 = \OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 a[] \OT1/cmr/m/n/12 +
- []
-
-
 
 [75]
 
@@ -1147,46 +1126,46 @@ Overfull \hbox (1.66049pt too wide) in paragraph at lines 2700--2703
 [77]
 
 [78]
-
-[79]
-
-[80]
-
-[81]
-Overfull \hbox (35.99084pt too wide) in paragraph at lines 2915--2918
+Overfull \hbox (35.99084pt too wide) in paragraph at lines 3311--3314
 \OT1/ptm/m/it/12.045 disebut ma-triks ke-te-tang-ga-an. Ma-triks de-ra-jat di-de-fi-ni-sik-an se-ba-gai $\OT1/cmr/bx/n/12 D \OT1/cmr/m/n/12 = [](\OML/cmm/m/it/12 d[]; [] ; d[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
  []
 
 
 
-[82]
-Overfull \hbox (19.2864pt too wide) in paragraph at lines 2921--2922
+[79]
+Overfull \hbox (19.2864pt too wide) in paragraph at lines 3317--3318
 [][]\OT1/ptm/b/n/12.045 Contoh 2.4.2 []\OT1/ptm/m/n/12.045 Graf $\OMS/cmsy/m/n/12 G \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 V\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 E\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 de-ngan $\OMS/cmsy/m/n/12 jVj \OT1/cmr/m/n/12 = 4$ \OT1/ptm/m/n/12.045 dan si-si $\OMS/cmsy/m/n/12 E \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (3\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 4)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (4\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1)\OMS/cmsy/m/n/12 g$
  []
 
 
 
-[83]
+[80]
 
-[84]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3020.
+[81]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3416.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-[85]
-Overfull \hbox (21.09961pt too wide) in paragraph at lines 3031--3032
+[82]
+Overfull \hbox (21.09961pt too wide) in paragraph at lines 3427--3428
 []\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
  []
 
 
+
+[83]
+Overfull \hbox (21.09961pt too wide) in paragraph at lines 3458--3459
+[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
+ []
+
+
+
+[84]
+
+[85]
 
 [86]
-Overfull \hbox (21.09961pt too wide) in paragraph at lines 3062--3063
-[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
- []
-
-
 
 [87]
 
@@ -1199,49 +1178,43 @@ Overfull \hbox (21.09961pt too wide) in paragraph at lines 3062--3063
 [91]
 
 [92]
-
-[93]
-
-[94]
-
-[95]
-Overfull \hbox (2.75977pt too wide) in paragraph at lines 3305--3306
+Overfull \hbox (2.75977pt too wide) in paragraph at lines 3701--3702
 \OT1/ptm/m/n/12.045 ber-a-da pa-da Ma-ni-fo-ld ber-di-men-si ja-uh le-bih ren-dah. SSL yang me-man-fa-atk-an asum-
  []
 
 
 
-[96]
-Overfull \hbox (6.80952pt too wide) in paragraph at lines 3322--3323
+[93]
+Overfull \hbox (6.80952pt too wide) in paragraph at lines 3718--3719
 []$\OML/cmm/m/it/12 ^^U[]; ^^U[] > \OT1/cmr/m/n/12 0$ \OT1/ptm/m/it/12.045 ada-lah hyper-pa-ra-me-ter yang meng-on-trol kon-tri-bu-si masing-masing
  []
 
 
 
-[97]
+[94]
 
-[98]
-Overfull \hbox (5.70284pt too wide) in paragraph at lines 3389--3390
+[95]
+Overfull \hbox (5.70284pt too wide) in paragraph at lines 3785--3786
 [][]\OT1/ptm/b/n/12.045 Contoh 2.6.15 []\OT1/ptm/m/n/12.045 Mi-salk-an mo-del memp-re-dik-si dis-tri-bu-si pro-ba-bi-li-tas $\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 05\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 15\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 80]$
  []
 
 
 
-[99]) (Bab3TA1.tex
+[96]) (Bab3TA1.tex
 
-[100]
+[97]
 BAB III.
 
 
-[101
+[98
 
 ]) (Bab4TA1.tex
 
-[102]
+[99]
 BAB IV.
 
 
-[103
+[100
 
 ]
 Overfull \hbox (1.34743pt too wide) in paragraph at lines 29--31
@@ -1250,33 +1223,33 @@ Overfull \hbox (1.34743pt too wide) in paragraph at lines 29--31
 
 
 
-[104]
+[101]
 
-[105]
-<Gambar/The_estimation_process_of_GTNNWR_model.jpeg, id=1864, 1204.5pt x 609.27625pt>
+[102]
+<Gambar/The_estimation_process_of_GTNNWR_model.jpeg, id=1760, 1204.5pt x 609.27625pt>
 File: Gambar/The_estimation_process_of_GTNNWR_model.jpeg Graphic file (type jpg)
 <use Gambar/The_estimation_process_of_GTNNWR_model.jpeg>
 Package pdftex.def Info: Gambar/The_estimation_process_of_GTNNWR_model.jpeg  used on input line 94.
 (pdftex.def)             Requested size: 318.67207pt x 161.19711pt.
 
 
-[106]
+[103]
 
-[107 <./Gambar/The_estimation_process_of_GTNNWR_model.jpeg>]
+[104 <./Gambar/The_estimation_process_of_GTNNWR_model.jpeg>]
 
-[108]
-<GAMBAR/Flowchart GNN GTVC GTWR.png, id=1902, 1421.0691pt x 594.5412pt>
+[105]
+<GAMBAR/Flowchart GNN GTVC GTWR.png, id=1797, 1421.0691pt x 594.5412pt>
 File: GAMBAR/Flowchart GNN GTVC GTWR.png Graphic file (type png)
 <use GAMBAR/Flowchart GNN GTVC GTWR.png>
 Package pdftex.def Info: GAMBAR/Flowchart GNN GTVC GTWR.png  used on input line 125.
 (pdftex.def)             Requested size: 358.50227pt x 149.98665pt.
 
 
-[109 <./GAMBAR/Flowchart GNN GTVC GTWR.png>]
+[106 <./GAMBAR/Flowchart GNN GTVC GTWR.png>]
 
-[110]
+[107]
 
-[111]
+[108]
 Overfull \hbox (12.0985pt too wide) in paragraph at lines 183--185
 \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; [] ; N\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 t \OT1/cmr/m/n/12 = 1\OML/cmm/m/it/12 ; [] ; T\OMS/cmsy/m/n/12 g$ \OT1/ptm/m/n/12.045 de-ngan res-pon $\OML/cmm/m/it/12 y[]$ \OT1/ptm/m/n/12.045 dan ko-va-ri-at $\OT1/cmr/bx/n/12 x[] \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 )[]$\OT1/ptm/m/n/12.045 .
  []
@@ -1293,18 +1266,29 @@ Overfull \hbox (5.11198pt too wide) in paragraph at lines 191--192
 
 
 
-[112]
+[109]
 
-[113]
+[110]
 Overfull \hbox (4.42819pt too wide) in paragraph at lines 258--261
 \OT1/ptm/m/n/12.045 men-cer-mink-an ke-de-kat-an an-ta-ra ti-tik $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 i; t\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 dan se-lu-ruh ob-se-rva-si $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j; s\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 . Da-lam GNN-
  []
 
 
 
-[114]
+[111]
 Overfull \hbox (1.99017pt too wide) in paragraph at lines 288--289
 []\OT1/ptm/m/n/12.045 GAT mem-per-ke-nalk-an me-ka-nis-me per-ha-ti-an (\OT1/ptm/m/it/12.045 at-ten-tion\OT1/ptm/m/n/12.045 ) se-hing-ga se-ti-ap sim-
+ []
+
+
+
+[112]
+
+[113]
+
+[114]
+Overfull \hbox (3.97948pt too wide) in paragraph at lines 362--363
+[]\OT1/ptm/m/n/12.045 Untuk me-ning-katk-an sta-bi-li-tas, fung-si ob-jek-tif da-pat di-leng-ka-pi de-ngan kom-
  []
 
 
@@ -1314,59 +1298,48 @@ Overfull \hbox (1.99017pt too wide) in paragraph at lines 288--289
 [116]
 
 [117]
-Overfull \hbox (3.97948pt too wide) in paragraph at lines 362--363
-[]\OT1/ptm/m/n/12.045 Untuk me-ning-katk-an sta-bi-li-tas, fung-si ob-jek-tif da-pat di-leng-ka-pi de-ngan kom-
- []
-
-
 
 [118]
 
 [119]
 
 [120]
-
-[121]
-
-[122]
-
-[123]
 Overfull \hbox (2.08858pt too wide) in paragraph at lines 532--533
 []\OT1/ptm/m/n/12.045 Pada ba-gi-an ini, be-be-ra-pa me-to-de kon-fi-gu-ra-si mo-del GNN-GTVC dan GNN-
  []
 
-<GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png, id=2023, 1072.4868pt x 851.3406pt>
+<GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png, id=1920, 1072.4868pt x 851.3406pt>
 File: GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png Graphic file (type png)
 <use GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png>
 Package pdftex.def Info: GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png  used on input line 536.
 (pdftex.def)             Requested size: 378.42043pt x 300.3899pt.
 
 
-[124 <./GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png>]
+[121 <./GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png>]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 549.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 
-[125]
+[122]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[126]
-<GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png, id=2047, 1148.8521pt x 1278.4563pt>
+[123]
+<GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png, id=1943, 1148.8521pt x 1278.4563pt>
 File: GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png Graphic file (type png)
 <use GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png>
 Package pdftex.def Info: GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png  used on input line 621.
 (pdftex.def)             Requested size: 378.42043pt x 421.11157pt.
 
 
-[127])
+[124])
 
-[128 <./GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png>]
+[125 <./GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png>]
 
-[129] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.bbl
+[126] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.bbl
 Underfull \hbox (badness 2334) in paragraph at lines 123--138
 \OT1/ptm/m/n/12 Uni-ver-si-ty Press.  Di-am-bil da-ri []$\OT1/pcr/m/n/12 https :// www [] .microsoft [] .com /
  []
@@ -1378,15 +1351,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--138
 
 
 
-[130
+[127
 
 ]
 
-[131]
+[128]
 
-[132])
+[129])
 
-[133] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.aux)
+[130] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
@@ -1397,20 +1370,20 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.98875pt have occurred.
 
 Package rerunfilecheck Info: File `LaporanTA1.out' has not changed.
-(rerunfilecheck)             Checksum: 7B2EDE167295919C48F7BF8C669EBBC0;17893.
+(rerunfilecheck)             Checksum: 1A12D93AFCC50AEAFA0697D8C92204BC;17679.
  ) 
 Here is how much of TeX's memory you used:
- 30135 strings out of 468134
- 561789 string characters out of 5431224
- 949931 words of memory out of 5000000
- 57330 multiletter control sequences out of 15000+600000
+ 30057 strings out of 468134
+ 559382 string characters out of 5431224
+ 943928 words of memory out of 5000000
+ 57287 multiletter control sequences out of 15000+600000
  671809 words of font info for 160 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,18n,111p,1138b,1265s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.pdf" (136 pages, 3017415 bytes).
+ 99i,14n,111p,1138b,1013s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on "d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.pdf" (133 pages, 2962986 bytes).
 PDF statistics:
- 2394 PDF objects out of 2487 (max. 8388607)
- 878 named destinations out of 1000 (max. 500000)
- 651 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2277 PDF objects out of 2487 (max. 8388607)
+ 843 named destinations out of 1000 (max. 500000)
+ 638 words of extra memory for PDF output out of 10000 (max. 10000000)
 
