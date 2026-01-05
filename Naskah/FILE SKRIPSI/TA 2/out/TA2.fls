@@ -33,6 +33,10 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\setspace\setspace.st
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\setspace\setspace.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\indentfirst.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\indentfirst.sty
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\tabularx.sty
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\tabularx.sty
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\graphics\graphicx.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\graphics\graphicx.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\graphics\keyval.sty
@@ -219,6 +223,11 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryarrows.code.tex
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.code.tex
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.code.tex
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypositioning.code.tex
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypositioning.code.tex
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.meta.code.tex
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.meta.code.tex
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.meta.code.tex
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\apacite\apacite.sty
@@ -229,6 +238,8 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.st
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\titlesec\titlesec.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\chngcntr\chngcntr.sty
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\chngcntr\chngcntr.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\iftex\iftex.sty
@@ -284,9 +295,6 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tikz-cd\tikzlibraryc
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tikz-cd\tikzlibrarycd.code.tex
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryquotes.code.tex
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryquotes.code.tex
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.meta.code.tex
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.meta.code.tex
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.meta.code.tex
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\bm.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\tools\bm.sty
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\psnfss\ot1ptm.fd
@@ -510,20 +518,6 @@ INPUT .\Bab3TA2.tex
 INPUT .\Bab3TA2.tex
 INPUT .\Bab3TA2.tex
 INPUT Bab3TA2.tex
-INPUT .\Gambar\The_estimation_process_of_GTNNWR_model.jpeg
-INPUT .\Gambar\The_estimation_process_of_GTNNWR_model.jpeg
-INPUT .\Gambar\The_estimation_process_of_GTNNWR_model.jpeg
-INPUT .\Gambar\The_estimation_process_of_GTNNWR_model.jpeg
-INPUT .\Gambar\The_estimation_process_of_GTNNWR_model.jpeg
-INPUT .\Gambar\The_estimation_process_of_GTNNWR_model.jpeg
-INPUT .\Gambar\The_estimation_process_of_GTNNWR_model.jpeg
-INPUT .\GAMBAR\Flowchart GNN GTVC GTWR.png
-INPUT .\GAMBAR\Flowchart GNN GTVC GTWR.png
-INPUT .\GAMBAR\Flowchart GNN GTVC GTWR.png
-INPUT .\GAMBAR\Flowchart GNN GTVC GTWR.png
-INPUT .\GAMBAR\Flowchart GNN GTVC GTWR.png
-INPUT .\GAMBAR\Flowchart GNN GTVC GTWR.png
-INPUT .\GAMBAR\Flowchart GNN GTVC GTWR.png
 INPUT .\Bab4TA2.tex
 INPUT .\Bab4TA2.tex
 INPUT .\Bab4TA2.tex

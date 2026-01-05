@@ -7,6 +7,7 @@
 \RequirePackage{times}
 \RequirePackage{setspace}
 \RequirePackage{indentfirst}
+\RequirePackage{tabularx}
 
 % \RequirePackage{hyperref}
 \RequirePackage{graphicx,latexsym}
@@ -25,7 +26,7 @@
 \RequirePackage{pdfpages}
 \RequirePackage{tikz}
 \RequirePackage{cases}
-\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{matrix,arrows, positioning, arrows.meta}
 \RequirePackage{enumitem}
 \RequirePackage[natbibapa]{apacite}
 \RequirePackage{booktabs}
@@ -63,15 +64,22 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\R}{\mathbb{R}}
 
+\RequirePackage{titlesec}
+\RequirePackage{chngcntr}
+
 \setcounter{secnumdepth}{2}
+
 \renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}.}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.}
-%\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
-\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{section}.\arabic{equation}}
+\counterwithin{equation}{section}
+
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 \usepackage{titlesec}
 \titleformat{\chapter}
@@ -115,6 +123,7 @@
 \newtheorem{akibat}[teorema]{Akibat}
 \newtheorem{proposisi}[teorema]{Proposisi}
 \newtheorem{definisi}[teorema]{Definisi}
+% \numberwithin{equation}{subsection}
 
 \newtheoremstyle{dotlessexample}  % follow `plain` defaults but change HEADSPACE.
   {}   % ABOVESPACE
@@ -157,6 +166,9 @@
 \RequirePackage[pdftex,bookmarks=true]{hyperref}  % muat sekali, di akhir
 \usepackage{tikz-cd}
 
+\DeclareMathOperator*{\plim}{plim}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 \def\captionsbahasa{%
 \def\prefacename{PRAKATA}%

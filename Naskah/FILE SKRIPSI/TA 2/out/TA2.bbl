@@ -259,30 +259,28 @@ Dudley, R\BPBI M.%
 
 \bibitem [\protect \citeauthoryear {%
 Fan%
-\ \BBA {} Zhang%
+\ \BBA {} Gijbels%
 }{%
 Fan%
-\ \BBA {} Zhang%
+\ \BBA {} Gijbels%
 }{%
-{\protect \APACyear {2008}}%
+{\protect \APACyear {1996}}%
 }]{%
-vcovreview}
+fan1996local}
 \APACinsertmetastar {%
-vcovreview}%
+fan1996local}%
 \begin{APACrefauthors}%
 Fan, J.%
-\BCBT {}\ \BBA {} Zhang, W.%
+\BCBT {}\ \BBA {} Gijbels, I.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2008}{}{}.
+\APACrefYear{1996}.
 \newblock
-{\BBOQ}\APACrefatitle {Statistical Methods with Varying Coefficient Models}
-  {Statistical methods with varying coefficient models}.{\BBCQ}
+\APACrefbtitle {Local Polynomial Modelling and Its Applications} {Local
+  polynomial modelling and its applications}.
 \newblock
-\APACjournalVolNumPages{Statistics and Its Interface}{1}{1}{179--195}.
-\newblock
-\APACrefnote{A comprehensive review of varying coefficient models}
+\APACaddressPublisher{London}{Chapman and Hall/CRC}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -293,7 +291,35 @@ Fotheringham%
 Fotheringham%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2002}}%
-}]{%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+fotheringham2002gwr}
+\APACinsertmetastar {%
+fotheringham2002gwr}%
+\begin{APACrefauthors}%
+Fotheringham, A\BPBI S.%
+, Brunsdon, C.%
+\BCBL {}\ \BBA {} Charlton, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2002{\protect \BCnt {1}}}.
+\newblock
+\APACrefbtitle {Geographically Weighted Regression: The Analysis of Spatially
+  Varying Relationships} {Geographically weighted regression: The analysis of
+  spatially varying relationships}.
+\newblock
+\APACaddressPublisher{Chichester}{Wiley}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fotheringham%
+, Brunsdon%
+\BCBL {}\ \BBA {} Charlton%
+}{%
+Fotheringham%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2002}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
 fotheringham2002}
 \APACinsertmetastar {%
 fotheringham2002}%
@@ -304,7 +330,7 @@ Fotheringham, A\BPBI S.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYear{2002}.
+\APACrefYear{2002{\protect \BCnt {2}}}.
 \newblock
 \APACrefbtitle
   {\href{https://www.wiley.com/en-us/Geographically+Weighted+Regression%3A+The+Analysis+of+Spatially+Varying+Relationships-p-9780471496168}{Geographically
@@ -483,33 +509,6 @@ Hamilton, W.%
   (neurips).}
 \newblock
 \begin{APACrefURL} \url{https://arxiv.org/abs/1706.02216} \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Hastie%
-\ \BBA {} Tibshirani%
-}{%
-Hastie%
-\ \BBA {} Tibshirani%
-}{%
-{\protect \APACyear {1993}}%
-}]{%
-hastie1993varying}
-\APACinsertmetastar {%
-hastie1993varying}%
-\begin{APACrefauthors}%
-Hastie, T.%
-\BCBT {}\ \BBA {} Tibshirani, R.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1993}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Varying-coefficient models} {Varying-coefficient
-  models}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Journal of the Royal Statistical Society: Series B
-  (Methodological)}{55}{4}{757--796}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -779,7 +778,7 @@ van~der Vaart%
 van~der Vaart%
 }{%
 {\protect \APACyear {1998}}%
-}]{%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
 vandervaart1998}
 \APACinsertmetastar {%
 vandervaart1998}%
@@ -788,7 +787,29 @@ van~der Vaart, A\BPBI W.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYear{1998}.
+\APACrefYear{1998{\protect \BCnt {1}}}.
+\newblock
+\APACrefbtitle {Asymptotic Statistics} {Asymptotic statistics}.
+\newblock
+\APACaddressPublisher{Cambridge}{Cambridge University Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+van~der Vaart%
+}{%
+van~der Vaart%
+}{%
+{\protect \APACyear {1998}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+vdvaart1998}
+\APACinsertmetastar {%
+vdvaart1998}%
+\begin{APACrefauthors}%
+van~der Vaart, A\BPBI W.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1998{\protect \BCnt {2}}}.
 \newblock
 \APACrefbtitle {Asymptotic Statistics} {Asymptotic statistics}.
 \newblock
@@ -920,38 +941,6 @@ Yin, P.%
   extension}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Journal of Geographical Systems}{}{}{}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Yu%
-, Yin%
-\BCBL {}\ \BBA {} Zhu%
-}{%
-Yu%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2018}}%
-}]{%
-yu2018stgcn}
-\APACinsertmetastar {%
-yu2018stgcn}%
-\begin{APACrefauthors}%
-Yu, B.%
-, Yin, H.%
-\BCBL {}\ \BBA {} Zhu, Z.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2018}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Spatio-temporal graph convolutional networks: A deep
-  learning framework for traffic forecasting} {Spatio-temporal graph
-  convolutional networks: A deep learning framework for traffic
-  forecasting}.{\BBCQ}
-\newblock
-\BIn{} \APACrefbtitle {Proceedings of the Twenty-Seventh International Joint
-  Conference on Artificial Intelligence (IJCAI-18)} {Proceedings of the
-  twenty-seventh international joint conference on artificial intelligence
-  (ijcai-18)}\ (\BPGS\ 3634--3640).
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

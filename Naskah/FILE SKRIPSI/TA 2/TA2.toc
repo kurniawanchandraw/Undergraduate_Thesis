@@ -6,11 +6,11 @@
 \contentsline {chapter}{HALAMAN MOTTO}{v}{chapter*.5}%
 \contentsline {chapter}{PRAKATA}{vi}{chapter*.6}%
 \contentsline {chapter}{DAFTAR ISI}{vii}{section*.7}%
-\contentsline {chapter}{DAFTAR TABEL}{x}{section*.9}%
-\contentsline {chapter}{DAFTAR GAMBAR}{xi}{section*.11}%
-\contentsline {chapter}{INTISARI}{xii}{chapter*.13}%
+\contentsline {chapter}{DAFTAR TABEL}{xi}{section*.9}%
+\contentsline {chapter}{DAFTAR GAMBAR}{xii}{section*.11}%
+\contentsline {chapter}{INTISARI}{xiii}{chapter*.13}%
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{ABSTRACT}{xiii}{chapter*.14}%
+\contentsline {chapter}{ABSTRACT}{xiv}{chapter*.14}%
 \babel@toc {bahasa}{}\relax 
 \contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1.}Latar Belakang}{1}{section.1.1}%
@@ -20,54 +20,93 @@
 \contentsline {section}{\numberline {1.5.}Metodologi Penelitian}{4}{section.1.5}%
 \contentsline {section}{\numberline {1.6.}Sistematika Penulisan}{5}{section.1.6}%
 \contentsline {chapter}{\numberline {II}LANDASAN TEORI}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1.}Aljabar Matriks dan Tensor}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.1.}Aljabar Matriks}{6}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1.}Ruang Vektor dan Matriks}{6}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2.}Sifat-Sifat Matriks}{12}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3.}Invers Matriks}{19}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4.}Determinan dan \emph {Rank}}{22}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5.}Nilai Eigen dan Vektor Eigen}{28}{subsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.1.6.}Tensor}{30}{subsection.2.1.6}%
-\contentsline {subsection}{\numberline {2.1.7.}Dekomposisi Matriks dan Tensor}{36}{subsection.2.1.7}%
-\contentsline {subsection}{\numberline {2.1.8.}Diferensial Vektor dan Matriks}{44}{subsection.2.1.8}%
-\contentsline {section}{\numberline {2.2.}Regresi Spasial dan Spasial-Temporal}{46}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1.}Regresi Linear Biasa atau \emph {Ordinary Least Squares} (OLS)}{46}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2.}Regresi Terboboti}{51}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3.}Model Koefisien Bervariasi}{55}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4.}Regresi dengan Dependensi Spasial dan Spasial Temporal}{59}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5.}Regresi dengan Heterogenitas Spasial dan Spasial Temporal}{62}{subsection.2.2.5}%
-\contentsline {section}{\numberline {2.3.}Jaringan Saraf Tiruan}{70}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1.}Model Dasar dan Notasi}{70}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2.}Fungsi Aktivasi}{71}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3.}Fungsi Kerugian dan Kriteria Pembelajaran}{74}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4.}Pembelajaran dengan Propagasi Mundur}{76}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5.}Optimisasi Parameter}{77}{subsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.3.6.}Jaringan Saraf Tiruan sebagai Aproksimasi Universal}{80}{subsection.2.3.6}%
-\contentsline {section}{\numberline {2.4.}Jaringan Saraf Graf}{81}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1.}Dasar Graf dan Laplacian}{81}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2.}Kerangka Penyampaian Pesan pada Jaringan Saraf}{83}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3.}Arsitektur Umum dalam GNN}{84}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4.}Kekuatan Representasi GNN}{86}{subsection.2.4.4}%
-\contentsline {section}{\numberline {2.5.}Pembelajaran Representasi}{88}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1.}Landasan Teoretis Representasi}{90}{subsection.2.5.1}%
-\contentsline {section}{\numberline {2.6.}Pembelajaran Semi-Terawasi}{92}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1.}Kerangka Dasar}{92}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2.}Asumsi Fundamental dalam Pembelajaran Semi-Terawasi}{94}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3.}Fungsi Kerugian untuk Pembelajaran Semi-Terawasi}{95}{subsection.2.6.3}%
-\contentsline {chapter}{\numberline {III}XXXXXXXX}{100}{chapter.3}%
-\contentsline {section}{\numberline {3.1.}Catatan}{100}{section.3.1}%
-\contentsline {section}{\numberline {3.2.}Analisis Klaster}{100}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1.}Pengertian Analisis Klaster}{100}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2.}Struktur Data Analisis Klaster}{100}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3.}Standarisasi Data}{101}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4.}Pencilan}{102}{subsection.3.2.4}%
-\contentsline {chapter}{\numberline {IV}STUDI KASUS}{104}{chapter.4}%
-\contentsline {section}{\numberline {4.1.}Catatan Penting}{104}{section.4.1}%
-\contentsline {section}{\numberline {4.2.}Pembahasan}{104}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1.}Pembahasan 1}{104}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2.}Pembahasan 2}{104}{subsection.4.2.2}%
-\contentsline {chapter}{\numberline {V}PENUTUP}{106}{chapter.5}%
-\contentsline {section}{\numberline {5.1.}Kesimpulan}{106}{section.5.1}%
-\contentsline {section}{\numberline {5.2.}Saran}{106}{section.5.2}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{107}{section.5.2}%
-\contentsline {chapter}{\numberline {A}Data}{107}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Syntax R}{108}{appendix.B}%
+\contentsline {subsection}{\numberline {2.1.3.}Invers Matriks}{22}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4.}Determinan dan \emph {Rank}}{29}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5.}Nilai Eigen dan Vektor Eigen}{37}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6.}Perkalian Kronecker}{40}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7.}Diferensial Vektor dan Matriks}{41}{subsection.2.1.7}%
+\contentsline {section}{\numberline {2.2.}Teori Ukuran dan Probabilitas}{46}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1.}Ruang Ukur dan Ukuran Probabilitas}{47}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2.}Variabel Acak sebagai Fungsi Terukur}{50}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3.}Distribusi dan Ekspektasi}{52}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4.}Momen, Variansi, dan Kovariansi}{62}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5.}Probabilitas Bersyarat dan Independensi}{64}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6.}Teorema Bayes dan Hukum Probabilitas Total}{66}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7.}Hukum Ekspektasi Total dan Variansi Total}{69}{subsection.2.2.7}%
+\contentsline {section}{\numberline {2.3.}Konvergensi dan Laju Pertumbuhan}{73}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1.}Barisan Variabel Acak}{73}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2.}Konvergensi Barisan Variabel Acak}{73}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4.}Teori Probabilitas Asimtotik}{75}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1.}Hukum Bilangan Besar}{76}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2.}Konsistensi Estimator}{77}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3.}Fungsi Karakteristik}{78}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4.}Teorema Pemetaan Kontinu dan Teorema Slutsky}{80}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5.}Notasi Big-$\mathcal {O}$ dan Little-$o$ (Deterministik)}{86}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6.}Notasi Big-$\mathcal {O}$ dan Little-$o$ dalam Probabilitas}{89}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7.}Teorema Limit Pusat Klasik}{97}{subsection.2.4.7}%
+\contentsline {subsection}{\numberline {2.4.8.}Metode Delta}{102}{subsection.2.4.8}%
+\contentsline {section}{\numberline {2.5.}Analisis Regresi Linear}{104}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1.}Regresi Linear Biasa atau \emph {Ordinary Least Squares} (OLS)}{104}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2.}Teori Asimtotik untuk OLS}{109}{subsection.2.5.2}%
+\contentsline {subsubsection}{Konsistensi Penduga OLS}{109}{subsubsection*.19}%
+\contentsline {subsubsection}{Distribusi Asimtotik Penduga OLS}{111}{subsubsection*.20}%
+\contentsline {subsubsection}{Distribusi Uji Statistik}{112}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {2.5.3.}Regresi Terboboti}{116}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4.}Model Koefisien Bervariasi}{119}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6.}Analisis Regresi Spasial}{124}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1.}Regresi dengan Dependensi Spasial}{124}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2.}Regresi dengan Heterogenitas Spasial dan Spasial Temporal}{125}{subsection.2.6.2}%
+\contentsline {section}{\numberline {2.7.}Jaringan Saraf Tiruan}{133}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1.}Model Dasar dan Notasi}{133}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2.}Fungsi Aktivasi}{134}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3.}Fungsi Kerugian dan Kriteria Pembelajaran}{137}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4.}Pembelajaran dengan Propagasi Mundur}{139}{subsection.2.7.4}%
+\contentsline {subsection}{\numberline {2.7.5.}Optimisasi Parameter}{140}{subsection.2.7.5}%
+\contentsline {subsection}{\numberline {2.7.6.}Jaringan Saraf Tiruan sebagai Aproksimasi Universal}{143}{subsection.2.7.6}%
+\contentsline {section}{\numberline {2.8.}Jaringan Saraf Graf}{144}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1.}Dasar Graf dan Laplacian}{144}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2.}Kerangka Penyampaian Pesan pada Jaringan Saraf}{146}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3.}Arsitektur Umum dalam GNN}{147}{subsection.2.8.3}%
+\contentsline {subsection}{\numberline {2.8.4.}Kekuatan Representasi GNN}{149}{subsection.2.8.4}%
+\contentsline {chapter}{\numberline {III}METODE REGRESI TERBOBOTI GEOGRAFIS DENGAN PEMBOBOTAN BERBASIS JARINGAN SARAF GRAF}{152}{chapter.3}%
+\contentsline {section}{\numberline {3.1.}Kerangka Regresi Terboboti Geografis}{152}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1.}Model Regresi Terboboti Geografis}{152}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2.}Estimasi \textit {Locally Weighted Least Squares}}{153}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3.}Struktur Pembobotan Spasial}{153}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2.}Inferensi Asimtotik pada Regresi Terboboti Geografis}{153}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1.}Asumsi Regularitas}{154}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2.}Konsistensi Estimator Lokal}{154}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3.}Teorema Limit Pusat Koefisien Lokal}{154}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4.}Variansi Asimtotik dan Inferensi Lokal}{155}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3.}Keterbatasan Pembobotan Spasial Konvensional}{156}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1.}Bias Induktif pada Kernel Spasial}{156}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2.}Implikasi terhadap Inferensi Statistik}{156}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4.}Metode Pembobotan Berbasis Jaringan Saraf Graf pada Regresi Terboboti Geografis}{156}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1.}Representasi Graf untuk Data Spasial}{156}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2.}Formulasi Estimasi Bobot dengan Jaringan Saraf Graf}{156}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3.}Properti Bobot Terestimasi}{156}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4.}Penduga Regresi Terboboti Geografis dengan Bobot GNN}{156}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5.}Implikasi Pembobotan Berbasis Jaringan Saraf Graf terhadap Inferensi}{156}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1.}Permasalahan Inferensi dengan Bobot Terestimasi}{156}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2.}Representasi Bahadur Penduga dengan Bobot Terestimasi}{156}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3.}Kondisi Validitas Asimtotik}{156}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4.}Peran Cross-Fitting dalam Menjaga Validitas Inferensi}{156}{subsection.3.5.4}%
+\contentsline {section}{\numberline {3.6.}Model Koefisien Bervariasi Spasial sebagai Generalisasi}{156}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1.}\textit {Geographically Neural Network Weighted Regression} (GNNWR)}{156}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2.}Model Koefisien Bervariasi Spasial}{156}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3.}Pembobotan Berbasis Jaringan Saraf Graf pada Model Koefisien Bervariasi}{156}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4.}Implikasi Inferensi pada Model Koefisien Bervariasi Spasial}{156}{subsection.3.6.4}%
+\contentsline {chapter}{\numberline {IV}STUDI KASUS}{157}{chapter.4}%
+\contentsline {section}{\numberline {4.1.}Catatan Penting}{157}{section.4.1}%
+\contentsline {section}{\numberline {4.2.}Pembahasan}{157}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1.}Pembahasan 1}{157}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2.}Pembahasan 2}{157}{subsection.4.2.2}%
+\contentsline {chapter}{\numberline {V}PENUTUP}{159}{chapter.5}%
+\contentsline {section}{\numberline {5.1.}Kesimpulan}{159}{section.5.1}%
+\contentsline {section}{\numberline {5.2.}Saran}{159}{section.5.2}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{160}{section.5.2}%
+\contentsline {chapter}{\numberline {A}Data}{160}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Syntax R}{161}{appendix.B}%

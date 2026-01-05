@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.4)  31 DEC 2025 11:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.4)  5 JAN 2026 15:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -73,11 +73,30 @@ Package: times 2020/03/25 PSNFSS-v9.3 (SPQR)
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
+\col@sep=\dimen150
+\ar@mcellbox=\box53
+\extrarowheight=\dimen151
+\NC@list=\toks17
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box54
+)
+\TX@col@width=\dimen152
+\TX@old@table=\dimen153
+\TX@old@col=\dimen154
+\TX@target=\dimen155
+\TX@delta=\dimen156
+\TX@cols=\count286
+\TX@ftn=\toks18
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
+\KV@toks@=\toks19
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
@@ -89,8 +108,8 @@ Package graphics Info: Driver file: pdftex.def on input line 106.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen150
-\Gin@req@width=\dimen151
+\Gin@req@height=\dimen157
+\Gin@req@width=\dimen158
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
@@ -100,7 +119,7 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks18
+\@emptytoks=\toks20
 \symAMSa=\mathgroup5
 \symAMSb=\mathgroup6
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
@@ -110,97 +129,97 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: amstext 2024/11/17 v2.01 AMS text
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen152
+\@emptytoks=\toks21
+\ex@=\dimen159
 )) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/06/16 v2.17y AMS math features
-\@mathmargin=\skip51
+\@mathmargin=\skip53
 
 For additional information on amsmath, use the `?' option.
 (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen153
+\pmbraise@=\dimen160
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count286
+\inf@bad=\count287
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count287
-\leftroot@=\count288
+\uproot@=\count288
+\leftroot@=\count289
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count289
-\DOTSCASE@=\count290
+\classnum@=\count290
+\DOTSCASE@=\count291
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box53
-\strutbox@=\box54
+\Mathstrutbox@=\box55
+\strutbox@=\box56
 LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen154
+\big@size=\dimen161
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count291
+\macc@depth=\count292
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count292
+\c@MaxMatrixCols=\count293
 \dotsspace@=\muskip17
-\c@parentequation=\count293
-\dspbrk@lvl=\count294
-\tag@help=\toks20
-\row@=\count295
-\column@=\count296
-\maxfields@=\count297
-\andhelp@=\toks21
-\eqnshift@=\dimen155
-\alignsep@=\dimen156
-\tagshift@=\dimen157
-\tagwidth@=\dimen158
-\totwidth@=\dimen159
-\lineht@=\dimen160
-\@envbody=\toks22
-\multlinegap=\skip52
-\multlinetaggap=\skip53
-\mathdisplay@stack=\toks23
+\c@parentequation=\count294
+\dspbrk@lvl=\count295
+\tag@help=\toks22
+\row@=\count296
+\column@=\count297
+\maxfields@=\count298
+\andhelp@=\toks23
+\eqnshift@=\dimen162
+\alignsep@=\dimen163
+\tagshift@=\dimen164
+\tagwidth@=\dimen165
+\totwidth@=\dimen166
+\lineht@=\dimen167
+\@envbody=\toks24
+\multlinegap=\skip54
+\multlinetaggap=\skip55
+\mathdisplay@stack=\toks25
 LaTeX Info: Redefining \[ on input line 2949.
 LaTeX Info: Redefining \] on input line 2950.
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks24
-\thm@bodyfont=\toks25
-\thm@headfont=\toks26
-\thm@notefont=\toks27
-\thm@headpunct=\toks28
-\thm@preskip=\skip54
-\thm@postskip=\skip55
-\thm@headsep=\skip56
-\dth@everypar=\toks29
+\thm@style=\toks26
+\thm@bodyfont=\toks27
+\thm@headfont=\toks28
+\thm@notefont=\toks29
+\thm@headpunct=\toks30
+\thm@preskip=\skip56
+\thm@postskip=\skip57
+\thm@headsep=\skip58
+\dth@everypar=\toks31
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count298
-\lst@gtempboxa=\box55
-\lst@token=\toks30
-\lst@length=\count299
-\lst@currlwidth=\dimen161
-\lst@column=\count300
-\lst@pos=\count301
-\lst@lostspace=\dimen162
-\lst@width=\dimen163
-\lst@newlines=\count302
-\lst@lineno=\count303
-\lst@maxwidth=\dimen164
+\lst@mode=\count299
+\lst@gtempboxa=\box57
+\lst@token=\toks32
+\lst@length=\count300
+\lst@currlwidth=\dimen168
+\lst@column=\count301
+\lst@pos=\count302
+\lst@lostspace=\dimen169
+\lst@width=\dimen170
+\lst@newlines=\count303
+\lst@lineno=\count304
+\lst@maxwidth=\dimen171
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count304
-\lst@skipnumbers=\count305
-\lst@framebox=\box56
+\c@lstnumber=\count305
+\lst@skipnumbers=\count306
+\lst@framebox=\box58
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
@@ -213,54 +232,54 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count306
-\float@exts=\toks31
-\float@box=\box57
-\@float@everytoks=\toks32
-\@floatcapt=\box58
+\c@float@type=\count307
+\float@exts=\toks33
+\float@box=\box59
+\@float@everytoks=\toks34
+\@floatcapt=\box60
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
-\LTleft=\skip57
-\LTright=\skip58
-\LTpre=\skip59
-\LTpost=\skip60
-\LTchunksize=\count307
-\LTcapwidth=\dimen165
-\LT@head=\box59
-\LT@firsthead=\box60
-\LT@foot=\box61
-\LT@lastfoot=\box62
-\LT@gbox=\box63
-\LT@cols=\count308
-\LT@rows=\count309
-\c@LT@tables=\count310
-\c@LT@chunks=\count311
-\LT@p@ftn=\toks33
+\LTleft=\skip59
+\LTright=\skip60
+\LTpre=\skip61
+\LTpost=\skip62
+\LTchunksize=\count308
+\LTcapwidth=\dimen172
+\LT@head=\box61
+\LT@firsthead=\box62
+\LT@foot=\box63
+\LT@lastfoot=\box64
+\LT@gbox=\box65
+\LT@cols=\count309
+\LT@rows=\count310
+\c@LT@tables=\count311
+\c@LT@chunks=\count312
+\LT@p@ftn=\toks35
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\enumerate.sty
 Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
-\@enLab=\toks34
+\@enLab=\toks36
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip61
-\multirow@cntb=\count312
-\multirow@dima=\skip62
-\bigstrutjot=\dimen166
+\multirow@colwidth=\skip63
+\multirow@cntb=\count313
+\multirow@dima=\skip64
+\bigstrutjot=\dimen173
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen167
-\captionmargin=\dimen168
-\caption@leftmargin=\dimen169
-\caption@rightmargin=\dimen170
-\caption@width=\dimen171
-\caption@indent=\dimen172
-\caption@parindent=\dimen173
-\caption@hangindent=\dimen174
+\caption@tempdima=\dimen174
+\captionmargin=\dimen175
+\caption@leftmargin=\dimen176
+\caption@rightmargin=\dimen177
+\caption@width=\dimen178
+\caption@indent=\dimen179
+\caption@parindent=\dimen180
+\caption@hangindent=\dimen181
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count313
-\c@continuedfloat=\count314
+\c@caption@flags=\count314
+\c@continuedfloat=\count315
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
@@ -272,44 +291,44 @@ Package: pdfpages 2025/07/23 v0.6g Insert pages of external PDF documents (AM)
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
-\calc@Acount=\count315
-\calc@Bcount=\count316
-\calc@Adimen=\dimen175
-\calc@Bdimen=\dimen176
-\calc@Askip=\skip63
-\calc@Bskip=\skip64
+\calc@Acount=\count316
+\calc@Bcount=\count317
+\calc@Adimen=\dimen182
+\calc@Bdimen=\dimen183
+\calc@Askip=\skip65
+\calc@Bskip=\skip66
 LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
-\calc@Ccount=\count317
-\calc@Cskip=\skip65
+\calc@Ccount=\count318
+\calc@Cskip=\skip67
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen177
-\ESO@tempdimb=\dimen178
+\ESO@tempdima=\dimen184
+\ESO@tempdimb=\dimen185
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count318
+\etb@tempcnta=\count319
 )
-\AM@pagewidth=\dimen179
-\AM@pageheight=\dimen180
-\AM@fboxrule=\dimen181
+\AM@pagewidth=\dimen186
+\AM@pageheight=\dimen187
+\AM@fboxrule=\dimen188
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
 File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count319
-\AM@pagebox=\box64
-\AM@global@opts=\toks35
-\AM@pagecnt=\count320
-\AM@toc@title=\toks36
-\AM@lof@heading=\toks37
-\c@AM@survey=\count321
-\AM@templatesizebox=\box65
+\pdfpages@includegraphics@status=\count320
+\AM@pagebox=\box66
+\AM@global@opts=\toks37
+\AM@pagecnt=\count321
+\AM@toc@title=\toks38
+\AM@lof@heading=\toks39
+\c@AM@survey=\count322
+\AM@templatesizebox=\box67
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
-\pgfutil@everybye=\toks38
-\pgfutil@tempdima=\dimen182
-\pgfutil@tempdimb=\dimen183
+\pgfutil@everybye=\toks40
+\pgfutil@tempdima=\dimen189
+\pgfutil@tempdimb=\dimen190
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
-\pgfutil@abb=\box66
+\pgfutil@abb=\box68
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -317,31 +336,31 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks39
-\pgfkeys@temptoks=\toks40
+\pgfkeys@pathtoks=\toks41
+\pgfkeys@temptoks=\toks42
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks41
+\pgfkeys@tmptoks=\toks43
 ))
-\pgf@x=\dimen184
-\pgf@y=\dimen185
-\pgf@xa=\dimen186
-\pgf@ya=\dimen187
-\pgf@xb=\dimen188
-\pgf@yb=\dimen189
-\pgf@xc=\dimen190
-\pgf@yc=\dimen191
-\pgf@xd=\dimen192
-\pgf@yd=\dimen193
+\pgf@x=\dimen191
+\pgf@y=\dimen192
+\pgf@xa=\dimen193
+\pgf@ya=\dimen194
+\pgf@xb=\dimen195
+\pgf@yb=\dimen196
+\pgf@xc=\dimen197
+\pgf@yc=\dimen198
+\pgf@xd=\dimen199
+\pgf@yd=\dimen256
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count322
-\c@pgf@countb=\count323
-\c@pgf@countc=\count324
-\c@pgf@countd=\count325
-\t@pgf@toka=\toks42
-\t@pgf@tokb=\toks43
-\t@pgf@tokc=\toks44
-\pgf@sys@id@count=\count326
+\c@pgf@counta=\count323
+\c@pgf@countb=\count324
+\c@pgf@countc=\count325
+\c@pgf@countd=\count326
+\t@pgf@toka=\toks44
+\t@pgf@tokb=\toks45
+\t@pgf@tokc=\toks46
+\pgf@sys@id@count=\count327
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -352,8 +371,8 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count327
-\pgfsyssoftpath@bigbuffer@items=\count328
+\pgfsyssoftpath@smallbuffer@items=\count328
+\pgfsyssoftpath@bigbuffer@items=\count329
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
@@ -376,52 +395,52 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
-\pgfmath@dimen=\dimen194
-\pgfmath@count=\count329
-\pgfmath@box=\box67
-\pgfmath@toks=\toks45
-\pgfmath@stack@operand=\toks46
-\pgfmath@stack@operation=\toks47
+\pgfmath@dimen=\dimen257
+\pgfmath@count=\count330
+\pgfmath@box=\box69
+\pgfmath@toks=\toks47
+\pgfmath@stack@operand=\toks48
+\pgfmath@stack@operation=\toks49
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count330
+\c@pgfmathroundto@lastzeros=\count331
 )) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen195
-\pgf@picmaxx=\dimen196
-\pgf@picminy=\dimen197
-\pgf@picmaxy=\dimen198
-\pgf@pathminx=\dimen199
-\pgf@pathmaxx=\dimen256
-\pgf@pathminy=\dimen257
-\pgf@pathmaxy=\dimen258
-\pgf@xx=\dimen259
-\pgf@xy=\dimen260
-\pgf@yx=\dimen261
-\pgf@yy=\dimen262
-\pgf@zx=\dimen263
-\pgf@zy=\dimen264
+\pgf@picminx=\dimen258
+\pgf@picmaxx=\dimen259
+\pgf@picminy=\dimen260
+\pgf@picmaxy=\dimen261
+\pgf@pathminx=\dimen262
+\pgf@pathmaxx=\dimen263
+\pgf@pathminy=\dimen264
+\pgf@pathmaxy=\dimen265
+\pgf@xx=\dimen266
+\pgf@xy=\dimen267
+\pgf@yx=\dimen268
+\pgf@yy=\dimen269
+\pgf@zx=\dimen270
+\pgf@zy=\dimen271
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen265
-\pgf@path@lasty=\dimen266
+\pgf@path@lastx=\dimen272
+\pgf@path@lasty=\dimen273
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen267
-\pgf@shorten@start@additional=\dimen268
+\pgf@shorten@end@additional=\dimen274
+\pgf@shorten@start@additional=\dimen275
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box68
-\pgf@hbox=\box69
-\pgf@layerbox@main=\box70
-\pgf@picture@serial@count=\count331
+\pgfpic=\box70
+\pgf@hbox=\box71
+\pgf@layerbox@main=\box72
+\pgf@picture@serial@count=\count332
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen269
+\pgflinewidth=\dimen276
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen270
-\pgf@pt@y=\dimen271
-\pgf@pt@temp=\dimen272
+\pgf@pt@x=\dimen277
+\pgf@pt@y=\dimen278
+\pgf@pt@temp=\dimen279
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
@@ -430,17 +449,17 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen273
+\pgfarrowsep=\dimen280
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen274
-\pgf@sys@shading@range@num=\count332
-\pgf@shadingcount=\count333
+\pgf@max=\dimen281
+\pgf@sys@shading@range@num=\count333
+\pgf@shadingcount=\count334
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box71
+\pgfexternal@startupbox=\box73
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
@@ -451,120 +470,132 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box72
+\pgfnodeparttextbox=\box74
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen275
-\pgf@nodesepend=\dimen276
+\pgf@nodesepstart=\dimen282
+\pgf@nodesepend=\dimen283
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen277
-\pgffor@skip=\dimen278
-\pgffor@stack=\toks48
-\pgffor@toks=\toks49
+\pgffor@iter=\dimen284
+\pgffor@skip=\dimen285
+\pgffor@stack=\toks50
+\pgffor@toks=\toks51
 )) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count334
-\pgfplotmarksize=\dimen279
+\pgf@plot@mark@count=\count335
+\pgfplotmarksize=\dimen286
 )
-\tikz@lastx=\dimen280
-\tikz@lasty=\dimen281
-\tikz@lastxsaved=\dimen282
-\tikz@lastysaved=\dimen283
-\tikz@lastmovetox=\dimen284
-\tikz@lastmovetoy=\dimen285
-\tikzleveldistance=\dimen286
-\tikzsiblingdistance=\dimen287
-\tikz@figbox=\box73
-\tikz@figbox@bg=\box74
-\tikz@tempbox=\box75
-\tikz@tempbox@bg=\box76
-\tikztreelevel=\count335
-\tikznumberofchildren=\count336
-\tikznumberofcurrentchild=\count337
-\tikz@fig@count=\count338
+\tikz@lastx=\dimen287
+\tikz@lasty=\dimen288
+\tikz@lastxsaved=\dimen289
+\tikz@lastysaved=\dimen290
+\tikz@lastmovetox=\dimen291
+\tikz@lastmovetoy=\dimen292
+\tikzleveldistance=\dimen293
+\tikzsiblingdistance=\dimen294
+\tikz@figbox=\box75
+\tikz@figbox@bg=\box76
+\tikz@tempbox=\box77
+\tikz@tempbox@bg=\box78
+\tikztreelevel=\count336
+\tikznumberofchildren=\count337
+\tikznumberofcurrentchild=\count338
+\tikz@fig@count=\count339
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count339
-\pgfmatrixcurrentcolumn=\count340
-\pgf@matrix@numberofcolumns=\count341
+\pgfmatrixcurrentrow=\count340
+\pgfmatrixcurrentcolumn=\count341
+\pgf@matrix@numberofcolumns=\count342
 )
-\tikz@expandcount=\count342
+\tikz@expandcount=\count343
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/cases\cases.sty
 Package: cases 2020/03/29 ver 3.2
-\numc@numwid=\dimen288
+\numc@numwid=\dimen295
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarymatrix.code.tex
 File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\arrowsize=\dimen289
-)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+\arrowsize=\dimen296
+)) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen297
+\pgfarrowlength=\dimen298
+\pgfarrowwidth=\dimen299
+\pgfarrowlinewidth=\dimen300
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip66
-\enit@outerparindent=\dimen290
-\enit@toks=\toks50
-\enit@inbox=\box77
-\enit@count@id=\count343
-\enitdp@description=\count344
+\labelindent=\skip68
+\enit@outerparindent=\dimen301
+\enit@toks=\toks52
+\enit@inbox=\box79
+\enit@count@id=\count344
+\enitdp@description=\count345
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/apacite\apacite.sty
 Package: apacite 2013/07/21 v6.03 APA citation
-\c@BibCnt=\count345
-\bibleftmargin=\skip67
-\bibindent=\skip68
-\bibparsep=\skip69
-\bibitemsep=\skip70
-\biblabelsep=\skip71
+\c@BibCnt=\count346
+\bibleftmargin=\skip69
+\bibindent=\skip70
+\bibparsep=\skip71
+\bibitemsep=\skip72
+\biblabelsep=\skip73
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip72
-\bibsep=\skip73
+\bibhang=\skip74
+\bibsep=\skip75
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count346
+\c@NAT@ctr=\count347
 )
-LaTeX Info: Redefining \BBA on input line 31.
+LaTeX Info: Redefining \BBA on input line 32.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen291
-\lightrulewidth=\dimen292
-\cmidrulewidth=\dimen293
-\belowrulesep=\dimen294
-\belowbottomsep=\dimen295
-\aboverulesep=\dimen296
-\abovetopsep=\dimen297
-\cmidrulesep=\dimen298
-\cmidrulekern=\dimen299
-\defaultaddspace=\dimen300
-\@cmidla=\count347
-\@cmidlb=\count348
-\@aboverulesep=\dimen301
-\@belowrulesep=\dimen302
-\@thisruleclass=\count349
-\@lastruleclass=\count350
-\@thisrulewidth=\dimen303
+\heavyrulewidth=\dimen302
+\lightrulewidth=\dimen303
+\cmidrulewidth=\dimen304
+\belowrulesep=\dimen305
+\belowbottomsep=\dimen306
+\aboverulesep=\dimen307
+\abovetopsep=\dimen308
+\cmidrulesep=\dimen309
+\cmidrulekern=\dimen310
+\defaultaddspace=\dimen311
+\@cmidla=\count348
+\@cmidlb=\count349
+\@aboverulesep=\dimen312
+\@belowrulesep=\dimen313
+\@thisruleclass=\count350
+\@lastruleclass=\count351
+\@thisrulewidth=\dimen314
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
-\ttl@box=\box78
-\beforetitleunit=\skip74
-\aftertitleunit=\skip75
-\ttl@plus=\dimen304
-\ttl@minus=\dimen305
-\ttl@toksa=\toks51
-\titlewidth=\dimen306
-\titlewidthlast=\dimen307
-\titlewidthfirst=\dimen308
+\ttl@box=\box80
+\beforetitleunit=\skip76
+\aftertitleunit=\skip77
+\ttl@plus=\dimen315
+\ttl@minus=\dimen316
+\ttl@toksa=\toks53
+\titlewidth=\dimen317
+\titlewidthlast=\dimen318
+\titlewidthfirst=\dimen319
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/chngcntr\chngcntr.sty
+Package: chngcntr 2018/04/09 v1.1a change counter resetting
+Package chngcntr Info: \counterwithout already defined.
+(chngcntr)             Quitting chngcntr on input line 21.
 )
-\c@teorema=\count351
-\c@algoritma=\count352
+\c@teorema=\count352
+\c@algoritma=\count353
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
@@ -591,27 +622,27 @@ Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+)
+(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count353
+\c@section@level=\count354
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen309
-\Hy@linkcounter=\count354
-\Hy@pagecounter=\count355
+\@linkdim=\dimen320
+\Hy@linkcounter=\count355
+\Hy@pagecounter=\count356
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-)
-(C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count356
+\Hy@SavedSpaceFactor=\count357
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -625,21 +656,21 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count357
+\c@Hy@tempcnt=\count358
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
-\XeTeXLinkMargin=\dimen310
+\XeTeXLinkMargin=\dimen321
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count358
-\Field@Width=\dimen311
-\Fld@charsize=\dimen312
+\Fld@menulength=\count359
+\Field@Width=\dimen322
+\Fld@charsize=\dimen323
 Package hyperref Info: Hyper figures OFF on input line 6078.
 Package hyperref Info: Link nesting OFF on input line 6083.
 Package hyperref Info: Hyper index ON on input line 6086.
@@ -647,15 +678,15 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring OFF on input line 6098.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count359
-\c@Item=\count360
-\c@Hfootnote=\count361
+\Hy@abspage=\count360
+\c@Item=\count361
+\c@Hfootnote=\count362
 )
 Package hyperref Info: Driver: hpdftex.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count362
-\c@bookmark@seq@number=\count363
+\Fld@listcount=\count363
+\c@bookmark@seq@number=\count364
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
@@ -663,17 +694,11 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
-\Hy@SectionHShift=\skip76
+\Hy@SectionHShift=\skip78
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tikz-cd\tikz-cd.sty
 Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tikz-cd\tikzlibrarycd.code.tex (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryquotes.code.tex
 File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.meta.code.tex
-File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen313
-\pgfarrowlength=\dimen314
-\pgfarrowwidth=\dimen315
-\pgfarrowlinewidth=\dimen316
 )))) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
 Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup7
@@ -690,7 +715,7 @@ LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 29
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count364
+\l__color_backend_stack_int=\count365
 ) (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.aux)
 \openout1 = `TA2.aux'.
 
@@ -714,24 +739,24 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count365
-\scratchdimen=\dimen317
-\scratchbox=\box79
-\nofMPsegments=\count366
-\nofMParguments=\count367
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count368
-\MPscratchDim=\dimen318
-\MPnumerator=\count369
-\makeMPintoPDFobject=\count370
-\everyMPtoPDFconversion=\toks53
+\scratchcounter=\count366
+\scratchdimen=\dimen324
+\scratchbox=\box81
+\nofMPsegments=\count367
+\nofMParguments=\count368
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count369
+\MPscratchDim=\dimen325
+\MPnumerator=\count370
+\makeMPintoPDFobject=\count371
+\everyMPtoPDFconversion=\toks55
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count371
+\c@lstlisting=\count372
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -744,7 +769,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@maskedRefs=\count372
+\c@maskedRefs=\count373
 
 
 Package apacite Warning: No suitable language definition file (bahasa.apc) found.
@@ -754,7 +779,7 @@ Package hyperref Info: Link coloring OFF on input line 29.
 \@outlinefile=\write4
 \openout4 = `TA2.out'.
 
-<logougm.png, id=445, 110.5731pt x 112.2594pt>
+<logougm.png, id=449, 110.5731pt x 112.2594pt>
 File: logougm.png Graphic file (type png)
 <use logougm.png>
 Package pdftex.def Info: logougm.png  used on input line 30.
@@ -886,8 +911,8 @@ Overfull \hbox (15.67642pt too wide) in paragraph at lines 33--33
 ]
 
 [8]
-Overfull \hbox (4.13866pt too wide) in paragraph at lines 80--80
- [][] [][]\OT1/ptm/m/it/12 Geographically We-i-ghted Ar-ti-fi-ci-al Ne-u-ral Ne-twork \OT1/ptm/m/n/12 (GWANN)[] [][]  
+Overfull \hbox (0.6947pt too wide) in paragraph at lines 89--89
+ [][] [][]\OT1/ptm/m/n/12 Metode Pem-bo-bot-an Ber-ba-sis Ja-ring-an Sa-raf Graf pa-da Re-gre-si Ter- 
  []
 
 
@@ -986,7 +1011,7 @@ BAB II.
 [6
 
 ]
-Overfull \hbox (5.41139pt too wide) in paragraph at lines 47--49
+Overfull \hbox (5.41139pt too wide) in paragraph at lines 45--47
 \OT1/ptm/m/n/12.045 Dengan de-mi-ki-an, ke-be-ra-da-an in-vers adi-tif dan in-vers per-ka-li-an ju-ga ter-ja-min. Akhir-
  []
 
@@ -999,19 +1024,19 @@ Overfull \hbox (5.41139pt too wide) in paragraph at lines 47--49
 [9]
 
 [10]
-Overfull \hbox (3.87686pt too wide) in paragraph at lines 152--153
+Overfull \hbox (3.87686pt too wide) in paragraph at lines 150--151
 [][]\OT1/ptm/b/n/12.045 Teorema 2.1.11 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Karakterisasi Ba-sis, ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Se-bu-ah \OT1/ptm/m/n/12.045 list \OT1/ptm/m/it/12.045 da-ri vektor-vektor
  []
 
 
-Overfull \hbox (0.74353pt too wide) in paragraph at lines 158--160
+Overfull \hbox (0.74353pt too wide) in paragraph at lines 156--158
 \OT1/ptm/b/n/12.045 Bukti. \OT1/ptm/m/n/12.045 Per-ta-ma an-da-ik-an bah-wa $\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]$ \OT1/ptm/m/n/12.045 ada-lah ba-sis da-ri $\OML/cmm/m/it/12 V$\OT1/ptm/m/n/12.045 . Se-bab $\OMS/cmsy/m/n/12 f\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]\OMS/cmsy/m/n/12 g$
  []
 
 
 
 [11]
-Overfull \hbox (10.56091pt too wide) in paragraph at lines 187--189
+Overfull \hbox (10.56091pt too wide) in paragraph at lines 185--187
 [][]\OT1/ptm/b/n/12.045 Definisi 2.1.13 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Dimensi ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Di-men-si da-ri su-a-tu ru-ang vek-tor berdimensi-
  []
 
@@ -1040,14 +1065,14 @@ Overfull \hbox (10.56091pt too wide) in paragraph at lines 187--189
 [22]
 
 [23]
-Overfull \hbox (18.56406pt too wide) detected at line 735
+Overfull \hbox (19.36423pt too wide) detected at line 733
 [] [] [] []
  []
 
 
 
 [24]
-Overfull \hbox (9.36606pt too wide) in paragraph at lines 791--792
+Overfull \hbox (9.36606pt too wide) in paragraph at lines 789--790
 [][]\OT1/ptm/b/n/12.045 Teorema 2.1.41 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Invers Ma-triks de-ngan Adjo-in\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Ji-ka $\OT1/cmr/bx/n/12 A \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 K[]$ \OT1/ptm/m/it/12.045 de-ngan $[]\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 A\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 6\OT1/cmr/m/n/12 =
  []
 
@@ -1058,12 +1083,12 @@ Overfull \hbox (9.36606pt too wide) in paragraph at lines 791--792
 [26]
 
 [27]
-Overfull \hbox (0.95236pt too wide) detected at line 855
+Overfull \hbox (0.95236pt too wide) detected at line 853
 []\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 A\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 a[]C[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 a[]C[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 a[]C[] \OT1/cmr/m/n/12 = 1 \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 24) + 2 \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 20 + 3 \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 5) = \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 24 + 40 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 15 = 1\OML/cmm/m/it/12 :
  []
 
 
-Overfull \hbox (25.95924pt too wide) detected at line 866
+Overfull \hbox (25.95929pt too wide) detected at line 864
 []
  []
 
@@ -1073,15 +1098,15 @@ Overfull \hbox (25.95924pt too wide) detected at line 866
 
 [29]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 955.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 953.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 955.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 953.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (3.53163pt too wide) in paragraph at lines 960--961
+Overfull \hbox (3.53163pt too wide) in paragraph at lines 958--959
 [][]\OT1/ptm/b/n/12.045 Definisi 2.1.46 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/it/12.045 Null Spa-ce\OT1/ptm/b/n/12.045 , \OT1/ptm/b/it/12.045 Ra-nge\OT1/ptm/b/n/12.045 , dan \OT1/ptm/b/it/12.045 Rank\OT1/ptm/b/n/12.045 , ([]Axler[], []2024[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Un-tuk $\OML/cmm/m/it/12 T \OMS/cmsy/m/n/12 2 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V; W\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
  []
 
@@ -1096,14 +1121,14 @@ Overfull \hbox (3.53163pt too wide) in paragraph at lines 960--961
 [33]
 
 [34]
-Overfull \hbox (1.80821pt too wide) in paragraph at lines 1211--1212
+Overfull \hbox (1.80821pt too wide) in paragraph at lines 1209--1210
  [][] 
  []
 
 
 
 [35]
-Overfull \hbox (6.8963pt too wide) in paragraph at lines 1260--1261
+Overfull \hbox (6.8963pt too wide) in paragraph at lines 1258--1259
 \OT1/ptm/m/n/12.045 vektor-vektor $\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; \OT1/cmr/bx/n/12 v[]$ \OT1/ptm/m/n/12.045 yang be-bas li-ne-ar se-de-mi-ki-an se-hing-ga $\OML/cmm/m/it/12 T\OT1/cmr/bx/n/12 v[]\OML/cmm/m/it/12 ; [] ; T\OT1/cmr/bx/n/12 v[]$
  []
 
@@ -1112,7 +1137,7 @@ Overfull \hbox (6.8963pt too wide) in paragraph at lines 1260--1261
 [36]
 
 [37]
-Overfull \hbox (3.88951pt too wide) in paragraph at lines 1363--1364
+Overfull \hbox (3.88951pt too wide) in paragraph at lines 1361--1362
 [][]\OT1/ptm/b/n/12.045 Teorema 2.1.57 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Keberadaan Ni-lai Ei-gen pa-da Ru-ang Vek-tor Kom-pleks, ([]Axler[],
  []
 
@@ -1129,24 +1154,18 @@ Overfull \hbox (3.88951pt too wide) in paragraph at lines 1363--1364
 [42]
 
 [43]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1614.
+
+[44]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1647.
  (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-[44]
-
 [45]
-Overfull \hbox (20.96397pt too wide) in paragraph at lines 1692--1696
-[][]\OT1/ptm/b/n/12.045 Definisi 2.2.3 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Variabel Acak\OT1/ptm/m/n/12.045 , ([]Du-dley[], []2002[])) []\OT1/ptm/m/it/12.045 Di-be-rik-an ru-ang pro-ba-bi-li-tas $\OT1/cmr/m/n/12 (
-\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 F\OML/cmm/m/it/12 ; P\OT1/cmr/m/n/12 )$
- []
-
-
 
 [46]
-Overfull \hbox (6.4948pt too wide) in paragraph at lines 1759--1766
-[]\OT1/ptm/m/n/12.045 Analisis asi-mto-tik da-lam sta-tis-ti-ka me-mer-luk-an pe-ma-ham-an yang je-las meng-
+Overfull \hbox (27.87169pt too wide) in paragraph at lines 1723--1724
+[]$\OML/cmm/m/it/12 ^^[$\OT1/ptm/m/n/12.045 -aljabar po-wer set: $\OMS/cmsy/m/n/12 F[] \OT1/cmr/m/n/12 = 2[] = \OMS/cmsy/m/n/12 f\U/msb/m/n/12.045 ?\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 2\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 3\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3\OMS/cmsy/m/n/12 gg$\OT1/ptm/m/n/12.045 .
  []
 
 
@@ -1155,47 +1174,20 @@ Overfull \hbox (6.4948pt too wide) in paragraph at lines 1759--1766
 
 [48]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1825.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1825.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1825.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1825.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1849.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1849.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1849.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1849.
-
-
-
 [49]
-Overfull \hbox (17.55083pt too wide) in paragraph at lines 1891--1893
-[][]\OT1/ptm/b/n/12.045 Teorema 2.4.1 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Weak Law of Lar-ge Num-bers\OT1/ptm/m/n/12.045 , ([]Bi-llings-ley[], []1995[])) []\OT1/ptm/m/it/12.045 Mi-salk-an $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/m/n/12 g[]$
+Overfull \hbox (30.34474pt too wide) in paragraph at lines 1798--1802
+[][]\OT1/ptm/b/n/12.045 Definisi 2.2.10 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Variabel Acak\OT1/ptm/m/n/12.045 , ([]Du-dley[], []2002[])) []\OT1/ptm/m/it/12.045 Di-be-rik-an ru-ang pro-ba-bi-li-tas $\OT1/cmr/m/n/12 (
+\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 F\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 )$
  []
 
 
 
 [50]
+Overfull \hbox (6.408pt too wide) in paragraph at lines 1831--1832
+\OMS/cmsy/m/n/12 B\OT1/cmr/m/n/12 (\U/msb/m/n/12.045 R\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 , ya-i-tu $\OML/cmm/m/it/12 B[] \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 B[] \OT1/cmr/m/n/12 = \U/msb/m/n/12.045 ?$ \OT1/ptm/m/n/12.045 un-tuk $\OML/cmm/m/it/12 i \OMS/cmsy/m/n/12 6\OT1/cmr/m/n/12 = \OML/cmm/m/it/12 j$\OT1/ptm/m/n/12.045 . Ak-an di-tun-jukk-an bah-wa $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 B[]\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g[]$
+ []
+
+
 
 [51]
 
@@ -1204,6 +1196,11 @@ Overfull \hbox (17.55083pt too wide) in paragraph at lines 1891--1893
 [53]
 
 [54]
+Overfull \hbox (5.94772pt too wide) in paragraph at lines 1944--1946
+\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 ; n\OT1/cmr/m/n/12 ]$ \OT1/ptm/m/n/12.045 de-ngan $\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12 2 \U/msb/m/n/12.045 Z[]$ \OT1/ptm/m/n/12.045 ada-lah fung-si se-der-ha-na yang meng-am-bil nilai-nilai $\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; [] ; n$\OT1/ptm/m/n/12.045 . 
+ []
+
+
 
 [55]
 
@@ -1214,33 +1211,43 @@ Overfull \hbox (17.55083pt too wide) in paragraph at lines 1891--1893
 [58]
 
 [59]
+Overfull \hbox (7.51326pt too wide) in paragraph at lines 2132--2133
+[][]\OT1/ptm/b/n/12.045 Contoh 2.2.27 []\OT1/ptm/m/n/12.045 Mi-salk-an $\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X []\OT1/cmr/m/n/12 (1)$ \OT1/ptm/m/n/12.045 de-ngan fung-si ke-pa-dat-an pro-ba-bi-li-tas $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) =
+ []
+
+
 
 [60]
-Overfull \hbox (5.27391pt too wide) in paragraph at lines 2284--2285
-[][]\OT1/ptm/b/n/12.045 Definisi 2.6.6 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Model Re-gre-si Li-ne-ar de-ngan He-te-ros-ke-das-ti-si-tas, ([]Gre-e-ne[], []2002[];
+Overfull \hbox (4.49045pt too wide) in paragraph at lines 2138--2140
+\OT1/ptm/m/n/12.045 Hasil ini di-pe-ro-leh de-ngan meng-gu-nak-an in-te-gral Gam-ma $\OT1/cmr/m/n/12 ^^@(\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ) = [][] \OML/cmm/m/it/12 x[]e[] dx \OT1/cmr/m/n/12 =
  []
 
 
 
 [61]
+Overfull \hbox (23.73698pt too wide) in paragraph at lines 2166--2167
+[][]\OT1/ptm/b/n/12.045 Definisi 2.2.29 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Variansi\OT1/ptm/m/n/12.045 , ([]Bi-llings-ley[], []1995[])) []\OT1/ptm/m/it/12.045 Un-tuk va-ri-a-bel acak $\OML/cmm/m/it/12 X$ \OT1/ptm/m/it/12.045 de-ngan $\U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 X\OMS/cmsy/m/n/12 j[]\OT1/cmr/m/n/12 ] \OML/cmm/m/it/12 <
+ []
+
+
 
 [62]
 
 [63]
+Overfull \hbox (1.5411pt too wide) in paragraph at lines 2245--2246
+[][]\OT1/ptm/b/n/12.045 Contoh 2.2.34 []\OT1/ptm/m/n/12.045 Mi-salk-an se-bu-ah da-du se-im-bang di-lem-par. De-fi-ni-sik-an ke-ja-di-an $\OML/cmm/m/it/12 A \OT1/cmr/m/n/12 =
+ []
+
+
+Overfull \hbox (21.4211pt too wide) in paragraph at lines 2266--2267
+\OT1/ptm/m/n/12.045 De-fi-ni-sik-an $\OML/cmm/m/it/12 A \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f[]g$ \OT1/ptm/m/n/12.045 dan $\OML/cmm/m/it/12 B \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f[]g$\OT1/ptm/m/n/12.045 .
+ []
+
+
 
 [64]
-Overfull \hbox (1.33002pt too wide) in paragraph at lines 2434--2435
-[]$\OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$ \OT1/ptm/m/it/12.045 me-ru-pak-an ko-e-fi-si-en yang ber-va-ri-a-si un-tuk va-ri-a-bel ke-$\OML/cmm/m/it/12 k$ \OT1/ptm/m/it/12.045 se-ba-gai fung-
- []
-
-
 
 [65]
-Overfull \hbox (3.74452pt too wide) in paragraph at lines 2490--2492
-\OT1/ptm/b/n/12.045 Bukti. \OT1/ptm/m/n/12.045 Mi-salk-an mo-del ko-e-fi-si-en ber-va-ri-a-si $\OML/cmm/m/it/12 Y[] \OT1/cmr/m/n/12 = \OML/cmm/b/it/12 x[]^^L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 "[]$ \OT1/ptm/m/n/12.045 de-ngan $\OML/cmm/m/it/12 "[] \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; ^^[[]\OT1/cmr/m/n/12 )$
- []
-
-
 
 [66]
 
@@ -1253,36 +1260,36 @@ Overfull \hbox (3.74452pt too wide) in paragraph at lines 2490--2492
 [70]
 
 [71]
+Overfull \hbox (6.4948pt too wide) in paragraph at lines 2487--2493
+[]\OT1/ptm/m/n/12.045 Analisis asi-mto-tik da-lam sta-tis-ti-ka me-mer-luk-an pe-ma-ham-an yang je-las meng-
+ []
+
+
 
 [72]
 
 [73]
 
 [74]
-Overfull \hbox (1.94777pt too wide) in paragraph at lines 2768--2770
-[]\OT1/ptm/m/n/12.045 Dengan nor-ma-li-sa-si yang te-pat, di-pe-ro-leh ha-sil akhir bah-wa $[][] \OMS/cmsy/m/n/12 ^^X \OML/cmm/m/it/12 ^^_[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 )$
- []
-
-
 
 [75]
 
 [76]
-Overfull \hbox (11.35492pt too wide) in paragraph at lines 2822--2824
-\OT1/ptm/m/it/12.045 dengan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 dan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 ada-lah ni-lai ei-gen ter-be-sar dan ter-ke-cil da-ri ma-triks $\OML/cmm/b/it/12 X[]\OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 X$\OT1/ptm/m/it/12.045 .
- []
-
-
 
 [77]
 
 [78]
 
 [79]
+Overfull \hbox (28.88156pt too wide) detected at line 2803
+[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 X[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 X\OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 > \OT1/cmr/m/n/12 1) = [](\OMS/cmsy/m/n/12 j ^^@ \OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 X\OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 > \OT1/cmr/m/n/12 1) = [](\OMS/cmsy/m/n/12 j\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 X\OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 > \OT1/cmr/m/n/12 1) = [](\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 X\OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 > \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 5) \OMS/cmsy/m/n/12 ^^Y \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 617 \OMS/cmsy/m/n/12 6\OT1/cmr/m/n/12 = 0\OML/cmm/m/it/12 :
+ []
+
+
 
 [80]
-Overfull \hbox (1.66049pt too wide) in paragraph at lines 2972--2975
-\OT1/ptm/m/n/12.045 tuk meng-hi-tung gra-di-en fung-si ke-ru-gi-an $\OML/cmm/m/it/12 L$\OT1/ptm/m/n/12.045 . De-ngan no-ta-si $\OML/cmm/b/it/12 z[] \OT1/cmr/m/n/12 = \OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 a[] \OT1/cmr/m/n/12 +
+Overfull \hbox (10.68513pt too wide) in paragraph at lines 2818--2820
+[][]\OT1/ptm/b/n/12.045 Teorema 2.4.1 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/it/12.045 Weak Law of Lar-ge Num-bers\OT1/ptm/m/n/12.045 , ([]Bi-llings-ley[], []1995[])) []\OT1/ptm/m/it/12.045 Mi-salk-an $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/m/n/12 g[]$
  []
 
 
@@ -1292,60 +1299,104 @@ Overfull \hbox (1.66049pt too wide) in paragraph at lines 2972--2975
 [82]
 
 [83]
+Overfull \hbox (8.09334pt too wide) in paragraph at lines 2930--2931
+[][]\OT1/ptm/b/n/12.045 Teorema 2.4.7 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Teorema Kon-ti-nu-i-tas L[]evy\OT1/ptm/m/n/12.045 , ([]Bi-llings-ley[], []1995[])) []\OT1/ptm/m/it/12.045 Mi-salk-an $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/m/n/12 g[]$
+ []
+
+
 
 [84]
+Overfull \hbox (0.46535pt too wide) in paragraph at lines 2967--2968
+[]\OT1/ptm/m/n/12.045 Berdasarkan te-o-re-ma Por-tman-te-au, $\OML/cmm/m/it/12 X[] [] X$ \OT1/ptm/m/n/12.045 eku-i-va-len de-ngan $\U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 h\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]\OT1/cmr/m/n/12 )] \OMS/cmsy/m/n/12 !
+ []
+
+
 
 [85]
 
 [86]
+Overfull \hbox (18.26132pt too wide) in paragraph at lines 3019--3020
+[]\OT1/ptm/m/n/12.045 Selanjutnya, se-bab $\OML/cmm/m/it/12 X[] [] X$\OT1/ptm/m/n/12.045 , ber-da-sark-an te-o-re-ma kon-ti-nu-i-tas L[]evy, $\OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 !
+ []
+
+
 
 [87]
 
 [88]
-Overfull \hbox (35.99084pt too wide) in paragraph at lines 3187--3190
-\OT1/ptm/m/it/12.045 disebut ma-triks ke-te-tang-ga-an. Ma-triks de-ra-jat di-de-fi-ni-sik-an se-ba-gai $\OT1/cmr/bx/n/12 D \OT1/cmr/m/n/12 = [](\OML/cmm/m/it/12 d[]; [] ; d[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
- []
-
-
-Overfull \hbox (19.2864pt too wide) in paragraph at lines 3193--3194
-[][]\OT1/ptm/b/n/12.045 Contoh 2.9.2 []\OT1/ptm/m/n/12.045 Graf $\OMS/cmsy/m/n/12 G \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 V\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 E\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 de-ngan $\OMS/cmsy/m/n/12 jVj \OT1/cmr/m/n/12 = 4$ \OT1/ptm/m/n/12.045 dan si-si $\OMS/cmsy/m/n/12 E \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (3\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 4)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (4\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1)\OMS/cmsy/m/n/12 g$
+Overfull \hbox (3.88977pt too wide) in paragraph at lines 3092--3093
+[][]\OT1/ptm/b/n/12.045 Teorema 2.4.15 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Teorema Cram[]er--Wold\OT1/ptm/m/n/12.045 , ([]Bi-llings-ley[], []1995[])) []\OT1/ptm/m/it/12.045 Ba-ris-an vek-tor acak
  []
 
 
 
 [89]
+Overfull \hbox (12.34119pt too wide) in paragraph at lines 3120--3122
+\OT1/ptm/m/n/12.045 berdasarkan TLP uni-va-ri-at. De-ngan te-o-re-ma Cram[]er--Wold, $[]\OT1/cmr/m/n/12 ([] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/b/it/12 ^^V\OT1/cmr/m/n/12 ) [] \OMS/cmsy/m/n/12 N\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/12 ^^F\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 . 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3124.
+
+
 
 [90]
 
 [91]
 
 [92]
-Overfull \hbox (21.09961pt too wide) in paragraph at lines 3303--3304
-[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
- []
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3224.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3224.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3224.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3224.
 
 
 
 [93]
-Overfull \hbox (21.09961pt too wide) in paragraph at lines 3334--3335
-[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
+Overfull \hbox (15.12pt too wide) in paragraph at lines 3244--3245
+[][]\OT1/ptm/b/n/12.045 Contoh 2.4.24 []\OT1/ptm/m/n/12.045 Mi-salk-an $\OML/cmm/m/it/12 X[]; X[]; []$ \OT1/ptm/m/n/12.045 ada-lah ba-ris-an va-ri-a-bel acak i.i.d. de-ngan $\U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 X[]\OT1/cmr/m/n/12 ] =
  []
 
 
 
 [94]
+Overfull \hbox (15.12pt too wide) in paragraph at lines 3291--3292
+[][]\OT1/ptm/b/n/12.045 Contoh 2.4.27 []\OT1/ptm/m/n/12.045 Mi-salk-an $\OML/cmm/m/it/12 X[]; X[]; []$ \OT1/ptm/m/n/12.045 ada-lah ba-ris-an va-ri-a-bel acak i.i.d. de-ngan $\U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 X[]\OT1/cmr/m/n/12 ] =
+ []
 
-[95]) (Bab3TA2.tex
+
+
+[95]
 
 [96]
-BAB III.
 
-
-[97
-
-]
-Overfull \hbox (1.34743pt too wide) in paragraph at lines 29--31
-\OT1/ptm/m/n/12.045 dan ke-mu-di-an meng-hu-bung-kan-nya de-ngan re-gre-si li-ne-ar au-to-re-gre-sif spa-si-al (SAR),
+[97]
+Overfull \hbox (1.39494pt too wide) in paragraph at lines 3376--3377
+\OML/cmm/m/it/12 M\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 < "$ \OT1/ptm/m/n/12.045 ka-re-na kon-ver-gen-si da-lam dis-tri-bu-si. De-ngan de-mi-ki-an, $\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 O[]\OT1/cmr/m/n/12 (1)$\OT1/ptm/m/n/12.045 . 
  []
 
 
@@ -1353,93 +1404,308 @@ Overfull \hbox (1.34743pt too wide) in paragraph at lines 29--31
 [98]
 
 [99]
-<Gambar/The_estimation_process_of_GTNNWR_model.jpeg, id=1933, 1204.5pt x 609.27625pt>
-File: Gambar/The_estimation_process_of_GTNNWR_model.jpeg Graphic file (type jpg)
-<use Gambar/The_estimation_process_of_GTNNWR_model.jpeg>
-Package pdftex.def Info: Gambar/The_estimation_process_of_GTNNWR_model.jpeg  used on input line 94.
-(pdftex.def)             Requested size: 318.67207pt x 161.19711pt.
-
 
 [100]
 
-[101 <./Gambar/The_estimation_process_of_GTNNWR_model.jpeg>]
+[101]
 
 [102]
-<GAMBAR/Flowchart GNN GTVC GTWR.png, id=1969, 1421.0691pt x 594.5412pt>
-File: GAMBAR/Flowchart GNN GTVC GTWR.png Graphic file (type png)
-<use GAMBAR/Flowchart GNN GTVC GTWR.png>
-Package pdftex.def Info: GAMBAR/Flowchart GNN GTVC GTWR.png  used on input line 125.
-(pdftex.def)             Requested size: 358.50227pt x 149.98665pt.
+Overfull \hbox (45.49687pt too wide) in paragraph at lines 3534--3535
+[]\OT1/ptm/m/n/12.045 Dengan meng-am-bil li-mit $\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12 ! 1$ \OT1/ptm/m/n/12.045 dan meng-gu-nak-an fak-ta bah-wa $[][] [][] \OT1/cmr/m/n/12 =
+ []
 
 
-[103 <./GAMBAR/Flowchart GNN GTVC GTWR.png>]
+Overfull \hbox (11.30302pt too wide) in paragraph at lines 3540--3541
+[]\OT1/ptm/m/n/12.045 Berdasarkan te-o-re-ma kon-ti-nu-i-tas L[]evy, kon-ver-gen-si fung-si ka-rak-te-ris-tik meng-
+ []
+
+
+
+[103]
+Overfull \hbox (6.13199pt too wide) in paragraph at lines 3572--3573
+[][]\OT1/ptm/b/n/12.045 Teorema 2.4.36 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Teorema Lin-de-ber-g--L[]evy\OT1/ptm/m/n/12.045 , ([]Bi-llings-ley[], []1995[])) []\OT1/ptm/m/it/12.045 Mi-salk-an $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/m/n/12 g[]$
+ []
+
+
+Overfull \hbox (4.36455pt too wide) in paragraph at lines 3591--3592
+[][]\OT1/ptm/b/n/12.045 Teorema 2.4.37 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Teorema Lin-de-ber-g--Fe-ller\OT1/ptm/m/n/12.045 , ([]Bi-llings-ley[], []1995[])) []\OT1/ptm/m/it/12.045 Mi-salk-an $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 :
+ []
+
+
 
 [104]
 
 [105]
-Overfull \hbox (12.0985pt too wide) in paragraph at lines 183--185
-\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; [] ; N\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 t \OT1/cmr/m/n/12 = 1\OML/cmm/m/it/12 ; [] ; T\OMS/cmsy/m/n/12 g$ \OT1/ptm/m/n/12.045 de-ngan res-pon $\OML/cmm/m/it/12 y[]$ \OT1/ptm/m/n/12.045 dan ko-va-ri-at $\OT1/cmr/bx/n/12 x[] \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 )[]$\OT1/ptm/m/n/12.045 .
- []
-
-
-Overfull \hbox (9.7005pt too wide) in paragraph at lines 191--192
-[]\OT1/ptm/m/n/12.045 Untuk meng-hu-bungk-an mo-del ini de-ngan ja-ring-an graf, ko-e-fi-si-en lo-kal $\OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$
- []
-
-
-Overfull \hbox (5.11198pt too wide) in paragraph at lines 191--192
-\OT1/ptm/m/n/12.045 di-pa-ra-me-tri-sa-si se-ba-gai fung-si da-ri ko-e-fi-si-en glo-bal $\OML/cmm/m/it/12 ^^L[]$ \OT1/ptm/m/n/12.045 dan bo-bot adap-tif $\OML/cmm/m/it/12 w[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 : 
- []
-
-
 
 [106]
 
 [107]
-Overfull \hbox (4.42819pt too wide) in paragraph at lines 258--261
-\OT1/ptm/m/n/12.045 men-cer-mink-an ke-de-kat-an an-ta-ra ti-tik $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 i; t\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 dan se-lu-ruh ob-se-rva-si $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j; s\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 . Da-lam GNN-
+Overfull \hbox (3.83754pt too wide) in paragraph at lines 3702--3703
+[]\OT1/ptm/m/n/12.045 Berdasarkan Te-o-re-ma Li-mit Pu-sat, $[]\OT1/cmr/m/n/12 ([] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ) N\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; ^^[[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 . De-ngan $\OML/cmm/m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) =
  []
 
 
 
 [108]
-Overfull \hbox (1.99017pt too wide) in paragraph at lines 288--289
-[]\OT1/ptm/m/n/12.045 GAT mem-per-ke-nalk-an me-ka-nis-me per-ha-ti-an (\OT1/ptm/m/it/12.045 at-ten-tion\OT1/ptm/m/n/12.045 ) se-hing-ga se-ti-ap sim-
- []
-
-
 
 [109]
 
 [110]
 
 [111]
-Overfull \hbox (3.97948pt too wide) in paragraph at lines 362--363
-[]\OT1/ptm/m/n/12.045 Untuk me-ning-katk-an sta-bi-li-tas, fung-si ob-jek-tif da-pat di-leng-ka-pi de-ngan kom-
- []
-
-
 
 [112]
 
 [113]
 
 [114]
+Overfull \hbox (4.41943pt too wide) in paragraph at lines 3946--3947
+[][]\OT1/ptm/b/n/12.045 Teorema 2.5.7 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Konsistensi Pen-du-ga Va-ri-an-si, ([]Gre-e-ne[], []2002[])\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Di ba-wah kondisi-
+ []
+
+
+Overfull \hbox (2.55296pt too wide) in paragraph at lines 3953--3955
+\OT1/ptm/b/n/12.045 Bukti. \OT1/ptm/m/n/12.045 De-fi-ni-sik-an re-si-du-al $[] \OT1/cmr/m/n/12 = \OML/cmm/b/it/12 y \OMS/cmsy/m/n/12 ^^@ \OML/cmm/b/it/12 X[] \OT1/cmr/m/n/12 = \OML/cmm/b/it/12 My$ \OT1/ptm/m/n/12.045 de-ngan $\OML/cmm/b/it/12 M \OT1/cmr/m/n/12 = \OML/cmm/b/it/12 I \OMS/cmsy/m/n/12 ^^@ \OML/cmm/b/it/12 X\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 X[]X\OT1/cmr/m/n/12 )[]\OML/cmm/b/it/12 X[]$
+ []
+
+
 
 [115]
+Overfull \hbox (25.11385pt too wide) detected at line 3965
+[][][]\U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [[][]] = \U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [[](\OML/cmm/b/it/12 "[]M"\OT1/cmr/m/n/12 )] = \U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [[](\OML/cmm/b/it/12 M""[]\OT1/cmr/m/n/12 )] = [](\OML/cmm/b/it/12 M\U/msb/m/n/12.045 E\OT1/cmr/m/n/12 [\OML/cmm/b/it/12 ""[]\OT1/cmr/m/n/12 ]) = \OML/cmm/m/it/12 ^^[[][]\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 M\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 ^^[[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 p \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1)\OML/cmm/m/it/12 :
+ []
 
-[116]) (Bab4TA2.tex
+
+
+[116]
 
 [117]
+Overfull \hbox (27.9566pt too wide) in paragraph at lines 4027--4028
+[]\OT1/ptm/b/n/12.045 Distribusi asi-mto-tik: \OT1/ptm/m/n/12.045 Da-ri nor-ma-li-tas asi-mto-tik, $[]\OT1/cmr/m/n/12 ([] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ) [] \OMS/cmsy/m/n/12 N\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; ^^[[]\OT1/cmr/m/n/12 [\OML/cmm/b/it/12 Q[]\OT1/cmr/m/n/12 ][])$\OT1/ptm/m/n/12.045 .
+ []
+
+
+Overfull \hbox (22.88579pt too wide) in paragraph at lines 4047--4048
+[]\OT1/ptm/b/n/12.045 Distribusi ek-sak: \OT1/ptm/m/n/12.045 Di ba-wah $\OML/cmm/m/it/12 H[]$ \OT1/ptm/m/n/12.045 dan nor-ma-li-tas, $\OML/cmm/b/it/12 R[] \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 r\OML/cmm/m/it/12 ; ^^[[]\OML/cmm/b/it/12 R\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 X[]X\OT1/cmr/m/n/12 )[]\OML/cmm/b/it/12 R[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 .
+ []
+
+
+
+[118]
+
+Package natbib Warning: Citation `' on page 119 undefined on input line 4063.
+
+
+Overfull \hbox (6.40689pt too wide) in paragraph at lines 4091--4092
+[][]\OT1/ptm/b/n/12.045 Teorema 2.5.13 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Uji Ra-sio Ke-mung-kin-an (\OT1/ptm/b/it/12.045 Li-ke-li-ho-od Ra-tio Test\OT1/ptm/b/n/12.045 ), ([]Gre-e-ne[], []2002[])\OT1/ptm/m/n/12.045 )
+ []
+
+
+
+[119]
+Overfull \hbox (3.29333pt too wide) in paragraph at lines 4105--4107
+\OT1/ptm/m/n/12.045 Penduga MLE un-tuk $\OML/cmm/m/it/12 ^^[[]$ \OT1/ptm/m/n/12.045 pa-da mo-del ti-dak ter-es-trik-si ada-lah $[] \OT1/cmr/m/n/12 = [](\OML/cmm/b/it/12 y \OMS/cmsy/m/n/12 ^^@ \OML/cmm/b/it/12 X[]\OT1/cmr/m/n/12 )[](\OML/cmm/b/it/12 y \OMS/cmsy/m/n/12 ^^@
+ []
+
+
+Overfull \hbox (10.15274pt too wide) in paragraph at lines 4122--4123
+[][]\OT1/ptm/b/n/12.045 Teorema 2.5.14 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Uji Pe-nga-li La-gra-nge (\OT1/ptm/b/it/12.045 La-gra-nge Mul-ti-pli-er Test\OT1/ptm/b/n/12.045 ), ([]Gre-e-ne[], []2002[])\OT1/ptm/m/n/12.045 )
+ []
+
+
+
+[120]
+
+[121]
+
+[122]
+
+[123]
+
+[124]
+
+[125]
+
+[126]
+
+[127]
+Overfull \hbox (8.32217pt too wide) in paragraph at lines 4372--4374
+\OT1/ptm/m/it/12.045 memiliki dis-tri-bu-si $\OML/cmm/m/it/12 t[]$ \OT1/ptm/m/it/12.045 se-ca-ra ek-sak di ba-wah nor-ma-li-tas ga-lat, dan $\OMS/cmsy/m/n/12 N\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1)$
+ []
+
+
+Package natbib Warning: Citation `fan1996' on page 128 undefined on input line 4396.
+
+
+Package natbib Warning: Citation `wand1995' on page 128 undefined on input line 4396.
+
+
+
+[128]
+Overfull \hbox (0.85316pt too wide) in paragraph at lines 4399--4400
+[][]\OT1/ptm/b/n/12.045 Definisi 2.6.1 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Model Re-gre-si Non-pa-ra-me-trik\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 Per-tim-bangk-an mo-del re-gre-si non-
+ []
+
+
+
+[129]
+
+[130]
+
+[131]
+
+[132]
+
+[133]
+
+[134]
+Overfull \hbox (4.12976pt too wide) in paragraph at lines 4603--4604
+[][]\OT1/ptm/b/n/12.045 Akibat 2.6.11 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/it/12.045 Bandwidth \OT1/ptm/b/n/12.045 Op-ti-mal\OT1/ptm/m/n/12.045 ) []Ban-dwi-dth \OT1/ptm/m/it/12.045 op-ti-mal yang me-mi-ni-mumk-an MSE
+ []
+
+
+
+[135]
+Overfull \hbox (24.17339pt too wide) in paragraph at lines 4635--4637
+\OT1/ptm/m/it/12.045 Secara eku-i-va-len, de-ngan men-de-fi-ni-sik-an bi-as asi-mto-tik $\OML/cmm/m/it/12 b\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 ) = []\OML/cmm/m/it/12 h[]^^V[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 K\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
+ []
+
+
+
+[136]
+Overfull \hbox (6.44916pt too wide) in paragraph at lines 4657--4659
+\OT1/ptm/m/n/12.045 Kondisi Lin-de-berg da-pat di-ve-ri-fi-ka-si de-ngan meng-gu-nak-an fak-ta bah-wa bo-bot $\OML/cmm/m/it/12 w[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 )$
+ []
+
+
+Overfull \hbox (4.79128pt too wide) in paragraph at lines 4665--4666
+[][]\OT1/ptm/b/n/12.045 Teorema 2.6.14 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Interval Kon-fi-den-si Asi-mto-tik\OT1/ptm/m/n/12.045 ) []\OT1/ptm/m/it/12.045 In-te-rval kon-fi-den-si asi-mto-tik ting-
+ []
+
+
+
+[137]
+
+[138]
+
+[139]
+
+[140]
+
+[141]
+
+[142]
+
+[143]
+
+[144]
+
+[145]
+Overfull \hbox (1.94777pt too wide) in paragraph at lines 5076--5078
+[]\OT1/ptm/m/n/12.045 Dengan nor-ma-li-sa-si yang te-pat, di-pe-ro-leh ha-sil akhir bah-wa $[][] \OMS/cmsy/m/n/12 ^^X \OML/cmm/m/it/12 ^^_[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 )$
+ []
+
+
+
+[146]
+
+[147]
+Overfull \hbox (11.35492pt too wide) in paragraph at lines 5130--5132
+\OT1/ptm/m/it/12.045 dengan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 dan $\OML/cmm/m/it/12 ^^U[]$ \OT1/ptm/m/it/12.045 ada-lah ni-lai ei-gen ter-be-sar dan ter-ke-cil da-ri ma-triks $\OML/cmm/b/it/12 X[]\OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 X$\OT1/ptm/m/it/12.045 .
+ []
+
+
+
+[148]
+
+[149]
+
+[150]
+
+[151]
+Overfull \hbox (1.66049pt too wide) in paragraph at lines 5280--5283
+\OT1/ptm/m/n/12.045 tuk meng-hi-tung gra-di-en fung-si ke-ru-gi-an $\OML/cmm/m/it/12 L$\OT1/ptm/m/n/12.045 . De-ngan no-ta-si $\OML/cmm/b/it/12 z[] \OT1/cmr/m/n/12 = \OT1/cmr/bx/n/12 W[]\OML/cmm/b/it/12 a[] \OT1/cmr/m/n/12 +
+ []
+
+
+
+[152]
+
+[153]
+
+[154]
+
+[155]
+
+[156]
+
+[157]
+
+[158]
+Overfull \hbox (35.99084pt too wide) in paragraph at lines 5495--5498
+\OT1/ptm/m/it/12.045 disebut ma-triks ke-te-tang-ga-an. Ma-triks de-ra-jat di-de-fi-ni-sik-an se-ba-gai $\OT1/cmr/bx/n/12 D \OT1/cmr/m/n/12 = [](\OML/cmm/m/it/12 d[]; [] ; d[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/it/12.045 ,
+ []
+
+
+
+[159]
+Overfull \hbox (19.2864pt too wide) in paragraph at lines 5501--5502
+[][]\OT1/ptm/b/n/12.045 Contoh 2.9.2 []\OT1/ptm/m/n/12.045 Graf $\OMS/cmsy/m/n/12 G \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 V\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 E\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 de-ngan $\OMS/cmsy/m/n/12 jVj \OT1/cmr/m/n/12 = 4$ \OT1/ptm/m/n/12.045 dan si-si $\OMS/cmsy/m/n/12 E \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 2)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (3\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 4)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (4\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1)\OMS/cmsy/m/n/12 g$
+ []
+
+
+
+[160]
+
+[161]
+
+[162]
+Overfull \hbox (21.09961pt too wide) in paragraph at lines 5611--5612
+[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
+ []
+
+
+
+[163]
+Overfull \hbox (21.09961pt too wide) in paragraph at lines 5642--5643
+[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
+ []
+
+
+
+[164]
+
+[165]) (Bab3TA2.tex
+
+[166]
+BAB III.
+
+Overfull \hbox (1.67659pt too wide) in paragraph at lines 5--12
+\OT1/ptm/m/n/12.045 meng-a-ko-mo-da-si ke-ti-daks-ta-sio-ner-an spa-si-al. Da-lam ba-nyak apli-ka-si spa-si-al, hu-bung-
+ []
+
+
+
+[167
+
+]
+
+[168]
+
+[169]) (Bab4TA2.tex
+
+[170]
+
+[171]
 BAB IV.
-<GAMBAR/patrick.jpeg, id=2091, 259.97125pt x 194.7275pt>
+<GAMBAR/patrick.jpeg, id=2831, 259.97125pt x 194.7275pt>
 File: GAMBAR/patrick.jpeg Graphic file (type jpg)
 <use GAMBAR/patrick.jpeg>
 Package pdftex.def Info: GAMBAR/patrick.jpeg  used on input line 13.
 (pdftex.def)             Requested size: 239.00557pt x 179.02368pt.
 
 
-[118
+[172
 
  <./GAMBAR/patrick.jpeg>]
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 23.
@@ -1450,11 +1716,11 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12.045> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 23.
 ) (../BAB 1, 2, 5/Bab5.tex
 
-[119]
+[173]
 BAB V.
 )
 
-[120
+[174
 
 ] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.bbl
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 128.
@@ -1472,19 +1738,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 116--131
 
 
 
-[121
+[175
 
 ]
 
-[122]
+[176]
 
-[123])
+[177])
 
-[124]
+[178]
 LAMPIRAN A.
 
 
-[125
+[179
 
 ]
 LAMPIRAN B.
@@ -1498,7 +1764,11 @@ File: lstlang3.sty 2024/09/23 1.10c listings language file
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 191.
  (syntax R template.R)
 
-[126
+Package natbib Warning: There were undefined citations.
+
+
+
+[180
 
 ] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.aux)
  ***********
@@ -1511,20 +1781,20 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.98875pt have occurred.
 
 Package rerunfilecheck Info: File `TA2.out' has not changed.
-(rerunfilecheck)             Checksum: 7E20ACD9537D0D8A6E8A10B686C4E67A;23173.
+(rerunfilecheck)             Checksum: 87065DCB10A871692644C06CB4A257D9;23447.
  ) 
 Here is how much of TeX's memory you used:
- 31165 strings out of 468134
- 571813 string characters out of 5431224
- 1114797 words of memory out of 5000000
- 58309 multiletter control sequences out of 15000+600000
+ 31854 strings out of 468134
+ 581689 string characters out of 5431224
+ 1118219 words of memory out of 5000000
+ 58489 multiletter control sequences out of 15000+600000
  680002 words of font info for 169 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,14n,111p,1131b,1801s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,105p,1131b,1801s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.pdf" (141 pages, 1772464 bytes).
+Output written on "d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.pdf" (195 pages, 1244972 bytes).
 PDF statistics:
- 2453 PDF objects out of 2487 (max. 8388607)
- 893 named destinations out of 1000 (max. 500000)
- 913 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3296 PDF objects out of 3580 (max. 8388607)
+ 1390 named destinations out of 1440 (max. 500000)
+ 911 words of extra memory for PDF output out of 10000 (max. 10000000)
 
