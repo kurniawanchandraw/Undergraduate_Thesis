@@ -679,7 +679,11 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count365
-) (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.aux)
+) (LaporanTA1.aux
+
+LaTeX Warning: Label `eq:gtvc' multiply defined.
+
+)
 \openout1 = `LaporanTA1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -738,11 +742,11 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package apacite Warning: No suitable language definition file (bahasa.apc) found.
 
 Package hyperref Info: Link coloring OFF on input line 24.
-(d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.out) (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.out)
+(LaporanTA1.out) (LaporanTA1.out)
 \@outlinefile=\write4
 \openout4 = `LaporanTA1.out'.
 
-<logougm.png, id=306, 110.5731pt x 112.2594pt>
+<logougm.png, id=274, 110.5731pt x 112.2594pt>
 File: logougm.png Graphic file (type png)
 <use logougm.png>
 Package pdftex.def Info: logougm.png  used on input line 25.
@@ -767,7 +771,7 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 
 [1
 
-{C:/Users/ASUS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./logougm.png>] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.toc
+{C:/Users/ASUS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./logougm.png>] (LaporanTA1.toc
 LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 3.
 
 
@@ -812,23 +816,16 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6.02249> not available
 
 
 ]
-Overfull \hbox (0.82065pt too wide) in paragraph at lines 47--47
-[]|$[]$[]\OT1/ptm/b/n/12.045 PENGEMBANGAN PEM-BO-BOT-AN BER-BA-SIS JA-RING-AN 
+Overfull \hbox (5.34242pt too wide) in paragraph at lines 49--49
+ []| \OT1/ptm/m/n/12.045 2.6.5.  []Pen-de-kat-an Pem-be-la-jar-an Semi-Terawasi pa-da Pem-be-la-jar-an Men- 
  []
 
 
-Overfull \hbox (0.6573pt too wide) in paragraph at lines 50--50
+Overfull \hbox (0.6573pt too wide) in paragraph at lines 58--58
  []| \OT1/ptm/m/n/12.045 4.1.2.  []\OT1/ptm/m/it/12.045 Spa-ti-al and At-tri-bu-te Ne-u-ral Ne-twork We-i-ghted Re-gres-sion \OT1/ptm/m/n/12.045 (SAN- 
  []
 
-
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.76 ...r}{DAFTAR PUSTAKA}{127}{figure.caption.15}
-                                                  % [1])
+)
 \tf@toc=\write5
 \openout5 = `LaporanTA1.toc'.
 
@@ -836,6 +833,12 @@ l.76 ...r}{DAFTAR PUSTAKA}{127}{figure.caption.15}
 
 [1]
 BAB I.
+
+Package natbib Warning: Citation `amri2020' on page 2 undefined on input line 5.
+
+
+Package natbib Warning: Citation `anselin' on page 2 undefined on input line 7.
+
 
 
 [2
@@ -848,6 +851,9 @@ BAB I.
 Overfull \hbox (2.54811pt too wide) in paragraph at lines 23--24
 []\OT1/ptm/m/n/12.045 mengevaluasi ki-ner-ja mo-del ter-ha-dap mo-del kon-ven-sio-nal (GTWR dan GWR)
  []
+
+
+Package natbib Warning: Citation `xiong2024gstrgct' on page 5 undefined on input line 28.
 
 
 
@@ -1011,6 +1017,10 @@ Overfull \hbox (6.8963pt too wide) in paragraph at lines 1258--1259
 [37]
 
 [38]
+
+LaTeX Warning: Reference `fig:eigenvector-illustration' on page 39 undefined on input line 1357.
+
+
 Overfull \hbox (3.88951pt too wide) in paragraph at lines 1361--1362
 [][]\OT1/ptm/b/n/12.045 Teorema 2.1.57 \OT1/ptm/m/n/12.045 (\OT1/ptm/b/n/12.045 Keberadaan Ni-lai Ei-gen pa-da Ru-ang Vek-tor Kom-pleks, ([]Axler[],
  []
@@ -1675,6 +1685,13 @@ Overfull \hbox (4.79128pt too wide) in paragraph at lines 4665--4666
 
 [138]
 
+Package natbib Warning: Citation `anselin' on page 139 undefined on input line 4821.
+
+
+Package natbib Warning: Citation `lesage' on page 139 undefined on input line 4821.
+
+
+
 [139]
 
 ../BAB 1, 2, 5/Bab2.tex:4830: LaTeX Error: Environment tabularx undefined.
@@ -1888,6 +1905,12 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
+Package natbib Warning: Citation `anselin' on page 140 undefined on input line 4870.
+
+
+Package natbib Warning: Citation `lesage' on page 140 undefined on input line 4870.
+
+
 
 [140]
 
@@ -1905,6 +1928,9 @@ or  <return>  to continue without it.
 Overfull \hbox (1.94777pt too wide) in paragraph at lines 5076--5078
 []\OT1/ptm/m/n/12.045 Dengan nor-ma-li-sa-si yang te-pat, di-pe-ro-leh ha-sil akhir bah-wa $[][] \OMS/cmsy/m/n/12 ^^X \OML/cmm/m/it/12 ^^_[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 )$
  []
+
+
+Package natbib Warning: Citation `anselin' on page 147 undefined on input line 5079.
 
 
 
@@ -1958,6 +1984,10 @@ Overfull \hbox (19.2864pt too wide) in paragraph at lines 5501--5502
 
 [161]
 
+Package natbib Warning: Citation `bronstein2021' on page 162 undefined on input line 5581.
+
+
+
 [162]
 
 [163]
@@ -1969,4 +1999,287 @@ Overfull \hbox (21.09961pt too wide) in paragraph at lines 5611--5612
 
 [164]
 Overfull \hbox (21.09961pt too wide) in paragraph at lines 5642--5643
-[]\OT1/pt
+[]\OT1/ptm/m/it/12.045 Fungsi upda-te $\OML/cmm/m/it/12 '$ \OT1/ptm/m/it/12.045 ada-lah kom-po-si-si li-ne-ar dan ak-ti-va-si non-linear: $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 x[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) =
+ []
+
+
+
+[165]
+
+[166]) (Bab3TA1.tex
+
+[167]
+BAB III.
+
+
+[168
+
+]
+
+LaTeX Warning: Reference `tab:jadwal' on page 169 undefined on input line 20.
+
+) (Bab4TA1.tex
+
+[169]
+BAB IV.
+
+
+[170
+
+]
+Overfull \hbox (1.34743pt too wide) in paragraph at lines 29--31
+\OT1/ptm/m/n/12.045 dan ke-mu-di-an meng-hu-bung-kan-nya de-ngan re-gre-si li-ne-ar au-to-re-gre-sif spa-si-al (SAR),
+ []
+
+
+
+[171]
+
+[172]
+
+LaTeX Warning: Reference `fig:gtnnwr' on page 173 undefined on input line 91.
+
+<Gambar/The_estimation_process_of_GTNNWR_model.jpeg, id=2487, 1204.5pt x 609.27625pt>
+File: Gambar/The_estimation_process_of_GTNNWR_model.jpeg Graphic file (type jpg)
+<use Gambar/The_estimation_process_of_GTNNWR_model.jpeg>
+Package pdftex.def Info: Gambar/The_estimation_process_of_GTNNWR_model.jpeg  used on input line 94.
+(pdftex.def)             Requested size: 318.67207pt x 161.19711pt.
+
+
+[173]
+
+[174 <./Gambar/The_estimation_process_of_GTNNWR_model.jpeg>]
+
+LaTeX Warning: Reference `fig:flow-metodologi' on page 175 undefined on input line 120.
+
+
+
+[175]
+<GAMBAR/Flowchart GNN GTVC GTWR.png, id=2523, 1421.0691pt x 594.5412pt>
+File: GAMBAR/Flowchart GNN GTVC GTWR.png Graphic file (type png)
+<use GAMBAR/Flowchart GNN GTVC GTWR.png>
+Package pdftex.def Info: GAMBAR/Flowchart GNN GTVC GTWR.png  used on input line 125.
+(pdftex.def)             Requested size: 358.50227pt x 149.98665pt.
+
+
+[176 <./GAMBAR/Flowchart GNN GTVC GTWR.png>]
+
+[177]
+
+LaTeX Warning: Reference `sec:gtvc' on page 178 undefined on input line 171.
+
+
+LaTeX Warning: Reference `sec:gtwr' on page 178 undefined on input line 171.
+
+
+
+[178]
+Overfull \hbox (12.0985pt too wide) in paragraph at lines 183--185
+\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; [] ; N\OT1/cmr/m/n/12 ;  \OML/cmm/m/it/12 t \OT1/cmr/m/n/12 = 1\OML/cmm/m/it/12 ; [] ; T\OMS/cmsy/m/n/12 g$ \OT1/ptm/m/n/12.045 de-ngan res-pon $\OML/cmm/m/it/12 y[]$ \OT1/ptm/m/n/12.045 dan ko-va-ri-at $\OT1/cmr/bx/n/12 x[] \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 )[]$\OT1/ptm/m/n/12.045 .
+ []
+
+
+Overfull \hbox (9.7005pt too wide) in paragraph at lines 191--192
+[]\OT1/ptm/m/n/12.045 Untuk meng-hu-bungk-an mo-del ini de-ngan ja-ring-an graf, ko-e-fi-si-en lo-kal $\OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$
+ []
+
+
+Overfull \hbox (5.11198pt too wide) in paragraph at lines 191--192
+\OT1/ptm/m/n/12.045 di-pa-ra-me-tri-sa-si se-ba-gai fung-si da-ri ko-e-fi-si-en glo-bal $\OML/cmm/m/it/12 ^^L[]$ \OT1/ptm/m/n/12.045 dan bo-bot adap-tif $\OML/cmm/m/it/12 w[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 : 
+ []
+
+
+LaTeX Warning: Reference `eq:gtvc-general' on page 179 undefined on input line 197.
+
+
+
+[179]
+
+[180]
+Overfull \hbox (4.42819pt too wide) in paragraph at lines 258--261
+\OT1/ptm/m/n/12.045 men-cer-mink-an ke-de-kat-an an-ta-ra ti-tik $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 i; t\OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12.045 dan se-lu-ruh ob-se-rva-si $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j; s\OT1/cmr/m/n/12 )$\OT1/ptm/m/n/12.045 . Da-lam GNN-
+ []
+
+
+
+[181]
+Overfull \hbox (1.99017pt too wide) in paragraph at lines 288--289
+[]\OT1/ptm/m/n/12.045 GAT mem-per-ke-nalk-an me-ka-nis-me per-ha-ti-an (\OT1/ptm/m/it/12.045 at-ten-tion\OT1/ptm/m/n/12.045 ) se-hing-ga se-ti-ap sim-
+ []
+
+
+
+[182]
+
+[183]
+
+[184]
+Overfull \hbox (3.97948pt too wide) in paragraph at lines 362--363
+[]\OT1/ptm/m/n/12.045 Untuk me-ning-katk-an sta-bi-li-tas, fung-si ob-jek-tif da-pat di-leng-ka-pi de-ngan kom-
+ []
+
+
+
+[185]
+
+[186]
+
+[187]
+
+[188]
+
+LaTeX Warning: Reference `eq:ssl-unsup' on page 189 undefined on input line 501.
+
+
+
+[189]
+
+[190]
+
+LaTeX Warning: Reference `fig:config-results' on page 191 undefined on input line 532.
+
+
+Overfull \hbox (2.08858pt too wide) in paragraph at lines 532--533
+[]\OT1/ptm/m/n/12.045 Pada ba-gi-an ini, be-be-ra-pa me-to-de kon-fi-gu-ra-si mo-del GNN-GTVC dan GNN-
+ []
+
+<GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png, id=2656, 1072.4868pt x 851.3406pt>
+File: GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png Graphic file (type png)
+<use GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png>
+Package pdftex.def Info: GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png  used on input line 536.
+(pdftex.def)             Requested size: 378.42043pt x 300.3899pt.
+
+
+[191 <./GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png>]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 549.
+ (C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+
+LaTeX Warning: Reference `tab:metode-tradisional' on page 192 undefined on input line 549.
+
+
+
+[192]
+
+LaTeX Warning: Reference `tab:metode-ml' on page 193 undefined on input line 570.
+
+
+LaTeX Warning: Reference `tab:hasil-gnn' on page 193 undefined on input line 591.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[193]
+
+LaTeX Warning: Reference `fig:all-methods-comparison' on page 194 undefined on input line 611.
+
+<GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png, id=2677, 1148.8521pt x 1278.4563pt>
+File: GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png Graphic file (type png)
+<use GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png>
+Package pdftex.def Info: GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png  used on input line 621.
+(pdftex.def)             Requested size: 378.42043pt x 421.11157pt.
+
+
+[194])
+
+[195 <./GAMBAR/Analisis_Komprehensif_Metode_Bab4_Indonesia.png>]
+
+[196] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.bbl
+Underfull \hbox (badness 2334) in paragraph at lines 123--138
+\OT1/ptm/m/n/12 Uni-ver-si-ty Press.  Di-am-bil da-ri []$\OT1/pcr/m/n/12 https :// www [] .microsoft [] .com /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--138
+\OT1/pcr/m/n/12 en [] -us / research / publication / neural [] -networks [] -for []
+ []
+
+
+
+[197
+
+]
+
+[198]
+
+[199])
+
+Package natbib Warning: There were undefined citations.
+
+
+
+[200] (d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-07-20>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.98875pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+
+Package rerunfilecheck Warning: File `LaporanTA1.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `LaporanTA1.out':
+(rerunfilecheck)             Before: E414B09B9BBA7076F5AC46D1FE5CAFBF;15544
+(rerunfilecheck)             After:  E87D4BA68133202F5E99BC2E6B65DDE8;22054.
+ ) 
+Here is how much of TeX's memory you used:
+ 30756 strings out of 468134
+ 567768 string characters out of 5431224
+ 945129 words of memory out of 5000000
+ 57375 multiletter control sequences out of 15000+600000
+ 671809 words of font info for 160 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,17n,111p,1138b,1013s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{subsection.4.2.5} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.4.2.4} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.6.6} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.6.5} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.6.4} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.5.5} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.3.5} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.3.4} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.1.8} has been referenced but does not exist, replaced by a fixed one
+
+<C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on "d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.pdf" (202 pages, 3227263 bytes).
+PDF statistics:
+ 3147 PDF objects out of 3580 (max. 8388607)
+ 1454 named destinations out of 1728 (max. 500000)
+ 574 words of extra memory for PDF output out of 10000 (max. 10000000)
+

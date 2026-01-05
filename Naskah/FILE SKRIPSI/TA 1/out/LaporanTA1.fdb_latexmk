@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex out/LaporanTA1"] 1767151565.04741 "out/LaporanTA1.aux" "out/LaporanTA1.bbl" "out/LaporanTA1" 1767151572.83032 0
+["bibtex out/LaporanTA1"] 1767151565.04741 "out/LaporanTA1.aux" "out/LaporanTA1.bbl" "out/LaporanTA1" 1767604104.33494 0
   "./references1.bib" 1759879376 24856 2613d72b7a100b1b2418931adce60e63 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/bibtex/bst/apacite/apacite.bst" 1374952728 146156 9d7b79dbf9d91133318126032cff8c27 ""
-  "out/LaporanTA1.aux" 1767151571 25304 de77ce8510c525fda010380afe20495b "pdflatex"
+  "out/LaporanTA1.aux" 1767604103 30195 7271932e524d6bc1de1dd3152f625f91 "pdflatex"
   (generated)
   "out/LaporanTA1.bbl"
   "out/LaporanTA1.blg"
   (rewritten before read)
-["pdflatex"] 1767151565.38393 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 1/LaporanTA1.tex" "out/LaporanTA1.pdf" "LaporanTA1" 1767151572.83086 0
+["pdflatex"] 1767604095.4587 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 1/LaporanTA1.tex" "out/LaporanTA1.pdf" "LaporanTA1" 1767604104.33552 2
   "../BAB 1, 2, 5/Bab1.tex" 1759889719 9550 b34361cf5bd9019a7dcfaffac22cd780 ""
-  "../BAB 1, 2, 5/Bab2.tex" 1767151548 207353 c66ed15909d73040058ed1e0dd31bd49 ""
+  "../BAB 1, 2, 5/Bab2.tex" 1767604085 326104 bcc91e45f1206984769c4fae405ff6b8 ""
   "Bab3TA1.tex" 1759797030 3428 603c5c613137383c737dfedb7e7cc213 ""
   "Bab4TA1.tex" 1759890273 50065 25077a125dc080e53a8776588dd684bb ""
-  "C:/Users/ASUS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1759570958 82705 9cc9f144eacd499bc23a611703921467 ""
+  "C:/Users/ASUS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767602190 82705 9cc9f144eacd499bc23a611703921467 ""
   "C:/Users/ASUS/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1759562441 13256811 0381c41ed74411e37daef3cc4ae57ff9 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136765053 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -263,14 +263,16 @@
   "GAMBAR/Flowchart GNN GTVC GTWR.png" 1759800308 840127 cb4a746415ab1568886718e8bbc454b6 ""
   "GAMBAR/GNN_GTWR_GTVC_Comprehensive_Analysis.png" 1759886840 292250 151811865cada04e5be3233ff1a8e8dd ""
   "Gambar/The_estimation_process_of_GTNNWR_model.jpeg" 1759797864 136419 5d53d432de9bb54b02407cbb11638c37 ""
+  "LaporanTA1.aux" 1759571354 25272 2f7526cd3ff7369d75198341e2d6b683 ""
+  "LaporanTA1.out" 1759571354 15544 e414b09b9bba7076f5ac46d1fe5cafbf ""
   "LaporanTA1.tex" 1759604649 2901 ac8895757a09305dacf98aacd86e834b ""
+  "LaporanTA1.toc" 1759571354 6855 5747cff3e6dc087d04479ccd06cb1993 ""
   "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 1/LaporanTA1.tex" 1759604649 2901 ac8895757a09305dacf98aacd86e834b ""
   "laporanta1statugm.cls" 1759886346 9446 881bb47ce403be7f3bd7f242b745bc1d ""
   "logougm.png" 1759537914 71376 6444378f2f87455011c1a2cc67b1629f ""
-  "out/LaporanTA1.aux" 1767151571 25304 de77ce8510c525fda010380afe20495b "pdflatex"
+  "out/LaporanTA1.aux" 1767604103 30195 7271932e524d6bc1de1dd3152f625f91 "pdflatex"
   "out/LaporanTA1.bbl" 1767151565 25389 6fa50e9025e59d24725cf536abc00b1a "bibtex out/LaporanTA1"
-  "out/LaporanTA1.out" 1767151571 17679 1a12d93afcc50aeafa0697d8c92204bc "pdflatex"
-  "out/LaporanTA1.toc" 1767151571 7713 22aa36c0fc2640747929b9968d4c470e "pdflatex"
+  "out/LaporanTA1.out" 1767604103 22054 e87d4ba68133202f5e99bc2e6b65dde8 "pdflatex"
   (generated)
   "out/LaporanTA1.aux"
   "out/LaporanTA1.log"
