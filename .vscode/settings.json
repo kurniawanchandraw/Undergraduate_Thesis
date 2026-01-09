@@ -61,3 +61,46 @@
     "*.snm", "*.synctex(busy)", "*.synctex.gz", "*.nav"
   ]
 }
+
+{
+  "key": "ctrl+i",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus && editorLangId == 'latex'",
+  "args": {
+    "snippet": "\\textit{${TM_SELECTED_TEXT}}"
+  }
+}
+
+{
+  "key": "ctrl+b",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus && editorLangId == 'latex'",
+  "args": {
+    "snippet": "\\textbf{${TM_SELECTED_TEXT}}"
+  }
+}
+{
+  "key": "ctrl+u",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus && editorLangId == 'latex'",
+  "args": {
+    "snippet": "\\underline{${TM_SELECTED_TEXT}}"
+  }
+}
+{
+  "key": "ctrl+e",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus && editorLangId == 'latex'",
+  "args": {
+    "snippet": "\\(${TM_SELECTED_TEXT}\\)"
+  }
+}
+
+{
+  "key": "ctrl+shift+e",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus && editorLangId == 'latex'",
+  "args": {
+    "snippet": "\\[${TM_SELECTED_TEXT}\\]"
+  }
+}

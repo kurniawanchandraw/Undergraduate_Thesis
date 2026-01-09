@@ -1,6 +1,6 @@
 %Created by Ari Dwi Hartanto, Alumni S1 Math Universitas Gadjah Mada, Yogyakarta, Indonesia
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{skripsiactugm}[2013/06/07 v2.0 The Universitas Gadjah Mada Mathematics Thesis Class]
+\ProvidesClass{skripsistatugm}[2013/06/07 v2.0 The Universitas Gadjah Mada Mathematics Thesis Class]
 
 \LoadClass[a4paper,12pt]{report}
 \RequirePackage[english,bahasa]{babel}
@@ -123,6 +123,7 @@
 \newtheorem{akibat}[teorema]{Akibat}
 \newtheorem{proposisi}[teorema]{Proposisi}
 \newtheorem{definisi}[teorema]{Definisi}
+\newtheorem{asumsi}[teorema]{Asumsi}
 % \numberwithin{equation}{subsection}
 
 \newtheoremstyle{dotlessexample}  % follow `plain` defaults but change HEADSPACE.
@@ -136,8 +137,13 @@
   {}          % CUSTOM-HEAD-SPEC
 \theoremstyle{dotlessexample}
 \newtheorem{contoh}[teorema]{Contoh}
-\newtheorem{algoritma}{Algoritma}[chapter]
-\renewcommand{\thealgoritma}{\arabic{chapter}.\arabic{algoritma}}
+% \newtheorem{algoritma}{Algoritma}[chapter]
+% \renewcommand{\thealgoritma}{\arabic{chapter}.\arabic{algoritma}}
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+
+\numberwithin{algorithm}{chapter}
+
 
 \renewenvironment{proof}{\vspace{-2ex}\noindent{\bf Bukti.}}{\hfill$\blacksquare$\newline\vspace{-0.4cm}}
 \def\faktor#1#2{\raise0.7ex\hbox{$#1$}\!\!\!\rotatebox{-11}{$\Big/$\!}\!\lower0.7ex\hbox{$#2$}}

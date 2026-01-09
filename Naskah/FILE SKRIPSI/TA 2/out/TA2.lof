@@ -3,15 +3,15 @@
 \babel@toc {bahasa}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Ilustrasi transformasi linear $f:\mathbb {R}^2\to \mathbb {R}^2$ dengan $f(x,y)=(2x,y)$. (Sumber: Dokumen penulis)}}{31}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Ilustrasi bentuk bilinear anti-simetri $\omega (v_1,v_2) = x_1y_2 - x_2y_1$ pada $\mathbb {R}^2$. (Sumber: Dokumen penulis)}}{33}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Perbandingan luas parallelogram sebelum dan sesudah transformasi $A$. (Sumber: Dokumen penulis)}}{35}{figure.caption.17}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Ilustrasi vektor eigen dan nilai eigen untuk transformasi $T(x,y) = (2x, 3y)$. Vektor eigen $\mathbf {v}$ dan $\mathbf {w}$ tetap searah setelah transformasi (hanya mengalami penskalaan), sedangkan vektor $\mathbf {u}$ yang bukan vektor eigen berubah arah setelah transformasi. (Sumber: Dokumen penulis)}}{38}{figure.caption.18}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Diagram hubungan antarmode konvergensi}}{77}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Ilustrasi dua graf isomorfik, yaitu $\mathcal {G}_1$ dan $\mathcal {G}_2$ memiliki struktur yang sama walaupun label simpul berbeda. (Sumber: Dokumen penulis)}}{165}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Ilustrasi transformasi linear $f:\mathbb {R}^2\to \mathbb {R}^2$ dengan $f(x,y)=(2x,y)$.}}{32}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ilustrasi bentuk bilinear anti-simetri $\omega (v_1,v_2) = x_1y_2 - x_2y_1$ pada $\mathbb {R}^2$.}}{36}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Perbandingan luas parallelogram sebelum dan sesudah transformasi $A$.}}{38}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ilustrasi vektor eigen dan nilai eigen untuk transformasi $T(x,y) = (2x, 3y)$.}}{41}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Diagram hubungan antarmode konvergensi}}{81}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Ilustrasi dua graf isomorfik, yaitu $\mathcal {G}_1$ dan $\mathcal {G}_2$ memiliki struktur yang sama walaupun label simpul berbeda. (Sumber: Dokumen penulis)}}{192}{figure.caption.21}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces SKRIPSI TU DIKERJAIN}}{172}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces SKRIPSI TU DIKERJAIN}}{265}{figure.caption.47}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

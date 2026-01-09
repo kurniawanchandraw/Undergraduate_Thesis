@@ -394,13 +394,13 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmro7t.tfm
 OUTPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.toc
 INPUT ..\BAB 1, 2, 5\Bab1.tex
 INPUT ..\BAB 1, 2, 5\Bab1.tex
 INPUT ..\BAB 1, 2, 5\Bab1.tex
 INPUT ..\BAB 1, 2, 5\Bab1.tex
 INPUT ..\BAB 1, 2, 5\Bab1.tex
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmro7t.tfm
 INPUT ..\BAB 1, 2, 5\Bab2.tex
 INPUT ..\BAB 1, 2, 5\Bab2.tex
 INPUT ..\BAB 1, 2, 5\Bab2.tex
@@ -523,12 +523,6 @@ INPUT .\GAMBAR\Analisis_Komprehensif_Metode_Bab4_Indonesia.png
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.bbl
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.bbl
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.bbl
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri7t.tfm
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\courier\pcrr7t.tfm
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.vf
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\courier\pcrr7t.vf
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\courier\pcrr8r.tfm
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.aux
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.out
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 1\out\LaporanTA1.out
@@ -540,6 +534,8 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex8.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex8.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
@@ -550,6 +546,8 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib6.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib6.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib8.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib8.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb

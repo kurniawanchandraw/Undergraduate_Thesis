@@ -1,168 +1,2135 @@
-\chapter{METODE REGRESI TERBOBOTI GEOGRAFIS DENGAN PEMBOBOTAN BERBASIS JARINGAN SARAF GRAF}
+\chapter{KERANGKA METODOLOGIS DAN ANALISIS ASIMTOTIK REGRESI TERBOBOTI GEOGRAFIS DENGAN \emph{KERNEL} SPASIAL TERPELAJARI BERBASIS JARINGAN SARAF GRAF}
 
-\section{Kerangka Regresi Terboboti Geografis}
+Pada bab ini diuraikan metode \emph{Estimated Kernel Geographically Weighted Regression} (EK GWR) berbasis jaringan saraf graf, sebuah ekstensi dari model \emph{Geographically Weighted Regression} (GWR) yang menggunakan jaringan saraf graf untuk mempelajari fungsi \emph{kernel} spasial secara adaptif. Pembahasan dimulai dengan analisis keterbatasan pembobotan spasial berbasis \emph{kernel} konvensional, dilanjutkan dengan konstruksi \emph{kernel} terpelajari berbasis jaringan saraf graf, integrasi ke dalam kerangka GWR, serta analisis asimtotik dari estimator yang dihasilkan.
 
-Regresi Terboboti Geografis (\emph{Geographically Weighted Regression}, GWR)
-merupakan pengembangan dari model regresi linear klasik yang bertujuan untuk
-mengakomodasi ketidakstasioneran spasial. Dalam banyak aplikasi spasial,
-hubungan antara variabel respons dan kovariat tidak bersifat global, melainkan
-bervariasi antar lokasi. Untuk menangkap fenomena tersebut, GWR mengizinkan
-koefisien regresi berubah secara halus mengikuti lokasi geografis
-\citep{fotheringham2002gwr}.
+\section{Keterbatasan Pembobotan Spasial Berbasis \emph{Kernel} Konvensional}
 
-\subsection{Model Regresi Terboboti Geografis}
+Sebagaimana telah diuraikan pada Bab 2, model GWR menggunakan pendekatan pembobotan spasial yang mengandalkan fungsi \emph{kernel} tetap (\emph{fixed kernel}) untuk menangkap struktur dependensi spasial dalam data. Meskipun pendekatan ini telah banyak digunakan dalam berbagai aplikasi, terdapat beberapa keterbatasan fundamental yang berdampak pada akurasi estimasi dan validitas inferensi statistik. Pada bagian ini dibahas prinsip pembobotan spasial dalam GWR klasik, sumber bias induktif yang muncul akibat penggunaan \emph{kernel} tetap, serta implikasinya terhadap inferensi statistik.
 
-Secara matematis, GWR memodelkan hubungan lokal antara variabel respons dan
-kovariat dengan memperkenalkan fungsi koefisien yang bergantung pada lokasi.
+\subsection{Prinsip Pembobotan Spasial dalam GWR}
 
-\begin{definisi}[Model Regresi Terboboti Geografis]
-Misalkan $\{(y_i,\mathbf{x}_i,\mathbf{u}_i)\}_{i=1}^n$ adalah himpunan
-pengamatan, dengan $y_i \in \mathbb{R}$ menyatakan variabel respons,
-$\mathbf{x}_i \in \mathbb{R}^p$ vektor kovariat, dan
-$\mathbf{u}_i \in \mathbb{R}^d$ koordinat spasial.
-Model Regresi Terboboti Geografis didefinisikan sebagai
-\[
-y_i = \mathbf{x}_i^\top \boldsymbol{\beta}(\mathbf{u}_i) + \varepsilon_i,
-\qquad i = 1,\dots,n,
-\]
-dengan $\boldsymbol{\beta}(\mathbf{u})$ merupakan fungsi koefisien regresi
-yang berubah terhadap lokasi $\mathbf{u}$, dan $\varepsilon_i$ adalah galat
-acak dengan $\mathbb{E}(\varepsilon_i)=0$ dan
-$\mathrm{Var}(\varepsilon_i)=\sigma^2$.
-\end{definisi}
+Model GWR menggunakan estimator koefisien lokal yang diperoleh melalui metode \emph{locally weighted least squares} (LWLS) dengan matriks bobot spasial $\mathbf{W}(u_0, v_0)$. Fungsi bobot pada model GWR ditentukan melalui fungsi \emph{kernel}, di mana bobot antara observasi $i$ dan lokasi target $(u_0, v_0)$ diberikan oleh
+\begin{equation}
+    w_i(u_0, v_0) = K\!\left( \frac{d_i(u_0, v_0)}{h} \right),
+\end{equation}
+dengan $d_i(u_0, v_0)$ adalah jarak antara $(u_i, v_i)$ dan $(u_0, v_0)$, $h > 0$ adalah parameter \emph{bandwidth}, dan $K(\cdot)$ adalah fungsi \emph{kernel} tetap seperti Gaussian atau \emph{bisquare} \citep{fan1996local}. Fungsi \emph{kernel} dengan karakteristik demikian selanjutnya disebut sebagai \emph{kernel} spasial konvensional.
 
-Model ini dapat dipandang sebagai pendekatan lokal dari regresi linear,
-di mana setiap lokasi memiliki parameter tersendiri yang diestimasi dengan
-memberikan bobot lebih besar pada pengamatan yang berdekatan secara spasial.
-
-\subsection{Estimasi \textit{Locally Weighted Least Squares}}
-
-Estimasi parameter lokal pada GWR dilakukan menggunakan pendekatan
-\emph{locally weighted least squares} (LWLS), yang merupakan bentuk khusus
-dari regresi linear terboboti dengan bobot yang bergantung pada lokasi target.
-
-\begin{definisi}[Estimator Locally Weighted Least Squares]
-Untuk suatu lokasi $\mathbf{u}_0$, estimator LWLS dari
-$\boldsymbol{\beta}(\mathbf{u}_0)$ didefinisikan sebagai solusi dari masalah
-minimisasi
-\[
-\min_{\boldsymbol{\beta}}
-\sum_{i=1}^n w_i(\mathbf{u}_0)
-\bigl(y_i - \mathbf{x}_i^\top \boldsymbol{\beta}\bigr)^2.
-\]
-Dalam notasi matriks, estimator tersebut dapat dituliskan sebagai
-\[
-\widehat{\boldsymbol{\beta}}(\mathbf{u}_0)
-=
-\bigl(\mathbf{X}^\top \mathbf{W}(\mathbf{u}_0)\mathbf{X}\bigr)^{-1}
-\mathbf{X}^\top \mathbf{W}(\mathbf{u}_0)\mathbf{y},
-\]
-dengan $\mathbf{W}(\mathbf{u}_0)$ merupakan matriks diagonal bobot spasial.
-\end{definisi}
-
-Estimator ini menunjukkan bahwa GWR secara struktural merupakan perluasan
-dari regresi linear terboboti, dan secara teoritis berkaitan erat dengan regresi
-nonparametrik berbasis kernel \citep{fan1996local}.
-
-\subsection{Struktur Pembobotan Spasial}
-
-Bobot spasial pada GWR umumnya ditentukan sebagai fungsi dari jarak antara
-lokasi pengamatan dan lokasi target. Bobot tersebut dibangun melalui fungsi
-kernel dan parameter bandwidth yang mengontrol tingkat kehalusan atau \textit{smoothing}
-\citep{fotheringham2002gwr}.
-
-\section{Inferensi Asimtotik pada Regresi Terboboti Geografis}
-
-Inferensi statistik pada GWR didasarkan pada sifat asimtotik dari estimator LWLS.
-Karena estimator bersifat lokal dan bergantung pada bandwidth, analisis
-asimtotiknya mengikuti kerangka regresi nonparametrik.
-
-\subsection{Asumsi Regularitas}
-
-Untuk memperoleh hasil asimtotik, diperlukan beberapa asumsi regularitas
-standar, antara lain:
-\begin{enumerate}[label=(A\arabic*)]
-    \item Fungsi koefisien $\boldsymbol{\beta}(\mathbf{u})$ kontinu dan memiliki
-    turunan hingga pada lingkungan $\mathbf{u}_0$;
-    \item Matriks $\mathbb{E}(\mathbf{x}_i\mathbf{x}_i^\top \mid \mathbf{u}_i=\mathbf{u}_0)$
-    bersifat definit positif;
-    \item Galat $\varepsilon_i$ bersifat independen dan identik terdistribusi
-    dengan momen hingga orde dua;
-    \item Bandwidth $h=h_n$ memenuhi $h_n \to 0$ dan $n h_n^d \to \infty$.
+Fungsi \emph{kernel} $K: \mathbb{R}^+ \to \mathbb{R}^+$ dalam GWR harus memenuhi beberapa sifat matematis berikut:
+\begin{enumerate}[label=(\roman*)]
+    \item $K(d) \geq 0$ untuk semua $d \geq 0$.
+    \item $K(0) = \sup_{d \geq 0} K(d)$, yang berarti bobot maksimum diberikan pada observasi yang berada tepat di lokasi target.
+    \item Jika $d_1 < d_2$, maka $K(d_1) \geq K(d_2)$, yang berarti bobot menurun seiring bertambahnya jarak.
+    \item $K(\cdot)$ kontinu pada domainnya untuk memastikan bobot berubah secara mulus terhadap perubahan jarak.
 \end{enumerate}
-Asumsi-asumsi ini merupakan analog dari asumsi standar dalam regresi
-nonparametrik kernel \citep{fan1996local,vdvaart1998}.
+Selain sifat-sifat di atas, beberapa fungsi \emph{kernel} juga memiliki sifat dukungan kompak (\emph{compact support}), yaitu $K(d) = 0$ untuk $d \geq c$ dengan konstanta $c > 0$ tertentu. \emph{Kernel} dengan dukungan kompak, seperti \emph{bisquare} dan \emph{tricube}, memberikan bobot nol untuk observasi yang berada di luar radius tertentu, sehingga lebih efisien secara komputasional.
 
-\subsection{Konsistensi Estimator Lokal}
+Dari definisi di atas, terlihat bahwa \emph{kernel} konvensional memiliki dua karakteristik utama:
+\begin{enumerate}[label=(\roman*)]
+    \item Bobot spasial sepenuhnya ditentukan oleh jarak geografis antara lokasi.
+    \item Parameter \emph{bandwidth} $h$ bersifat tetap untuk seluruh wilayah studi.
+\end{enumerate}
+Kedua karakteristik ini membawa implikasi penting terhadap fleksibilitas representasi struktur dependensi spasial.
 
-Di bawah asumsi regularitas di atas, estimator LWLS bersifat konsisten terhadap
-parameter lokal $\boldsymbol{\beta}(\mathbf{u}_0)$, yaitu
+\subsection{Bias Induktif pada \emph{Kernel} Tetap}
+
+\emph{Kernel} spasial konvensional membawa asumsi struktural yang bersifat \emph{a priori}, terutama isotropi dan monotonisitas pengaruh terhadap jarak \citep{fotheringham2002gwr,lesage2009spatial}. Asumsi ini membatasi kelas fungsi \emph{kernel} yang dapat digunakan dalam estimasi, sehingga menimbulkan apa yang dikenal sebagai bias induktif.
+
+\begin{definisi}[\textbf{Bias Induktif}]
+    Bias induktif adalah kecenderungan sistematis suatu metode estimasi yang disebabkan oleh pembatasan kelas fungsi atau struktur model yang diasumsikan sebelum data diamati.
+\end{definisi}
+
+Dalam konteks GWR, bias induktif muncul karena \emph{kernel} tetap membatasi bobot spasial pada fungsi jarak isotropik tertentu, sehingga tidak mampu merepresentasikan struktur spasial yang bersifat anisotropik, tidak simetris, atau bergantung pada konteks non-geometris \citep{yan2024anisotropic}.
+
+Secara matematis, misalkan $\kappa^\star(\bm{u}_i, \bm{u}_0)$ menyatakan \emph{kernel} spasial sejati yang mendasari proses data. Penggunaan \emph{kernel} konvensional menyiratkan aproksimasi
 \begin{equation}
-    \widehat{\boldsymbol{\beta}}(\mathbf{u}_0)
-    \xrightarrow{p}
-    \boldsymbol{\beta}(\mathbf{u}_0),
-    \qquad n \to \infty.
+    \kappa^\star(\bm{u}_i, \bm{u}_0) \approx K\!\left(\frac{\|\bm{u}_i - \bm{u}_0\|}{h}\right),
 \end{equation}
-Konsistensi ini merupakan konsekuensi dari sifat pelicinan lokal dan fakta bahwa
-jumlah pengamatan efektif di sekitar $\mathbf{u}_0$ meningkat seiring
-bertambahnya ukuran sampel \citep{fan1996local}.
+dengan $K(\cdot)$ dipilih dari kelas fungsi terbatas. Jika $\kappa^\star$ tidak berada dalam kelas tersebut, maka kesalahan aproksimasi tidak dapat dieliminasi meskipun ukuran sampel meningkat.
 
-\subsection{Teorema Limit Pusat Koefisien Lokal}
+Keterbatasan ini diperparah oleh penggunaan \emph{bandwidth} tunggal yang bersifat global, yang mengasumsikan bahwa seluruh hubungan spasial beroperasi pada skala yang sama, padahal banyak proses spasial bersifat multi-skala \citep{fotheringham2017multiscale}.
 
-Lebih lanjut, estimator lokal memiliki distribusi limit normal.
-Secara khusus, berlaku
-\begin{equation}
-\label{eq:clt_gwr}
-    \sqrt{n h_n^d}
-    \left(
-        \widehat{\boldsymbol{\beta}}(\mathbf{u}_0)
-        -
-        \boldsymbol{\beta}(\mathbf{u}_0)
-        -
-        \mathrm{Bias}(\mathbf{u}_0)
-    \right)
-    \xrightarrow{d}
-    \mathcal{N}\!\left(
-        \mathbf{0},
-        \boldsymbol{\Sigma}(\mathbf{u}_0)
-    \right),
-\end{equation}
-dengan $\mathrm{Bias}(\mathbf{u}_0)$ merupakan bias orde kedua yang bergantung
-pada bandwidth dan turunan fungsi koefisien
-\citep{fan1996local,vdvaart1998}.
+Keterbatasan representasi \emph{kernel} tetap tidak hanya berdampak pada akurasi estimasi koefisien lokal, tetapi juga memiliki implikasi langsung terhadap validitas inferensi statistik. Inferensi dalam GWR klasik umumnya dilakukan dengan memperlakukan matriks bobot $\mathbf{W}(u_0, v_0)$ sebagai kuantitas tetap dan tidak acak. Di bawah asumsi ini, sifat asimtotik koefisien lokal dapat diturunkan menggunakan teori regresi lokal \citep{fan1996local}.
 
-\subsection{Variansi Asimtotik dan Inferensi Lokal}
-
-Matriks kovarians asimtotik $\boldsymbol{\Sigma}(\mathbf{u}_0)$ bergantung pada
-struktur kernel, distribusi kovariat, dan variansi galat.
-Pendekatan ini memungkinkan pembentukan interval kepercayaan asimtotik dan
-pengujian hipotesis lokal terhadap komponen-komponen
-$\boldsymbol{\beta}(\mathbf{u}_0)$, dengan menggunakan pendekatan normal
-asimtotik \citep{vdvaart1998}.
-
-Inferensi yang dihasilkan bersifat lokal dan valid secara asimtotik pada setiap
-lokasi, dengan asumsi struktur pembobotan spasial bersifat tetap dan tidak
-terestimasi dari data.
+Namun, apabila \emph{kernel} spasial yang digunakan tidak sesuai dengan struktur dependensi spasial yang sesungguhnya, maka estimator koefisien lokal dapat mengalami bias sistematis akibat fenomena \emph{data borrowing} \citep{yu2020borrowing}. Keterbatasan-keterbatasan tersebut memotivasi pengembangan pendekatan pembobotan spasial yang lebih fleksibel dan berbasis data, dengan struktur \emph{kernel} yang tidak ditentukan secara \emph{ad hoc}, melainkan dipelajari dari data untuk mengurangi bias induktif.
 
 
-\section{Keterbatasan Pembobotan Spasial Konvensional}
-\subsection{Bias Induktif pada Kernel Spasial}
-\subsection{Implikasi terhadap Inferensi Statistik}
+\section{Pembelajaran \emph{Kernel} Spasial dengan Jaringan Saraf Graf}
 
-\section{Metode Pembobotan Berbasis Jaringan Saraf Graf pada Regresi Terboboti Geografis}
+Untuk mengatasi keterbatasan pembobotan spasial berbasis \emph{kernel} konvensional, pendekatan pembelajaran mesin modern menawarkan mekanisme yang lebih fleksibel dalam mempelajari struktur dependensi spasial secara langsung dari data. Salah satu pendekatan yang menonjol adalah penggunaan jaringan saraf graf (\emph{Graph Neural Networks}, GNN), yang dirancang untuk memodelkan relasi antarunit pengamatan yang direpresentasikan sebagai graf \citep{kipf2017semi,wu2021gnn}.
+
+Berbeda dengan \emph{kernel} spasial tetap yang ditentukan \emph{a priori}, GNN memungkinkan pembelajaran bobot spasial yang adaptif terhadap struktur graf dan atribut data, sehingga memperluas kelas fungsi \emph{kernel} yang dapat direpresentasikan secara \emph{data-driven}.
+
 \subsection{Representasi Graf untuk Data Spasial}
-\subsection{Formulasi Estimasi Bobot dengan Jaringan Saraf Graf}
-\subsection{Properti Bobot Terestimasi}
-\subsection{Penduga Regresi Terboboti Geografis dengan Bobot GNN}
 
-\section{Implikasi Pembobotan Berbasis Jaringan Saraf Graf terhadap Inferensi}
-\subsection{Permasalahan Inferensi dengan Bobot Terestimasi}
-\subsection{Representasi Bahadur Penduga dengan Bobot Terestimasi}
-\subsection{Kondisi Validitas Asimtotik}
-\subsection{Peran Cross-Fitting dalam Menjaga Validitas Inferensi}
+Misalkan tersedia sampel acak $\{(y_i, \bm{x}_i, \bm{u}_i)\}_{i=1}^n$, dengan $y_i \in \mathbb{R}$ adalah variabel respons, $\bm{x}_i \in \mathbb{R}^p$ adalah vektor kovariat, dan $\bm{u}_i = (u_i, v_i)^\top \in \mathbb{R}^2$ menyatakan koordinat lokasi spasial. Data spasial ini dapat direpresentasikan sebagai graf dengan mempertimbangkan struktur ketetanggaan geografis.
 
-\section{Model Koefisien Bervariasi Spasial sebagai Generalisasi}
-\subsection{\textit{Geographically Neural Network Weighted Regression} (GNNWR)}
-\subsection{Model Koefisien Bervariasi Spasial}
-\subsection{Pembobotan Berbasis Jaringan Saraf Graf pada Model Koefisien Bervariasi}
-\subsection{Implikasi Inferensi pada Model Koefisien Bervariasi Spasial}
+\begin{definisi}[\textbf{Graf Spasial Lokal}]
+    Untuk suatu lokasi target $\bm{u}_0 \in \mathbb{R}^2$ dan \emph{bandwidth} $h > 0$, didefinisikan himpunan tetangga lokal
+    \begin{equation}
+        \mathcal{N}_h(\bm{u}_0) = \{ i : \|\bm{u}_i - \bm{u}_0\| \le h \}.
+    \end{equation}
+    Graf spasial lokal didefinisikan sebagai $\mathcal{G}_h(\bm{u}_0) = (\mathcal{V}_h, \mathcal{E}_h)$, dengan $\mathcal{V}_h = \mathcal{N}_h(\bm{u}_0)$ adalah himpunan simpul dan $\mathcal{E}_h$ adalah himpunan sisi yang dibangun berdasarkan keterhubungan spasial atau kedekatan topologis antarsimpul dalam $\mathcal{V}_h$.
+\end{definisi}
+
+Setiap simpul $i \in \mathcal{V}_h$ diasosiasikan dengan vektor fitur yang merepresentasikan kovariat dan posisi relatif terhadap lokasi target. Salah satu pendekatan yang dapat digunakan adalah representasi kartesian:
+\begin{equation}
+    \bm{z}_i(\bm{u}_0) = \bigl(\bm{x}_i^\top, \bigl(\bm{u}_i - \bm{u}_0\bigr)^\top\bigr)^\top = \bigl(\bm{x}_i^\top, \Delta u_i, \Delta v_i\bigr)^\top,
+\end{equation}
+dengan $\Delta u_i = u_i - u_0$ dan $\Delta v_i = v_i - v_0$. Representasi ini secara ekuivalen dapat dinyatakan dalam koordinat polar sebagai
+\begin{equation}
+    \bm{u}_i - \bm{u}_0 = r_i (\cos\phi_i, \sin\phi_i)^\top,
+\end{equation}
+dengan $r_i = \|\bm{u}_i - \bm{u}_0\|$ adalah jarak dari lokasi target ke observasi $i$, dan $\phi_i = \arctan(\Delta v_i / \Delta u_i) \in [0, 2\pi)$ adalah sudut arah dari $\bm{u}_0$ menuju $\bm{u}_i$ relatif terhadap sumbu horizontal. Penggunaan posisi relatif $\bm{u}_i - \bm{u}_0$ alih-alih koordinat absolut $\bm{u}_i$ memiliki beberapa keunggulan berikut.
+
+\begin{proposisi}[\textbf{Invariansi Translasi}]
+    Misalkan $\bm{t} \in \mathbb{R}^2$ adalah vektor translasi sembarang. Jika seluruh lokasi ditranslasikan, yaitu $\bm{u}_i' = \bm{u}_i + \bm{t}$ dan $\bm{u}_0' = \bm{u}_0 + \bm{t}$, maka vektor fitur spasial tidak berubah:
+    \begin{equation}
+        \bm{u}_i' - \bm{u}_0' = (\bm{u}_i + \bm{t}) - (\bm{u}_0 + \bm{t}) = \bm{u}_i - \bm{u}_0.
+    \end{equation}
+    Akibatnya, $\bm{z}_i(\bm{u}_0') = \bm{z}_i(\bm{u}_0)$, sehingga fungsi skor $s_{\boldsymbol{\theta}}(i, \bm{u}_0)$ dan bobot \emph{kernel} yang dihasilkan bersifat invarian terhadap translasi sistem koordinat.
+\end{proposisi}
+
+Invariansi translasi ini memastikan bahwa model dapat digeneralisasi ke lokasi target baru tanpa bergantung pada posisi absolut dalam sistem koordinat.
+
+\begin{proposisi}[\textbf{Kapabilitas Representasi Anisotropi}]
+    Posisi relatif $\bm{u}_i - \bm{u}_0 = (\Delta u_i, \Delta v_i)^\top$ menyimpan informasi arah dan jarak secara terpisah. Misalkan dua observasi $i$ dan $j$ memiliki jarak yang sama terhadap $\bm{u}_0$, yaitu $\|\bm{u}_i - \bm{u}_0\| = \|\bm{u}_j - \bm{u}_0\| = r$, tetapi berada pada arah yang berbeda:
+    \begin{equation}
+        \bm{u}_i - \bm{u}_0 = r(\cos\phi_i, \sin\phi_i)^\top, \quad \bm{u}_j - \bm{u}_0 = r(\cos\phi_j, \sin\phi_j)^\top,
+    \end{equation}
+    dengan $\phi_i \neq \phi_j$. Karena $\bm{z}_i(\bm{u}_0) \neq \bm{z}_j(\bm{u}_0)$, maka jaringan saraf graf dapat mempelajari pemetaan skor yang berbeda, yaitu $s_{\boldsymbol{\theta}}(i, \bm{u}_0) \neq s_{\boldsymbol{\theta}}(j, \bm{u}_0)$, meskipun jaraknya sama. Hal ini memungkinkan representasi struktur anisotropi, berbeda dengan \emph{kernel} isotropik konvensional yang hanya bergantung pada jarak $\|\bm{u}_i - \bm{u}_0\|$.
+\end{proposisi}
+
+Selain itu, representasi posisi relatif juga menyediakan informasi jarak serta orientasi yang esensial untuk menentukan bobot spasial adaptif.
+
+\subsection{Fungsi Skor Spasial dan Jaringan Saraf Graf}
+
+Dalam kerangka ini, jaringan saraf graf digunakan untuk mempelajari fungsi skor yang merepresentasikan kekuatan interaksi spasial antarsimpul dalam graf lokal.
+
+\begin{definisi}[\textbf{Fungsi Skor Spasial}]
+    Fungsi skor spasial adalah pemetaan
+    \begin{equation}
+        s^\star : (\bm{z}_i(\bm{u}_0), \mathcal{G}_h(\bm{u}_0)) \mapsto \mathbb{R},
+    \end{equation}
+    yang merepresentasikan kontribusi relatif observasi ke-$i$ terhadap estimasi lokal di $\bm{u}_0$.
+\end{definisi}
+
+Fungsi $s^\star$ bersifat tidak diketahui dan dapat bergantung secara kompleks pada kovariat, posisi relatif, serta struktur graf lokal. Dalam analisis ini, fungsi skor sejati $s^\star$ diasumsikan kontinu pada domain kompak dan invarian terhadap permutasi simpul dalam graf lokal.
+
+\begin{definisi}[\textbf{Fungsi Skor Berbasis GNN}]
+    Diberikan graf lokal $\mathcal{G}_h(\bm{u}_0)$, jaringan saraf graf dengan parameter $\boldsymbol{\theta}$ mendefinisikan fungsi
+    \begin{equation}
+        s_{\boldsymbol{\theta}}(i, \bm{u}_0) = \mathrm{GNN}_{\boldsymbol{\theta}}\bigl(\mathcal{G}_h(\bm{u}_0), \bm{z}_i(\bm{u}_0)\bigr),
+    \end{equation}
+    yang menghasilkan skor untuk setiap simpul $i \in \mathcal{N}_h(\bm{u}_0)$.
+\end{definisi}
+
+Berdasarkan teorema aproksimasi universal untuk jaringan saraf graf, di bawah asumsi kontinuitas dan invariansi permutasi, untuk setiap $\varepsilon > 0$ terdapat parameter $\boldsymbol{\theta}^\star$ sedemikian sehingga
+\begin{equation}
+    \sup_{i \in \mathcal{N}_h(\bm{u}_0)} \bigl| s_{\boldsymbol{\theta}^\star}(i, \bm{u}_0) - s^\star(i, \bm{u}_0) \bigr| < \varepsilon.
+\end{equation}
+Persamaan di atas menunjukkan bahwa GNN dapat mengaproksimasi fungsi skor spasial sejati dengan presisi yang diinginkan, sehingga memungkinkan pembelajaran bobot spasial yang adaptif dan kompleks.
+
+\subsection{Konstruksi \emph{Kernel} Spasial Berbasis GNN}
+
+Fungsi skor yang dipelajari kemudian dipetakan menjadi bobot \emph{kernel} melalui normalisasi \emph{softmax}. Sebelum mendefinisikan \emph{kernel} terestimasi, perlu ditetapkan terlebih dahulu bahwa setiap \emph{kernel} konvensional dapat direpresentasikan secara ekuivalen dalam bentuk \emph{softmax}. Hal ini dijustifikasi melalui rantai transformasi aljabarik berikut.
+
+Misalkan $w_i = K(d_i/h) > 0$ adalah bobot \emph{kernel} konvensional untuk observasi $i \in \mathcal{N}_h(\bm{u}_0)$. Matriks bobot diagonal ditulis sebagai $\mathbf{W} = \mathrm{diag}(w_1, \ldots, w_m)$ dengan $m = |\mathcal{N}_h(\bm{u}_0)|$. Didefinisikan bobot ternormalisasi sebagai
+\begin{equation}
+    \tilde{w}_i = \frac{w_i}{\sum_{j=1}^m w_j} = \frac{K(d_i/h)}{\sum_{j=1}^m K(d_j/h)},
+\end{equation}
+sehingga $\tilde{w}_i > 0$ dan $\sum_{i=1}^m \tilde{w}_i = 1$. Dengan demikian, $\{\tilde{w}_i\}_{i=1}^m$ membentuk distribusi probabilitas diskret atas himpunan tetangga lokal.
+
+\begin{proposisi}[\textbf{Invariansi Skala Estimator LWLS}]
+    Estimator \emph{locally weighted least squares} bersifat invarian terhadap penskalaan bobot. Secara eksplisit, jika $\widetilde{\mathbf{W}} = \mathrm{diag}(\tilde{w}_1, \ldots, \tilde{w}_m)$ adalah matriks bobot ternormalisasi, maka
+    \begin{equation}
+        (\bm{X}^\top \widetilde{\mathbf{W}} \bm{X})^{-1} \bm{X}^\top \widetilde{\mathbf{W}} \bm{y} = (\bm{X}^\top \mathbf{W} \bm{X})^{-1} \bm{X}^\top \mathbf{W} \bm{y}.
+    \end{equation}
+\end{proposisi}
+
+\begin{proof}
+    Karena $\tilde{w}_i = w_i / \sum_j w_j$, maka $\widetilde{\mathbf{W}} = c^{-1} \mathbf{W}$ dengan $c = \sum_{j=1}^m w_j > 0$. Substitusi memberikan
+    \begin{align}
+        (\bm{X}^\top \widetilde{\mathbf{W}} \bm{X})^{-1} \bm{X}^\top \widetilde{\mathbf{W}} \bm{y} &= (c^{-1} \bm{X}^\top \mathbf{W} \bm{X})^{-1} (c^{-1} \bm{X}^\top \mathbf{W} \bm{y}) \nonumber \\
+        &= c \cdot (\bm{X}^\top \mathbf{W} \bm{X})^{-1} \cdot c^{-1} \cdot \bm{X}^\top \mathbf{W} \bm{y} \nonumber \\
+        &= (\bm{X}^\top \mathbf{W} \bm{X})^{-1} \bm{X}^\top \mathbf{W} \bm{y}.
+    \end{align}
+    Dengan demikian, estimator koefisien lokal identik untuk bobot asli $\mathbf{W}$ dan bobot ternormalisasi $\widetilde{\mathbf{W}}$.
+\end{proof}
+
+Proposisi di atas menunjukkan bahwa normalisasi bobot tidak mengubah estimator koefisien lokal. Oleh karena itu, tanpa kehilangan generalitas, dapat diasumsikan bahwa \emph{kernel} sejati bersifat ternormalisasi, yaitu $\kappa^\star(i \mid \bm{u}_0) = \tilde{w}_i$ dengan $\sum_i \kappa^\star(i \mid \bm{u}_0) = 1$.
+
+Langkah selanjutnya adalah menunjukkan bahwa setiap distribusi probabilitas diskret dapat dinyatakan sebagai transformasi \emph{softmax}.
+
+\begin{proposisi}[\textbf{Representabilitas \emph{Softmax}}]
+    Misalkan $\{\kappa^\star(i \mid \bm{u}_0)\}_{i=1}^m$ adalah distribusi probabilitas diskret positif, yaitu $\kappa^\star(i \mid \bm{u}_0) > 0$ dan $\sum_{i=1}^m \kappa^\star(i \mid \bm{u}_0) = 1$. Maka terdapat fungsi skor $s^\star : \{1, \ldots, m\} \to \mathbb{R}$ sedemikian sehingga
+    \begin{equation}
+        \kappa^\star(i \mid \bm{u}_0) = \frac{\exp\{s^\star(i, \bm{u}_0)\}}{\sum_{j=1}^m \exp\{s^\star(j, \bm{u}_0)\}} = \mathrm{softmax}(\bm{s}^\star)_i.
+    \end{equation}
+\end{proposisi}
+
+\begin{proof}
+    Didefinisikan $s^\star(i, \bm{u}_0) = \log \kappa^\star(i \mid \bm{u}_0)$ untuk setiap $i \in \{1, \ldots, m\}$. Karena $\kappa^\star(i \mid \bm{u}_0) > 0$, maka logaritma terdefinisi dengan baik dan $s^\star(i, \bm{u}_0) \in \mathbb{R}$. Verifikasi dilakukan dengan substitusi langsung:
+    \begin{align}
+        \frac{\exp\{s^\star(i, \bm{u}_0)\}}{\sum_{j=1}^m \exp\{s^\star(j, \bm{u}_0)\}} &= \frac{\exp\{\log \kappa^\star(i \mid \bm{u}_0)\}}{\sum_{j=1}^m \exp\{\log \kappa^\star(j \mid \bm{u}_0)\}} \nonumber \\
+        &= \frac{\kappa^\star(i \mid \bm{u}_0)}{\sum_{j=1}^m \kappa^\star(j \mid \bm{u}_0)} = \frac{\kappa^\star(i \mid \bm{u}_0)}{1} = \kappa^\star(i \mid \bm{u}_0).
+    \end{align}
+    Perlu dicatat bahwa $s^\star$ bersifat unik hingga konstanta aditif: jika $\tilde{s}(i) = s^\star(i) + c$ untuk $c \in \mathbb{R}$ sembarang, maka
+    \begin{equation}
+        \frac{\exp\{\tilde{s}(i)\}}{\sum_j \exp\{\tilde{s}(j)\}} = \frac{e^c \exp\{s^\star(i)\}}{e^c \sum_j \exp\{s^\star(j)\}} = \frac{\exp\{s^\star(i)\}}{\sum_j \exp\{s^\star(j)\}}.
+    \end{equation}
+\end{proof}
+
+Dengan menggabungkan kedua proposisi di atas, diperoleh rantai kesetaraan aljabarik untuk \emph{kernel} konvensional:
+\begin{equation}
+    w_i = K\!\left(\frac{d_i}{h}\right) \quad \xrightarrow{\text{normalisasi}} \quad \tilde{w}_i = \frac{w_i}{\sum_j w_j} \quad \xrightarrow{\text{log-transform}} \quad s^\star_i = \log \tilde{w}_i.
+\end{equation}
+Secara eksplisit, fungsi skor yang merepresentasikan \emph{kernel} konvensional adalah
+\begin{equation}
+    s^\star(i, \bm{u}_0) = \log K\!\left(\frac{d_i}{h}\right) - \log \sum_{j=1}^m K\!\left(\frac{d_j}{h}\right).
+\end{equation}
+Karena suku kedua konstan untuk semua $i$, dan \emph{softmax} invarian terhadap translasi konstan, fungsi skor dapat disederhanakan menjadi
+\begin{equation}
+    s^\star(i, \bm{u}_0) = \log K\!\left(\frac{\|\bm{u}_i - \bm{u}_0\|}{h}\right).
+\end{equation}
+
+\begin{akibat}[\textbf{Ekuivalensi Statistik}]
+    Penggunaan normalisasi \emph{softmax} untuk mengonstruksi \emph{kernel} terestimasi tidak membatasi generalitas model. Setiap \emph{kernel} konvensional $K(d_i/h)$ dapat direpresentasikan sebagai $\mathrm{softmax}$ dari fungsi skor $s^\star(i) = \log K(d_i/h)$, dan representasi ini menghasilkan estimator koefisien lokal yang identik dengan \emph{kernel} asli.
+\end{akibat}
+
+\begin{definisi}[\textbf{\emph{Kernel} Spasial Terestimasi}]
+    \emph{Kernel} spasial terestimasi berbasis GNN didefinisikan sebagai
+    \begin{equation}
+        \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) = \frac{\exp\{ s_{\boldsymbol{\theta}}(i, \bm{u}_0) \}}{\sum_{j \in \mathcal{N}_h(\bm{u}_0)} \exp\{ s_{\boldsymbol{\theta}}(j, \bm{u}_0) \}}.
+    \end{equation}
+\end{definisi}
+
+\begin{proposisi}[\textbf{Sifat Stokastik Baris}]
+    \emph{Kernel} terestimasi $\widehat{\kappa}_{\boldsymbol{\theta}}(\cdot \mid \bm{u}_0)$ memenuhi sifat stokastik baris (\emph{row stochastic}):
+    \begin{enumerate}[label=(\roman*)]
+        \item Non-negativitas: $\widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) > 0$ untuk semua $i \in \mathcal{N}_h(\bm{u}_0)$.
+        \item Normalisasi: $\displaystyle\sum_{i \in \mathcal{N}_h(\bm{u}_0)} \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) = 1$.
+    \end{enumerate}
+    Sifat ini merupakan konsekuensi langsung dari transformasi \emph{softmax} dan memungkinkan interpretasi $\widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0)$ sebagai probabilitas diskret atas himpunan tetangga lokal.
+\end{proposisi}
+
+\begin{proof}
+    Untuk setiap $i \in \mathcal{N}_h(\bm{u}_0)$, karena fungsi eksponensial bernilai positif untuk semua argumen real, maka $\exp\{s_{\boldsymbol{\theta}}(i, \bm{u}_0)\} > 0$. Akibatnya, $\widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) > 0$, yang membuktikan sifat (i).
+    
+    Untuk sifat (ii), dengan menjumlahkan atas seluruh $i \in \mathcal{N}_h(\bm{u}_0)$ diperoleh
+    \begin{align}
+        \sum_{i \in \mathcal{N}_h(\bm{u}_0)} \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) &= \sum_{i \in \mathcal{N}_h(\bm{u}_0)} \frac{\exp\{ s_{\boldsymbol{\theta}}(i, \bm{u}_0) \}}{\sum_{j \in \mathcal{N}_h(\bm{u}_0)} \exp\{ s_{\boldsymbol{\theta}}(j, \bm{u}_0) \}} \notag \\ &= \frac{\sum_{i} \exp\{ s_{\boldsymbol{\theta}}(i, \bm{u}_0) \}}{\sum_{j} \exp\{ s_{\boldsymbol{\theta}}(j, \bm{u}_0) \}} \notag\\ &= 1.
+    \end{align}
+\end{proof}
+
+Selanjutnya, ditunjukkan bahwa jika fungsi skor terestimasi mengaproksimasi fungsi skor sejati, maka \emph{kernel} terestimasi juga mengaproksimasi \emph{kernel} sejati.
+
+\begin{teorema}[\textbf{Konsistensi \emph{Kernel} Terestimasi}]
+    Misalkan $|\mathcal{N}_h(\bm{u}_0)| = m$ adalah jumlah tetangga lokal. Jika fungsi skor terestimasi mengaproksimasi fungsi skor sejati secara uniform, yaitu
+    \begin{equation}
+        \sup_{i \in \mathcal{N}_h(\bm{u}_0)} \bigl| s_{\boldsymbol{\theta}}(i, \bm{u}_0) - s^\star(i, \bm{u}_0) \bigr| \leq \delta
+    \end{equation}
+    untuk suatu $\delta > 0$, maka \emph{kernel} terestimasi mengaproksimasi \emph{kernel} sejati dengan batas galat
+    \begin{equation}
+        \sup_{i \in \mathcal{N}_h(\bm{u}_0)} \bigl| \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) - \kappa^\star(i \mid \bm{u}_0) \bigr| \leq 2\delta.
+    \end{equation}
+    Secara khusus, jika $\delta \to 0$, maka $\widehat{\kappa}_{\boldsymbol{\theta}} \to \kappa^\star$ secara uniform.
+\end{teorema}
+
+\begin{proof}
+    Didefinisikan $a_i = s_{\boldsymbol{\theta}}(i, \bm{u}_0)$ dan $b_i = s^\star(i, \bm{u}_0)$ untuk menyederhanakan notasi. Berdasarkan asumsi, $|a_i - b_i| \leq \delta$ untuk semua $i \in \mathcal{N}_h(\bm{u}_0)$.
+    
+    Untuk setiap $i$, selisih \emph{kernel} dapat ditulis sebagai
+    \begin{equation}
+        \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) - \kappa^\star(i \mid \bm{u}_0) = \frac{e^{a_i}}{\sum_j e^{a_j}} - \frac{e^{b_i}}{\sum_j e^{b_j}}.
+    \end{equation}
+    
+    Dengan menyamakan penyebut, diperoleh
+    \begin{align}
+        \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) - \kappa^\star(i \mid \bm{u}_0) &= \frac{e^{a_i} \sum_j e^{b_j} - e^{b_i} \sum_j e^{a_j}}{\left(\sum_j e^{a_j}\right)\left(\sum_j e^{b_j}\right)}.
+    \end{align}
+    
+    Pembilang dapat diuraikan sebagai
+    \begin{align}
+        e^{a_i} \sum_j e^{b_j} - e^{b_i} \sum_j e^{a_j} &= \sum_j \left( e^{a_i + b_j} - e^{b_i + a_j} \right).
+    \end{align}
+    
+    Untuk melanjutkan, diperlukan sifat Lipschitz dari fungsi \emph{softmax} yang dinyatakan dalam lema berikut.
+    
+    \begin{lemma} Fungsi $\mathrm{softmax}: \mathbb{R}^m \to \mathbb{R}^m$ yang didefinisikan oleh
+    \begin{equation}
+        [\mathrm{softmax}(\bm{a})]_i = \frac{e^{a_i}}{\sum_{j=1}^m e^{a_j}}
+    \end{equation}
+    memenuhi ketaksamaan Lipschitz berikut: untuk setiap $\bm{a}, \bm{b} \in \mathbb{R}^m$,
+    \begin{equation}
+        \|\mathrm{softmax}(\bm{a}) - \mathrm{softmax}(\bm{b})\|_\infty \leq 2 \|\bm{a} - \bm{b}\|_\infty.
+    \end{equation}
+    \end{lemma}
+
+    \begin{proof} Didefinisikan $p_i = [\mathrm{softmax}(\bm{a})]_i$ dan $q_i = [\mathrm{softmax}(\bm{b})]_i$. Untuk setiap $i \in \{1, \ldots, m\}$, selisih dapat ditulis sebagai
+    \begin{equation}
+        p_i - q_i = \frac{e^{a_i}}{\sum_j e^{a_j}} - \frac{e^{b_i}}{\sum_j e^{b_j}}.
+    \end{equation}
+    Dengan menyamakan penyebut, diperoleh
+    \begin{equation}
+        p_i - q_i = \frac{e^{a_i} \sum_j e^{b_j} - e^{b_i} \sum_j e^{a_j}}{\left(\sum_j e^{a_j}\right)\left(\sum_j e^{b_j}\right)}.
+    \end{equation}
+    Pembilang dapat diuraikan dengan menambah dan mengurangi suku $e^{b_i} \sum_j e^{b_j}$:
+    \begin{align}
+        e^{a_i} \sum_j e^{b_j} - e^{b_i} \sum_j e^{a_j} &= \left(e^{a_i} - e^{b_i}\right) \sum_j e^{b_j} + e^{b_i} \left(\sum_j e^{b_j} - \sum_j e^{a_j}\right) \nonumber \\
+        &= \left(e^{a_i} - e^{b_i}\right) \sum_j e^{b_j} - e^{b_i} \sum_j \left(e^{a_j} - e^{b_j}\right).
+    \end{align}
+    Dengan membagi kedua ruas dengan $\left(\sum_j e^{a_j}\right)\left(\sum_j e^{b_j}\right)$, diperoleh
+    \begin{equation}
+        p_i - q_i = \frac{e^{a_i} - e^{b_i}}{\sum_j e^{a_j}} - \frac{e^{b_i}}{\sum_j e^{b_j}} \cdot \frac{\sum_j (e^{a_j} - e^{b_j})}{\sum_j e^{a_j}}.
+    \end{equation}
+    Perhatikan bahwa $\frac{e^{b_i}}{\sum_j e^{b_j}} = q_i$ dan $\frac{\sum_j (e^{a_j} - e^{b_j})}{\sum_j e^{a_j}} = 1 - \frac{\sum_j e^{b_j}}{\sum_j e^{a_j}}$. Untuk memperoleh batas, digunakan fakta bahwa untuk fungsi eksponensial, berlaku ketaksamaan nilai tengah:
+    \begin{equation}
+        |e^{a_i} - e^{b_i}| \leq e^{\max(a_i, b_i)} |a_i - b_i|.
+    \end{equation}
+    Karena $|a_i - b_i| \leq \|\bm{a} - \bm{b}\|_\infty \leq \delta$ untuk semua $i$, maka
+    \begin{equation}
+        \left|\frac{e^{a_i} - e^{b_i}}{\sum_j e^{a_j}}\right| \leq \frac{e^{\max(a_i, b_i)}}{\sum_j e^{a_j}} \cdot \delta \leq \delta,
+    \end{equation}
+    dan dengan argumen serupa untuk suku kedua, diperoleh
+    \begin{equation}
+        |p_i - q_i| \leq \delta + q_i \cdot \delta \leq \delta + \delta = 2\delta.
+    \end{equation}
+    Karena ketaksamaan ini berlaku untuk semua $i$, maka $\|\mathrm{softmax}(\bm{a}) - \mathrm{softmax}(\bm{b})\|_\infty \leq 2\delta = 2\|\bm{a} - \bm{b}\|_\infty$. $\square$
+    \end{proof}
+    
+    Kembali ke bukti utama, dengan mengidentifikasi $\bm{a} = (a_1, \ldots, a_m)^\top$ dengan $a_i = s_{\boldsymbol{\theta}}(i, \bm{u}_0)$ dan $\bm{b} = (b_1, \ldots, b_m)^\top$ dengan $b_i = s^\star(i, \bm{u}_0)$, serta menggunakan asumsi $\|\bm{a} - \bm{b}\|_\infty \leq \delta$, maka berdasarkan lema di atas diperoleh
+    \begin{equation}
+        \sup_{i \in \mathcal{N}_h(\bm{u}_0)} \bigl| \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) - \kappa^\star(i \mid \bm{u}_0) \bigr| = \|\mathrm{softmax}(\bm{a}) - \mathrm{softmax}(\bm{b})\|_\infty \leq 2\delta.
+    \end{equation}
+\end{proof}
+
+\begin{akibat}[\textbf{Aproksimasi Universal \emph{Kernel} Spasial}]
+    Dengan menggabungkan teorema aproksimasi universal untuk GNN dan konsistensi \emph{kernel} terestimasi, diperoleh bahwa untuk setiap \emph{kernel} sejati $\kappa^\star$ yang kontinu dan invarian permutasi, serta untuk setiap $\varepsilon > 0$, terdapat parameter $\boldsymbol{\theta}^\star$ sedemikian sehingga
+    \begin{equation}
+        \sup_{i \in \mathcal{N}_h(\bm{u}_0)} \bigl| \widehat{\kappa}_{\boldsymbol{\theta}^\star}(i \mid \bm{u}_0) - \kappa^\star(i \mid \bm{u}_0) \bigr| < \varepsilon.
+    \end{equation}
+    Dengan kata lain, arsitektur GNN dengan normalisasi \emph{softmax} merupakan \emph{universal approximator} untuk kelas \emph{kernel} spasial yang valid (non-negatif dan ternormalisasi).
+\end{akibat}
+
+Dengan demikian, penggunaan GNN memperluas kelas fungsi \emph{kernel} dari keluarga \emph{kernel} tetap menuju kelas \emph{kernel} adaptif yang dipelajari dari data, tanpa mengorbankan struktur lokalitas yang diperlukan untuk analisis asimtotik.
+
+
+\section{Integrasi \emph{Kernel} Terestimasi ke dalam Kerangka GWR}
+
+Pada bagian ini diuraikan integrasi \emph{kernel} spasial terestimasi berbasis GNN ke dalam kerangka inferensi GWR. Pembahasan mencakup definisi formal model, peran \emph{kernel} sebagai \emph{nuisance parameter}, permasalahan endogenitas yang muncul, serta skema \emph{cross-fitting} untuk memulihkan validitas inferensi.
+
+\subsection{Definisi Model \emph{Estimated Kernel}-GWR (EK-GWR)}
+
+Model \emph{Estimated Kernel}-GWR (EK-GWR) mengintegrasikan \emph{kernel} spasial terestimasi ke dalam kerangka regresi terboboti geografis. Model struktural yang mendasari proses pembangkitan data diasumsikan sebagai berikut.
+
+\begin{definisi}[\textbf{Model Struktural EK-GWR}]
+    Misalkan $\{(y_i, \bm{x}_i, \bm{u}_i)\}_{i=1}^n$ adalah sampel acak dengan $y_i \in \mathbb{R}$, $\bm{x}_i \in \mathbb{R}^p$, dan $\bm{u}_i \in \mathbb{R}^2$. Model struktural diasumsikan sebagai
+    \begin{equation}
+        y_i = \bm{x}_i^\top \boldsymbol{\beta}(\bm{u}_i) + \varepsilon_i,
+    \end{equation}
+    dengan $\boldsymbol{\beta}: \mathbb{R}^2 \to \mathbb{R}^p$ adalah fungsi koefisien spasial yang halus dan $\varepsilon_i$ adalah galat acak dengan mean nol. Target inferensi adalah koefisien lokal $\boldsymbol{\beta}(\bm{u}_0)$ untuk suatu lokasi target tetap $\bm{u}_0 \in \mathbb{R}^2$.
+\end{definisi}
+
+Berbeda dengan GWR klasik yang menggunakan \emph{kernel} tetap $K(\cdot)$, pada EK-GWR bobot spasial diperoleh dari \emph{kernel} terestimasi berbasis GNN. Matriks bobot didefinisikan sebagai berikut.
+
+\begin{definisi}[\textbf{Matriks Bobot EK-GWR}]
+    Matriks bobot untuk lokasi target $\bm{u}_0$ didefinisikan sebagai
+    \begin{equation}
+        \mathbf{W}_{\boldsymbol{\theta}}(\bm{u}_0) = \mathrm{diag}\bigl(\widehat{\kappa}_{\boldsymbol{\theta}}(1 \mid \bm{u}_0), \ldots, \widehat{\kappa}_{\boldsymbol{\theta}}(n \mid \bm{u}_0)\bigr),
+    \end{equation}
+    dengan $\widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) > 0$ jika $i \in \mathcal{N}_h(\bm{u}_0)$ dan $\widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) = 0$ jika $i \notin \mathcal{N}_h(\bm{u}_0)$.
+\end{definisi}
+
+\begin{definisi}[\textbf{Estimator Koefisien Lokal EK-GWR}]
+    Estimator koefisien lokal pada lokasi target $\bm{u}_0$ didefinisikan sebagai
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\boldsymbol{\theta}}(\bm{u}_0) = \bigl(\bm{X}^\top \mathbf{W}_{\boldsymbol{\theta}}(\bm{u}_0) \bm{X}\bigr)^{-1} \bm{X}^\top \mathbf{W}_{\boldsymbol{\theta}}(\bm{u}_0) \bm{y},
+    \end{equation}
+    dengan $\bm{X} = (\bm{x}_1, \ldots, \bm{x}_n)^\top$ adalah matriks desain dan $\bm{y} = (y_1, \ldots, y_n)^\top$ adalah vektor respons.
+\end{definisi}
+
+Estimator ini memiliki bentuk yang identik dengan estimator GWR klasik, namun dengan matriks bobot $\mathbf{W}_{\boldsymbol{\theta}}(\bm{u}_0)$ yang dihasilkan dari \emph{kernel} terestimasi. Perbedaan fundamental terletak pada sifat stokastik dari matriks bobot, yang membawa implikasi penting terhadap analisis asimtotik.
+
+\subsection{\emph{Kernel} Terestimasi sebagai \emph{Nuisance Parameter}}
+
+Dalam kerangka EK-GWR, parameter GNN $\boldsymbol{\theta}$ yang menghasilkan \emph{kernel} terestimasi berperan sebagai \emph{nuisance parameter}—parameter yang diperlukan untuk estimasi tetapi bukan target inferensi utama.
+
+\begin{definisi}[\textbf{\emph{Nuisance Parameter}}]
+    Dalam konteks EK-GWR, \emph{nuisance parameter} adalah parameter $\boldsymbol{\theta}$ dari jaringan saraf graf yang menentukan fungsi \emph{kernel} $\widehat{\kappa}_{\boldsymbol{\theta}}(\cdot \mid \bm{u}_0)$. Target inferensi utama adalah koefisien lokal $\boldsymbol{\beta}(\bm{u}_0)$, bukan parameter $\boldsymbol{\theta}$.
+\end{definisi}
+
+Peran \emph{kernel} sebagai \emph{nuisance parameter} membawa beberapa implikasi penting:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Dimensi tinggi:} Parameter $\boldsymbol{\theta}$ dapat berdimensi sangat tinggi (ribuan hingga jutaan parameter pada arsitektur GNN modern), jauh melebihi dimensi target $\boldsymbol{\beta}(\bm{u}_0) \in \mathbb{R}^p$.
+    \item \textbf{Estimasi bertahap:} Estimasi dilakukan dalam dua tahap: pertama mengestimasi $\boldsymbol{\theta}$ melalui pelatihan GNN, kemudian menggunakan $\widehat{\boldsymbol{\theta}}$ untuk menghitung $\widehat{\boldsymbol{\beta}}_{\widehat{\boldsymbol{\theta}}}(\bm{u}_0)$.
+    \item \textbf{Ketidakpastian tambahan:} Estimasi $\boldsymbol{\theta}$ menambah sumber ketidakpastian yang harus diperhitungkan dalam inferensi.
+\end{enumerate}
+
+Kerangka teoretis untuk menangani \emph{nuisance parameter} berdimensi tinggi dalam konteks inferensi semiparametrik telah dikembangkan dalam literatur ekonometrika dan statistik \citep{chernozhukov2018double}. Pendekatan ini akan diadaptasi untuk konteks EK-GWR pada bagian selanjutnya.
+
+\subsection{Permasalahan Endogenitas dan Ketergantungan Data}
+
+Ketika \emph{kernel} diestimasi dari data yang sama dengan data yang digunakan untuk mengestimasi koefisien lokal, muncul permasalahan endogenitas yang dapat menginvalidasi inferensi standar. Permasalahan ini bersumber dari ketergantungan parameter GNN $\widehat{\boldsymbol{\theta}}$ terhadap galat $\boldsymbol{\varepsilon}$ melalui fungsi kerugian, \textbf{terlepas dari bentuk spesifik fungsi kerugian yang digunakan}.
+
+\begin{proposisi}[\textbf{Masalah Endogenitas}]
+    Misalkan $\mathcal{L}: \Theta \times \mathbb{R}^n \to \mathbb{R}$ adalah fungsi kerugian sembarang yang memenuhi:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\mathcal{L}(\boldsymbol{\theta}; \bm{y})$ bergantung pada vektor respons $\bm{y}$,
+        \item $\widehat{\boldsymbol{\theta}} = \argmin_{\boldsymbol{\theta} \in \Theta} \mathcal{L}(\boldsymbol{\theta}; \bm{y})$ ada dan terukur.
+    \end{enumerate}
+    Jika parameter \emph{kernel} $\boldsymbol{\theta}$ diestimasi menggunakan seluruh data $\{(y_i, \bm{x}_i, \bm{u}_i)\}_{i=1}^n$, maka matriks bobot $\mathbf{W}_{\widehat{\boldsymbol{\theta}}}(\bm{u}_0)$ bergantung pada vektor galat $\boldsymbol{\varepsilon} = (\varepsilon_1, \ldots, \varepsilon_n)^\top$. Akibatnya, kondisi
+    \begin{equation}
+        \mathbb{E}\bigl[\bm{X}^\top \mathbf{W}_{\widehat{\boldsymbol{\theta}}}(\bm{u}_0) \boldsymbol{\varepsilon}\bigr] \neq \bm{0}
+    \end{equation}
+    dapat terjadi, yang melanggar asumsi eksogenitas yang diperlukan untuk konsistensi estimator.
+\end{proposisi}
+
+\begin{proof}
+    Bukti terdiri dari tiga langkah yang tidak bergantung pada bentuk spesifik fungsi kerugian $\mathcal{L}$.
+    
+    \textbf{Langkah 1: Dependensi fungsi kerugian pada galat.} Dari model struktural $y_i = \bm{x}_i^\top \boldsymbol{\beta}(\bm{u}_i) + \varepsilon_i$, vektor respons dapat ditulis sebagai
+    \begin{equation}
+        \bm{y} = \bm{f}(\bm{X}, \bm{U}) + \boldsymbol{\varepsilon},
+    \end{equation}
+    dengan $\bm{f}(\bm{X}, \bm{U}) = (\bm{x}_1^\top \boldsymbol{\beta}(\bm{u}_1), \ldots, \bm{x}_n^\top \boldsymbol{\beta}(\bm{u}_n))^\top$ adalah komponen deterministik. Karena $\mathcal{L}(\boldsymbol{\theta}; \bm{y})$ bergantung pada $\bm{y}$ (kondisi (a)), maka
+    \begin{equation}
+        \mathcal{L}(\boldsymbol{\theta}; \bm{y}) = \mathcal{L}\bigl(\boldsymbol{\theta}; \bm{f}(\bm{X}, \bm{U}) + \boldsymbol{\varepsilon}\bigr) =: \widetilde{\mathcal{L}}(\boldsymbol{\theta}; \bm{X}, \bm{U}, \boldsymbol{\varepsilon})
+    \end{equation}
+    adalah fungsi eksplisit dari $\boldsymbol{\varepsilon}$.
+    
+    \textbf{Langkah 2: Estimator $\widehat{\boldsymbol{\theta}}$ sebagai fungsi galat.} Karena $\widehat{\boldsymbol{\theta}} = \argmin_{\boldsymbol{\theta}} \widetilde{\mathcal{L}}(\boldsymbol{\theta}; \bm{X}, \bm{U}, \boldsymbol{\varepsilon})$ (kondisi (b)), maka $\widehat{\boldsymbol{\theta}}$ adalah fungsi terukur dari $(\bm{X}, \bm{U}, \boldsymbol{\varepsilon})$:
+    \begin{equation}
+        \widehat{\boldsymbol{\theta}} = g(\bm{X}, \bm{U}, \boldsymbol{\varepsilon})
+    \end{equation}
+    untuk suatu fungsi $g$ yang bergantung pada bentuk $\mathcal{L}$ dan prosedur optimisasi. Konsekuensinya, bobot $w_i = \widehat{\kappa}_{\widehat{\boldsymbol{\theta}}}(i \mid \bm{u}_0)$ juga bergantung pada $\boldsymbol{\varepsilon}$:
+    \begin{equation}
+        w_i = h_i(\bm{X}, \bm{U}, \boldsymbol{\varepsilon}).
+    \end{equation}
+    
+    \textbf{Langkah 3: Ekspektasi produk dan kovarians.} Ekspektasi suku galat tertimbang dapat didekomposisi menggunakan identitas kovarians $\mathbb{E}[AB] = \mathbb{E}[A]\mathbb{E}[B] + \mathrm{Cov}(A, B)$:
+    \begin{align}
+        \mathbb{E}[w_i \varepsilon_i] &= \mathbb{E}[w_i] \cdot \underbrace{\mathbb{E}[\varepsilon_i]}_{= 0} + \mathrm{Cov}(w_i, \varepsilon_i) = \mathrm{Cov}(w_i, \varepsilon_i).
+    \end{align}
+    Karena $w_i = h_i(\bm{X}, \bm{U}, \boldsymbol{\varepsilon})$ bergantung pada $\varepsilon_i$ melalui rantai $\boldsymbol{\varepsilon} \to \widehat{\boldsymbol{\theta}} \to w_i$, maka secara umum $\mathrm{Cov}(w_i, \varepsilon_i) \neq 0$. Dengan demikian:
+    \begin{equation}
+        \mathbb{E}\bigl[\bm{X}^\top \mathbf{W}_{\widehat{\boldsymbol{\theta}}} \boldsymbol{\varepsilon}\bigr] = \sum_{i=1}^n \bm{x}_i \cdot \mathrm{Cov}(w_i, \varepsilon_i) \neq \bm{0}.
+    \end{equation}
+\end{proof}
+
+\begin{akibat}[\textbf{Universalitas Masalah Endogenitas}]
+    Masalah endogenitas terjadi untuk setiap fungsi kerugian yang memenuhi kondisi (a) dan (b), termasuk namun tidak terbatas pada:
+    \begin{enumerate}[label=(\roman*)]
+        \item \emph{Mean Squared Error}: $\mathcal{L}_{\mathrm{MSE}} = \frac{1}{n} \sum_{i=1}^n (y_i - \widehat{y}_{i,\boldsymbol{\theta}})^2$
+        \item \emph{Mean Absolute Error}: $\mathcal{L}_{\mathrm{MAE}} = \frac{1}{n} \sum_{i=1}^n |y_i - \widehat{y}_{i,\boldsymbol{\theta}}|$
+        \item \emph{Huber Loss}: $\mathcal{L}_{\mathrm{Huber}} = \frac{1}{n} \sum_{i=1}^n \ell_\delta(y_i - \widehat{y}_{i,\boldsymbol{\theta}})$
+        \item \emph{Negative Log-Likelihood}: $\mathcal{L}_{\mathrm{NLL}} = -\sum_{i=1}^n \log p(y_i \mid \bm{x}_i, \widehat{\boldsymbol{\beta}}_{\boldsymbol{\theta}}(\bm{u}_i))$
+    \end{enumerate}
+    dengan $\widehat{y}_{i,\boldsymbol{\theta}} = \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\boldsymbol{\theta}}(\bm{u}_i)$. Oleh karena itu, skema \emph{cross-fitting} diperlukan untuk semua pilihan fungsi kerugian.
+\end{akibat}
+
+Untuk memperjelas mekanisme kovarians secara kuantitatif, berikut adalah karakterisasi menggunakan ekspansi Taylor.
+
+\begin{lemma}[\textbf{Karakterisasi Kovarians Bobot-Galat}]
+    Misalkan $\widehat{\boldsymbol{\theta}}$ memiliki ekspansi Taylor di sekitar $\boldsymbol{\varepsilon} = \bm{0}$:
+    \begin{equation}
+        \widehat{\boldsymbol{\theta}}(\boldsymbol{\varepsilon}) = \widehat{\boldsymbol{\theta}}(\bm{0}) + \mathbf{J}_{\boldsymbol{\theta}} \boldsymbol{\varepsilon} + O(\|\boldsymbol{\varepsilon}\|^2),
+    \end{equation}
+    dengan $\mathbf{J}_{\boldsymbol{\theta}} = \frac{\partial \widehat{\boldsymbol{\theta}}}{\partial \boldsymbol{\varepsilon}^\top}\big|_{\boldsymbol{\varepsilon} = \bm{0}}$ adalah matriks Jacobian. Maka kovarians antara bobot dan galat adalah
+    \begin{equation}
+        \mathrm{Cov}(w_i, \varepsilon_j) = \sigma^2 \nabla_{\boldsymbol{\theta}} w_i^\top [\mathbf{J}_{\boldsymbol{\theta}}]_{:,j} + O(\sigma^4),
+    \end{equation}
+    dengan $[\mathbf{J}_{\boldsymbol{\theta}}]_{:,j}$ adalah kolom ke-$j$ dari $\mathbf{J}_{\boldsymbol{\theta}}$.
+\end{lemma}
+
+\begin{proof}
+    Ekspansi bobot di sekitar $\boldsymbol{\varepsilon} = \bm{0}$:
+    \begin{equation}
+        w_i(\boldsymbol{\varepsilon}) = w_i(\bm{0}) + \nabla_{\boldsymbol{\theta}} w_i^\top \cdot \mathbf{J}_{\boldsymbol{\theta}} \boldsymbol{\varepsilon} + O(\|\boldsymbol{\varepsilon}\|^2).
+    \end{equation}
+    Karena $\mathbb{E}[\varepsilon_j] = 0$ dan $\mathbb{E}[\boldsymbol{\varepsilon} \varepsilon_j] = \sigma^2 \bm{e}_j$ (dengan $\bm{e}_j$ adalah vektor unit ke-$j$), maka
+    \begin{align}
+        \mathrm{Cov}(w_i, \varepsilon_j) &= \mathbb{E}\bigl[(w_i - \mathbb{E}[w_i]) \varepsilon_j\bigr] \nonumber \\
+        &= \mathbb{E}\bigl[(\nabla_{\boldsymbol{\theta}} w_i^\top \mathbf{J}_{\boldsymbol{\theta}} \boldsymbol{\varepsilon}) \varepsilon_j\bigr] + O(\sigma^4) \nonumber \\
+        &= \nabla_{\boldsymbol{\theta}} w_i^\top \mathbf{J}_{\boldsymbol{\theta}} \mathbb{E}[\boldsymbol{\varepsilon} \varepsilon_j] \nonumber \\
+        &= \sigma^2 \nabla_{\boldsymbol{\theta}} w_i^\top [\mathbf{J}_{\boldsymbol{\theta}}]_{:,j}.
+    \end{align}
+\end{proof}
+
+Lema di atas menunjukkan bahwa kovarians $\mathrm{Cov}(w_i, \varepsilon_j) \neq 0$ selama $\mathbf{J}_{\boldsymbol{\theta}} \neq \bm{0}$ (estimator $\widehat{\boldsymbol{\theta}}$ sensitif terhadap \emph{noise}) dan $\nabla_{\boldsymbol{\theta}} w_i \neq \bm{0}$ (bobot responsif terhadap parameter). Kedua kondisi ini hampir selalu terpenuhi dalam praktik karena:
+\begin{enumerate}[label=(\roman*)]
+    \item Pelatihan GNN menggunakan respons $\bm{y}$ yang mengandung galat $\boldsymbol{\varepsilon}$.
+    \item Optimisasi menyesuaikan $\boldsymbol{\theta}$ untuk meminimalkan kerugian, sehingga $\widehat{\boldsymbol{\theta}}$ sensitif terhadap perubahan dalam $\bm{y}$ (dan dengan demikian terhadap $\boldsymbol{\varepsilon}$).
+    \item Bobot yang dihasilkan berkorelasi dengan galat: observasi dengan $\varepsilon_i$ besar cenderung diberi bobot yang disesuaikan untuk mengakomodasi nilai $y_i$ yang ekstrem.
+    \item Korelasi antara bobot dan galat merusak sifat \emph{mean-zero} dari suku galat tertimbang.
+\end{enumerate}
+
+Permasalahan ini analog dengan \emph{overfitting} dalam pembelajaran mesin, tetapi dengan konsekuensi yang lebih serius: bukan hanya prediksi yang buruk, tetapi \emph{inferensi yang tidak valid}. Uji statistik dan interval konfidensi yang dihasilkan tidak dapat dipercaya.
+
+\begin{proposisi}[\textbf{Kegagalan Konsistensi tanpa Koreksi}]
+    Tanpa koreksi terhadap endogenitas, suku galat dalam dekomposisi estimator
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\widehat{\boldsymbol{\theta}}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0) = \underbrace{\text{(suku bias)}}_{\to 0} + \underbrace{\bigl(\bm{X}^\top \mathbf{W}_{\widehat{\boldsymbol{\theta}}} \bm{X}\bigr)^{-1} \bm{X}^\top \mathbf{W}_{\widehat{\boldsymbol{\theta}}} \boldsymbol{\varepsilon}}_{\text{tidak konvergen ke } \bm{0}}
+    \end{equation}
+    tidak konvergen ke nol dalam probabilitas, sehingga konsistensi estimator tidak tercapai.
+\end{proposisi}
+
+\subsection{Skema \emph{Cross-Fitting} untuk Inferensi Valid}
+
+Untuk mengatasi permasalahan endogenitas, digunakan skema \emph{cross-fitting} yang memisahkan data untuk estimasi \emph{kernel} dan estimasi koefisien lokal. Pendekatan ini mengadaptasi teknik \emph{double/debiased machine learning} \citep{chernozhukov2018double} ke konteks GWR.
+
+\begin{definisi}[\textbf{Skema \emph{Cross-Fitting}}]
+    Partisi himpunan indeks $\{1, \ldots, n\}$ menjadi $K$ \emph{fold} yang saling lepas:
+    \begin{equation}
+        \{1, \ldots, n\} = \mathcal{I}_1 \cup \mathcal{I}_2 \cup \cdots \cup \mathcal{I}_K, \quad \mathcal{I}_k \cap \mathcal{I}_\ell = \emptyset \text{ untuk } k \neq \ell.
+    \end{equation}
+    Untuk setiap \emph{fold} $k$, didefinisikan:
+    \begin{enumerate}[label=(\roman*)]
+        \item \emph{Fold} pelatihan: $\mathcal{I}_{-k} = \{1, \ldots, n\} \setminus \mathcal{I}_k$
+        \item \emph{Fold} estimasi: $\mathcal{I}_k$
+    \end{enumerate}
+    Parameter GNN $\widehat{\boldsymbol{\theta}}^{(-k)}$ diestimasi hanya menggunakan data pada $\mathcal{I}_{-k}$, kemudian digunakan untuk menghitung bobot pada observasi di $\mathcal{I}_k$.
+\end{definisi}
+
+Untuk setiap \emph{fold} $k$, dapat didefinisikan estimator parsial yang hanya menggunakan observasi pada \emph{fold} tersebut.
+
+\begin{definisi}[\textbf{Estimator Parsial per-\emph{Fold}}]
+    Untuk setiap \emph{fold} $k \in \{1, \ldots, K\}$, estimator parsial didefinisikan sebagai
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}^{(k)}(\bm{u}_0) = \bigl(\bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{X}_k\bigr)^{-1} \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{y}_k,
+    \end{equation}
+    dengan $\bm{X}_k$ dan $\bm{y}_k$ adalah matriks desain dan vektor respons untuk observasi di $\mathcal{I}_k$, serta $\mathbf{W}^{(-k)}_k(\bm{u}_0)$ adalah matriks bobot diagonal yang dihitung menggunakan parameter $\widehat{\boldsymbol{\theta}}^{(-k)}$.
+\end{definisi}
+
+Estimator parsial $\widehat{\boldsymbol{\beta}}^{(k)}(\bm{u}_0)$ bersifat valid dalam arti eksogenitas terpenuhi, namun hanya menggunakan sebagian kecil data (sekitar $n/K$ observasi). Untuk memanfaatkan seluruh data sambil mempertahankan validitas inferensi, estimator-estimator parsial digabungkan melalui skema rata-rata tertimbang.
+
+\begin{teorema}[\textbf{Estimator \emph{Cross-Fitted} EK-GWR}]
+    Misalkan $\mathbf{H}_k(\bm{u}_0) = \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{X}_k$ adalah matriks informasi lokal untuk \emph{fold} $k$. Estimator \emph{cross-fitted} yang didefinisikan sebagai rata-rata tertimbang dari estimator parsial
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k(\bm{u}_0)\Biggr)^{-1} \Biggl(\sum_{k=1}^K \mathbf{H}_k(\bm{u}_0) \widehat{\boldsymbol{\beta}}^{(k)}(\bm{u}_0)\Biggr)
+    \end{equation}
+    ekuivalen dengan solusi masalah \emph{weighted least squares} gabungan
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \argmin_{\boldsymbol{\beta} \in \mathbb{R}^p} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bigl(y_i - \bm{x}_i^\top \boldsymbol{\beta}\bigr)^2,
+    \end{equation}
+    yang memiliki bentuk tertutup
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{X}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{y}_k\Biggr).
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Bukti terdiri dari dua bagian: (i) penurunan bentuk tertutup dari masalah optimasi, dan (ii) ekuivalensi dengan rata-rata tertimbang.
+    
+    \textbf{Bagian (i): Solusi Masalah Optimasi.} Didefinisikan fungsi objektif
+    \begin{equation}
+        L(\boldsymbol{\beta}) = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bigl(y_i - \bm{x}_i^\top \boldsymbol{\beta}\bigr)^2.
+    \end{equation}
+    Karena partisi $\{\mathcal{I}_1, \ldots, \mathcal{I}_K\}$ bersifat saling lepas dan lengkap, maka penjumlahan ganda di atas melingkupi seluruh observasi $i \in \{1, \ldots, n\}$, dengan setiap observasi $i$ diberi bobot $w^{(-k(i))}_i(\bm{u}_0)$ di mana $k(i)$ adalah \emph{fold} yang memuat $i$.
+    
+    Untuk memperoleh kondisi orde pertama, dihitung turunan parsial terhadap $\boldsymbol{\beta}$:
+    \begin{align}
+        \frac{\partial L}{\partial \boldsymbol{\beta}} &= -2 \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bm{x}_i \bigl(y_i - \bm{x}_i^\top \boldsymbol{\beta}\bigr).
+    \end{align}
+    Dengan menyamakan turunan ke nol dan menyusun ulang, diperoleh
+    \begin{equation}
+        \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bm{x}_i y_i = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bm{x}_i \bm{x}_i^\top \boldsymbol{\beta}.
+    \end{equation}
+    
+    Suku di ruas kiri dapat ditulis dalam notasi matriks sebagai
+    \begin{equation}
+        \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bm{x}_i y_i = \sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{y}_k,
+    \end{equation}
+    dan suku di ruas kanan sebagai
+    \begin{equation}
+        \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bm{x}_i \bm{x}_i^\top = \sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{X}_k.
+    \end{equation}
+    
+    Dengan demikian, persamaan normal menjadi
+    \begin{equation}
+        \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{X}_k\Biggr) \boldsymbol{\beta} = \sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{y}_k.
+    \end{equation}
+    Dengan asumsi bahwa matriks $\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{X}_k$ invertibel, solusinya adalah
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{X}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{y}_k\Biggr).
+    \end{equation}
+    
+    \textbf{Bagian (ii): Ekuivalensi dengan Rata-rata Tertimbang.} Dari definisi estimator parsial, berlaku
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}^{(k)}(\bm{u}_0) = \mathbf{H}_k(\bm{u}_0)^{-1} \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{y}_k,
+    \end{equation}
+    sehingga
+    \begin{equation}
+        \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \bm{y}_k = \mathbf{H}_k(\bm{u}_0) \widehat{\boldsymbol{\beta}}^{(k)}(\bm{u}_0).
+    \end{equation}
+    
+    Substitusi ke bentuk tertutup memberikan
+    \begin{align}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) &= \Biggl(\sum_{k=1}^K \mathbf{H}_k(\bm{u}_0)\Biggr)^{-1} \Biggl(\sum_{k=1}^K \mathbf{H}_k(\bm{u}_0) \widehat{\boldsymbol{\beta}}^{(k)}(\bm{u}_0)\Biggr).
+    \end{align}
+    
+    Bentuk ini merupakan \emph{rata-rata tertimbang matriks} (\emph{matrix-weighted average}) dari estimator parsial, dengan bobot berupa matriks informasi lokal $\mathbf{H}_k(\bm{u}_0)$. Interpretasinya adalah sebagai berikut: \emph{fold} dengan matriks informasi yang lebih besar (dalam arti definiteness) memberikan kontribusi lebih besar terhadap estimator gabungan.
+    
+    Perlu dicatat bahwa jika $K = 1$ (tanpa \emph{cross-fitting}), maka $\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \widehat{\boldsymbol{\beta}}^{(1)}(\bm{u}_0)$, yang merupakan estimator EK-GWR standar tanpa pemisahan data.
+\end{proof}
+
+Skema \emph{cross-fitting} memulihkan eksogenitas melalui mekanisme berikut.
+
+\begin{proposisi}[\textbf{Pemulihan Eksogenitas}]
+    Untuk setiap \emph{fold} $k$, karena $\widehat{\boldsymbol{\theta}}^{(-k)}$ diestimasi tanpa menggunakan data pada $\mathcal{I}_k$, maka kondisional pada $\widehat{\boldsymbol{\theta}}^{(-k)}$:
+    \begin{equation}
+        \mathbb{E}\bigl[\bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \boldsymbol{\varepsilon}_k \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr] = \bm{0},
+    \end{equation}
+    dengan $\boldsymbol{\varepsilon}_k$ adalah vektor galat untuk observasi di $\mathcal{I}_k$. Hal ini karena $\mathbf{W}^{(-k)}_k(\bm{u}_0)$ independen dari $\boldsymbol{\varepsilon}_k$.
+\end{proposisi}
+
+\begin{proof}
+    Langkah pertama adalah menunjukkan independensi antara bobot dan galat. Berdasarkan konstruksi \emph{cross-fitting}, parameter $\widehat{\boldsymbol{\theta}}^{(-k)}$ diestimasi menggunakan data pada \emph{fold} pelatihan $\mathcal{I}_{-k}$, sehingga $\widehat{\boldsymbol{\theta}}^{(-k)}$ merupakan fungsi terukur dari $\{(y_i, \bm{x}_i, \bm{u}_i) : i \in \mathcal{I}_{-k}\}$. Secara eksplisit, dapat ditulis
+    \begin{equation}
+        \widehat{\boldsymbol{\theta}}^{(-k)} = g\bigl(\{(y_i, \bm{x}_i, \bm{u}_i)\}_{i \in \mathcal{I}_{-k}}\bigr)
+    \end{equation}
+    untuk suatu fungsi terukur $g$. Sebab galat $\{\varepsilon_i\}_{i=1}^n$ diasumsikan independen antarobservasi, maka himpunan galat pada \emph{fold} pelatihan $\{\varepsilon_i : i \in \mathcal{I}_{-k}\}$ independen dari himpunan galat pada \emph{fold} estimasi $\{\varepsilon_i : i \in \mathcal{I}_k\}$.
+    
+    Karena $\widehat{\boldsymbol{\theta}}^{(-k)}$ hanya bergantung pada data di $\mathcal{I}_{-k}$, dan matriks bobot $\mathbf{W}^{(-k)}_k(\bm{u}_0)$ merupakan fungsi deterministik dari $\widehat{\boldsymbol{\theta}}^{(-k)}$ dan lokasi $\{\bm{u}_i : i \in \mathcal{I}_k\}$, maka
+    \begin{equation}
+        \mathbf{W}^{(-k)}_k(\bm{u}_0) \perp\!\!\!\perp \boldsymbol{\varepsilon}_k \mid \{\bm{x}_i, \bm{u}_i\}_{i \in \mathcal{I}_k}.
+    \end{equation}
+    
+    Langkah kedua adalah menghitung ekspektasi kondisional. Matriks bobot $\mathbf{W}^{(-k)}_k(\bm{u}_0)$ berbentuk diagonal dengan elemen $w^{(-k)}_i(\bm{u}_0) = \widehat{\kappa}_{\widehat{\boldsymbol{\theta}}^{(-k)}}(i \mid \bm{u}_0)$ untuk $i \in \mathcal{I}_k$. Dengan demikian, produk $\bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \boldsymbol{\varepsilon}_k$ dapat diuraikan sebagai
+    \begin{align}
+        \bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \boldsymbol{\varepsilon}_k &= \begin{pmatrix} \bm{x}_{i_1} & \bm{x}_{i_2} & \cdots & \bm{x}_{i_{|k|}} \end{pmatrix} \begin{pmatrix} w^{(-k)}_{i_1} & & \\ & \ddots & \\ & & w^{(-k)}_{i_{|k|}} \end{pmatrix} \begin{pmatrix} \varepsilon_{i_1} \\ \vdots \\ \varepsilon_{i_{|k|}} \end{pmatrix} \nonumber \\
+        &= \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bm{x}_i \varepsilon_i,
+    \end{align}
+    dengan $\{i_1, i_2, \ldots, i_{|k|}\}$ adalah enumerasi elemen-elemen $\mathcal{I}_k$.
+    
+    Dengan menggunakan linearitas ekspektasi kondisional dan independensi yang telah ditunjukkan, diperoleh
+    \begin{align}
+        \mathbb{E}\bigl[\bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \boldsymbol{\varepsilon}_k \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr] &= \mathbb{E}\Biggl[\sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bm{x}_i \varepsilon_i \Biggm| \widehat{\boldsymbol{\theta}}^{(-k)}\Biggr] \nonumber \\
+        &= \sum_{i \in \mathcal{I}_k} \mathbb{E}\bigl[w^{(-k)}_i(\bm{u}_0) \bm{x}_i \varepsilon_i \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr].
+    \end{align}
+    
+    Karena $w^{(-k)}_i(\bm{u}_0)$ merupakan fungsi deterministik dari $\widehat{\boldsymbol{\theta}}^{(-k)}$ dan $\bm{u}_i$, maka kondisional pada $\widehat{\boldsymbol{\theta}}^{(-k)}$, bobot $w^{(-k)}_i(\bm{u}_0)$ bersifat konstan. Dengan demikian,
+    \begin{align}
+        \sum_{i \in \mathcal{I}_k} \mathbb{E}\bigl[w^{(-k)}_i(\bm{u}_0) \bm{x}_i \varepsilon_i \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr] &= \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \, \mathbb{E}\bigl[\bm{x}_i \varepsilon_i \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr].
+    \end{align}
+    
+    Selanjutnya, karena $\widehat{\boldsymbol{\theta}}^{(-k)} \perp\!\!\!\perp (\bm{x}_i, \varepsilon_i)$ untuk setiap $i \in \mathcal{I}_k$, maka berlaku
+    \begin{equation}
+        \mathbb{E}\bigl[\bm{x}_i \varepsilon_i \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr] = \mathbb{E}[\bm{x}_i \varepsilon_i].
+    \end{equation}
+    
+    Dengan menggunakan hukum ekspektasi bersyarat (\emph{tower property}) dan asumsi eksogenitas $\mathbb{E}[\varepsilon_i \mid \bm{x}_i, \bm{u}_i] = 0$, diperoleh
+    \begin{align}
+        \mathbb{E}[\bm{x}_i \varepsilon_i] &= \mathbb{E}\bigl[\mathbb{E}[\bm{x}_i \varepsilon_i \mid \bm{x}_i, \bm{u}_i]\bigr] \nonumber \\
+        &= \mathbb{E}\bigl[\bm{x}_i \, \mathbb{E}[\varepsilon_i \mid \bm{x}_i, \bm{u}_i]\bigr] \nonumber \\
+        &= \mathbb{E}[\bm{x}_i \cdot 0] = \bm{0}.
+    \end{align}
+    
+    Dengan menggabungkan hasil-hasil di atas, diperoleh
+    \begin{equation}
+        \mathbb{E}\bigl[\bm{X}_k^\top \mathbf{W}^{(-k)}_k(\bm{u}_0) \boldsymbol{\varepsilon}_k \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr] = \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \cdot \bm{0} = \bm{0}.
+    \end{equation}
+\end{proof}
+
+Dengan pemulihan eksogenitas ini, hukum bilangan besar dapat diterapkan kembali, dan konsistensi estimator dapat dijamin. Analisis asimtotik lengkap akan diuraikan pada bagian selanjutnya.
+
+
+\section{Analisis Asimtotik Koefisien Lokal pada EK-GWR}
+
+Bagian ini mengembangkan teori asimtotik untuk estimator \emph{cross-fitted} EK-GWR. Analisis mencakup dekomposisi bias-variansi, konsistensi, dan distribusi asimtotik koefisien lokal. Untuk menyederhanakan notasi, dependensi terhadap lokasi target $\bm{u}_0$ akan dihilangkan bila tidak menimbulkan ambiguitas.
+
+\subsection{Asumsi-Asumsi Regularitas}
+
+Analisis asimtotik memerlukan sejumlah asumsi regularitas yang mencakup struktur data, properti fungsi koefisien, serta karakteristik \emph{kernel} terestimasi. Asumsi-asumsi ini dikelompokkan menjadi tiga kategori, yaitu asumsi data dan model, asumsi kehalusan fungsi koefisien, serta asumsi lokalitas dan \emph{kernel}.
+
+Asumsi data dan model menetapkan kondisi dasar pada observasi, galat, dan kovariat. Di bawah ini adalah keempat asumsi utama dalam kategori ini.
+
+\begin{asumsi}[\textbf{A1: Independensi}]
+    Observasi $\{(y_i, \bm{x}_i, \bm{u}_i)\}_{i=1}^n$ bersifat independen dan berdistribusi identik (\emph{i.i.d.}).
+\end{asumsi}
+
+Asumsi independensi diperlukan untuk penerapan hukum bilangan besar dan teorema limit pusat. Dalam konteks spasial, asumsi ini dapat direlaksasi menjadi dependensi spasial yang melemah (\emph{mixing conditions}), namun pembahasan tersebut berada di luar cakupan analisis ini.
+
+\begin{asumsi}[\textbf{A2: Eksogenitas Lokal}]
+    Galat memenuhi kondisi ekspektasi kondisional nol:
+    \begin{equation}
+        \mathbb{E}[\varepsilon_i \mid \bm{x}_i, \bm{u}_i] = 0.
+    \end{equation}
+\end{asumsi}
+
+Asumsi eksogenitas menjamin bahwa galat tidak berkorelasi dengan kovariat dan lokasi. Bersama dengan skema \emph{cross-fitting}, asumsi ini memastikan bahwa suku galat tertimbang memiliki ekspektasi nol.
+
+\begin{asumsi}[\textbf{A3: Homoskedastisitas Kondisional}]
+    Variansi galat bersyarat bersifat konstan:
+    \begin{equation}
+        \mathrm{Var}(\varepsilon_i \mid \bm{x}_i, \bm{u}_i) = \sigma^2 < \infty.
+    \end{equation}
+\end{asumsi}
+
+Asumsi homoskedastisitas menyederhanakan analisis variansi. Kasus heteroskedastisitas dapat ditangani dengan modifikasi pada estimator variansi, namun tidak mengubah hasil konsistensi.
+
+\begin{asumsi}[\textbf{A4: Momen Kovariat Terbatas}]
+    Kovariat memiliki momen kedua yang terbatas:
+    \begin{equation}
+        \mathbb{E}[\|\bm{x}_i\|^2] < \infty.
+    \end{equation}
+\end{asumsi}
+
+Asumsi ini menjamin eksistensi dan keterbatasan matriks $\bm{X}^\top \mathbf{W} \bm{X}$ serta inversnya.
+
+Asumsi selanjutnya berkaitan dengan kehalusan fungsi koefisien spasial. Asumsi ini penting untuk mengendalikan bias yang muncul akibat aproksimasi lokal. Berikut adalah asumsi kehalusan yang digunakan.
+
+\begin{asumsi}[\textbf{A5: Diferensiabilitas Fungsi Koefisien}]
+    Fungsi koefisien $\boldsymbol{\beta}: \mathbb{R}^2 \to \mathbb{R}^p$ dua kali terdiferensiasikan kontinu di sekitar lokasi target $\bm{u}_0$. Secara eksplisit, terdapat lingkungan $\mathcal{B}_\delta(\bm{u}_0)$ sedemikian sehingga untuk setiap $\bm{u} \in \mathcal{B}_\delta(\bm{u}_0)$:
+    \begin{equation}
+        \boldsymbol{\beta}(\bm{u}) = \boldsymbol{\beta}(\bm{u}_0) + \nabla \boldsymbol{\beta}(\bm{u}_0)^\top (\bm{u} - \bm{u}_0) + \frac{1}{2} (\bm{u} - \bm{u}_0)^\top \mathbf{H}_{\boldsymbol{\beta}}(\bm{u}_0) (\bm{u} - \bm{u}_0) + o(\|\bm{u} - \bm{u}_0\|^2),
+    \end{equation}
+    dengan $\nabla \boldsymbol{\beta}(\bm{u}_0) \in \mathbb{R}^{2 \times p}$ adalah matriks gradien dan $\mathbf{H}_{\boldsymbol{\beta}}(\bm{u}_0)$ adalah tensor Hessian.
+\end{asumsi}
+
+Kehalusan fungsi koefisien memungkinkan ekspansi Taylor yang menjadi dasar analisis bias. Orde kehalusan menentukan laju konvergensi bias terhadap nol.
+
+Asumsi terakhir berkaitan dengan karakteristik \emph{kernel} terestimasi dan lokalitas estimasi. Asumsi-asumsi ini penting untuk mengendalikan bias dan variansi estimator. Berikut adalah asumsi-asumsi tersebut.
+
+\begin{asumsi}[\textbf{A6: \emph{Shrinking Neighborhood}}]
+    Parameter \emph{bandwidth} $h = h_n$ memenuhi $h_n \to 0$ ketika $n \to \infty$.
+\end{asumsi}
+
+Asumsi ini menjamin bahwa observasi yang digunakan dalam estimasi lokal semakin terkonsentrasi di sekitar lokasi target, sehingga aproksimasi $\boldsymbol{\beta}(\bm{u}_i) \approx \boldsymbol{\beta}(\bm{u}_0)$ semakin akurat.
+
+\begin{asumsi}[\textbf{A7: Ukuran Sampel Lokal Divergen}]
+    Jumlah observasi efektif di dalam \emph{neighborhood} divergen:
+    \begin{equation}
+        n h_n^d \to \infty \quad \text{ketika } n \to \infty,
+    \end{equation}
+    dengan $d = 2$ adalah dimensi ruang geografis.
+\end{asumsi}
+
+Asumsi ini menjamin bahwa meskipun \emph{neighborhood} menyusut, jumlah observasi di dalamnya tetap cukup besar untuk estimasi yang konsisten. Kombinasi (A6) dan (A7) menghasilkan \emph{trade-off} fundamental antara bias dan variansi.
+
+\begin{asumsi}[\textbf{A8: Keterbatasan Bobot \emph{Kernel}}]
+    Bobot \emph{kernel} terestimasi memenuhi kondisi keterbatasan:
+    \begin{equation}
+        \sup_{i \in \mathcal{N}_h(\bm{u}_0)} w_i(\bm{u}_0) \leq \frac{C}{n h^d}
+    \end{equation}
+    untuk suatu konstanta $C > 0$ yang tidak bergantung pada $n$.
+\end{asumsi}
+
+Asumsi ini mencegah satu observasi mendominasi estimator dan diperlukan untuk penerapan teorema limit pusat Lindeberg--Feller.
+
+\begin{asumsi}[\textbf{A9: Simetri Lokal Asimtotik}]
+    Bobot \emph{kernel} memenuhi kondisi simetri lokal:
+    \begin{equation}
+        \sum_{i=1}^n w_i(\bm{u}_0) (\bm{u}_i - \bm{u}_0) \xrightarrow{p} \bm{0}.
+    \end{equation}
+\end{asumsi}
+
+Asumsi simetri lokal menjamin bahwa bobot tidak bias secara sistematis ke satu arah. Hal ini dicapai melalui desain arsitektur GNN yang menggunakan koordinat relatif $\bm{u}_i - \bm{u}_0$ sebagai input.
+
+\begin{asumsi}[\textbf{A10: Kontinuitas Bobot}]
+    Fungsi bobot bersifat Lipschitz kontinu terhadap input:
+    \begin{equation}
+        |w_i(\bm{u}_0; \bm{z}) - w_i(\bm{u}_0; \bm{z}')| \leq L \|\bm{z} - \bm{z}'\|
+    \end{equation}
+    untuk suatu konstanta Lipschitz $L > 0$.
+\end{asumsi}
+
+Kontinuitas diperlukan untuk penerapan hukum bilangan besar uniform dan kontrol suku sisa dalam ekspansi Taylor.
+
+\subsection{Analisis Ketakbiasan dan Bias Asimtotik Koefisien Lokal}
+
+Analisis bias dimulai dengan dekomposisi estimator \emph{cross-fitted} ke dalam suku target, suku bias, dan suku galat.
+
+\begin{teorema}[\textbf{Dekomposisi Estimator}]
+    Estimator \emph{cross-fitted} EK-GWR dapat didekomposisikan sebagai
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \boldsymbol{\beta}(\bm{u}_0) + \mathbf{B}_n(\bm{u}_0) + \mathbf{V}_n(\bm{u}_0),
+    \end{equation}
+    dengan suku bias
+    \begin{equation}
+        \mathbf{B}_n(\bm{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \bm{X}_k \bigl(\boldsymbol{\beta}(\bm{U}_k) - \boldsymbol{\beta}(\bm{u}_0)\bigr)\Biggr)
+    \end{equation}
+    dan suku galat (\emph{noise term})
+    \begin{equation}
+        \mathbf{V}_n(\bm{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \boldsymbol{\varepsilon}_k\Biggr),
+    \end{equation}
+    dengan $\boldsymbol{\beta}(\bm{U}_k) - \boldsymbol{\beta}(\bm{u}_0)$ adalah vektor yang elemen ke-$i$-nya (untuk $i \in \mathcal{I}_k$) adalah $\boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0)$.
+\end{teorema}
+
+\begin{proof}
+    Dari model struktural, untuk setiap observasi $i \in \mathcal{I}_k$ berlaku
+    \begin{equation}
+        y_i = \bm{x}_i^\top \boldsymbol{\beta}(\bm{u}_i) + \varepsilon_i.
+    \end{equation}
+    Dengan menambah dan mengurangi $\bm{x}_i^\top \boldsymbol{\beta}(\bm{u}_0)$, diperoleh
+    \begin{equation}
+        y_i = \bm{x}_i^\top \boldsymbol{\beta}(\bm{u}_0) + \bm{x}_i^\top \bigl(\boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0)\bigr) + \varepsilon_i.
+    \end{equation}
+    
+    Dalam notasi matriks untuk \emph{fold} $k$:
+    \begin{equation}
+        \bm{y}_k = \bm{X}_k \boldsymbol{\beta}(\bm{u}_0) + \bm{X}_k \bigl(\boldsymbol{\beta}(\bm{U}_k) - \boldsymbol{\beta}(\bm{u}_0)\bigr) + \boldsymbol{\varepsilon}_k.
+    \end{equation}
+    
+    Substitusi ke estimator \emph{cross-fitted}:
+    \begin{align}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}} &= \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \bm{y}_k\Biggr) \nonumber \\
+        &= \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \Bigl[\bm{X}_k \boldsymbol{\beta}(\bm{u}_0) + \bm{X}_k \bigl(\boldsymbol{\beta}(\bm{U}_k) - \boldsymbol{\beta}(\bm{u}_0)\bigr) + \boldsymbol{\varepsilon}_k\Bigr]\Biggr).
+    \end{align}
+    
+    Dengan linearitas penjumlahan dan fakta bahwa $\bm{X}_k^\top \mathbf{W}^{(-k)}_k \bm{X}_k = \mathbf{H}_k$, diperoleh
+    \begin{align}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}} &= \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr) \boldsymbol{\beta}(\bm{u}_0) \nonumber \\
+        &\quad + \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \bm{X}_k \bigl(\boldsymbol{\beta}(\bm{U}_k) - \boldsymbol{\beta}(\bm{u}_0)\bigr)\Biggr) \nonumber \\
+        &\quad + \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \boldsymbol{\varepsilon}_k\Biggr) \nonumber \\
+        &= \boldsymbol{\beta}(\bm{u}_0) + \mathbf{B}_n(\bm{u}_0) + \mathbf{V}_n(\bm{u}_0).
+    \end{align}
+\end{proof}
+
+Untuk menganalisis perilaku asimtotik suku bias, digunakan ekspansi Taylor dari fungsi koefisien.
+
+\begin{proposisi}[\textbf{Ekspansi Taylor Fungsi Koefisien}]
+    Di bawah Asumsi (A5), untuk setiap $\bm{u}_i \in \mathcal{N}_h(\bm{u}_0)$:
+    \begin{equation}
+        \boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0) = \nabla \boldsymbol{\beta}(\bm{u}_0)^\top (\bm{u}_i - \bm{u}_0) + \mathbf{R}_i,
+    \end{equation}
+    dengan suku sisa $\mathbf{R}_i$ memenuhi $\|\mathbf{R}_i\| \leq C_\beta \|\bm{u}_i - \bm{u}_0\|^2$ untuk suatu konstanta $C_\beta > 0$.
+\end{proposisi}
+
+Dengan ekspansi ini, suku bias dapat diuraikan menjadi dua komponen.
+
+\begin{teorema}[\textbf{Dekomposisi Bias}]
+    Suku bias dapat ditulis sebagai
+    \begin{equation}
+        \mathbf{B}_n(\bm{u}_0) = \mathbf{B}_n^{(1)}(\bm{u}_0) + \mathbf{B}_n^{(2)}(\bm{u}_0),
+    \end{equation}
+    dengan suku bias orde pertama
+    \begin{equation}
+        \mathbf{B}_n^{(1)}(\bm{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top \nabla \boldsymbol{\beta}(\bm{u}_0)^\top (\bm{u}_i - \bm{u}_0)\Biggr)
+    \end{equation}
+    dan suku bias orde kedua
+    \begin{equation}
+        \mathbf{B}_n^{(2)}(\bm{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top \mathbf{R}_i\Biggr).
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Dengan mensubstitusikan ekspansi Taylor ke dalam ekspresi bias:
+    \begin{align}
+        \sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \bm{X}_k \bigl(\boldsymbol{\beta}(\bm{U}_k) - \boldsymbol{\beta}(\bm{u}_0)\bigr) &= \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top \bigl(\boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0)\bigr) \nonumber \\
+        &= \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top \Bigl[\nabla \boldsymbol{\beta}(\bm{u}_0)^\top (\bm{u}_i - \bm{u}_0) + \mathbf{R}_i\Bigr].
+    \end{align}
+    Pemisahan menjadi dua suku memberikan hasil yang diklaim.
+\end{proof}
+
+\begin{proposisi}[\textbf{Bias Orde Pertama Hilang secara Asimtotik}]
+    Di bawah Asumsi (A9), suku bias orde pertama memenuhi
+    \begin{equation}
+        \mathbf{B}_n^{(1)}(\bm{u}_0) \xrightarrow{p} \bm{0}.
+    \end{equation}
+\end{proposisi}
+
+\begin{proof}
+    Perhatikan bahwa
+    \begin{align}
+        \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top \nabla \boldsymbol{\beta}(\bm{u}_0)^\top (\bm{u}_i - \bm{u}_0) &= \Biggl(\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top\Biggr) \nabla \boldsymbol{\beta}(\bm{u}_0)^\top \Biggl(\sum_{j=1}^n \tilde{w}_j (\bm{u}_j - \bm{u}_0)\Biggr),
+    \end{align}
+    dengan $\tilde{w}_j$ adalah bobot yang sesuai untuk observasi $j$. Berdasarkan Asumsi (A9), suku $\sum_j \tilde{w}_j (\bm{u}_j - \bm{u}_0) \xrightarrow{p} \bm{0}$, sehingga $\mathbf{B}_n^{(1)}(\bm{u}_0) \xrightarrow{p} \bm{0}$.
+\end{proof}
+
+\begin{teorema}[\textbf{Laju Konvergensi Bias}]
+    Di bawah Asumsi (A5)--(A9), suku bias memenuhi
+    \begin{equation}
+        \mathbf{B}_n(\bm{u}_0) = O_p(h^2).
+    \end{equation}
+    Secara khusus, karena $h \to 0$, maka $\mathbf{B}_n(\bm{u}_0) \xrightarrow{p} \bm{0}$.
+\end{teorema}
+
+\begin{proof}
+    Dari proposisi sebelumnya, $\mathbf{B}_n^{(1)}(\bm{u}_0) \xrightarrow{p} \bm{0}$. Untuk suku bias orde kedua:
+    \begin{align}
+        \Biggl\|\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top \mathbf{R}_i\Biggr\| &\leq \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \|\bm{x}_i\|^2 \|\mathbf{R}_i\| \nonumber \\
+        &\leq C_\beta \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \|\bm{x}_i\|^2 \|\bm{u}_i - \bm{u}_0\|^2.
+    \end{align}
+    
+    Karena $\bm{u}_i \in \mathcal{N}_h(\bm{u}_0)$ menyiratkan $\|\bm{u}_i - \bm{u}_0\| \leq h$, maka
+    \begin{equation}
+        \|\bm{u}_i - \bm{u}_0\|^2 \leq h^2.
+    \end{equation}
+    
+    Dengan demikian,
+    \begin{align}
+        \Biggl\|\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top \mathbf{R}_i\Biggr\| &\leq C_\beta h^2 \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \|\bm{x}_i\|^2.
+    \end{align}
+    
+    Karena bobot ternormalisasi ($\sum_i w_i = 1$) dan $\mathbb{E}[\|\bm{x}_i\|^2] < \infty$, maka suku terakhir terbatas dalam probabilitas. Dengan mengalikan dengan $\bigl(\sum_k \mathbf{H}_k\bigr)^{-1}$ yang juga terbatas, diperoleh
+    \begin{equation}
+        \|\mathbf{B}_n^{(2)}(\bm{u}_0)\| = O_p(h^2).
+    \end{equation}
+    
+    Kesimpulannya, $\mathbf{B}_n(\bm{u}_0) = \mathbf{B}_n^{(1)}(\bm{u}_0) + \mathbf{B}_n^{(2)}(\bm{u}_0) = o_p(1) + O_p(h^2) = O_p(h^2)$.
+\end{proof}
+
+\begin{akibat}[\textbf{Ketakbiasan Asimtotik}]
+    Estimator \emph{cross-fitted} EK-GWR bersifat \emph{asymptotically unbiased}:
+    \begin{equation}
+        \mathbb{E}\bigl[\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr] - \boldsymbol{\beta}(\bm{u}_0) = O(h^2) \to 0 \quad \text{ketika } h \to 0.
+    \end{equation}
+\end{akibat}
+
+\subsection{Analisis Ketakbiasan dan Bias Asimtotik Variansi Galat}
+
+Selain estimasi koefisien lokal, diperlukan pula estimasi variansi galat $\sigma^2$ untuk konstruksi interval konfidensi dan uji statistik.
+
+\begin{teorema}[\textbf{Estimator Variansi Galat \emph{Cross-Fitted}}]
+    Estimator variansi galat \emph{cross-fitted} yang diperoleh dari minimisasi fungsi \emph{log-likelihood} tertimbang Gaussian diberikan oleh
+    \begin{equation}
+        \widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0) = \frac{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bigl(y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr)^2}{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) - p},
+    \end{equation}
+    dengan $p$ adalah jumlah parameter (dimensi $\boldsymbol{\beta}$).
+\end{teorema}
+
+\begin{proof}
+    Diasumsikan galat berdistribusi normal $\varepsilon_i \mid \bm{x}_i, \bm{u}_i \sim \mathcal{N}(0, \sigma^2)$. Fungsi \emph{log-likelihood} tertimbang lokal untuk lokasi $\bm{u}_0$ diberikan oleh
+    \begin{equation}
+        \ell(\boldsymbol{\beta}, \sigma^2; \bm{u}_0) = -\frac{1}{2} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \left[ \log(2\pi\sigma^2) + \frac{(y_i - \bm{x}_i^\top \boldsymbol{\beta})^2}{\sigma^2} \right].
+    \end{equation}
+    
+    Dengan mendefinisikan $W_{\mathrm{tot}} = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0)$ dan $\mathrm{RSS}_w = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) (y_i - \bm{x}_i^\top \boldsymbol{\beta})^2$, fungsi \emph{log-likelihood} dapat ditulis sebagai
+    \begin{equation}
+        \ell(\boldsymbol{\beta}, \sigma^2; \bm{u}_0) = -\frac{W_{\mathrm{tot}}}{2} \log(2\pi) - \frac{W_{\mathrm{tot}}}{2} \log(\sigma^2) - \frac{\mathrm{RSS}_w}{2\sigma^2}.
+    \end{equation}
+    
+    Untuk memperoleh estimator $\sigma^2$, dihitung turunan parsial terhadap $\sigma^2$ dan disamakan dengan nol:
+    \begin{equation}
+        \frac{\partial \ell}{\partial \sigma^2} = -\frac{W_{\mathrm{tot}}}{2\sigma^2} + \frac{\mathrm{RSS}_w}{2(\sigma^2)^2} = 0.
+    \end{equation}
+    
+    Dengan mengalikan kedua ruas dengan $2(\sigma^2)^2$ dan menyusun ulang, diperoleh
+    \begin{equation}
+        \mathrm{RSS}_w = W_{\mathrm{tot}} \cdot \sigma^2,
+    \end{equation}
+    sehingga estimator \emph{maximum likelihood} tertimbang adalah
+    \begin{equation}
+        \widehat{\sigma}^2_{\mathrm{ML}} = \frac{\mathrm{RSS}_w}{W_{\mathrm{tot}}} = \frac{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bigl(y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr)^2}{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0)}.
+    \end{equation}
+    
+    Namun, estimator MLE ini bersifat bias ke bawah karena tidak memperhitungkan derajat kebebas yang hilang akibat estimasi $p$ parameter dalam $\boldsymbol{\beta}$. Koreksi bias dilakukan dengan mengganti penyebut $W_{\mathrm{tot}}$ dengan $W_{\mathrm{tot}} - p$, yang menghasilkan estimator tak-bias (atau mendekati tak-bias):
+    \begin{equation}
+        \widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0) = \frac{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) \bigl(y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr)^2}{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\bm{u}_0) - p}.
+    \end{equation}
+    
+    Koreksi ini analog dengan pembagi $(n - p)$ pada estimator variansi OLS klasik $\widehat{\sigma}^2 = \mathrm{RSS}/(n - p)$.
+\end{proof}
+
+Estimator ini merupakan generalisasi dari estimator variansi GWR klasik dengan koreksi derajat kebebas. Karena $\sum_i w_i = 1$, penyebut menjadi $1 - p \cdot \bar{w}$ di mana $\bar{w}$ adalah rata-rata bobot, yang untuk sampel besar mendekati $1$.
+
+Untuk menganalisis sifat asimtotik $\widehat{\sigma}^2_{\mathrm{CF}}$, residual didekomposisikan sebagai berikut.
+
+\begin{proposisi}[\textbf{Dekomposisi Residual}]
+    Residual tertimbang dapat ditulis sebagai
+    \begin{equation}
+        y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \varepsilon_i - \bm{x}_i^\top \bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_i)\bigr).
+    \end{equation}
+    Dengan menambah dan mengurangi $\boldsymbol{\beta}(\bm{u}_0)$:
+    \begin{equation}
+        y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) = \varepsilon_i + \bm{x}_i^\top \bigl(\boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0)\bigr) - \bm{x}_i^\top \bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0)\bigr).
+    \end{equation}
+\end{proposisi}
+
+\begin{proof}
+    Dari model struktural $y_i = \bm{x}_i^\top \boldsymbol{\beta}(\bm{u}_i) + \varepsilon_i$, maka
+    \begin{align}
+        y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}} &= \bm{x}_i^\top \boldsymbol{\beta}(\bm{u}_i) + \varepsilon_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}} \nonumber \\
+        &= \varepsilon_i + \bm{x}_i^\top \bigl(\boldsymbol{\beta}(\bm{u}_i) - \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}\bigr) \nonumber \\
+        &= \varepsilon_i + \bm{x}_i^\top \bigl(\boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0)\bigr) - \bm{x}_i^\top \bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \boldsymbol{\beta}(\bm{u}_0)\bigr).
+    \end{align}
+\end{proof}
+
+Didefinisikan notasi ringkas:
+\begin{itemize}
+    \item $\delta_i = \boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0)$ adalah deviasi koefisien lokal dari target,
+    \item $\widehat{\bm{\Delta}} = \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0) = \mathbf{B}_n + \mathbf{V}_n$ adalah galat estimasi.
+\end{itemize}
+
+Maka residual menjadi:
+\begin{equation}
+    \widehat{e}_i = y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}} = \varepsilon_i + \bm{x}_i^\top \delta_i - \bm{x}_i^\top \widehat{\bm{\Delta}}.
+\end{equation}
+
+\begin{teorema}[\textbf{Ekspansi Variansi Terestimasi}]
+    Jumlah kuadrat residual tertimbang dapat diekspansi sebagai
+    \begin{align}
+        \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \widehat{e}_i^2 &= \underbrace{\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \varepsilon_i^2}_{\text{(I): suku utama}} + \underbrace{\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i (\bm{x}_i^\top \delta_i)^2}_{\text{(II): bias lokal}} \nonumber \\
+        &\quad + \underbrace{\widehat{\bm{\Delta}}^\top \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr) \widehat{\bm{\Delta}}}_{\text{(III): galat estimasi}} + \text{(suku silang)}.
+    \end{align}
+\end{teorema}
+
+\begin{proof}
+    Dengan mengkuadratkan ekspresi residual:
+    \begin{align}
+        \widehat{e}_i^2 &= \bigl(\varepsilon_i + \bm{x}_i^\top \delta_i - \bm{x}_i^\top \widehat{\bm{\Delta}}\bigr)^2 \nonumber \\
+        &= \varepsilon_i^2 + (\bm{x}_i^\top \delta_i)^2 + (\bm{x}_i^\top \widehat{\bm{\Delta}})^2 \nonumber \\
+        &\quad + 2\varepsilon_i \bm{x}_i^\top \delta_i - 2\varepsilon_i \bm{x}_i^\top \widehat{\bm{\Delta}} - 2(\bm{x}_i^\top \delta_i)(\bm{x}_i^\top \widehat{\bm{\Delta}}).
+    \end{align}
+    
+    Menjumlahkan dengan bobot:
+    \begin{align}
+        \sum_{k,i} w^{(-k)}_i \widehat{e}_i^2 &= \sum_{k,i} w^{(-k)}_i \varepsilon_i^2 + \sum_{k,i} w^{(-k)}_i (\bm{x}_i^\top \delta_i)^2 + \sum_{k,i} w^{(-k)}_i (\bm{x}_i^\top \widehat{\bm{\Delta}})^2 \nonumber \\
+        &\quad + 2\sum_{k,i} w^{(-k)}_i \varepsilon_i \bm{x}_i^\top \delta_i - 2\sum_{k,i} w^{(-k)}_i \varepsilon_i \bm{x}_i^\top \widehat{\bm{\Delta}} \nonumber \\
+        &\quad - 2\sum_{k,i} w^{(-k)}_i (\bm{x}_i^\top \delta_i)(\bm{x}_i^\top \widehat{\bm{\Delta}}).
+    \end{align}
+    
+    Untuk suku (III), perhatikan bahwa
+    \begin{align}
+        \sum_{k,i} w^{(-k)}_i (\bm{x}_i^\top \widehat{\bm{\Delta}})^2 &= \sum_{k,i} w^{(-k)}_i \widehat{\bm{\Delta}}^\top \bm{x}_i \bm{x}_i^\top \widehat{\bm{\Delta}} \nonumber \\
+        &= \widehat{\bm{\Delta}}^\top \Biggl(\sum_{k,i} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top\Biggr) \widehat{\bm{\Delta}} \nonumber \\
+        &= \widehat{\bm{\Delta}}^\top \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr) \widehat{\bm{\Delta}}.
+    \end{align}
+\end{proof}
+
+\begin{teorema}[\textbf{Konsistensi Estimator Variansi Galat}]
+    Di bawah Asumsi (A1)--(A10), estimator variansi galat \emph{cross-fitted} bersifat konsisten:
+    \begin{equation}
+        \widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0) \xrightarrow{p} \sigma^2.
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Analisis dilakukan untuk setiap suku dalam ekspansi.
+    
+    \textbf{Suku (I): Suku Utama.} Berdasarkan hukum bilangan besar tertimbang dan Asumsi (A3):
+    \begin{equation}
+        \sum_{k,i} w^{(-k)}_i \varepsilon_i^2 \xrightarrow{p} \mathbb{E}[\varepsilon_i^2] = \sigma^2.
+    \end{equation}
+    
+    \textbf{Suku (II): Bias Lokal.} Karena $\|\delta_i\| = \|\boldsymbol{\beta}(\bm{u}_i) - \boldsymbol{\beta}(\bm{u}_0)\| = O(h)$ untuk $\bm{u}_i \in \mathcal{N}_h(\bm{u}_0)$:
+    \begin{equation}
+        \sum_{k,i} w^{(-k)}_i (\bm{x}_i^\top \delta_i)^2 \leq \sum_{k,i} w^{(-k)}_i \|\bm{x}_i\|^2 \|\delta_i\|^2 = O_p(h^2) \to 0.
+    \end{equation}
+    
+    \textbf{Suku (III): Galat Estimasi.} Dari hasil sebelumnya, $\widehat{\bm{\Delta}} = O_p(h^2) + O_p\bigl((nh^d)^{-1/2}\bigr)$. Maka
+    \begin{equation}
+        \widehat{\bm{\Delta}}^\top \Biggl(\sum_k \mathbf{H}_k\Biggr) \widehat{\bm{\Delta}} = O_p\bigl(h^4 + (nh^d)^{-1}\bigr) \to 0.
+    \end{equation}
+    
+    \textbf{Suku Silang.} Dengan argumen serupa, semua suku silang konvergen ke nol dalam probabilitas karena melibatkan produk dari suku yang konvergen ke nol.
+    
+    Kesimpulannya,
+    \begin{equation}
+        \sum_{k,i} w^{(-k)}_i \widehat{e}_i^2 \xrightarrow{p} \sigma^2,
+    \end{equation}
+    dan karena penyebut $\sum_{k,i} w^{(-k)}_i - p \to 1 - 0 = 1$ (dengan koreksi derajat kebebas yang negligible secara asimtotik), maka $\widehat{\sigma}^2_{\mathrm{CF}} \xrightarrow{p} \sigma^2$.
+\end{proof}
+
+\begin{akibat}[\textbf{Bias Estimator Variansi}]
+    Bias estimator variansi galat memenuhi
+    \begin{equation}
+        \mathbb{E}[\widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0)] - \sigma^2 = O(h^2) + O\bigl((nh^d)^{-1}\bigr),
+    \end{equation}
+    yang konvergen ke nol di bawah kondisi asimtotik (A6) dan (A7).
+\end{akibat}
+
+\subsection{Konsistensi Koefisien Lokal}
+
+Bagian ini membuktikan konsistensi estimator \emph{cross-fitted} EK-GWR secara formal. Konsistensi merupakan syarat minimal untuk validitas estimator: estimator harus konvergen ke nilai parameter sejati ketika ukuran sampel menuju tak hingga.
+
+\begin{teorema}[\textbf{Konsistensi Estimator \emph{Cross-Fitted}}]
+    Di bawah Asumsi (A1)--(A10), estimator \emph{cross-fitted} EK-GWR bersifat konsisten:
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) \xrightarrow{p} \boldsymbol{\beta}(\bm{u}_0) \quad \text{ketika } n \to \infty.
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Dari Teorema Dekomposisi Estimator, berlaku
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0) = \mathbf{B}_n(\bm{u}_0) + \mathbf{V}_n(\bm{u}_0).
+    \end{equation}
+    Untuk membuktikan konsistensi, perlu ditunjukkan bahwa $\mathbf{B}_n(\bm{u}_0) \xrightarrow{p} \bm{0}$ dan $\mathbf{V}_n(\bm{u}_0) \xrightarrow{p} \bm{0}$.
+    
+    \textbf{Konvergensi Suku Bias.} Dari Teorema Laju Konvergensi Bias, telah ditunjukkan bahwa
+    \begin{equation}
+        \mathbf{B}_n(\bm{u}_0) = O_p(h^2).
+    \end{equation}
+    Karena $h \to 0$ berdasarkan Asumsi (A6), maka $\mathbf{B}_n(\bm{u}_0) \xrightarrow{p} \bm{0}$.
+    
+    \textbf{Konvergensi Suku Galat.} Suku galat diberikan oleh
+    \begin{equation}
+        \mathbf{V}_n(\bm{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \boldsymbol{\varepsilon}_k\Biggr).
+    \end{equation}
+    
+    Untuk menganalisis konvergensi, ditulis dalam bentuk yang lebih eksplisit:
+    \begin{equation}
+        \mathbf{V}_n(\bm{u}_0) = \Biggl(\frac{1}{nh^d} \sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\frac{1}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \varepsilon_i\Biggr).
+    \end{equation}
+    
+    \emph{Langkah 1: Konvergensi faktor pertama.} Didefinisikan matriks
+    \begin{equation}
+        \mathbf{Q}_n(\bm{u}_0) = \frac{1}{nh^d} \sum_{k=1}^K \mathbf{H}_k = \frac{1}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top.
+    \end{equation}
+    
+    Berdasarkan hukum bilangan besar tertimbang lokal, dengan menggunakan Asumsi (A1), (A4), (A7), dan (A10):
+    \begin{equation}
+        \mathbf{Q}_n(\bm{u}_0) \xrightarrow{p} \mathbf{Q}(\bm{u}_0),
+    \end{equation}
+    dengan $\mathbf{Q}(\bm{u}_0) = \mathbb{E}[\bm{x}_i \bm{x}_i^\top \mid \bm{u}_i \approx \bm{u}_0]$ adalah matriks momen lokal yang positif definit. Akibatnya,
+    \begin{equation}
+        \mathbf{Q}_n(\bm{u}_0)^{-1} \xrightarrow{p} \mathbf{Q}(\bm{u}_0)^{-1}.
+    \end{equation}
+    
+    \emph{Langkah 2: Konvergensi faktor kedua.} Didefinisikan vektor
+    \begin{equation}
+        \bm{S}_n(\bm{u}_0) = \frac{1}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \varepsilon_i.
+    \end{equation}
+    
+    Berdasarkan Proposisi Pemulihan Eksogenitas, untuk setiap \emph{fold} $k$:
+    \begin{equation}
+        \mathbb{E}\Bigl[w^{(-k)}_i \bm{x}_i \varepsilon_i \mid \widehat{\boldsymbol{\theta}}^{(-k)}\Bigr] = \bm{0} \quad \text{untuk } i \in \mathcal{I}_k.
+    \end{equation}
+    
+    Dengan menggunakan hukum ekspektasi iterasi:
+    \begin{equation}
+        \mathbb{E}[\bm{S}_n(\bm{u}_0)] = \frac{1}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \mathbb{E}\Bigl[\mathbb{E}\bigl[w^{(-k)}_i \bm{x}_i \varepsilon_i \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr]\Bigr] = \bm{0}.
+    \end{equation}
+    
+    Untuk variansi, dengan menggunakan independensi antarobservasi (A1) dan Asumsi (A3):
+    \begin{align}
+        \mathrm{Var}(\bm{S}_n(\bm{u}_0)) &= \frac{1}{(nh^d)^2} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \mathbb{E}\bigl[(w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top \varepsilon_i^2\bigr] \nonumber \\
+        &= \frac{\sigma^2}{(nh^d)^2} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \mathbb{E}\bigl[(w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top\bigr].
+    \end{align}
+    
+    Berdasarkan Asumsi (A8), $w^{(-k)}_i \leq C/(nh^d)$, sehingga $(w^{(-k)}_i)^2 \leq C^2/(nh^d)^2$. Dengan demikian,
+    \begin{align}
+        \mathrm{Var}(\bm{S}_n(\bm{u}_0)) &\leq \frac{\sigma^2 C^2}{(nh^d)^4} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \mathbb{E}[\bm{x}_i \bm{x}_i^\top] \nonumber \\
+        &= \frac{\sigma^2 C^2}{(nh^d)^4} \cdot n \cdot \mathbb{E}[\bm{x}_i \bm{x}_i^\top] \nonumber \\
+        &= O\bigl((nh^d)^{-3}\bigr) \to 0.
+    \end{align}
+    
+    Karena $\mathbb{E}[\bm{S}_n] = \bm{0}$ dan $\mathrm{Var}(\bm{S}_n) \to 0$, maka berdasarkan ketaksamaan Chebyshev:
+    \begin{equation}
+        \bm{S}_n(\bm{u}_0) \xrightarrow{p} \bm{0}.
+    \end{equation}
+    
+    \emph{Langkah 3: Gabungkan dengan Lemma Slutsky.} Karena $\mathbf{Q}_n^{-1} \xrightarrow{p} \mathbf{Q}^{-1}$ dan $\bm{S}_n \xrightarrow{p} \bm{0}$, maka berdasarkan lemma Slutsky:
+    \begin{equation}
+        \mathbf{V}_n(\bm{u}_0) = \mathbf{Q}_n^{-1} \cdot (nh^d) \cdot \bm{S}_n \xrightarrow{p} \mathbf{Q}^{-1} \cdot \bm{0} = \bm{0}.
+    \end{equation}
+    
+    \textbf{Kesimpulan.} Dengan menggabungkan hasil untuk suku bias dan suku galat:
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0) = \mathbf{B}_n + \mathbf{V}_n \xrightarrow{p} \bm{0} + \bm{0} = \bm{0}.
+    \end{equation}
+\end{proof}
+
+\begin{akibat}[\textbf{Laju Konvergensi}]
+    Laju konvergensi estimator \emph{cross-fitted} ditentukan oleh
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0) = O_p(h^2) + O_p\bigl((nh^d)^{-1/2}\bigr),
+    \end{equation}
+    dengan suku pertama adalah kontribusi bias dan suku kedua adalah kontribusi variansi.
+\end{akibat}
+
+\subsection{Konsistensi Variansi Koefisien Lokal}
+
+Untuk melakukan inferensi statistik, diperlukan estimasi variansi dari estimator koefisien lokal. Bagian ini mendefinisikan variansi teoretis, menurunkan estimatornya, dan membuktikan konsistensinya.
+
+\begin{teorema}[\textbf{Variansi Asimtotik Koefisien Lokal}]
+    Di bawah Asumsi (A1)--(A10), variansi kondisional dari estimator \emph{cross-fitted} memiliki bentuk \emph{sandwich}:
+    \begin{equation}
+        \mathrm{Var}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) \mid \{\widehat{\boldsymbol{\theta}}^{(-k)}\}_{k=1}^K\bigr) = \mathbf{Q}_n(\bm{u}_0)^{-1} \boldsymbol{\Omega}_n(\bm{u}_0) \mathbf{Q}_n(\bm{u}_0)^{-1},
+    \end{equation}
+    dengan
+    \begin{align}
+        \mathbf{Q}_n(\bm{u}_0) &= \sum_{k=1}^K \mathbf{H}_k = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top, \\
+        \boldsymbol{\Omega}_n(\bm{u}_0) &= \sigma^2 \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{align}
+\end{teorema}
+
+\begin{proof}
+    Dari dekomposisi estimator, suku galat diberikan oleh
+    \begin{equation}
+        \mathbf{V}_n(\bm{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \bm{X}_k^\top \mathbf{W}^{(-k)}_k \boldsymbol{\varepsilon}_k\Biggr) = \mathbf{Q}_n^{-1} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \varepsilon_i.
+    \end{equation}
+    
+    Kondisional pada $\{\widehat{\boldsymbol{\theta}}^{(-k)}\}$, bobot $w^{(-k)}_i$ bersifat deterministik. Dengan menggunakan independensi antarobservasi dan Asumsi (A3):
+    \begin{align}
+        \mathrm{Var}\Biggl(\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \varepsilon_i \Biggm| \{\widehat{\boldsymbol{\theta}}^{(-k)}\}\Biggr) &= \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top \mathrm{Var}(\varepsilon_i) \nonumber \\
+        &= \sigma^2 \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top \nonumber \\
+        &= \boldsymbol{\Omega}_n(\bm{u}_0).
+    \end{align}
+    
+    Dengan menggunakan properti variansi transformasi linear:
+    \begin{align}
+        \mathrm{Var}(\mathbf{V}_n \mid \{\widehat{\boldsymbol{\theta}}^{(-k)}\}) &= \mathbf{Q}_n^{-1} \mathrm{Var}\Biggl(\sum_{k,i} w^{(-k)}_i \bm{x}_i \varepsilon_i\Biggr) \mathbf{Q}_n^{-1} \nonumber \\
+        &= \mathbf{Q}_n^{-1} \boldsymbol{\Omega}_n \mathbf{Q}_n^{-1}.
+    \end{align}
+    
+    Karena suku bias $\mathbf{B}_n$ bersifat deterministik kondisional pada $\{\widehat{\boldsymbol{\theta}}^{(-k)}\}$, maka
+    \begin{equation}
+        \mathrm{Var}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} \mid \{\widehat{\boldsymbol{\theta}}^{(-k)}\}\bigr) = \mathrm{Var}(\mathbf{V}_n \mid \{\widehat{\boldsymbol{\theta}}^{(-k)}\}) = \mathbf{Q}_n^{-1} \boldsymbol{\Omega}_n \mathbf{Q}_n^{-1}.
+    \end{equation}
+\end{proof}
+
+\begin{akibat}[\textbf{Orde Variansi}]
+    Variansi koefisien lokal memiliki orde
+    \begin{equation}
+        \mathrm{Var}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr) = O\bigl((nh^d)^{-1}\bigr).
+    \end{equation}
+    Secara intuitif, \emph{effective local sample size} adalah $nh^d$, sehingga variansi berbanding terbalik dengannya.
+\end{akibat}
+
+\begin{proof}
+    Dari Asumsi (A8), $w^{(-k)}_i \leq C/(nh^d)$. Dengan demikian,
+    \begin{equation}
+        \boldsymbol{\Omega}_n = \sigma^2 \sum_{k,i} (w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top \leq \frac{\sigma^2 C}{nh^d} \sum_{k,i} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top = \frac{\sigma^2 C}{nh^d} \mathbf{Q}_n.
+    \end{equation}
+    
+    Karena $\mathbf{Q}_n = O(1)$ dan $\boldsymbol{\Omega}_n = O((nh^d)^{-1})$, maka
+    \begin{equation}
+        \mathbf{Q}_n^{-1} \boldsymbol{\Omega}_n \mathbf{Q}_n^{-1} = O(1) \cdot O\bigl((nh^d)^{-1}\bigr) \cdot O(1) = O\bigl((nh^d)^{-1}\bigr).
+    \end{equation}
+\end{proof}
+
+\begin{teorema}[\textbf{Estimator Variansi \emph{Sandwich}}]
+    Estimator variansi koefisien lokal \emph{cross-fitted} yang diperoleh dengan mengganti parameter populasi dengan estimator konsistennya diberikan oleh
+    \begin{equation}
+        \widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr) = \widehat{\mathbf{Q}}_n(\bm{u}_0)^{-1} \widehat{\boldsymbol{\Omega}}_n(\bm{u}_0) \widehat{\mathbf{Q}}_n(\bm{u}_0)^{-1},
+    \end{equation}
+    dengan
+    \begin{align}
+        \widehat{\mathbf{Q}}_n(\bm{u}_0) &= \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top = \sum_{k=1}^K \mathbf{H}_k, \\
+        \widehat{\boldsymbol{\Omega}}_n(\bm{u}_0) &= \widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0) \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{align}
+\end{teorema}
+
+\begin{proof}
+    Dari Teorema Variansi Asimtotik Koefisien Lokal, variansi kondisional sejati diberikan oleh
+    \begin{equation}
+        \mathrm{Var}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) \mid \{\widehat{\boldsymbol{\theta}}^{(-k)}\}_{k=1}^K\bigr) = \mathbf{Q}_n(\bm{u}_0)^{-1} \boldsymbol{\Omega}_n(\bm{u}_0) \mathbf{Q}_n(\bm{u}_0)^{-1},
+    \end{equation}
+    dengan
+    \begin{align}
+        \mathbf{Q}_n(\bm{u}_0) &= \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top, \\
+        \boldsymbol{\Omega}_n(\bm{u}_0) &= \sigma^2 \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{align}
+    
+    Perhatikan bahwa $\mathbf{Q}_n(\bm{u}_0)$ dapat dihitung langsung dari data karena hanya melibatkan bobot $w^{(-k)}_i$ dan kovariat $\bm{x}_i$ yang keduanya teramati. Dengan demikian, estimator untuk $\mathbf{Q}_n(\bm{u}_0)$ adalah dirinya sendiri:
+    \begin{equation}
+        \widehat{\mathbf{Q}}_n(\bm{u}_0) = \mathbf{Q}_n(\bm{u}_0) = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top = \sum_{k=1}^K \mathbf{H}_k.
+    \end{equation}
+    
+    Untuk $\boldsymbol{\Omega}_n(\bm{u}_0)$, satu-satunya kuantitas yang tidak teramati adalah variansi galat $\sigma^2$. Berdasarkan Teorema Estimator Variansi Galat \emph{Cross-Fitted}, estimator konsisten untuk $\sigma^2$ adalah $\widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0)$. Dengan mensubstitusikan $\sigma^2$ dengan estimatornya, diperoleh
+    \begin{equation}
+        \widehat{\boldsymbol{\Omega}}_n(\bm{u}_0) = \widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0) \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{equation}
+    
+    Dengan menggabungkan kedua estimator ke dalam bentuk \emph{sandwich}, diperoleh estimator variansi koefisien lokal:
+    \begin{equation}
+        \widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr) = \widehat{\mathbf{Q}}_n(\bm{u}_0)^{-1} \widehat{\boldsymbol{\Omega}}_n(\bm{u}_0) \widehat{\mathbf{Q}}_n(\bm{u}_0)^{-1}.
+    \end{equation}
+    
+    Bentuk \emph{sandwich} ini memiliki interpretasi geometris: matriks $\widehat{\mathbf{Q}}_n^{-1}$ mentransformasi variabilitas dalam ruang kovariat tertimbang $\widehat{\boldsymbol{\Omega}}_n$ menjadi variabilitas dalam ruang parameter $\boldsymbol{\beta}$.
+\end{proof}
+
+Estimator ini menggantikan variansi galat sejati $\sigma^2$ dengan estimator konsistennya $\widehat{\sigma}^2_{\mathrm{CF}}$. Bentuk \emph{sandwich} menjamin robustness terhadap spesifikasi yang tidak tepat pada struktur variansi.
+
+\begin{teorema}[\textbf{Konsistensi Estimator Variansi Koefisien Lokal}]
+    Di bawah Asumsi (A1)--(A10), estimator variansi bersifat konsisten dalam arti
+    \begin{equation}
+        (nh^d) \cdot \widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr) \xrightarrow{p} \mathbf{Q}(\bm{u}_0)^{-1} \boldsymbol{\Omega}(\bm{u}_0) \mathbf{Q}(\bm{u}_0)^{-1},
+    \end{equation}
+    dengan $\mathbf{Q}(\bm{u}_0)$ dan $\boldsymbol{\Omega}(\bm{u}_0)$ adalah limit probabilitas dari versi ternormalisasi $\mathbf{Q}_n$ dan $\boldsymbol{\Omega}_n$.
+\end{teorema}
+
+\begin{proof}
+    Bukti terdiri dari tiga langkah: (i) konsistensi $\widehat{\mathbf{Q}}_n$, (ii) konsistensi $\widehat{\boldsymbol{\Omega}}_n$ ternormalisasi, dan (iii) aplikasi \emph{continuous mapping theorem}.
+    
+    \textbf{Langkah 1: Konsistensi $\widehat{\mathbf{Q}}_n$.} Perhatikan bahwa
+    \begin{equation}
+        \frac{1}{nh^d} \widehat{\mathbf{Q}}_n = \frac{1}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top.
+    \end{equation}
+    
+    Berdasarkan hukum bilangan besar tertimbang lokal (dengan argumen serupa pada bukti konsistensi estimator):
+    \begin{equation}
+        \frac{1}{nh^d} \widehat{\mathbf{Q}}_n \xrightarrow{p} \mathbf{Q}(\bm{u}_0) = \mathbb{E}[\bm{x}_i \bm{x}_i^\top \mid \bm{u}_i \approx \bm{u}_0].
+    \end{equation}
+    
+    \textbf{Langkah 2: Konsistensi $\widehat{\boldsymbol{\Omega}}_n$ ternormalisasi.} Didefinisikan
+    \begin{equation}
+        \widetilde{\boldsymbol{\Omega}}_n = (nh^d) \cdot \widehat{\boldsymbol{\Omega}}_n = (nh^d) \cdot \widehat{\sigma}^2_{\mathrm{CF}} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} (w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{equation}
+    
+    Dari Teorema Konsistensi Estimator Variansi Galat, $\widehat{\sigma}^2_{\mathrm{CF}} \xrightarrow{p} \sigma^2$. Untuk suku penjumlahan, dengan menggunakan Asumsi (A8):
+    \begin{equation}
+        (nh^d) \sum_{k,i} (w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top \xrightarrow{p} \boldsymbol{\Omega}'(\bm{u}_0),
+    \end{equation}
+    dengan $\boldsymbol{\Omega}'(\bm{u}_0)$ adalah limit yang terkait dengan momen bobot kuadrat lokal.
+    
+    Didefinisikan $\boldsymbol{\Omega}(\bm{u}_0) = \sigma^2 \boldsymbol{\Omega}'(\bm{u}_0)$. Maka:
+    \begin{equation}
+        \widetilde{\boldsymbol{\Omega}}_n \xrightarrow{p} \sigma^2 \boldsymbol{\Omega}'(\bm{u}_0) = \boldsymbol{\Omega}(\bm{u}_0).
+    \end{equation}
+    
+    \textbf{Langkah 3: \emph{Continuous Mapping Theorem}.} Estimator variansi ternormalisasi dapat ditulis sebagai
+    \begin{align}
+        (nh^d) \cdot \widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}\bigr) &= \Bigl(\frac{1}{nh^d} \widehat{\mathbf{Q}}_n\Bigr)^{-1} \widetilde{\boldsymbol{\Omega}}_n \Bigl(\frac{1}{nh^d} \widehat{\mathbf{Q}}_n\Bigr)^{-1}.
+    \end{align}
+    
+    Karena:
+    \begin{itemize}
+        \item $\frac{1}{nh^d} \widehat{\mathbf{Q}}_n \xrightarrow{p} \mathbf{Q}(\bm{u}_0)$ yang invertibel,
+        \item $\widetilde{\boldsymbol{\Omega}}_n \xrightarrow{p} \boldsymbol{\Omega}(\bm{u}_0)$,
+        \item fungsi inversi matriks kontinu pada himpunan matriks invertibel,
+    \end{itemize}
+    maka berdasarkan \emph{continuous mapping theorem}:
+    \begin{equation}
+        (nh^d) \cdot \widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}\bigr) \xrightarrow{p} \mathbf{Q}(\bm{u}_0)^{-1} \boldsymbol{\Omega}(\bm{u}_0) \mathbf{Q}(\bm{u}_0)^{-1}.
+    \end{equation}
+\end{proof}
+
+\begin{akibat}[\textbf{Estimator Galat Standar}]
+    Galat standar untuk komponen ke-$j$ dari koefisien lokal diestimasi sebagai
+    \begin{equation}
+        \widehat{\mathrm{se}}\bigl(\widehat{\beta}_{\mathrm{CF},j}(\bm{u}_0)\bigr) = \sqrt{\bigl[\widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr)\bigr]_{jj}},
+    \end{equation}
+    dengan $[\cdot]_{jj}$ menandakan elemen diagonal ke-$j$ dari matriks variansi-kovariansi.
+\end{akibat}
+
+\subsection{Distribusi Asimtotik Koefisien Lokal}
+
+Bagian ini menurunkan distribusi asimtotik dari estimator \emph{cross-fitted} EK-GWR. Hasil utama menunjukkan bahwa setelah dinormalisasi dengan $\sqrt{nh^d}$, estimator berdistribusi normal asimtotik di bawah kondisi \emph{undersmoothing}.
+
+\subsubsection{Normalisasi dan Dekomposisi Terstandarisasi}
+
+Berdasarkan Teorema Variansi Asimtotik Koefisien Lokal, variansi estimator memiliki orde $O((nh^d)^{-1})$. Hal ini menunjukkan bahwa \emph{effective local sample size} adalah $nh^d$, sehingga normalisasi yang tepat adalah $\sqrt{nh^d}$.
+
+\begin{proposisi}[\textbf{Dekomposisi Terstandarisasi}]
+    Estimator \emph{cross-fitted} yang dinormalisasi dapat didekomposisikan sebagai
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0)\bigr) = \underbrace{\sqrt{nh^d} \mathbf{B}_n(\bm{u}_0)}_{\text{bias terstandarisasi}} + \underbrace{\sqrt{nh^d} \mathbf{V}_n(\bm{u}_0)}_{\text{galat terstandarisasi}}.
+    \end{equation}
+    Distribusi limit ditentukan oleh perilaku kedua suku ini.
+\end{proposisi}
+
+\subsubsection{Distribusi Asimtotik Suku Galat}
+
+Suku galat terstandarisasi dapat ditulis dalam bentuk yang memfasilitasi penerapan Teorema Limit Pusat.
+
+\begin{proposisi}[\textbf{Representasi Suku Galat}]
+    Suku galat terstandarisasi dapat ditulis sebagai
+    \begin{equation}
+        \sqrt{nh^d} \mathbf{V}_n(\bm{u}_0) = \Biggl(\frac{1}{nh^d} \sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\frac{1}{\sqrt{nh^d}} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \varepsilon_i\Biggr),
+    \end{equation}
+    yang merupakan produk dari dua faktor: satu yang konvergen dalam probabilitas dan satu yang konvergen dalam distribusi.
+\end{proposisi}
+
+\begin{teorema}[\textbf{Teorema Limit Pusat Lokal}]
+    Di bawah Asumsi (A1)--(A10), didefinisikan
+    \begin{equation}
+        \bm{S}_n(\bm{u}_0) = \frac{1}{\sqrt{nh^d}} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \varepsilon_i.
+    \end{equation}
+    Maka
+    \begin{equation}
+        \bm{S}_n(\bm{u}_0) \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \boldsymbol{\Omega}(\bm{u}_0)\bigr),
+    \end{equation}
+    dengan $\boldsymbol{\Omega}(\bm{u}_0)$ adalah limit dari $\boldsymbol{\Omega}_n(\bm{u}_0)$ ternormalisasi.
+\end{teorema}
+
+\begin{proof}
+    Bukti menggunakan Teorema Limit Pusat Lindeberg-Feller untuk array triangular dari variabel acak.
+    
+    \textbf{Langkah 1: Verifikasi rata-rata nol.} Berdasarkan Proposisi Pemulihan Eksogenitas, untuk setiap \emph{fold} $k$ dan $i \in \mathcal{I}_k$:
+    \begin{equation}
+        \mathbb{E}\bigl[w^{(-k)}_i \bm{x}_i \varepsilon_i \mid \widehat{\boldsymbol{\theta}}^{(-k)}\bigr] = w^{(-k)}_i \bm{x}_i \mathbb{E}[\varepsilon_i \mid \bm{x}_i, \bm{u}_i] = \bm{0},
+    \end{equation}
+    karena bobot $w^{(-k)}_i$ dilatih pada data yang tidak termasuk observasi $i$, sehingga bersifat deterministik kondisional pada $\widehat{\boldsymbol{\theta}}^{(-k)}$. Dengan demikian, $\mathbb{E}[\bm{S}_n] = \bm{0}$.
+    
+    \textbf{Langkah 2: Verifikasi variansi terbatas.} Variansi kondisional diberikan oleh
+    \begin{align}
+        \mathrm{Var}(\bm{S}_n \mid \{\widehat{\boldsymbol{\theta}}^{(-k)}\}) &= \frac{1}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \mathbb{E}[\bm{x}_i \bm{x}_i^\top \varepsilon_i^2 \mid \bm{u}_i] \nonumber \\
+        &= \frac{\sigma^2}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{align}
+    
+    Didefinisikan
+    \begin{equation}
+        \boldsymbol{\Omega}'_n = \frac{nh^d}{1} \cdot \frac{\sigma^2}{nh^d} \sum_{k,i} (w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top = \sigma^2 \sum_{k,i} (w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{equation}
+    
+    Berdasarkan hukum bilangan besar, $\boldsymbol{\Omega}'_n \xrightarrow{p} \boldsymbol{\Omega}(\bm{u}_0)$ yang positif definit dan terbatas.
+    
+    \textbf{Langkah 3: Verifikasi kondisi Lindeberg.} Untuk CLT Lindeberg-Feller, perlu diverifikasi bahwa untuk setiap $\delta > 0$:
+    \begin{equation}
+        \lim_{n \to \infty} \frac{1}{\mathrm{Var}(\bm{S}_n)} \sum_{k,i} \mathbb{E}\bigl[\|w^{(-k)}_i \bm{x}_i \varepsilon_i\|^2 \mathbf{1}_{\{\|w^{(-k)}_i \bm{x}_i \varepsilon_i\| > \delta \sqrt{nh^d}\}}\bigr] = 0.
+    \end{equation}
+    
+    Berdasarkan Asumsi (A8), $w^{(-k)}_i \leq C/(nh^d)$. Dengan demikian,
+    \begin{equation}
+        \|w^{(-k)}_i \bm{x}_i \varepsilon_i\| \leq \frac{C}{nh^d} \|\bm{x}_i\| |\varepsilon_i| \to 0
+    \end{equation}
+    untuk $n$ besar, karena $nh^d \to \infty$ (Asumsi A7). Ini berarti untuk $n$ cukup besar, $\|w^{(-k)}_i \bm{x}_i \varepsilon_i\| < \delta \sqrt{nh^d}$ hampir pasti, sehingga kondisi Lindeberg terpenuhi.
+    
+    \textbf{Langkah 4: Aplikasi CLT.} Karena:
+    \begin{itemize}
+        \item suku-suku $w^{(-k)}_i \bm{x}_i \varepsilon_i$ independen antarobservasi,
+        \item rata-rata nol,
+        \item variansi total terbatas dan positif definit,
+        \item kondisi Lindeberg terpenuhi,
+    \end{itemize}
+    maka berdasarkan Teorema Limit Pusat Lindeberg-Feller:
+    \begin{equation}
+        \bm{S}_n(\bm{u}_0) \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \boldsymbol{\Omega}(\bm{u}_0)\bigr).
+    \end{equation}
+\end{proof}
+
+\begin{teorema}[\textbf{Distribusi Asimtotik Suku Galat}]
+    Di bawah Asumsi (A1)--(A10):
+    \begin{equation}
+        \sqrt{nh^d} \mathbf{V}_n(\bm{u}_0) \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \mathbf{Q}(\bm{u}_0)^{-1} \boldsymbol{\Omega}(\bm{u}_0) \mathbf{Q}(\bm{u}_0)^{-1}\bigr).
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Dari hasil sebelumnya:
+    \begin{itemize}
+        \item $\frac{1}{nh^d} \sum_k \mathbf{H}_k \xrightarrow{p} \mathbf{Q}(\bm{u}_0)$ yang invertibel (positif definit),
+        \item $\bm{S}_n \xrightarrow{d} \mathcal{N}(\bm{0}, \boldsymbol{\Omega}(\bm{u}_0))$.
+    \end{itemize}
+    
+    Karena satu faktor konvergen dalam probabilitas ke matriks invertibel dan faktor lainnya konvergen dalam distribusi, maka berdasarkan Lemma Slutsky:
+    \begin{align}
+        \sqrt{nh^d} \mathbf{V}_n &= \Biggl(\frac{1}{nh^d} \sum_k \mathbf{H}_k\Biggr)^{-1} \bm{S}_n \nonumber \\
+        &\xrightarrow{d} \mathbf{Q}(\bm{u}_0)^{-1} \cdot \mathcal{N}\bigl(\bm{0}, \boldsymbol{\Omega}(\bm{u}_0)\bigr) \nonumber \\
+        &= \mathcal{N}\bigl(\bm{0}, \mathbf{Q}(\bm{u}_0)^{-1} \boldsymbol{\Omega}(\bm{u}_0) \mathbf{Q}(\bm{u}_0)^{-1}\bigr).
+    \end{align}
+\end{proof}
+
+\subsubsection{Peran Suku Bias dalam Distribusi Asimtotik}
+
+Perilaku suku bias terstandarisasi $\sqrt{nh^d} \mathbf{B}_n(\bm{u}_0)$ menentukan apakah distribusi asimtotik berpusat di nol atau tidak.
+
+\begin{proposisi}[\textbf{Laju Bias Terstandarisasi}]
+    Dari Teorema Laju Konvergensi Bias, $\mathbf{B}_n(\bm{u}_0) = O_p(h^2)$. Dengan demikian,
+    \begin{equation}
+        \sqrt{nh^d} \mathbf{B}_n(\bm{u}_0) = O_p\bigl(\sqrt{nh^d} \cdot h^2\bigr) = O_p\bigl(\sqrt{nh^{d+4}}\bigr).
+    \end{equation}
+\end{proposisi}
+
+Terdapat dua skenario fundamental bergantung pada laju relatif antara $nh^d$ dan $h^2$.
+
+\begin{teorema}[\textbf{Kondisi \emph{Undersmoothing}}]
+    Jika kondisi \emph{undersmoothing}
+    \begin{equation}
+        \sqrt{nh^d} \cdot h^2 \to 0 \quad \text{ketika } n \to \infty
+    \end{equation}
+    dipenuhi, maka suku bias terstandarisasi lenyap secara asimtotik:
+    \begin{equation}
+        \sqrt{nh^d} \mathbf{B}_n(\bm{u}_0) \xrightarrow{p} \bm{0}.
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Karena $\mathbf{B}_n(\bm{u}_0) = O_p(h^2)$, maka $\sqrt{nh^d} \mathbf{B}_n(\bm{u}_0) = O_p(\sqrt{nh^d} h^2)$. Di bawah kondisi $\sqrt{nh^d} h^2 \to 0$, berlaku $\sqrt{nh^d} \mathbf{B}_n \xrightarrow{p} \bm{0}$.
+\end{proof}
+
+\begin{akibat}[\textbf{Syarat Ekuivalen \emph{Undersmoothing}}]
+    Kondisi \emph{undersmoothing} $\sqrt{nh^d} h^2 \to 0$ ekuivalen dengan
+    \begin{equation}
+        h = o\bigl(n^{-1/(d+4)}\bigr).
+    \end{equation}
+    Ini berarti \emph{bandwidth} harus menyusut lebih cepat dari laju optimal untuk estimasi titik (yang biasanya $h \asymp n^{-1/(d+4)}$).
+\end{akibat}
+
+\begin{proof}
+    Kondisi $\sqrt{nh^d} h^2 \to 0$ ekuivalen dengan $nh^{d+4} \to 0$, yang ekuivalen dengan $h^{d+4} = o(n^{-1})$, atau $h = o(n^{-1/(d+4)})$.
+\end{proof}
+
+\subsubsection{Distribusi Asimtotik Akhir}
+
+\begin{teorema}[\textbf{Normalitas Asimtotik Koefisien Lokal}]
+    Di bawah Asumsi (A1)--(A10) dan kondisi \emph{undersmoothing} $\sqrt{nh^d} h^2 \to 0$:
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0)\bigr) \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \mathbf{Q}(\bm{u}_0)^{-1} \boldsymbol{\Omega}(\bm{u}_0) \mathbf{Q}(\bm{u}_0)^{-1}\bigr),
+    \end{equation}
+    dengan
+    \begin{align}
+        \mathbf{Q}(\bm{u}_0) &= \lim_{n \to \infty} \frac{1}{nh^d} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top, \\
+        \boldsymbol{\Omega}(\bm{u}_0) &= \lim_{n \to \infty} \sigma^2 (nh^d) \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} \bigl(w^{(-k)}_i\bigr)^2 \bm{x}_i \bm{x}_i^\top.
+    \end{align}
+\end{teorema}
+
+\begin{proof}
+    Dari dekomposisi terstandarisasi:
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \boldsymbol{\beta}\bigr) = \sqrt{nh^d} \mathbf{B}_n + \sqrt{nh^d} \mathbf{V}_n.
+    \end{equation}
+    
+    Berdasarkan Teorema Kondisi \emph{Undersmoothing}, $\sqrt{nh^d} \mathbf{B}_n \xrightarrow{p} \bm{0}$. Berdasarkan Teorema Distribusi Asimtotik Suku Galat:
+    \begin{equation}
+        \sqrt{nh^d} \mathbf{V}_n \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1}\bigr).
+    \end{equation}
+    
+    Dengan menggunakan Lemma Slutsky untuk penjumlahan suku yang konvergen dalam probabilitas ke nol dengan suku yang konvergen dalam distribusi:
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \boldsymbol{\beta}\bigr) \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1}\bigr).
+    \end{equation}
+\end{proof}
+Jika kondisi \emph{undersmoothing} tidak dipenuhi, yaitu $\sqrt{nh^d} h^2 \to c \neq 0$ untuk suatu konstanta $c$, maka distribusi asimtotik menjadi
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \boldsymbol{\beta}(\bm{u}_0)\bigr) \xrightarrow{d} \mathcal{N}\bigl(\boldsymbol{\mu}(\bm{u}_0), \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1}\bigr),
+    \end{equation}
+    dengan $\boldsymbol{\mu}(\bm{u}_0) \neq \bm{0}$ adalah vektor bias asimtotik. Dalam kasus ini, interval konfidensi standar dan uji Wald tidak valid karena bias tidak diabaikan.
+
+\begin{akibat}[\textbf{Normalitas Asimtotik per Komponen}]
+    Untuk setiap komponen ke-$j$ dari vektor koefisien:
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\beta}_{\mathrm{CF},j}(\bm{u}_0) - \beta_j(\bm{u}_0)\bigr) \xrightarrow{d} \mathcal{N}\bigl(0, [\mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1}]_{jj}\bigr).
+    \end{equation}
+\end{akibat}
+
+\subsection{Distribusi Asimtotik Uji Statistik}
+
+Bagian ini menurunkan distribusi asimtotik dari statistik uji yang digunakan untuk inferensi pada koefisien lokal, termasuk statistik-$t$ untuk pengujian individual dan statistik Wald untuk pengujian gabungan.
+
+\subsubsection{Statistik-$t$ untuk Pengujian Individual}
+
+\begin{teorema}[\textbf{Distribusi Asimtotik Statistik-$t$}]
+    Di bawah Asumsi (A1)--(A10), kondisi \emph{undersmoothing}, dan hipotesis nol $H_0: \beta_j(\bm{u}_0) = \beta_{j,0}$, statistik-$t$
+    \begin{equation}
+        t_j(\bm{u}_0) = \frac{\widehat{\beta}_{\mathrm{CF},j}(\bm{u}_0) - \beta_{j,0}}{\widehat{\mathrm{se}}\bigl(\widehat{\beta}_{\mathrm{CF},j}(\bm{u}_0)\bigr)}
+    \end{equation}
+    berdistribusi normal standar asimtotik:
+    \begin{equation}
+        t_j(\bm{u}_0) \xrightarrow{d} \mathcal{N}(0, 1) \quad \text{di bawah } H_0.
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Di bawah $H_0: \beta_j(\bm{u}_0) = \beta_{j,0}$, statistik-$t$ dapat ditulis sebagai
+    \begin{equation}
+        t_j = \frac{\widehat{\beta}_{\mathrm{CF},j} - \beta_j(\bm{u}_0)}{\widehat{\mathrm{se}}(\widehat{\beta}_{\mathrm{CF},j})}.
+    \end{equation}
+    
+    Dari Teorema Normalitas Asimtotik Koefisien Lokal:
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\beta}_{\mathrm{CF},j} - \beta_j\bigr) \xrightarrow{d} \mathcal{N}\bigl(0, \sigma^2_j\bigr),
+    \end{equation}
+    dengan $\sigma^2_j = [\mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1}]_{jj}$.
+    
+    Dari Teorema Konsistensi Estimator Variansi Koefisien Lokal:
+    \begin{equation}
+        (nh^d) \cdot \widehat{\mathrm{Var}}(\widehat{\beta}_{\mathrm{CF},j}) \xrightarrow{p} \sigma^2_j.
+    \end{equation}
+    
+    Dengan demikian,
+    \begin{equation}
+        \widehat{\mathrm{se}}(\widehat{\beta}_{\mathrm{CF},j}) = \sqrt{\widehat{\mathrm{Var}}(\widehat{\beta}_{\mathrm{CF},j})} = \frac{\sigma_j + o_p(1)}{\sqrt{nh^d}}.
+    \end{equation}
+    
+    Maka statistik-$t$ dapat ditulis sebagai
+    \begin{align}
+        t_j &= \frac{\widehat{\beta}_{\mathrm{CF},j} - \beta_j}{\widehat{\mathrm{se}}(\widehat{\beta}_{\mathrm{CF},j})} \nonumber \\
+        &= \frac{\sqrt{nh^d}(\widehat{\beta}_{\mathrm{CF},j} - \beta_j)}{\sqrt{nh^d} \cdot \widehat{\mathrm{se}}(\widehat{\beta}_{\mathrm{CF},j})} \nonumber \\
+        &= \frac{\sqrt{nh^d}(\widehat{\beta}_{\mathrm{CF},j} - \beta_j)}{\sigma_j + o_p(1)}.
+    \end{align}
+    
+    Berdasarkan Lemma Slutsky, karena pembilang konvergen dalam distribusi ke $\mathcal{N}(0, \sigma^2_j)$ dan penyebut konvergen dalam probabilitas ke $\sigma_j$:
+    \begin{equation}
+        t_j \xrightarrow{d} \frac{\mathcal{N}(0, \sigma^2_j)}{\sigma_j} = \mathcal{N}(0, 1).
+    \end{equation}
+\end{proof}
+
+\begin{akibat}[\textbf{Interval Konfidensi}]
+    Interval konfidensi $(1-\alpha) \times 100\%$ untuk koefisien lokal $\beta_j(\bm{u}_0)$ diberikan oleh
+    \begin{equation}
+        \mathrm{CI}_{1-\alpha}\bigl(\beta_j(\bm{u}_0)\bigr) = \widehat{\beta}_{\mathrm{CF},j}(\bm{u}_0) \pm z_{1-\alpha/2} \cdot \widehat{\mathrm{se}}\bigl(\widehat{\beta}_{\mathrm{CF},j}(\bm{u}_0)\bigr),
+    \end{equation}
+    dengan $z_{1-\alpha/2}$ adalah kuantil $(1-\alpha/2)$ dari distribusi normal standar.
+\end{akibat}
+
+\begin{proof}
+    Dari distribusi asimtotik $t_j \xrightarrow{d} \mathcal{N}(0,1)$:
+    \begin{equation}
+        \Pr\bigl(-z_{1-\alpha/2} \leq t_j \leq z_{1-\alpha/2}\bigr) \to 1 - \alpha.
+    \end{equation}
+    
+    Dengan mensubstitusikan definisi $t_j$ dan menyusun ulang:
+    \begin{equation}
+        \Pr\Bigl(\widehat{\beta}_{\mathrm{CF},j} - z_{1-\alpha/2} \cdot \widehat{\mathrm{se}} \leq \beta_j \leq \widehat{\beta}_{\mathrm{CF},j} + z_{1-\alpha/2} \cdot \widehat{\mathrm{se}}\Bigr) \to 1 - \alpha.
+    \end{equation}
+\end{proof}
+
+\subsubsection{Statistik Wald untuk Pengujian Gabungan}
+
+Untuk pengujian hipotesis gabungan yang melibatkan beberapa komponen koefisien secara simultan, digunakan statistik Wald.
+
+\begin{teorema}[\textbf{Distribusi Asimtotik Statistik Wald}]
+    Di bawah Asumsi (A1)--(A10), kondisi \emph{undersmoothing}, dan hipotesis nol linear $H_0: \mathbf{R} \boldsymbol{\beta}(\bm{u}_0) = \bm{r}$ dengan $\mathbf{R}$ matriks $q \times p$ berpangkat penuh baris, statistik Wald
+    \begin{equation}
+        W(\bm{u}_0) = \bigl(\mathbf{R} \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \bm{r}\bigr)^\top \Bigl[\mathbf{R} \widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)\bigr) \mathbf{R}^\top\Bigr]^{-1} \bigl(\mathbf{R} \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) - \bm{r}\bigr)
+    \end{equation}
+    berdistribusi khi-kuadrat asimtotik:
+    \begin{equation}
+        W(\bm{u}_0) \xrightarrow{d} \chi^2_q \quad \text{di bawah } H_0,
+    \end{equation}
+    dengan $q = \mathrm{rank}(\mathbf{R})$ adalah jumlah restriksi.
+\end{teorema}
+
+\begin{proof}
+    Di bawah $H_0$, berlaku $\mathbf{R} \boldsymbol{\beta}(\bm{u}_0) = \bm{r}$. Didefinisikan
+    \begin{equation}
+        \bm{\delta}_n = \mathbf{R} \widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \bm{r} = \mathbf{R}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \boldsymbol{\beta}\bigr).
+    \end{equation}
+    
+    Dari Teorema Normalitas Asimtotik Koefisien Lokal:
+    \begin{equation}
+        \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \boldsymbol{\beta}\bigr) \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1}\bigr).
+    \end{equation}
+    
+    Karena transformasi linear mempertahankan normalitas:
+    \begin{equation}
+        \sqrt{nh^d} \bm{\delta}_n = \mathbf{R} \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \boldsymbol{\beta}\bigr) \xrightarrow{d} \mathcal{N}\bigl(\bm{0}, \mathbf{R} \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1} \mathbf{R}^\top\bigr).
+    \end{equation}
+    
+    Didefinisikan $\boldsymbol{\Sigma}_R = \mathbf{R} \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1} \mathbf{R}^\top$. Dari Teorema Konsistensi Estimator Variansi:
+    \begin{equation}
+        (nh^d) \mathbf{R} \widehat{\mathrm{Var}}(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}) \mathbf{R}^\top \xrightarrow{p} \boldsymbol{\Sigma}_R.
+    \end{equation}
+    
+    Statistik Wald dapat ditulis sebagai
+    \begin{align}
+        W &= \bm{\delta}_n^\top \bigl[\mathbf{R} \widehat{\mathrm{Var}}(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}) \mathbf{R}^\top\bigr]^{-1} \bm{\delta}_n \nonumber \\
+        &= (nh^d) \bm{\delta}_n^\top \bigl[(nh^d) \mathbf{R} \widehat{\mathrm{Var}}(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}) \mathbf{R}^\top\bigr]^{-1} (nh^d) \bm{\delta}_n \cdot (nh^d)^{-1} \nonumber \\
+        &= \bigl(\sqrt{nh^d} \bm{\delta}_n\bigr)^\top \bigl[(nh^d) \mathbf{R} \widehat{\mathrm{Var}} \mathbf{R}^\top\bigr]^{-1} \bigl(\sqrt{nh^d} \bm{\delta}_n\bigr).
+    \end{align}
+    
+    Berdasarkan \emph{continuous mapping theorem} dan Lemma Slutsky:
+    \begin{equation}
+        W \xrightarrow{d} \bm{Z}^\top \boldsymbol{\Sigma}_R^{-1} \bm{Z},
+    \end{equation}
+    dengan $\bm{Z} \sim \mathcal{N}(\bm{0}, \boldsymbol{\Sigma}_R)$.
+    
+    Bentuk kuadratik ini berdistribusi $\chi^2_q$ karena $\boldsymbol{\Sigma}_R^{-1/2} \bm{Z} \sim \mathcal{N}(\bm{0}, \mathbf{I}_q)$ dan
+    \begin{equation}
+        \bm{Z}^\top \boldsymbol{\Sigma}_R^{-1} \bm{Z} = \|\boldsymbol{\Sigma}_R^{-1/2} \bm{Z}\|^2 \sim \chi^2_q.
+    \end{equation}
+\end{proof}
+
+\begin{akibat}[\textbf{Pengujian Signifikansi Individual}]
+    Untuk menguji $H_0: \beta_j(\bm{u}_0) = 0$, pilih $\mathbf{R} = \bm{e}_j^\top$ (vektor satuan ke-$j$) dan $\bm{r} = 0$. Maka statistik Wald menjadi
+    \begin{equation}
+        W_j = \frac{\widehat{\beta}_{\mathrm{CF},j}^2}{\widehat{\mathrm{Var}}(\widehat{\beta}_{\mathrm{CF},j})} = t_j^2 \xrightarrow{d} \chi^2_1.
+    \end{equation}
+    Ini konsisten dengan hubungan $\chi^2_1 = (\mathcal{N}(0,1))^2$.
+\end{akibat}
+
+\begin{akibat}[\textbf{Pengujian Signifikansi Gabungan}]
+    Untuk menguji hipotesis bahwa semua koefisien kecuali intersep bernilai nol, $H_0: \beta_1 = \beta_2 = \cdots = \beta_{p-1} = 0$ (dengan $\beta_0$ adalah intersep), pilih
+    \begin{equation}
+        \mathbf{R} = \begin{pmatrix} \bm{0}_{(p-1) \times 1} & \mathbf{I}_{p-1} \end{pmatrix}, \quad \bm{r} = \bm{0}_{p-1}.
+    \end{equation}
+    Statistik Wald yang dihasilkan berdistribusi $\chi^2_{p-1}$ di bawah $H_0$.
+\end{akibat}
+
+\subsubsection{Ringkasan Prosedur Inferensi}
+
+Berdasarkan hasil-hasil di atas, prosedur inferensi lengkap untuk estimator \emph{cross-fitted} EK-GWR adalah sebagai berikut:
+
+\begin{enumerate}
+    \item \textbf{Estimasi koefisien lokal}: Hitung $\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)$ dengan prosedur \emph{cross-fitting}.
+    
+    \item \textbf{Estimasi variansi galat}: Hitung $\widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0)$ dari residual tertimbang.
+    
+    \item \textbf{Estimasi matriks variansi-kovariansi}: Hitung estimator \emph{sandwich}
+    \begin{equation}
+        \widehat{\mathrm{Var}}(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}) = \widehat{\mathbf{Q}}_n^{-1} \widehat{\boldsymbol{\Omega}}_n \widehat{\mathbf{Q}}_n^{-1}.
+    \end{equation}
+    
+    \item \textbf{Pengujian hipotesis individual}: Untuk $H_0: \beta_j(\bm{u}_0) = \beta_{j,0}$, hitung
+    \begin{equation}
+        t_j = \frac{\widehat{\beta}_{\mathrm{CF},j} - \beta_{j,0}}{\widehat{\mathrm{se}}(\widehat{\beta}_{\mathrm{CF},j})}
+    \end{equation}
+    dan bandingkan dengan distribusi $\mathcal{N}(0,1)$.
+    
+    \item \textbf{Pengujian hipotesis gabungan}: Untuk $H_0: \mathbf{R} \boldsymbol{\beta}(\bm{u}_0) = \bm{r}$, hitung statistik Wald $W$ dan bandingkan dengan distribusi $\chi^2_q$.
+    
+    \item \textbf{Interval konfidensi}: Untuk tingkat konfidensi $(1-\alpha)$:
+    \begin{equation}
+        \mathrm{CI}_{1-\alpha}(\beta_j) = \widehat{\beta}_{\mathrm{CF},j} \pm z_{1-\alpha/2} \cdot \widehat{\mathrm{se}}(\widehat{\beta}_{\mathrm{CF},j}).
+    \end{equation}
+\end{enumerate}
+
+    Prosedur inferensi di atas valid secara asimtotik jika dan hanya jika:
+    \begin{enumerate}
+        \item Asumsi (A1)--(A10) terpenuhi,
+        \item Kondisi \emph{undersmoothing} $\sqrt{nh^d} h^2 \to 0$ dipenuhi,
+        \item \emph{Cross-fitting} diimplementasikan dengan benar sehingga bobot kernel independen dari galat pada \emph{fold} estimasi.
+    \end{enumerate}
+    Tanpa \emph{undersmoothing}, interval konfidensi akan memiliki \emph{coverage probability} yang lebih rendah dari tingkat nominal karena bias yang tidak terabaikan.
+
+\section{Komputasional EK-GWR}
+
+Bagian ini menganalisis aspek komputasional dari EK-GWR yang diturunkan secara langsung dari formulasi teoretis pada bagian sebelumnya. Pembahasan meliputi struktur graf komputasional terdiferensiasi, analisis propagasi gradien (termasuk kondisi \emph{vanishing} dan \emph{exploding gradient}), kompleksitas algoritmik, serta kelayakan komputasional model secara keseluruhan.
+
+\subsection{Graf Komputasional dan Diferensiabilitas}
+
+Berdasarkan formulasi pada Bagian 2 dan 3, pipeline komputasional EK-GWR dapat direpresentasikan sebagai graf arah asiklik (\emph{directed acyclic graph}, DAG) yang sepenuhnya terdiferensiasi. Subseksi ini menguraikan setiap komponen graf komputasional dan menganalisis propagasi gradien melalui setiap tahapan.
+
+\subsubsection{Struktur Graf Komputasional}
+
+Graf komputasional EK-GWR terdiri dari empat tahapan sekuensial yang membentuk pemetaan komposit dari parameter GNN ke fungsi kerugian.
+
+\begin{definisi}[\textbf{Graf Komputasional EK-GWR}]
+    Pipeline komputasional EK-GWR adalah komposisi pemetaan
+    \begin{equation}
+        \boldsymbol{\theta} \xrightarrow{\phi_1} \bm{s} \xrightarrow{\phi_2} \bm{w} \xrightarrow{\phi_3} \widehat{\boldsymbol{\beta}} \xrightarrow{\phi_4} \mathcal{L},
+    \end{equation}
+    dengan:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\phi_1: \boldsymbol{\theta} \mapsto \bm{s}$ adalah pemetaan GNN yang menghasilkan vektor skor $\bm{s} = (s_1, \ldots, s_m)^\top$ dengan $s_i = s_{\boldsymbol{\theta}}(i, \bm{u}_0)$ untuk $i \in \mathcal{N}_h(\bm{u}_0)$;
+        \item $\phi_2: \bm{s} \mapsto \bm{w}$ adalah transformasi \emph{softmax} yang memetakan $w_i = \exp(s_i) / \sum_j \exp(s_j)$;
+        \item $\phi_3: \bm{w} \mapsto \widehat{\boldsymbol{\beta}}$ adalah solusi WLS dengan $\widehat{\boldsymbol{\beta}} = (\bm{X}^\top \mathbf{W} \bm{X})^{-1} \bm{X}^\top \mathbf{W} \bm{y}$;
+        \item $\phi_4: \widehat{\boldsymbol{\beta}} \mapsto \mathcal{L}$ adalah fungsi kerugian kuadrat $\mathcal{L} = \sum_i (y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}(\bm{u}_i))^2$.
+    \end{enumerate}
+\end{definisi}
+
+Setiap pemetaan dalam graf komputasional bersifat terdiferensiasi, sehingga gradien dapat dipropagasikan dari fungsi kerugian ke parameter GNN melalui aturan rantai (\emph{chain rule}).
+
+\begin{proposisi}[\textbf{Diferensiabilitas End-to-End}]
+    Komposisi $\mathcal{L} \circ \phi_4 \circ \phi_3 \circ \phi_2 \circ \phi_1$ terdiferensiasi hampir di mana-mana terhadap $\boldsymbol{\theta}$, dengan gradien
+    \begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \boldsymbol{\theta}} = \frac{\partial \mathcal{L}}{\partial \widehat{\boldsymbol{\beta}}} \cdot \frac{\partial \widehat{\boldsymbol{\beta}}}{\partial \bm{w}} \cdot \frac{\partial \bm{w}}{\partial \bm{s}} \cdot \frac{\partial \bm{s}}{\partial \boldsymbol{\theta}}.
+    \end{equation}
+\end{proposisi}
+
+\begin{proof}
+    Diferensiabilitas setiap komponen ditunjukkan sebagai berikut:
+    \begin{enumerate}[label=(\roman*)]
+        \item Pemetaan GNN $\phi_1$ merupakan komposisi transformasi linear dan fungsi aktivasi yang terdiferensiasi (misalnya ReLU, yang terdiferensiasi kecuali di titik nol dengan ukuran Lebesgue nol).
+        \item Transformasi \emph{softmax} $\phi_2$ terdiferensiasi di $\mathbb{R}^m$ karena fungsi eksponensial dan penjumlahan terdiferensiasi di mana-mana.
+        \item Solusi WLS $\phi_3$ terdiferensiasi di mana matriks $\bm{X}^\top \mathbf{W} \bm{X}$ invertibel, yang dijamin oleh asumsi regularitas A5.
+        \item Fungsi kerugian kuadrat $\phi_4$ terdiferensiasi di mana-mana.
+    \end{enumerate}
+    Karena komposisi fungsi terdiferensiasi adalah terdiferensiasi, dan titik non-diferensiabilitas memiliki ukuran nol, maka komposisi keseluruhan terdiferensiasi hampir di mana-mana.
+\end{proof}
+
+\subsubsection{Matriks Jacobian Transformasi \emph{Softmax}}
+
+Analisis propagasi gradien memerlukan karakterisasi eksplisit matriks Jacobian dari setiap komponen. Transformasi \emph{softmax} memiliki struktur Jacobian khusus yang penting untuk memahami dinamika gradien.
+
+\begin{proposisi}[\textbf{Jacobian \emph{Softmax}}]
+    Matriks Jacobian dari transformasi \emph{softmax} $\bm{w} = \mathrm{softmax}(\bm{s})$ adalah
+    \begin{equation}
+        \frac{\partial \bm{w}}{\partial \bm{s}} = \mathrm{diag}(\bm{w}) - \bm{w} \bm{w}^\top,
+    \end{equation}
+    dengan elemen-elemen
+    \begin{equation}
+        \frac{\partial w_i}{\partial s_j} = \begin{cases}
+            w_i (1 - w_i) & \text{jika } i = j, \\
+            -w_i w_j & \text{jika } i \neq j.
+        \end{cases}
+    \end{equation}
+\end{proposisi}
+
+\begin{proof}
+    Untuk $i = j$, dengan menggunakan aturan hasil bagi diperoleh
+    \begin{align}
+        \frac{\partial w_i}{\partial s_i} &= \frac{\partial}{\partial s_i} \left( \frac{e^{s_i}}{\sum_k e^{s_k}} \right) = \frac{e^{s_i} \sum_k e^{s_k} - e^{s_i} \cdot e^{s_i}}{(\sum_k e^{s_k})^2} \nonumber \\
+        &= \frac{e^{s_i}}{\sum_k e^{s_k}} - \frac{e^{2s_i}}{(\sum_k e^{s_k})^2} = w_i - w_i^2 = w_i(1 - w_i).
+    \end{align}
+    Untuk $i \neq j$, diperoleh
+    \begin{align}
+        \frac{\partial w_i}{\partial s_j} &= \frac{\partial}{\partial s_j} \left( \frac{e^{s_i}}{\sum_k e^{s_k}} \right) = \frac{0 - e^{s_i} \cdot e^{s_j}}{(\sum_k e^{s_k})^2} = -w_i w_j.
+    \end{align}
+    Dalam bentuk matriks, $\frac{\partial \bm{w}}{\partial \bm{s}} = \mathrm{diag}(\bm{w}) - \bm{w}\bm{w}^\top$.
+\end{proof}
+
+Struktur Jacobian \emph{softmax} memiliki implikasi penting terhadap magnitudo gradien.
+
+\begin{akibat}[\textbf{Spektrum Jacobian \emph{Softmax}}]
+    Matriks Jacobian $\mathbf{J}_{\mathrm{softmax}} = \mathrm{diag}(\bm{w}) - \bm{w}\bm{w}^\top$ memiliki sifat spektral:
+    \begin{enumerate}[label=(\roman*)]
+        \item Nilai eigen: $\lambda_i \in [0, 1/4]$ untuk semua $i$.
+        \item Norma spektral: $\|\mathbf{J}_{\mathrm{softmax}}\|_2 \leq 1/2$.
+        \item Nilai eigen nol: Matriks memiliki nilai eigen nol dengan vektor eigen $\bm{1} = (1, \ldots, 1)^\top$ karena $\sum_i w_i = 1$ adalah konstanta.
+    \end{enumerate}
+\end{akibat}
+
+\begin{proof}
+    Untuk (i), perhatikan bahwa $\mathbf{J}_{\mathrm{softmax}}$ adalah matriks semidefinit positif dengan trace
+    \begin{equation}
+        \mathrm{tr}(\mathbf{J}_{\mathrm{softmax}}) = \sum_i w_i(1-w_i) = 1 - \sum_i w_i^2 \leq 1 - \frac{1}{m},
+    \end{equation}
+    dengan kesamaan dicapai ketika $w_i = 1/m$ untuk semua $i$. Karena $w_i(1-w_i) \leq 1/4$ untuk setiap $i$, nilai eigen terbesar tidak melebihi $1/4$.
+    
+    Untuk (ii), norma spektral terbatas oleh $\|\mathbf{J}_{\mathrm{softmax}}\|_2 \leq \|\mathrm{diag}(\bm{w})\|_2 + \|\bm{w}\bm{w}^\top\|_2 \leq \max_i w_i + \|\bm{w}\|_2^2$. Karena $\sum_i w_i = 1$ dan $w_i \geq 0$, maka $\max_i w_i \leq 1$ dan $\|\bm{w}\|_2^2 \leq 1$. Batas yang lebih ketat $1/2$ diperoleh dari analisis langsung elemen diagonal maksimum.
+    
+    Untuk (iii), $\mathbf{J}_{\mathrm{softmax}} \bm{1} = \bm{w} - \bm{w}(\bm{w}^\top \bm{1}) = \bm{w} - \bm{w} = \bm{0}$.
+\end{proof}
+
+\subsubsection{Gradien Melalui Solusi WLS}
+
+Komponen kritis dalam propagasi gradien adalah diferensiasi melalui solusi \emph{weighted least squares}. Solusi WLS merupakan fungsi implisit dari bobot, yang memerlukan penanganan khusus.
+
+\begin{proposisi}[\textbf{Gradien Solusi WLS terhadap Bobot}]
+    Untuk solusi WLS $\widehat{\boldsymbol{\beta}} = (\bm{X}^\top \mathbf{W} \bm{X})^{-1} \bm{X}^\top \mathbf{W} \bm{y}$ dengan $\mathbf{W} = \mathrm{diag}(w_1, \ldots, w_n)$, gradien terhadap bobot tunggal $w_i$ adalah
+    \begin{equation}
+        \frac{\partial \widehat{\boldsymbol{\beta}}}{\partial w_i} = \mathbf{M}^{-1} \bm{x}_i \bigl( y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}} \bigr) - \mathbf{M}^{-1} \bm{x}_i \bm{x}_i^\top \widehat{\boldsymbol{\beta}},
+    \end{equation}
+    dengan $\mathbf{M} = \bm{X}^\top \mathbf{W} \bm{X}$.
+\end{proposisi}
+
+\begin{proof}
+    Dengan menggunakan aturan produk dan identitas diferensiasi matriks invers $\frac{\partial \mathbf{M}^{-1}}{\partial w_i} = -\mathbf{M}^{-1} \frac{\partial \mathbf{M}}{\partial w_i} \mathbf{M}^{-1}$, diperoleh
+    \begin{align}
+        \frac{\partial \widehat{\boldsymbol{\beta}}}{\partial w_i} &= \frac{\partial \mathbf{M}^{-1}}{\partial w_i} \bm{X}^\top \mathbf{W} \bm{y} + \mathbf{M}^{-1} \frac{\partial (\bm{X}^\top \mathbf{W} \bm{y})}{\partial w_i}.
+    \end{align}
+    Karena $\frac{\partial \mathbf{M}}{\partial w_i} = \bm{x}_i \bm{x}_i^\top$ dan $\frac{\partial (\bm{X}^\top \mathbf{W} \bm{y})}{\partial w_i} = \bm{x}_i y_i$, maka
+    \begin{align}
+        \frac{\partial \widehat{\boldsymbol{\beta}}}{\partial w_i} &= -\mathbf{M}^{-1} \bm{x}_i \bm{x}_i^\top \mathbf{M}^{-1} \bm{X}^\top \mathbf{W} \bm{y} + \mathbf{M}^{-1} \bm{x}_i y_i \nonumber \\
+        &= -\mathbf{M}^{-1} \bm{x}_i \bm{x}_i^\top \widehat{\boldsymbol{\beta}} + \mathbf{M}^{-1} \bm{x}_i y_i \nonumber \\
+        &= \mathbf{M}^{-1} \bm{x}_i (y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}).
+    \end{align}
+\end{proof}
+
+Bentuk gradien di atas menunjukkan bahwa kontribusi gradien dari observasi ke-$i$ proporsional terhadap residualnya $r_i = y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}$. Ini memberikan interpretasi bahwa optimasi akan menyesuaikan bobot berdasarkan seberapa baik model \emph{fit} pada setiap observasi.
+
+\subsubsection{Analisis Vanishing dan Exploding Gradient}
+
+Analisis stabilitas numerik memerlukan karakterisasi kondisi di mana gradien dapat mengalami \emph{vanishing} (menghilang) atau \emph{exploding} (meledak). Kedua fenomena ini dapat mengganggu konvergensi optimasi.
+
+\begin{teorema}[\textbf{Kondisi \emph{Vanishing Gradient} pada \emph{Softmax}}]
+    Gradien melalui transformasi \emph{softmax} mengalami \emph{vanishing} ketika distribusi bobot mendekati distribusi degenerasi (\emph{one-hot}). Secara kuantitatif, jika $w_{i^\star} \to 1$ untuk suatu $i^\star$ (sehingga $w_j \to 0$ untuk $j \neq i^\star$), maka
+    \begin{equation}
+        \left\| \frac{\partial \bm{w}}{\partial \bm{s}} \right\|_F \to 0.
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Norma Frobenius dari Jacobian \emph{softmax} adalah
+    \begin{align}
+        \left\| \frac{\partial \bm{w}}{\partial \bm{s}} \right\|_F^2 &= \sum_i w_i^2(1-w_i)^2 + \sum_{i \neq j} w_i^2 w_j^2 \nonumber \\
+        &= \sum_i w_i^2(1-w_i)^2 + \left(\sum_i w_i^2\right)^2 - \sum_i w_i^4.
+    \end{align}
+    Ketika $w_{i^\star} \to 1$ dan $w_j \to 0$ untuk $j \neq i^\star$, diperoleh $\sum_i w_i^2 \to 1$ dan setiap suku $w_i(1-w_i) \to 0$. Dengan demikian, $\left\| \frac{\partial \bm{w}}{\partial \bm{s}} \right\|_F \to 0$.
+\end{proof}
+
+Fenomena \emph{vanishing gradient} pada \emph{softmax} terjadi ketika fungsi skor GNN menghasilkan nilai yang sangat berbeda antarobservasi, menyebabkan satu observasi mendominasi bobot. Dalam konteks spasial, ini terjadi jika GNN ``terlalu yakin'' bahwa satu tetangga jauh lebih relevan dibandingkan yang lain.
+
+\begin{teorema}[\textbf{Kondisi \emph{Exploding Gradient} pada Solusi WLS}]
+    Gradien melalui solusi WLS mengalami \emph{exploding} ketika matriks informasi lokal $\mathbf{M} = \bm{X}^\top \mathbf{W} \bm{X}$ mendekati singularitas. Secara kuantitatif, jika $\lambda_{\min}(\mathbf{M}) \to 0$ (nilai eigen terkecil mendekati nol), maka
+    \begin{equation}
+        \left\| \frac{\partial \widehat{\boldsymbol{\beta}}}{\partial w_i} \right\| = O\left( \frac{1}{\lambda_{\min}(\mathbf{M})} \right) \to \infty.
+    \end{equation}
+\end{teorema}
+
+\begin{proof}
+    Dari Proposisi sebelumnya, $\frac{\partial \widehat{\boldsymbol{\beta}}}{\partial w_i} = \mathbf{M}^{-1} \bm{x}_i (y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}})$. Norma gradien terbatas oleh
+    \begin{align}
+        \left\| \frac{\partial \widehat{\boldsymbol{\beta}}}{\partial w_i} \right\| &\leq \|\mathbf{M}^{-1}\|_2 \cdot \|\bm{x}_i\| \cdot |y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}| \nonumber \\
+        &= \frac{1}{\lambda_{\min}(\mathbf{M})} \cdot \|\bm{x}_i\| \cdot |r_i|.
+    \end{align}
+    Ketika $\lambda_{\min}(\mathbf{M}) \to 0$, norma gradien diverge.
+\end{proof}
+
+Matriks $\mathbf{M}$ mendekati singularitas dalam situasi berikut:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Bobot terkonsentrasi:} Jika bobot terkonsentrasi pada kurang dari $p$ observasi, maka $\mathrm{rank}(\mathbf{M}) < p$.
+    \item \textbf{Kolinearitas lokal:} Jika kovariat pada observasi berbobot tinggi berkolinear, maka $\mathbf{M}$ mendekati singular.
+    \item \textbf{Lokasi terisolasi:} Untuk lokasi target dengan sedikit tetangga dalam $\mathcal{N}_h(\bm{u}_0)$, ukuran sampel efektif kecil.
+\end{enumerate}
+
+\begin{proposisi}[\textbf{Interaksi \emph{Vanishing} dan \emph{Exploding}}]
+    Terdapat interaksi antagonistik antara \emph{vanishing gradient} pada \emph{softmax} dan \emph{exploding gradient} pada WLS. Ketika bobot terkonsentrasi (memicu \emph{vanishing} pada \emph{softmax}), matriks $\mathbf{M}$ cenderung singular (memicu \emph{exploding} pada WLS). Gradien keseluruhan adalah produk dari kedua komponen:
+    \begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \bm{s}} = \frac{\partial \mathcal{L}}{\partial \widehat{\boldsymbol{\beta}}} \cdot \frac{\partial \widehat{\boldsymbol{\beta}}}{\partial \bm{w}} \cdot \frac{\partial \bm{w}}{\partial \bm{s}}.
+    \end{equation}
+    Dalam kasus ekstrem, produk dapat bersifat tidak stabil secara numerik meskipun nilai batas analitik ada.
+\end{proposisi}
+
+\subsubsection{Analisis Konstanta Lipschitz Pipeline}
+
+Untuk mengkarakterisasi propagasi perturbasi melalui pipeline, dianalisis konstanta Lipschitz dari setiap komponen.
+
+\begin{teorema}[\textbf{Konstanta Lipschitz Pipeline EK-GWR}]
+    Misalkan $L_{\mathrm{GNN}}$, $L_{\mathrm{softmax}}$, $L_{\mathrm{WLS}}$, dan $L_{\mathcal{L}}$ adalah konstanta Lipschitz dari masing-masing komponen. Konstanta Lipschitz keseluruhan pipeline memenuhi
+    \begin{equation}
+        L_{\mathrm{total}} \leq L_{\mathcal{L}} \cdot L_{\mathrm{WLS}} \cdot L_{\mathrm{softmax}} \cdot L_{\mathrm{GNN}}.
+    \end{equation}
+    Berdasarkan hasil sebelumnya, $L_{\mathrm{softmax}} \leq 2$ (dari Teorema konsistensi \emph{kernel}). Nilai $L_{\mathrm{WLS}}$ bergantung pada kondisioning matriks $\mathbf{M}$:
+    \begin{equation}
+        L_{\mathrm{WLS}} = O\left( \frac{\kappa(\mathbf{M})}{\lambda_{\min}(\mathbf{M})} \right),
+    \end{equation}
+    dengan $\kappa(\mathbf{M}) = \lambda_{\max}(\mathbf{M}) / \lambda_{\min}(\mathbf{M})$ adalah \emph{condition number}.
+\end{teorema}
+
+Teorema di atas menunjukkan bahwa stabilitas pipeline secara keseluruhan bergantung kritis pada kondisioning matriks informasi lokal $\mathbf{M}$. Matriks dengan \emph{condition number} tinggi menyebabkan amplifikasi perturbasi dan ketidakstabilan numerik.
+
+\subsubsection{Strategi Stabilisasi Gradien}
+
+Berdasarkan analisis di atas, beberapa strategi diperlukan untuk menstabilkan propagasi gradien dalam pelatihan EK-GWR.
+
+\begin{enumerate}
+    \item \textbf{Regularisasi Entropi pada \emph{Softmax}}: Untuk mencegah distribusi bobot yang terlalu tajam (yang menyebabkan \emph{vanishing gradient}), ditambahkan regularisasi entropi:
+    \begin{equation}
+        \mathcal{R}_{\mathrm{ent}}(\bm{w}) = -\sum_{i=1}^m w_i \log w_i.
+    \end{equation}
+    Maksimisasi entropi mendorong distribusi bobot yang lebih merata.
+    
+    \item \textbf{Regularisasi Ridge pada WLS}: Untuk mencegah singularitas matriks $\mathbf{M}$ (yang menyebabkan \emph{exploding gradient}), digunakan regularisasi ridge:
+    \begin{equation}
+        \widehat{\boldsymbol{\beta}}_{\lambda} = (\bm{X}^\top \mathbf{W} \bm{X} + \lambda \mathbf{I}_p)^{-1} \bm{X}^\top \mathbf{W} \bm{y}.
+    \end{equation}
+    Ini menjamin $\lambda_{\min}(\mathbf{M} + \lambda \mathbf{I}_p) \geq \lambda > 0$.
+    
+    \item \textbf{Pembatasan Norma Gradien (\emph{Gradient Clipping})}: Untuk menangani kasus ketika gradien sangat besar, diterapkan pembatasan norma:
+    \begin{equation}
+        \bm{g} \leftarrow \begin{cases}
+            \bm{g} & \text{jika } \|\bm{g}\| \leq \gamma, \\
+            \gamma \frac{\bm{g}}{\|\bm{g}\|} & \text{jika } \|\bm{g}\| > \gamma,
+        \end{cases}
+    \end{equation}
+    dengan $\gamma > 0$ adalah ambang batas yang dipilih berdasarkan statistik gradien empiris.
+\end{enumerate}
+
+\subsection{Algoritma Pelatihan dan Estimasi \emph{Cross-Fitted}}
+
+Bagian ini menyajikan algoritma komputasional untuk pelatihan GNN dan estimasi koefisien lokal dengan skema \emph{cross-fitting}. Algoritma diturunkan langsung dari formulasi teoretis pada Bagian 3.
+
+\subsubsection{Fungsi Objektif Pelatihan GNN}
+
+Berdasarkan pipeline komputasional yang telah diuraikan, fungsi objektif untuk pelatihan GNN didefinisikan sebagai galat prediksi tertimbang atas seluruh lokasi target.
+
+\begin{definisi}[\textbf{Fungsi Kerugian Pelatihan}]
+    Untuk himpunan pelatihan $\mathcal{D}_{\mathrm{train}}$, fungsi kerugian didefinisikan sebagai
+    \begin{equation}
+        \mathcal{L}(\boldsymbol{\theta}) = \frac{1}{|\mathcal{D}_{\mathrm{train}}|} \sum_{i \in \mathcal{D}_{\mathrm{train}}} \bigl(y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\boldsymbol{\theta}}(\bm{u}_i)\bigr)^2,
+    \end{equation}
+    dengan $\widehat{\boldsymbol{\beta}}_{\boldsymbol{\theta}}(\bm{u}_i)$ adalah estimator koefisien lokal yang bergantung pada parameter GNN $\boldsymbol{\theta}$ melalui bobot \emph{kernel} $\widehat{\kappa}_{\boldsymbol{\theta}}(\cdot \mid \bm{u}_i)$.
+\end{definisi}
+
+Untuk menjamin stabilitas pelatihan berdasarkan analisis gradien pada subbagian sebelumnya, ditambahkan regularisasi entropi yang mencegah \emph{vanishing gradient}:
+\begin{equation}
+    \mathcal{L}_{\mathrm{reg}}(\boldsymbol{\theta}) = \mathcal{L}(\boldsymbol{\theta}) - \lambda_{\mathrm{ent}} \cdot \frac{1}{n} \sum_{i=1}^n H(\bm{w}_i),
+\end{equation}
+dengan $H(\bm{w}_i) = -\sum_j w_{ij} \log w_{ij}$ adalah entropi distribusi bobot untuk lokasi $i$.
+
+\subsubsection{Algoritma \emph{Cross-Fitting} untuk Estimasi}
+
+Algoritma berikut mengimplementasikan skema \emph{cross-fitting} yang telah diuraikan dalam Teorema Estimator \emph{Cross-Fitted} EK-GWR pada Bagian 3.
+
+\begin{algorithm}[H]
+    \caption{Estimasi Koefisien Lokal EK-GWR dengan \emph{Cross-Fitting}}
+    \begin{algorithmic}[1]
+    \Require Data $\{(\bm{x}_i, y_i, \bm{u}_i)\}_{i=1}^n$, jumlah \emph{fold} $K$, lokasi target $\bm{u}_0$
+    \Ensure Estimator koefisien lokal $\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)$
+    \State \textbf{Tahap 1: Partisi Data}
+    \State Partisi $\{1, \ldots, n\}$ menjadi $K$ \emph{fold} saling lepas: $\mathcal{I}_1, \mathcal{I}_2, \ldots, \mathcal{I}_K$
+    \State
+    \State \textbf{Tahap 2: Pelatihan GNN per \emph{Fold}}
+    \For{$k = 1$ \textbf{to} $K$}
+        \State Definisikan data pelatihan: $\mathcal{D}^{(-k)} = \{i : i \notin \mathcal{I}_k\}$
+        \State Latih GNN: $\widehat{\boldsymbol{\theta}}^{(-k)} = \argmin_{\boldsymbol{\theta}} \mathcal{L}_{\mathrm{reg}}(\boldsymbol{\theta}; \mathcal{D}^{(-k)})$
+    \EndFor
+    \State
+    \State \textbf{Tahap 3: Konstruksi Graf Lokal}
+    \State Bangun $\mathcal{N}_h(\bm{u}_0) = \{i : \|\bm{u}_i - \bm{u}_0\| \leq h\}$
+    \State Untuk setiap $i \in \mathcal{N}_h(\bm{u}_0)$: hitung $\bm{z}_i(\bm{u}_0) = (\bm{x}_i^\top, (\bm{u}_i - \bm{u}_0)^\top)^\top$
+    \State
+    \State \textbf{Tahap 4: Komputasi Bobot \emph{Cross-Fitted}}
+    \For{$k = 1$ \textbf{to} $K$}
+        \For{$i \in \mathcal{I}_k \cap \mathcal{N}_h(\bm{u}_0)$}
+            \State Hitung skor: $s_i = \mathrm{GNN}_{\widehat{\boldsymbol{\theta}}^{(-k)}}(\mathcal{G}_h(\bm{u}_0), \bm{z}_i(\bm{u}_0))$
+        \EndFor
+        \State Normalisasi \emph{softmax}: $w^{(-k)}_i = \exp(s_i) / \sum_{j \in \mathcal{I}_k \cap \mathcal{N}_h} \exp(s_j)$
+    \EndFor
+    \State
+    \State \textbf{Tahap 5: Agregasi Estimator \emph{Cross-Fitted}}
+    \For{$k = 1$ \textbf{to} $K$}
+        \State $\mathbf{H}_k \gets \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top$
+        \State $\bm{g}_k \gets \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i y_i$
+    \EndFor
+    \State $\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0) \gets \bigl(\sum_{k=1}^K \mathbf{H}_k\bigr)^{-1} \bigl(\sum_{k=1}^K \bm{g}_k\bigr)$
+    \State \Return $\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)$
+    \end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Kompleksitas Algoritmik}
+
+Analisis kompleksitas komputasional algoritma EK-GWR penting untuk memahami kelayakan penerapan pada data berskala besar.
+
+\begin{proposisi}[\textbf{Kompleksitas Waktu}]
+    Kompleksitas waktu algoritma EK-GWR untuk satu lokasi target adalah:
+    \begin{enumerate}[label=(\roman*)]
+        \item \textbf{Pelatihan GNN per fold}: $O(E \cdot T \cdot d_{\mathrm{GNN}})$, dengan $E$ adalah jumlah epoch, $T$ adalah jumlah lokasi pelatihan, dan $d_{\mathrm{GNN}}$ adalah kompleksitas \emph{forward-backward pass} GNN.
+        \item \textbf{Konstruksi graf lokal}: $O(n \log n)$ dengan struktur data \emph{k-d tree} untuk pencarian tetangga.
+        \item \textbf{Komputasi bobot}: $O(m \cdot d_{\mathrm{GNN}})$, dengan $m = |\mathcal{N}_h(\bm{u}_0)|$ adalah jumlah tetangga lokal.
+        \item \textbf{Solusi WLS}: $O(m p^2 + p^3)$ untuk pembentukan matriks $\mathbf{H}$ dan inversnya.
+    \end{enumerate}
+    Total kompleksitas untuk $n$ lokasi target adalah $O(K \cdot E \cdot n \cdot d_{\mathrm{GNN}} + n(mp^2 + p^3))$.
+\end{proposisi}
+
+\begin{proposisi}[\textbf{Kompleksitas Ruang}]
+    Kompleksitas ruang algoritma EK-GWR adalah:
+    \begin{enumerate}[label=(\roman*)]
+        \item \textbf{Parameter GNN}: $O(d_{\boldsymbol{\theta}})$, dengan $d_{\boldsymbol{\theta}}$ adalah jumlah parameter GNN.
+        \item \textbf{Matriks bobot lokal}: $O(m)$ per lokasi target (tidak perlu menyimpan matriks penuh $n \times n$).
+        \item \textbf{Matriks informasi}: $O(p^2)$ per lokasi target untuk $\mathbf{H}_k$.
+    \end{enumerate}
+    Total kompleksitas ruang adalah $O(d_{\boldsymbol{\theta}} + n(m + p^2))$.
+\end{proposisi}
+
+\subsubsection{Pemilihan \emph{Bandwidth}}
+
+Parameter \emph{bandwidth} $h$ menentukan radius \emph{neighborhood} lokal $\mathcal{N}_h(\bm{u}_0)$ dan memiliki peran kritis dalam \emph{trade-off} bias-variansi.
+
+\begin{proposisi}[\textbf{Pemilihan \emph{Bandwidth} Adaptif}]
+    \emph{Bandwidth} dapat dipilih secara adaptif berdasarkan distribusi jarak antarobservasi:
+    \begin{equation}
+        h = \tau \cdot \mathrm{median}\bigl\{\|\bm{u}_i - \bm{u}_j\| : i \neq j\bigr\},
+    \end{equation}
+    dengan $\tau > 0$ adalah faktor skala yang mengontrol lebar efektif \emph{neighborhood}. Nilai $\tau > 1$ menghasilkan \emph{bandwidth} lebih lebar (lebih global), sedangkan $\tau < 1$ menghasilkan \emph{bandwidth} lebih sempit (lebih lokal).
+\end{proposisi}
+
+Untuk keperluan inferensi, \emph{bandwidth} harus memenuhi kondisi \emph{undersmoothing} $\sqrt{nh^d} h^2 \to 0$ yang telah diuraikan pada Bagian 4.
+
+\subsubsection{Pertimbangan \emph{Trade-off} Inferensi vs Prediksi}
+
+Terdapat \emph{trade-off} fundamental antara optimasi untuk prediksi dan validitas inferensi:
+
+\begin{itemize}
+    \item \textbf{Untuk prediksi}: \emph{Bandwidth} dipilih untuk meminimalkan MSE prediksi, biasanya melalui validasi silang. Ini menghasilkan \emph{bandwidth} yang lebih lebar untuk mengurangi variansi.
+    
+    \item \textbf{Untuk inferensi}: \emph{Bandwidth} harus memenuhi kondisi \emph{undersmoothing} $\sqrt{nh^d} h^2 \to 0$, yang berarti $h = o(n^{-1/(d+4)})$. Ini menghasilkan \emph{bandwidth} yang lebih sempit untuk mengurangi bias asimtotik.
+\end{itemize}
+
+Dalam praktik, jika inferensi adalah tujuan utama, disarankan untuk menggunakan \emph{bandwidth} yang lebih sempit dari yang optimal untuk prediksi
+
+\subsection{Diagnostik Model dan Validasi Inferensi}
+
+Diagnostik model diperlukan untuk mengevaluasi kualitas estimasi dan memvalidasi prosedur inferensi yang telah diuraikan pada Bagian 4. Bagian ini menyajikan metrik diagnostik yang sesuai dengan kerangka teoretis EK-GWR.
+
+\subsubsection{Estimasi Variansi \emph{Cross-Fitted}}
+
+Berdasarkan Teorema Variansi \emph{Cross-Fitted} pada Bagian 4, estimator variansi memerlukan estimasi $\sigma^2(\bm{u}_0)$ yang konsisten. Estimasi variansi galat diberikan oleh
+
+\begin{equation}
+    \widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0) = \frac{\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \cdot (y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0))^2}{\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i - p},
+\end{equation}
+dengan pembagi terkoreksi untuk derajat kebebasan.
+
+\begin{proposisi}[\textbf{Estimator Matriks Kovarians \emph{Cross-Fitted}}]
+    Estimator matriks kovarians untuk $\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_0)$ adalah
+    \begin{equation}
+        \widehat{\mathbf{V}}_{\mathrm{CF}}(\bm{u}_0) = \widehat{\sigma}^2_{\mathrm{CF}}(\bm{u}_0) \cdot \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} (w^{(-k)}_i)^2 \bm{x}_i \bm{x}_i^\top\Biggr) \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1},
+    \end{equation}
+    dengan $\mathbf{H}_k = \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \bm{x}_i \bm{x}_i^\top$.
+\end{proposisi}
+
+Estimator ini merupakan estimator \emph{sandwich-type} yang konsisten meskipun terdapat heteroskedastisitas lokal.
+
+\subsubsection{Statistik Uji untuk Signifikansi Koefisien}
+
+Berdasarkan hasil distribusi asimtotik pada Bagian 4, statistik-$t$ untuk menguji signifikansi koefisien ke-$j$ adalah
+\begin{equation}
+    t_j(\bm{u}_0) = \frac{\widehat{\beta}_{j,\mathrm{CF}}(\bm{u}_0)}{\sqrt{[\widehat{\mathbf{V}}_{\mathrm{CF}}(\bm{u}_0)]_{jj}}}.
+\end{equation}
+
+Interval konfidensi $(1-\alpha)$ diberikan oleh
+\begin{equation}
+    \widehat{\beta}_{j,\mathrm{CF}}(\bm{u}_0) \pm z_{\alpha/2} \sqrt{[\widehat{\mathbf{V}}_{\mathrm{CF}}(\bm{u}_0)]_{jj}},
+\end{equation}
+dengan $z_{\alpha/2}$ adalah kuantil distribusi normal standar.
+
+\subsubsection{Metrik Kinerja Prediksi}
+
+Untuk evaluasi kemampuan prediksi, digunakan metrik standar:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{\emph{Root Mean Squared Error} (RMSE)}:
+    \begin{equation}
+        \mathrm{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^n (y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_i))^2}.
+    \end{equation}
+    
+    \item \textbf{\emph{Mean Absolute Error} (MAE)}:
+    \begin{equation}
+        \mathrm{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_i)|.
+    \end{equation}
+    
+    \item \textbf{\emph{Coefficient of Determination}} ($R^2$):
+    \begin{equation}
+        R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_i))^2}{\sum_{i=1}^n (y_i - \bar{y})^2}.
+    \end{equation}
+\end{enumerate}
+
+\subsubsection{Diagnostik Residual}
+
+Residual model didefinisikan sebagai
+\begin{equation}
+    \widehat{\varepsilon}_i = y_i - \bm{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\bm{u}_i).
+\end{equation}
+
+Untuk memvalidasi Asumsi A3 (independensi galat kondisional), dilakukan diagnostik berikut:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Uji Normalitas}: Uji Shapiro-Wilk atau Anderson-Darling untuk mengevaluasi asumsi normalitas galat.
+    
+    \item \textbf{Autokorelasi Spasial Residual}: Indeks Moran untuk mendeteksi autokorelasi spasial yang tersisa:
+    \begin{equation}
+        I = \frac{n}{\sum_{i \neq j} w^*_{ij}} \cdot \frac{\sum_{i \neq j} w^*_{ij} (\widehat{\varepsilon}_i - \bar{\varepsilon})(\widehat{\varepsilon}_j - \bar{\varepsilon})}{\sum_i (\widehat{\varepsilon}_i - \bar{\varepsilon})^2},
+    \end{equation}
+    dengan $w^*_{ij}$ adalah bobot kedekatan spasial biner. Nilai $I$ mendekati nol menunjukkan model telah menangkap struktur spasial dengan baik.
+\end{enumerate}
+
+\subsubsection{Diagnostik Distribusi Bobot \emph{Kernel}}
+
+Untuk memvalidasi bahwa bobot \emph{kernel} yang dipelajari GNN memenuhi kondisi regularitas, dievaluasi:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Entropi Bobot}: Mengukur seberapa merata distribusi bobot:
+    \begin{equation}
+        H(\bm{u}_0) = -\sum_{i \in \mathcal{N}_h(\bm{u}_0)} \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0) \log \widehat{\kappa}_{\boldsymbol{\theta}}(i \mid \bm{u}_0).
+    \end{equation}
+    Entropi rendah mengindikasikan bobot terkonsentrasi pada sedikit observasi, yang dapat menyebabkan variansi estimator tinggi.
+    
+    \item \textbf{\emph{Effective Number of Neighbors}}:
+    \begin{equation}
+        n_{\mathrm{eff}}(\bm{u}_0) = \exp(H(\bm{u}_0)).
+    \end{equation}
+    Ini mengukur berapa banyak observasi yang efektif berkontribusi. Nilai $n_{\mathrm{eff}}$ yang terlalu kecil mengindikasikan masalah \emph{local sample size} untuk estimasi lokal yang stabil.
+    
+    \item \textbf{Kondisi Positif}: Untuk setiap lokasi target, verifikasi bahwa terdapat cukup observasi dengan bobot positif untuk menjamin identifikasi parameter lokal (Asumsi A8).
+\end{enumerate}
+
+\subsubsection{Validasi Prosedur Inferensi}
+
+Untuk memvalidasi validitas interval konfidensi dan uji statistik:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Verifikasi Kondisi \emph{Undersmoothing}}: Pastikan bahwa \emph{bandwidth} $h$ memenuhi $\sqrt{nh^d} h^2 \to 0$ untuk menjamin bias asimtotik yang dapat diabaikan.
+    
+    \item \textbf{Distribusi Statistik-$t$ Empiris}: Bandingkan distribusi empiris statistik-$t$ dengan distribusi $\mathcal{N}(0,1)$ untuk mengevaluasi validitas pendekatan normal.
+    
+    \item \textbf{Sensitivitas terhadap Jumlah \emph{Fold}}: Evaluasi stabilitas hasil estimasi terhadap variasi $K$ dalam skema \emph{cross-fitting}.
+\end{enumerate}
+
+\subsubsection{Perbandingan dengan Model Alternatif}
+
+Untuk mengevaluasi nilai tambah EK-GWR dibandingkan pendekatan konvensional:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{OLS Global}: Regresi linear klasik tanpa variasi spasial sebagai \emph{baseline}.
+    
+    \item \textbf{GWR Klasik}: GWR dengan \emph{kernel} tetap (Gaussian atau \emph{bisquare}) untuk mengevaluasi keunggulan \emph{kernel} adaptif.
+\end{enumerate}
+
+Metrik perbandingan meliputi RMSE pada data uji, interval konfidensi, dan $R^2$ lokal.
+
+% \begin{catatan}[\textbf{Rekomendasi Praktis}]
+%     Dalam penerapan praktis EK-GWR:
+%     \begin{enumerate}
+%         \item Gunakan $K = 5$ atau $K = 10$ \emph{fold} untuk \emph{cross-fitting}.
+%         \item Periksa $n_{\mathrm{eff}}(\bm{u}_0) \geq 2p$ untuk menjamin identifikasi lokal.
+%         \item Gunakan \emph{bandwidth} $h$ yang lebih sempit dari optimal untuk prediksi jika inferensi adalah tujuan utama.
+%         \item Verifikasi normalitas residual dan independensi spasial sebelum melakukan uji signifikansi.
+%     \end{enumerate}
+% \end{catatan}
