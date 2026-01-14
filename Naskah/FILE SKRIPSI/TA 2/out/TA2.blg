@@ -14,53 +14,48 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: references2.bib
-Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "fan1996"
-Warning--I didn't find a database entry for "wand1995"
-Warning--I didn't find a database entry for "kipf2017semi"
-Warning--I didn't find a database entry for "wu2021gnn"
-Warning--I didn't find a database entry for "chernozhukov2018double"
+Warning--I didn't find a database entry for "xiong2024gstrgct"
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--`others' not consistent with 6th ed. of the APA Manual
-You've used 38 entries,
+You've used 41 entries,
             6951 wiz_defined-function locations,
-            1481 strings with 17103 characters,
-and the built_in function-call counts, 75215 in all, are:
-= -- 9330
-> -- 595
-< -- 3771
-+ -- 3766
-- -- 80
-* -- 4947
-:= -- 14067
-add.period$ -- 161
-call.type$ -- 38
-change.case$ -- 683
+            1499 strings with 17629 characters,
+and the built_in function-call counts, 80948 in all, are:
+= -- 9997
+> -- 640
+< -- 4055
++ -- 4072
+- -- 84
+* -- 5289
+:= -- 15139
+add.period$ -- 173
+call.type$ -- 41
+change.case$ -- 704
 chr.to.int$ -- 0
-cite$ -- 76
-duplicate$ -- 1938
-empty$ -- 2935
-format.name$ -- 976
-if$ -- 14233
+cite$ -- 82
+duplicate$ -- 2111
+empty$ -- 3168
+format.name$ -- 1064
+if$ -- 15271
 int.to.chr$ -- 0
-int.to.str$ -- 122
+int.to.str$ -- 123
 missing$ -- 0
-newline$ -- 966
-num.names$ -- 304
-pop$ -- 1587
+newline$ -- 1031
+num.names$ -- 328
+pop$ -- 1759
 preamble$ -- 1
-purify$ -- 152
+purify$ -- 166
 quote$ -- 0
-skip$ -- 4370
+skip$ -- 4683
 stack$ -- 0
-substring$ -- 4046
-swap$ -- 1092
-text.length$ -- 83
+substring$ -- 4375
+swap$ -- 1196
+text.length$ -- 91
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 3360
+type$ -- 3664
 warning$ -- 1
-while$ -- 336
+while$ -- 368
 width$ -- 0
-write$ -- 1198
-(There were 7 warnings)
+write$ -- 1271
+(There were 2 warnings)

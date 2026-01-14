@@ -14,58 +14,51 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: references2.bib
-Repeated entry---line 188 of file references2.bib
- : @book{fan1996local
- :                   ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 224 of file references2.bib
- : @book{fotheringham2002gwr
- :                          ,
-I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "fan1996"
-Warning--I didn't find a database entry for "wand1995"
+Warning--I didn't find a database entry for "xiong2024gstrgct"
+Warning--I didn't find a database entry for "kipf2017semi"
+Warning--I didn't find a database entry for "wu2021gnn"
+Warning--I didn't find a database entry for "chernozhukov2018double"
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--`others' not consistent with 6th ed. of the APA Manual
 You've used 39 entries,
             6951 wiz_defined-function locations,
-            1483 strings with 17263 characters,
-and the built_in function-call counts, 77410 in all, are:
-= -- 9595
-> -- 605
-< -- 3917
-+ -- 3904
-- -- 82
-* -- 5101
-:= -- 14564
+            1488 strings with 16977 characters,
+and the built_in function-call counts, 75515 in all, are:
+= -- 9386
+> -- 582
+< -- 3755
++ -- 3735
+- -- 80
+* -- 4894
+:= -- 14101
 add.period$ -- 165
 call.type$ -- 39
-change.case$ -- 700
+change.case$ -- 668
 chr.to.int$ -- 0
 cite$ -- 78
-duplicate$ -- 1975
-empty$ -- 3005
-format.name$ -- 990
-if$ -- 14611
+duplicate$ -- 1925
+empty$ -- 2976
+format.name$ -- 943
+if$ -- 14328
 int.to.chr$ -- 0
-int.to.str$ -- 125
+int.to.str$ -- 117
 missing$ -- 0
-newline$ -- 988
+newline$ -- 970
 num.names$ -- 312
-pop$ -- 1632
+pop$ -- 1646
 preamble$ -- 1
 purify$ -- 156
 quote$ -- 0
-skip$ -- 4475
+skip$ -- 4438
 stack$ -- 0
-substring$ -- 4189
-swap$ -- 1111
+substring$ -- 4019
+swap$ -- 1095
 text.length$ -- 85
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 3440
+type$ -- 3504
 warning$ -- 1
-while$ -- 341
+while$ -- 328
 width$ -- 0
-write$ -- 1222
-(There were 2 error messages)
+write$ -- 1187
+(There were 5 warnings)

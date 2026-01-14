@@ -28,12 +28,25 @@
 \RequirePackage{cases}
 \usetikzlibrary{matrix,arrows, positioning, arrows.meta}
 \RequirePackage{enumitem}
-\RequirePackage[natbibapa]{apacite}
+
 \RequirePackage{booktabs}
-\bibliographystyle{apacite}
-\renewcommand{\BOthers}[1]{dkk.\hbox{}}
-\renewcommand{\BAnd}{dan}
+\RequirePackage[natbibapa]{apacite}
+\RequirePackage[natbibapa]{apacite}
+
+% ganti and -> dan
+\renewcommand{\BBA}{dan}
+
+% ganti et al. -> dkk.
+\renewcommand{\BOthers}[1]{dkk.}
+
+% opsional: retrieved from
 \renewcommand{\BRetrievedFrom}{Diambil dari }
+
+\bibliographystyle{apacite} % atau apacite
+
+
+
+
 
 \renewcommand{\baselinestretch}{1.5}
 \parskip0.15cm
@@ -123,8 +136,54 @@
 \newtheorem{akibat}[teorema]{Akibat}
 \newtheorem{proposisi}[teorema]{Proposisi}
 \newtheorem{definisi}[teorema]{Definisi}
-\newtheorem{asumsi}[teorema]{Asumsi}
+% \newtheorem{asumsi}[teorema]{Asumsi}
 % \numberwithin{equation}{subsection}
+
+\RequirePackage{xparse}
+% ======================================================
+% Asumsi environment (prefix + theorem note)
+% ======================================================
+\ExplSyntaxOn
+
+% ------------------------------------------------------
+% Create counter if not exists
+% ------------------------------------------------------
+\cs_new_protected:Npn \yourthesis_create_asumsi_counter:n #1
+ {
+  \cs_if_exist:cF { c@asumsi_#1 }
+   {
+    \newcounter{asumsi_#1}
+   }
+ }
+
+% ------------------------------------------------------
+% Asumsi environment
+% ------------------------------------------------------
+\NewDocumentEnvironment{asumsi}{m o}
+ {
+  % ensure counter exists
+  \yourthesis_create_asumsi_counter:n {#1}
+
+  % step counter
+  \refstepcounter{asumsi_#1}
+
+  % IMPORTANT: define what \ref sees
+  \edef\@currentlabel{#1.\arabic{asumsi_#1}}
+
+  \par\medskip
+  \noindent
+  \textbf{Asumsi~#1.\arabic{asumsi_#1}}%
+  \IfValueT{#2}{\textbf{~(#2)}}%
+  \,
+  \itshape
+ }
+ {
+  \par\medskip
+ }
+
+\ExplSyntaxOff
+
+
 
 \newtheoremstyle{dotlessexample}  % follow `plain` defaults but change HEADSPACE.
   {}   % ABOVESPACE
@@ -139,10 +198,14 @@
 \newtheorem{contoh}[teorema]{Contoh}
 % \newtheorem{algoritma}{Algoritma}[chapter]
 % \renewcommand{\thealgoritma}{\arabic{chapter}.\arabic{algoritma}}
-\RequirePackage{algorithm}
-\RequirePackage{algpseudocode}
 
-\numberwithin{algorithm}{chapter}
+\RequirePackage{siunitx}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\floatname{algorithm}{Algoritma}
+\renewcommand{\thealgorithm}{\arabic{chapter}.\arabic{algorithm}}
 
 
 \renewenvironment{proof}{\vspace{-2ex}\noindent{\bf Bukti.}}{\hfill$\blacksquare$\newline\vspace{-0.4cm}}

@@ -54,6 +54,28 @@ Anselin, L.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Ash%
+}{%
+Ash%
+}{%
+{\protect \APACyear {1972}}%
+}]{%
+ash}
+\APACinsertmetastar {%
+ash}%
+\begin{APACrefauthors}%
+Ash, R\BPBI B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1972}.
+\newblock
+\APACrefbtitle {Real Analysis and Probability} {Real analysis and probability}.
+\newblock
+\APACaddressPublisher{New York}{Academic Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Axler%
 }{%
 Axler%
@@ -123,10 +145,6 @@ Bishop, C\BPBI M.%
   pattern recognition}.
 \newblock
 \APACaddressPublisher{Oxford}{Oxford University Press}.
-\newblock
-\begin{APACrefURL}
-  \url{https://www.microsoft.com/en-us/research/publication/neural-networks-for-pattern-recognition/}
-  \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -152,11 +170,64 @@ Bronstein, M\BPBI M.%
 \newblock
 \APACrefYearMonthDay{2021}{}{}.
 \newblock
-\APACrefbtitle {Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and
-  Gauges.} {Geometric deep learning: Grids, groups, graphs, geodesics, and
-  gauges.}
+{\BBOQ}\APACrefatitle {Geometric Deep Learning: Grids, Groups, Graphs,
+  Geodesics, and Gauges} {Geometric deep learning: Grids, groups, graphs,
+  geodesics, and gauges}.{\BBCQ}.
 \newblock
 \begin{APACrefURL} \url{https://arxiv.org/abs/2104.13478} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Brüel-Gabrielsson%
+}{%
+Brüel-Gabrielsson%
+}{%
+{\protect \APACyear {2020}}%
+}]{%
+brüelgabrielsson2020}
+\APACinsertmetastar {%
+brüelgabrielsson2020}%
+\begin{APACrefauthors}%
+Brüel-Gabrielsson, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{}{}.
+\newblock
+\APACrefbtitle {Universal Function Approximation on Graphs.} {Universal
+  function approximation on graphs.}
+\newblock
+\begin{APACrefURL} \url{https://arxiv.org/abs/2003.06706} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Chernozhukov%
+\ \protect \BOthers {.}}{%
+Chernozhukov%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2024}}%
+}]{%
+chernozhukov2024}
+\APACinsertmetastar {%
+chernozhukov2024}%
+\begin{APACrefauthors}%
+Chernozhukov, V.%
+, Chetverikov, D.%
+, Demirer, M.%
+, Duflo, E.%
+, Hansen, C.%
+, Newey, W.%
+\BCBL {}\ \BBA {} Robins, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock
+\APACrefbtitle {Double/Debiased Machine Learning for Treatment and Causal
+  Parameters.} {Double/debiased machine learning for treatment and causal
+  parameters.}
+\newblock
+\begin{APACrefURL} \url{https://arxiv.org/abs/1608.00060} \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -202,7 +273,7 @@ Cybenko, G.%
   {Approximation by superpositions of a sigmoidal function}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Mathematics of Control, Signals and
-  Systems}{2}{}{303--314}.
+  Systems}{2}{4}{303--314}.
 \newblock
 \begin{APACrefDOI} \doi{10.1007/BF02551274} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
@@ -291,35 +362,7 @@ Fotheringham%
 Fotheringham%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2002}}%
-{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
-fotheringham2002gwr}
-\APACinsertmetastar {%
-fotheringham2002gwr}%
-\begin{APACrefauthors}%
-Fotheringham, A\BPBI S.%
-, Brunsdon, C.%
-\BCBL {}\ \BBA {} Charlton, M.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYear{2002{\protect \BCnt {1}}}.
-\newblock
-\APACrefbtitle {Geographically Weighted Regression: The Analysis of Spatially
-  Varying Relationships} {Geographically weighted regression: The analysis of
-  spatially varying relationships}.
-\newblock
-\APACaddressPublisher{Chichester}{Wiley}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Fotheringham%
-, Brunsdon%
-\BCBL {}\ \BBA {} Charlton%
-}{%
-Fotheringham%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2002}}%
-{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+}]{%
 fotheringham2002}
 \APACinsertmetastar {%
 fotheringham2002}%
@@ -330,7 +373,7 @@ Fotheringham, A\BPBI S.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYear{2002{\protect \BCnt {2}}}.
+\APACrefYear{2002}.
 \newblock
 \APACrefbtitle
   {\href{https://www.wiley.com/en-us/Geographically+Weighted+Regression%3A+The+Analysis+of+Spatially+Varying+Relationships-p-9780471496168}{Geographically
@@ -394,7 +437,7 @@ Goodfellow, I.%
 \newblock
 \APACaddressPublisher{Cambridge, MA}{MIT Press}.
 \newblock
-\begin{APACrefURL} \url{https://www.deeplearningbook.org} \end{APACrefURL}
+\begin{APACrefURL} \url{http://www.deeplearningbook.org} \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -421,35 +464,6 @@ Greene, W\BPBI H.%
   Analysis}}\ (\PrintOrdinal{5th}\ \BEd).
 \newblock
 \APACaddressPublisher{Upper Saddle River, New Jersey}{Pearson Education}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Gujarati%
-\ \BBA {} Porter%
-}{%
-Gujarati%
-\ \BBA {} Porter%
-}{%
-{\protect \APACyear {2009}}%
-}]{%
-gujarati}
-\APACinsertmetastar {%
-gujarati}%
-\begin{APACrefauthors}%
-Gujarati, D\BPBI N.%
-\BCBT {}\ \BBA {} Porter, D\BPBI C.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYear{2009}.
-\newblock
-\APACrefbtitle
-  {\href{https://www.cbpbu.ac.in/userfiles/file/2020/STUDY_MAT/ECO/1.pdf}{Basic
-  Econometrics}}
-  {\href{https://www.cbpbu.ac.in/userfiles/file/2020/STUDY_MAT/ECO/1.pdf}{Basic
-  Econometrics}}.
-\newblock
-\APACaddressPublisher{New York}{McGraw-Hill/Irwin}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -531,8 +545,7 @@ Haykin, S.%
 \APACrefbtitle {Neural Networks and Learning Machines} {Neural networks and
   learning machines}\ (\PrintOrdinal{3rd}\ \BEd).
 \newblock
-\APACaddressPublisher{Upper Saddle River, NJ}{Pearson Education / Prentice
-  Hall}.
+\APACaddressPublisher{New York}{Prentice Hall}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -564,32 +577,6 @@ Horn, R\BPBI A.%
 \APACaddressPublisher{Cambridge}{Cambridge University Press}.
 \newblock
 \begin{APACrefDOI} \doi{10.1017/CBO9781139020411} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Hornik%
-}{%
-Hornik%
-}{%
-{\protect \APACyear {1991}}%
-}]{%
-hornik1991}
-\APACinsertmetastar {%
-hornik1991}%
-\begin{APACrefauthors}%
-Hornik, K.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1991}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Approximation capabilities of multilayer feedforward
-  networks} {Approximation capabilities of multilayer feedforward
-  networks}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Neural Networks}{4}{2}{251--257}.
-\newblock
-\begin{APACrefDOI} \doi{10.1016/0893-6080(91)90009-T} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -688,17 +675,17 @@ LeSage%
 \ \BBA {} Pace%
 }{%
 {\protect \APACyear {2009}}%
-{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
-lesage}
+}]{%
+lesage2009}
 \APACinsertmetastar {%
-lesage}%
+lesage2009}%
 \begin{APACrefauthors}%
 LeSage, J\BPBI P.%
 \BCBT {}\ \BBA {} Pace, R\BPBI K.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYear{2009{\protect \BCnt {1}}}.
+\APACrefYear{2009}.
 \newblock
 \APACrefbtitle
   {\href{https://www.routledge.com/Introduction-to-Spatial-Econometrics/LeSage-Pace/p/book/9781420064247}{Introduction
@@ -710,29 +697,64 @@ LeSage, J\BPBI P.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-LeSage%
-\ \BBA {} Pace%
+Leung%
+, Mei%
+\BCBL {}\ \BBA {} Zhang%
 }{%
-LeSage%
-\ \BBA {} Pace%
-}{%
-{\protect \APACyear {2009}}%
-{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
-lesage2009spatial}
+Leung%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2000}}%
+}]{%
+leung2000}
 \APACinsertmetastar {%
-lesage2009spatial}%
+leung2000}%
 \begin{APACrefauthors}%
-LeSage, J\BPBI P.%
-\BCBT {}\ \BBA {} Pace, R\BPBI K.%
+Leung, Y.%
+, Mei, C\BHBI L.%
+\BCBL {}\ \BBA {} Zhang, W\BHBI X.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYear{2009{\protect \BCnt {2}}}.
+\APACrefYearMonthDay{2000}{}{}.
 \newblock
-\APACrefbtitle {Introduction to Spatial Econometrics} {Introduction to spatial
-  econometrics}.
+{\BBOQ}\APACrefatitle {Statistical tests for spatial nonstationarity based on
+  the geographically weighted regression model} {Statistical tests for spatial
+  nonstationarity based on the geographically weighted regression
+  model}.{\BBCQ}
 \newblock
-\APACaddressPublisher{Boca Raton}{CRC Press}.
+\APACjournalVolNumPages{Environment and Planning A}{32}{}{9--32}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Lu%
+, Charlton%
+, Harris%
+\BCBL {}\ \BBA {} Fotheringham%
+}{%
+Lu%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2014}}%
+}]{%
+lu2014}
+\APACinsertmetastar {%
+lu2014}%
+\begin{APACrefauthors}%
+Lu, B.%
+, Charlton, M.%
+, Harris, P.%
+\BCBL {}\ \BBA {} Fotheringham, A\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Geographically weighted regression with a non-Euclidean
+  distance metric: a case study using hedonic house price data} {Geographically
+  weighted regression with a non-euclidean distance metric: a case study using
+  hedonic house price data}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{International Journal of Geographical Information
+  Science}{28}{4}{660--681}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -825,6 +847,52 @@ Ni, X.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Pishro-Nik%
+}{%
+Pishro-Nik%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+pishronik}
+\APACinsertmetastar {%
+pishronik}%
+\begin{APACrefauthors}%
+Pishro-Nik, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2014}.
+\newblock
+\APACrefbtitle {Introduction to Probability, Statistics, and Random Processes}
+  {Introduction to probability, statistics, and random processes}.
+\newblock
+\APACaddressPublisher{}{Kappa Research, LLC}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ross%
+}{%
+Ross%
+}{%
+{\protect \APACyear {1972}}%
+}]{%
+ross}
+\APACinsertmetastar {%
+ross}%
+\begin{APACrefauthors}%
+Ross, S\BPBI M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1972}.
+\newblock
+\APACrefbtitle {Introduction to Probability Models} {Introduction to
+  probability models}\ (\PrintOrdinal{6th}\ \BEd).
+\newblock
+\APACaddressPublisher{USA}{Academic Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 van~der Vaart%
 }{%
 van~der Vaart%
@@ -878,36 +946,63 @@ Veli{\v{c}}kovi{\'c}, P.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Xiong%
-, Zhang%
-, Wang%
-\BCBL {}\ \BBA {} Liu%
+Wooldridge%
 }{%
-Xiong%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2024}}%
+Wooldridge%
+}{%
+{\protect \APACyear {2020}}%
 }]{%
-xiong2024gstrgct}
+wooldridge2020}
 \APACinsertmetastar {%
-xiong2024gstrgct}%
+wooldridge2020}%
 \begin{APACrefauthors}%
-Xiong, J.%
-, Zhang, H.%
-, Wang, X.%
-\BCBL {}\ \BBA {} Liu, Y.%
+Wooldridge, J\BPBI M.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2024}{}{}.
+\APACrefYear{2020}.
 \newblock
-{\BBOQ}\APACrefatitle {Generalized Spatial-Temporal Regression Graph
-  Convolutional Transformer: A Hybrid Framework for Spatio-Temporal Prediction}
-  {Generalized spatial-temporal regression graph convolutional transformer: A
-  hybrid framework for spatio-temporal prediction}.{\BBCQ}
+\APACrefbtitle
+  {\href{http://lib.ysu.am/disciplines_bk/33b6e2aa30379171d53274830843d3f8.pdf}{Introductory
+  Econometrics: A Modern Approach}}
+  {\href{http://lib.ysu.am/disciplines_bk/33b6e2aa30379171d53274830843d3f8.pdf}{Introductory
+  Econometrics: A Modern Approach}}\ (\PrintOrdinal{7th}\ \BEd).
 \newblock
-\APACjournalVolNumPages{Applied Intelligence}{}{}{}.
+\APACaddressPublisher{Boston, MA}{Cengage}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wu%
+\ \protect \BOthers {.}}{%
+Wu%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2021}}%
+}]{%
+wu2021}
+\APACinsertmetastar {%
+wu2021}%
+\begin{APACrefauthors}%
+Wu, Z.%
+, Pan, S.%
+, Chen, F.%
+, Long, G.%
+, Zhang, C.%
+\BCBL {}\ \BBA {} Yu, P\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
 \newblock
-\begin{APACrefDOI} \doi{10.1007/s40747-024-01578-x} \end{APACrefDOI}
+\APACrefYearMonthDay{2021}{{\APACmonth{01}}}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A Comprehensive Survey on Graph Neural Networks} {A
+  comprehensive survey on graph neural networks}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{IEEE Transactions on Neural Networks and Learning
+  Systems}{32}{1}{4–24}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1109/TNNLS.2020.2978386}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1109/tnnls.2020.2978386} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -944,8 +1039,8 @@ Xu, K.%
 
 \bibitem [\protect \citeauthoryear {%
 Yan%
-, Li%
-\BCBL {}\ \BBA {} Gao%
+, Wu%
+\BCBL {}\ \BBA {} Duan%
 }{%
 Yan%
 \ \protect \BOthers {.}}{%
@@ -956,19 +1051,20 @@ yan2024anisotropic}
 yan2024anisotropic}%
 \begin{APACrefauthors}%
 Yan, J.%
-, Li, Z.%
-\BCBL {}\ \BBA {} Gao, P.%
+, Wu, B.%
+\BCBL {}\ \BBA {} Duan, X.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
 \APACrefYearMonthDay{2024}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Anisotropic Geographically Weighted Regression for
-  Directional Spatial Processes} {Anisotropic geographically weighted
-  regression for directional spatial processes}.{\BBCQ}
+{\BBOQ}\APACrefatitle {Modeling Spatial Anisotropic Relationships Using
+  Gradient-Based Geographically Weighted Regression} {Modeling spatial
+  anisotropic relationships using gradient-based geographically weighted
+  regression}.{\BBCQ}
 \newblock
-\APACjournalVolNumPages{International Journal of Geographical Information
-  Science}{}{}{}.
+\APACjournalVolNumPages{Annals of the American Association of
+  Geographers}{114}{}{697--718}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -1000,34 +1096,6 @@ Yin, P.%
   extension}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Journal of Geographical Systems}{}{}{}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Yu%
-, Wang%
-\BCBL {}\ \BBA {} Li%
-}{%
-Yu%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2020}}%
-}]{%
-yu2020borrowing}
-\APACinsertmetastar {%
-yu2020borrowing}%
-\begin{APACrefauthors}%
-Yu, H.%
-, Wang, F.%
-\BCBL {}\ \BBA {} Li, Z.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2020}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Borrowing Strength in Geographically Weighted
-  Regression} {Borrowing strength in geographically weighted
-  regression}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Spatial Statistics}{38}{}{}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

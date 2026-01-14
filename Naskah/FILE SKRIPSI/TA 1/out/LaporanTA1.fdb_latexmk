@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex out/LaporanTA1"] 1767670373.57767 "out/LaporanTA1.aux" "out/LaporanTA1.bbl" "out/LaporanTA1" 1767926129.98087 2
+["bibtex out/LaporanTA1"] 1767670373.57767 "out/LaporanTA1.aux" "out/LaporanTA1.bbl" "out/LaporanTA1" 1768034060.35269 2
   "./references1.bib" 1759879376 24856 2613d72b7a100b1b2418931adce60e63 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/bibtex/bst/apacite/apacite.bst" 1374952728 146156 9d7b79dbf9d91133318126032cff8c27 ""
-  "out/LaporanTA1.aux" 1767926128 26644 d7a0a091c9205f776263d60f425ac117 "pdflatex"
+  "out/LaporanTA1.aux" 1768034059 26735 a00468ac148e4b9f3d8bff02dff2742e "pdflatex"
   (generated)
   "out/LaporanTA1.bbl"
   "out/LaporanTA1.blg"
   (rewritten before read)
-["pdflatex"] 1767926121.262 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 1/LaporanTA1.tex" "out/LaporanTA1.pdf" "LaporanTA1" 1767926129.98171 2
+["pdflatex"] 1768034051.97063 "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 1/LaporanTA1.tex" "out/LaporanTA1.pdf" "LaporanTA1" 1768034060.35387 2
   "../BAB 1, 2, 5/Bab1.tex" 1759889719 9550 b34361cf5bd9019a7dcfaffac22cd780 ""
-  "../BAB 1, 2, 5/Bab2.tex" 1767886780 397816 4d7298e28d6e9883c21483fc1c5463de ""
+  "../BAB 1, 2, 5/Bab2.tex" 1768034034 410527 cb6a9635e0f36a052f46035f23f3babb ""
   "Bab3TA1.tex" 1759797030 3428 603c5c613137383c737dfedb7e7cc213 ""
   "Bab4TA1.tex" 1759890273 50065 25077a125dc080e53a8776588dd684bb ""
-  "C:/Users/ASUS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767716859 82705 9cc9f144eacd499bc23a611703921467 ""
+  "C:/Users/ASUS/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767955920 82705 9cc9f144eacd499bc23a611703921467 ""
   "C:/Users/ASUS/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1759562441 13256811 0381c41ed74411e37daef3cc4ae57ff9 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136765053 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -243,6 +243,7 @@
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.sty" 1673775190 348 ee405e64380c11319f0e249fed57e6c5 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.sty" 1673775190 274 5ae372b7df79135d240456a1c6f2cf9a ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.sty" 1673775190 325 f9f16d12354225b7dd52a3321f085955 ""
+  "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/omsptm.fd" 1585253778 595 95c2c0baea9c719a4be29a3d4122498b ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1pcr.fd" 1585253778 1025 1ed784d7bfe47179f3550d2303b073f8 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585253778 1007 15056f4a61917ceed3a44e4ac11fcc52 ""
   "C:/Users/ASUS/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/times.sty" 1585926771 888 8e0e5c8cca7b18e0400f97f5a2b90a99 ""
@@ -272,9 +273,9 @@
   "d:/Semester VII/Tugas Akhir/Naskah/FILE SKRIPSI/TA 1/LaporanTA1.tex" 1759604649 2901 ac8895757a09305dacf98aacd86e834b ""
   "laporanta1statugm.cls" 1759886346 9446 881bb47ce403be7f3bd7f242b745bc1d ""
   "logougm.png" 1759537914 71376 6444378f2f87455011c1a2cc67b1629f ""
-  "out/LaporanTA1.aux" 1767926128 26644 d7a0a091c9205f776263d60f425ac117 "pdflatex"
+  "out/LaporanTA1.aux" 1768034059 26735 a00468ac148e4b9f3d8bff02dff2742e "pdflatex"
   "out/LaporanTA1.bbl" 1767670373 0 d41d8cd98f00b204e9800998ecf8427e "bibtex out/LaporanTA1"
-  "out/LaporanTA1.out" 1767926128 21909 e4fe829215ba832f6fe8333f6151c96d "pdflatex"
+  "out/LaporanTA1.out" 1768034059 22229 098a37bf41bebad248daec5ee3788eaf "pdflatex"
   (generated)
   "out/LaporanTA1.aux"
   "out/LaporanTA1.log"
