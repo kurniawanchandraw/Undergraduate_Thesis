@@ -41,7 +41,7 @@ DEVELOPMENT OF GRAPH NEURAL NETWORK-BASED WEIGHTING METHOD FOR GEOGRAPHICALLY WE
 %-----------------------------------------------------------------
 \acknowledment
 \begin{flushright}
-\Large\emph\cal{Karya sederhana ini penulis persembahkan untuk ibu, bapak, dan diri penulis.}
+\Large\emph\cal{Karya sederhana ini dipersembahkan untuk Bapak dan Ibu yang tak lelah mendoakan, serta penulis kecil yang telah berani bermimpi dan berjalan sejauh ini.}
 \end{flushright}
 %-----------------------------------------------------------------
 %-----------------------------------------------------------------
@@ -52,9 +52,9 @@ DEVELOPMENT OF GRAPH NEURAL NETWORK-BASED WEIGHTING METHOD FOR GEOGRAPHICALLY WE
 %-----------------------------------------------------------------
 \motto
 \begin{flushleft}
-\Large\emph\cal\textit{Man jadda wajada}.
+\Large\emph\cal\textit{``For my part I know nothing with any certainty, but the sight of the stars makes me dream." -- Vincent Van Gogh}.
 \end{flushleft}
-\textit{Barang siapa bersungguh-sungguh, maka ia akan berhasil.}
+\textit{Dum Spiro, Spero.}
 
 
 %-----------------------------------------------------------------
@@ -65,19 +65,27 @@ DEVELOPMENT OF GRAPH NEURAL NETWORK-BASED WEIGHTING METHOD FOR GEOGRAPHICALLY WE
 %Disini awal masukan untuk Prakata (ISI SESUAI DENGAN DATA ANDA!)
 %-----------------------------------------------------------------
 \preface
-\textit{Bismillahirrahmanirrahim}. Puji syukur kepada Allah SWT atas limpahan berkah dan rahmat yang diberikan sehingga penulis dapat menyelesaikan tugas akhir yang berjudul ... sebagai salah satu syarat mendapakan gelar sarjana di program studi statisika Universias Gadjah Mada. Tugas akhir ini merupakan salah satu hasil dari proses belajar yang penulis jalani selama empat tahun berkuliah di universitas tercinta. 
-\par Penulis sadar bahwa dalam proses penyusunan tugas akhir ini tidak akan berjalan tanpa adanya dukungan dan bimbingan dari berbagai pihak. Maka dari itu, penulis ingin mengucapkan terima kasih kepada: 
+\emph{Bismillahirrahmanirrahim.} Puji syukur penulis panjatkan kehadirat Allah SWT, Dzat Yang Maha Mengetahui segala pola dalam ketidateraturan, atas limpahan berkah dan kekuatan-Nya sehingga penulis dapat menyelesaikan tugas akhir ini. Tugas akhir berjudul "Pengembangan Metode Pembobotan Berbasis Jaringan Saraf Graf pada Regresi Terboboti Geografis dan Implikasinya Terhadap Inferensi" ini disusun sebagai salah satu syarat memperoleh derajat Sarjana di Program Studi Statistika, Universitas Gadjah Mada.
+
+Tugas akhir ini bukan sekadar syarat akademis, melainkan bukti ketahanan penulis dalam menempuh perjalanan panjang selama empat tahun di universitas tercinta ini. Penulis menyadari bahwa penyusunan skripsi ini mustahil terwujud tanpa dukungan, bimbingan, dan doa dari berbagai pihak. Oleh karena itu, dengan segala kerendahan hati, penulis mengucapkan terima kasih kepada:
 \begin{enumerate}
-    \item Bapak Prof. Dr.Eng Kuwat Triyana, M.Si., selaku Dekan Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Gadjah Mada.
-    \item Bapak Dr. Nanang Susyanto, M.Sc., selaku Ketua Departemen Matematika Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Gadjah Mada.
-    \item Bapak Prof. Dr.rer.nat Dedi Rosadi, M.Sc., selaku Ketua Program Studi Statistika Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Gadjah Mada.
-    
+    \item Bapak Prof. Dr.Eng Kuwat Triyana, M.Si., selaku Dekan Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Gadjah Mada;
+    \item Bapak Dr. Nanang Susyanto, M.Sc., selaku Ketua Departemen Matematika Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Gadjah Mada;
+    \item Ibu Atina Husnaqilati, S.Si., M.Sc., Ph.D., selaku Ketua Program Studi Statistika Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Gadjah Mada, serta Dosen Pembimbing Akademik penulis;
+    \item Bapak Prof. Dr. Abdurakhman, S.Si., M.Si., selaku Dosen Pembimbing Utama. Terima kasih Bapak, atas ilmu, kesabaran, dan bimbingannya dalam mengarahkan logika penulis hingga penelitian ini dapat selesai dengan baik;
+    \item seluruh Dosen dan Staf Program Studi Statistika UGM yang telah membekali penulis dengan ilmu yang sangat berharga selama masa studi;
+    \item teman-teman seperjuangan Statistika angkatan 2022. Terima kasih telah menjadi penyeimbang akal sehat dan teman diskusi yang menyenangkan di tengah dunia yang terkadang tidak masuk akal;
+    \item kedua Orang Tua dan Adik tercinta. Terima kasih karena telah bertahan sejauh ini demi pendidikan penulis. Skripsi ini adalah langkah awal dan bakti kecil penulis untuk membasuh setiap tetes keringat dan doa Bapak Ibu;
+    \item rekan-rekan ``Jasa Olah Data DTT": Fahmi, Banu, Wildan, Hanan, Husni, dan Delan, yang telah menemani dinamika kehidupan penulis selama di Yogyakarta;
+    \item teman-teman KKN-PPM UGM Periode 3 Tahun 2025 unit ``Lendah Melangkah" yang telah membantu penulis menemukan kembali makna-makna kehidupan di tengah masyarakat;
+    \item Mbak Agnes, Mas Arkan, Mas Reza, dan seluruh rekan tim AI \& ML Engineer \textit{Enterprise Data Analytics} (EDA) PT Bank Mandiri (Persero) Tbk. yang telah membimbing penulis selama masa magang; serta
+    \item pihak-pihak lainnya yang tidak dapat penulis sebutkan satu per satu, terima kasih atas dukungan yang telah diberikan.
 \end{enumerate}
-\par Seperti manusia pada umumnya, penulis menyadari bahwa tugas akhir ini masih jauh dari kata sempurna. Oleh karena itu, semua kritik dan saran dari pembaca menjadi masukan yang sangat berharga bagi penulis. Semoga tugas akhir ini dapat bermenfaat untuk pembaca. Terima kasih. 
+\par Penulis menyadari bahwa tugas akhir ini masih jauh dari kesempurnaan. Oleh karena itu, kritik dan saran yang membangun sangat penulis harapkan. Semoga karya kecil ini dapat memberikan manfaat, sekecil apapun itu, bagi pembaca dan perkembangan ilmu pengetahuan.
 \vspace{0.8cm}
 
 \begin{tabular}{p{7cm}c}
-&Yogyakarta, Juni 2024\\
+&Sleman, 20 Januari 2026\\
 &\\
 &\\
 &Penulis

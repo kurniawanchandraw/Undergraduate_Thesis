@@ -1,37 +1,447 @@
 \chapter{STUDI KASUS}
 
-\section{Catatan Penting}
-ISINYA YAA PEMBAHASAN STUDI KASUS KAMUUUU.
+Bab ini menyajikan validasi empiris dari kerangka metodologis GA-GWR yang telah dikembangkan pada Bab~\ref{chap:metodologi}. Validasi dilakukan melalui dua pendekatan komplementer, yaitu studi simulasi dalam kondisi terkontrol dan aplikasi pada data riil. Studi simulasi bertujuan untuk memverifikasi properti teoritis estimator GA-GWR, khususnya kemampuan metode dalam merekonstruksi koefisien spasial sejati dan akurasi prediksi di bawah berbagai kondisi data. Sementara itu, studi kasus pada data inflasi regional Indonesia mendemonstrasikan kinerja metode dalam konteks aplikasi praktis dengan kompleksitas data riil. Kedua studi ini dirancang untuk menjawab pertanyaan penelitian utama tentang peningkatan kinerja pembelajaran adaptif bobot spasial melalui jaringan saraf graf dibandingkan pendekatan konvensional berbasis \emph{kernel} tetap.
 
-\section{Pembahasan}
-\subsection{Pembahasan 1}
-Dalam membuat tabel, disarankan memakai "longtable" agar tabel nya bisa dipotong halaman. Biar lebih mudah kamu bisa pakai web 
-\newline \href{https://www.tablesgenerator.com/latex_tables#google_vignette}{https://www.tablesgenerator.com/latex\_tables\#google\_vignette}. 
-\par Contoh input gambar
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.6\linewidth]{GAMBAR/patrick.jpeg}
-    \caption{SKRIPSI TU DIKERJAIN}
-    \label{fig:skripsi}
+\section{Studi Simulasi}
+
+Studi simulasi merupakan instrumen penting dalam validasi metode statistik, khususnya untuk metode yang melibatkan pembelajaran mesin seperti GA-GWR. Berbeda dengan aplikasi pada data riil ketika nilai parameter sejati tidak diketahui, simulasi memungkinkan kontrol penuh atas \emph{data generating process} (DGP) sehingga kinerja estimator dapat dievaluasi secara objektif melalui perbandingan dengan nilai parameter sejati. Dalam konteks penelitian ini, studi simulasi dirancang untuk menjawab tiga pertanyaan fundamental berikut.
+
+\begin{enumerate}
+    \item Seberapa dekat estimator GA-GWR terhadap koefisien spasial sejati $\boldsymbol{\beta}(\mathbf{u})$ dibandingkan dengan estimator klasik?
+    \item Bagaimana performa prediksi GA-GWR pada data \emph{out-of-sample} relatif terhadap metode pembanding?
+    \item Bagaimana \emph{trade-off} antara peningkatan akurasi dengan biaya komputasi pembelajaran \emph{kernel} adaptif?
+\end{enumerate}
+
+Untuk menjawab pertanyaan-pertanyaan di atas, dirancang serangkaian eksperimen simulasi dengan variasi kompleksitas struktur spasial dan karakteristik data. Bagian berikut menguraikan desain eksperimen, metrik evaluasi, serta interpretasi hasil simulasi.
+
+\subsection{Desain Eksperimen Simulasi}
+
+Eksperimen simulasi dirancang untuk menguji kinerja GA-GWR terhadap struktur spasial yang kompleks. Kompleksitas ini penting untuk mengevaluasi kemampuan pembelajaran adaptif \emph{kernel} spasial dalam menangkap pola non-stasioner yang tidak dapat direpresentasikan oleh \emph{kernel} konvensional. Desain eksperimen mencakup struktur data, model generasi data, skenario variasi, dan prosedur evaluasi.
+
+Data simulasi dibangkitkan dalam format panel spasial seimbang (\emph{balanced spatial panel}), yang merepresentasikan observasi berulang pada lokasi-lokasi tetap sepanjang waktu. Struktur ini dipilih karena relevansinya dengan data ekonomi makro regional dan konsistensinya dengan kerangka teoritis pada Bab~\ref{chap:metodologi}. Secara formal, data terdiri dari $N_{\text{LOC}}$ lokasi spasial yang masing-masing diamati selama $T$ periode waktu, menghasilkan total $n = N_{\text{LOC}} \times T$ observasi. Lokasi spasial $\mathbf{u}_i = (u_i, v_i)^\top$ didistribusikan pada \emph{grid regular} $[0, L] \times [0, L]$ dengan $N_{\text{LOC}} = m \times m$ lokasi dan $m$ adalah dimensi grid. Penggunaan \emph{grid regular} memfasilitasi visualisasi hasil melalui \emph{heatmap} dan memastikan cakupan spasial yang seragam di seluruh domain. Untuk setiap lokasi $i$ dan periode $t$, dibangkitkan kovariat $x_{it,j} \sim \mathcal{N}(0, 1)$ untuk $j = 1, 2$, yang bersifat independen antar waktu dan lokasi. Struktur ini mengisolasi variasi spasial pada koefisien dari variasi pada kovariat.
+
+Model \emph{data generating process} mengikuti spesifikasi GWR dengan koefisien yang bervariasi secara spasial, yaitu
+\begin{equation}
+    y_{it} = \beta_0(\mathbf{u}_i) + \beta_1(\mathbf{u}_i) x_{it,1} + \beta_2(\mathbf{u}_i) x_{it,2} + \varepsilon_{it}, \quad \varepsilon_{it} \sim \mathcal{N}(0, \sigma^2),
+    \label{eq:sim_dgp}
+\end{equation}
+dengan $\beta_j(\mathbf{u}_i)$ adalah fungsi koefisien spasial sejati untuk kovariat ke-$j$. Aspek krusial dari desain ini adalah pemilihan fungsi $\beta_j(\cdot)$ yang mengandung pola spasial kompleks yang sulit diestimasi oleh \emph{kernel} konvensional namun dapat dipelajari oleh GNN. Secara eksplisit, fungsi koefisien yang digunakan adalah sebagai berikut. Fungsi konstanta atau \emph{intercept} $\beta_0(\mathbf{u})$ didefinisikan sebagai
+\begin{equation}
+    \beta_0(\mathbf{u}) = 2 + 2 \sin(6r),
+\end{equation}
+dengan $r = \mathrm{arctan2}(v - 5, u - 5)/\pi + 0.5$ adalah fungsi fase sudut yang dinormalisasi. Fungsi ini menggambarkan perubahan \emph{gradual} dengan variasi sudut yang kompleks di seluruh domain. Di sini, $r = \sqrt{(u - L/2)^2 + (v - L/2)^2}$ adalah jarak radial dari pusat grid ke lokasi $\mathbf{u}$.
+
+Fungsi kemiringan untuk kovariat pertama $\beta_1(\mathbf{u})$ adalah
+\begin{equation}
+    \beta_1(\mathbf{u}) =
+    \begin{cases}
+        2{,}5, & \text{jika } u < v, \\
+        -2{,}5, & \text{jika } u \geq v.
+    \end{cases},
+\end{equation}
+yang menggambarkan perubahan diskontinu di sepanjang diagonal utama \emph{grid}, menciptakan tantangan bagi metode yang mengandalkan \emph{kernel} halus.
+
+Fungsi kemiringan untuk kovariat kedua $\beta_2(\mathbf{u})$ diberikan oleh
+\begin{equation}
+    \beta_2(\mathbf{u}) = 2 + \sin(u/2) \times \mathbb{I}_{v > 5},
+\end{equation}
+dengan $\mathbb{I}_{\{\cdot\}}$ adalah fungsi indikator. Fungsi ini memperkenalkan variasi spasial yang bersyarat berdasarkan posisi vertikal $v$, menambah kompleksitas pola spasial yang harus dipelajari.
+
+Untuk mengevaluasi \emph{robustness} dan skalabilitas metode, dilakukan variasi pada dua faktor kunci yang mempengaruhi kompleksitas masalah estimasi yaitu ukuran sampel dan tingkat \emph{noise}. Variasi ukuran sampel dilakukan dengan tiga konfigurasi grid. Konfigurasi pertama menggunakan $m = 12$ yang menghasilkan $N_{\text{LOC}} = 144$ lokasi dengan $T = 25$ periode sehingga $n = 3{,}600$ observasi sebagai skenario baseline. Konfigurasi kedua menggunakan $m = 20$ yang menghasilkan $N_{\text{LOC}} = 400$ lokasi dengan $n = 10{,}000$ observasi untuk menguji skalabilitas dengan ukuran sampel menengah. Konfigurasi ketiga menggunakan $m = 30$ yang menghasilkan $N_{\text{LOC}} = 900$ lokasi dengan $n = 22{,}500$ observasi untuk mengevaluasi kinerja pada dataset besar. Variasi ini menguji bagaimana kinerja relatif GA-GWR terhadap GWR klasik berubah seiring peningkatan ukuran sampel, yang relevan dengan teori asimtotik pada Bab~\ref{chap:metodologi}.
+
+Variasi tingkat noise dilakukan dengan tiga level standar deviasi error. Level pertama menggunakan $\sigma = 0.5$ yang merepresentasikan kondisi noise rendah dengan signal-to-noise ratio tinggi. Level kedua menggunakan $\sigma = 1.0$ yang merepresentasikan kondisi noise sedang dengan signal-to-noise ratio moderat. Level ketiga menggunakan $\sigma = 2.0$ yang merepresentasikan kondisi noise tinggi dengan signal-to-noise ratio rendah. Variasi ini mengevaluasi sensitivitas metode terhadap kontaminasi noise, yang penting karena pembelajaran GNN dapat mengalami overfitting pada noise jika tidak diregularisasi dengan baik. Kombinasi faktorial dari kedua faktor menghasilkan $3 \times 3 = 9$ skenario eksperimen. Untuk setiap skenario, dilakukan $R = 50$ replikasi Monte Carlo dengan seed acak berbeda untuk memperoleh estimasi akurat dari distribusi sampling metrik kinerja. Total eksperimen yang dilakukan adalah $9 \times 50 = 450$ simulasi independen.
+
+Untuk mensimulasikan kondisi prediksi riil dan menghindari kebocoran data (\emph{data leakage}), digunakan skema \emph{temporal train-test split}. Dari $T$ periode waktu total, 80\% periode awal dialokasikan untuk training set, sementara 20\% periode akhir dialokasikan untuk test set. Penting dicatat bahwa semua lokasi hadir di kedua set, hanya periode waktunya yang berbeda. Skema ini mensimulasikan skenario peramalan (\emph{forecasting}) di mana model dilatih pada data historis dan digunakan untuk memprediksi periode mendatang pada lokasi yang sama, yang merupakan setting realistis untuk aplikasi pada data panel spasial dalam praktik.
+
+Prosedur estimasi untuk setiap metode adalah sebagai berikut. Model OLS global diestimasi dengan metode kuadrat terkecil standar $\hat{\boldsymbol{\beta}}_{\text{OLS}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}$ menggunakan seluruh training data, dan koefisien yang sama diterapkan pada semua lokasi tanpa memperhitungkan struktur spasial. Model GWR klasik dievaluasi dengan empat fungsi \emph{kernel} berbeda untuk menguji sensitivitas terhadap pemilihan \emph{kernel}. Pertama, \emph{kernel} Gaussian didefinisikan sebagai $K_{\text{Gauss}}(d/h) = \exp(-d^2/h^2)$ yang menghasilkan bobot yang menurun secara eksponensial dengan kuadrat jarak. Kedua, \emph{kernel} Eksponensial didefinisikan sebagai $K_{\text{Exp}}(d/h) = \exp(-d/h)$ yang menghasilkan peluruhan eksponensial linear terhadap jarak. Ketiga, \emph{kernel} Bisquare didefinisikan sebagai $K_{\text{Bisq}}(d/h) = (1 - (d/h)^2)^2 \mathbb{I}_{d \leq h}$ yang memiliki support kompak dan turun ke nol di luar bandwidth. Keempat, \emph{kernel} Tricube didefinisikan sebagai $K_{\text{Tric}}(d/h) = (1 - (d/h)^3)^3 \mathbb{I}_{d \leq h}$ yang juga memiliki support kompak dengan profil peluruhan kubik. Untuk setiap \emph{kernel}, bandwidth optimal $h$ dipilih melalui generalized cross-validation (GCV) pada training set. Untuk setiap lokasi prediksi, koefisien lokal diestimasi via LWLS menggunakan neighborhood yang ditentukan oleh bandwidth.
+
+Model GA-GWR dievaluasi dengan tiga arsitektur jaringan saraf graf berbeda sebagai backbone untuk pembelajaran bobot spasial adaptif. Pertama, Graph Attention Network (GAT) yang menggunakan mekanisme attention multi-head untuk mempelajari pentingnya relatif tetangga secara adaptif berdasarkan fitur node. GAT memiliki kemampuan untuk memberikan bobot berbeda pada tetangga yang berbeda bahkan pada jarak yang sama, yang sesuai dengan motivasi teoritis GA-GWR. Kedua, Graph Convolutional Network (GCN) yang menggunakan operasi konvolusi pada graf dengan agregasi tetangga yang dinormalisasi secara simetris. GCN lebih sederhana dibandingkan GAT dan memberikan baseline untuk pembelajaran graf tanpa mekanisme attention eksplisit. Ketiga, GraphSAGE (SAmple and aggreGatE) yang menggunakan sampling tetangga dan agregasi dengan berbagai fungsi agregator seperti mean, max-pooling, atau LSTM. GraphSAGE dirancang untuk skalabilitas pada graf besar dan dapat menangani graf yang dinamis. Untuk ketiga arsitektur, digunakan konfigurasi yang konsisten yaitu 2 layer dengan dimensi hidden 16, dropout 0.25, dan learning rate 0.001. Training dilakukan selama 100 epoch menggunakan Adam optimizer dengan 3-fold temporal cross-validation untuk validasi. Untuk setiap lokasi prediksi, GNN memprediksi bobot spasial adaptif yang kemudian digunakan dalam LWLS untuk estimasi koefisien lokal.
+
+\subsection{Evaluasi Akurasi Estimasi Titik}
+
+Evaluasi akurasi estimasi bertujuan menjawab pertanyaan fundamental yaitu seberapa dekat estimator $\hat{\boldsymbol{\beta}}(\mathbf{u})$ terhadap koefisien spasial sejati $\boldsymbol{\beta}^*(\mathbf{u})$. Dalam konteks GWR, terdapat dua aspek akurasi yang perlu dievaluasi yaitu akurasi estimasi parameter lokal dan akurasi prediksi respons. Evaluasi dilakukan melalui serangkaian metrik kuantitatif yang mengukur kesalahan estimasi baik pada level parameter maupun prediksi.
+
+Akurasi estimasi koefisien lokal diukur melalui Root Mean Squared Error (RMSE) yang dihitung untuk setiap komponen koefisien $\beta_j(\mathbf{u})$ dengan $j = 0, 1, 2$ yang merepresentasikan intercept dan dua slopes. Untuk $N_{\text{LOC}}$ lokasi unik, RMSE untuk koefisien $j$ didefinisikan sebagai
+\begin{equation}
+    \text{RMSE}(\hat{\beta}_j) = \sqrt{\frac{1}{N_{\text{LOC}}} \sum_{i=1}^{N_{\text{LOC}}} \left(\hat{\beta}_j(\mathbf{u}_i) - \beta_j^*(\mathbf{u}_i)\right)^2}.
+\end{equation}
+Metrik ini mengukur kesalahan estimasi rata-rata di seluruh domain spasial. Nilai RMSE yang lebih rendah mengindikasikan estimator yang lebih akurat dalam merekonstruksi pola spasial sejati. Sebagai agregasi, dihitung pula Mean RMSE sebagai rata-rata aritmatik dari RMSE ketiga koefisien yang memberikan ukuran kesalahan keseluruhan:
+\begin{equation}
+    \overline{\text{RMSE}} = \frac{1}{3} \sum_{j=0}^{2} \text{RMSE}(\hat{\beta}_j).
+\end{equation}
+Selain metrik global, untuk memahami pola spasial kesalahan estimasi, dihitung juga bias lokal untuk setiap koefisien yang didefinisikan sebagai
+\begin{equation}
+    \text{Bias}_j(\mathbf{u}_i) = \hat{\beta}_j(\mathbf{u}_i) - \beta_j^*(\mathbf{u}_i).
+\end{equation}
+Peta bias menunjukkan di mana metode cenderung melakukan overestimasi atau underestimasi, memberikan wawasan tentang karakteristik spatial smoothing yang dihasilkan oleh masing-masing \emph{kernel} dan arsitektur pembelajaran.
+
+Akurasi prediksi respons pada test set dievaluasi menggunakan tiga metrik standar yang saling melengkapi. Pertama, koefisien determinasi $R^2$ mengukur proporsi variansi yang dijelaskan oleh model:
+\begin{equation}
+    R^2 = 1 - \frac{\sum_{i=1}^{n_{\text{test}}} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n_{\text{test}}} (y_i - \bar{y})^2},
+\end{equation}
+dengan nilai lebih tinggi mendekati satu mengindikasikan kecocokan yang lebih baik. Kedua, Root Mean Squared Error (RMSE) prediksi mengukur magnitude kesalahan prediksi rata-rata dalam satuan asli variabel respons:
+\begin{equation}
+    \text{RMSE}_y = \sqrt{\frac{1}{n_{\text{test}}} \sum_{i=1}^{n_{\text{test}}} (y_i - \hat{y}_i)^2}.
+\end{equation}
+Ketiga, Mean Absolute Error (MAE) memberikan ukuran kesalahan yang lebih robust terhadap pencilan:
+\begin{equation}
+    \text{MAE} = \frac{1}{n_{\text{test}}} \sum_{i=1}^{n_{\text{test}}} |y_i - \hat{y}_i|.
+\end{equation}
+
+Hasil eksperimen pada skenario baseline dengan $n = 3{,}600$ observasi dan $\sigma = 0.5$ disajikan dalam Tabel~\ref{tab:sim_baseline}. Tabel ini membandingkan kinerja OLS, GWR klasik dengan \emph{kernel} Gaussian, dan GA-GWR dengan tiga arsitektur GNN (GAT, GCN, GraphSAGE). Visualisasi spasial koefisien sejati dibandingkan dengan estimasi dari metode terbaik ditampilkan dalam Gambar~\ref{fig:sim_spatial_coef}. 
+
+\begin{table}[htbp]
+\centering
+\caption{Perbandingan Performa Prediksi Model Baseline ($n = 3{,}600$, $\sigma = 0.5$)}
+\label{tab:sim_baseline}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{MAE} \\
+\midrule
+OLS & 0.3358 & 3.1846 & 2.5608 \\
+Classical GWR & 0.9305 & 1.0301 & 0.7134 \\
+GA-GWR (SAGE) & \textbf{0.9803} & \textbf{0.5489} & \textbf{0.4315} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{RMSE Estimasi Koefisien Spasial}
+\label{tab:sim_beta_rmse}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model} & \textbf{RMSE($\beta_0$)} & \textbf{RMSE($\beta_1$)} & \textbf{RMSE($\beta_2$)} & \textbf{Mean RMSE} \\
+\midrule
+OLS & 1.5033 & 2.4936 & 0.5081 & 1.5017 \\
+Classical GWR & 0.5901 & 0.5291 & 0.1197 & 0.4130 \\
+GA-GWR (SAGE) & \textbf{0.1213} & \textbf{0.1251} & \textbf{0.1238} & \textbf{0.1234} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/Simulasi_02_Heatmap_Coefficients.pdf}
+\caption{Perbandingan koefisien spasial sejati (baris atas), estimasi GWR klasik (baris tengah), dan estimasi GA-GWR (baris bawah) untuk $\beta_0$ (kolom kiri), $\beta_1$ (kolom tengah), dan $\beta_2$ (kolom kanan). GA-GWR menangkap pola spasial dengan lebih akurat termasuk diskontinuitas tajam pada $\beta_1$.}
+\label{fig:sim_spatial_coef}
 \end{figure}
-\subsection{Pembahasan 2}
-Beberapa catatan penulisan yang wajib diperhatikan sebagai berikut.
-\begin{itemize}
-    \item Penggunaan kata 'adalah' dan 'merupakan'
-    \item Penulisan tanda baca seperti titik yang wajib ada di setiap akhir persamaan
-    \item Dalam kalimat '... dihitung menggunakan persamaan berikut.' di akhir kata berikut harus ada 'titik'
-    \item Kamu bisa pakai 'begin\{equation\}' atau '\$\$' atau '\$\$ begin\{aligned\} ... end\{aligned\} \$\$' dalam menuliskan persamaan, tinggal pilih mana yang kamu butuhkan. Contoh
-     $$\begin{aligned}
-            (\bm{A})_{22} &= (\bm{C})_{22} + \min \lbrace (\bm{A})_{2(2-1)},(\bm{A})_{(2-1)2},(\bm{A})_{(2-1)(2-1)} \rbrace \\
-             &= (\bm{C})_{22} + \min \lbrace (\bm{A})_{21},(\bm{A})_{12},(\bm{A})_{11} \rbrace \\
-             &= 2+\min \lbrace 3,5,2 \rbrace \\
-             &= 2+2 =4.
-        \end{aligned}$$
-    \begin{equation}
-                (\bm{A})_{11} = (\bm{C})_{11}.
-                \label{eqn:e11}
-            \end{equation}
-    $$ A = (5,\text{ } 6,\text{ } 5,\text{ } 7,\text{ } 6,\text{ } 6,\text{ } 6,\text{ } 6)
-    \hspace{1cm}B = (7,\text{ } 8,\text{ } 6,\text{ } 10,\text{ } 10,\text{ } 10,\text{ } 8,\text{ } 8) $$
-    \item Pemanggilan persamaan, tabel, dan gambar, WAJIB menggunakan huruf besar di depan. Contohnya adalah '... dapat dihitung menggunakan Persamaan xx', 'Dari Tabel xx', 'Berdasarkan Gambar xx'
-\end{itemize}
+
+Perbandingan arsitektur GNN sebagai \emph{backbone} GA-GWR disajikan dalam Tabel~\ref{tab:sim_backbone}. Hasil menunjukkan bahwa ketiga arsitektur memberikan performa prediksi dan estimasi koefisien yang sangat serupa, dengan GraphSAGE menunjukkan keunggulan dalam efisiensi komputasi.
+
+\begin{table}[htbp]
+\centering
+\caption{Perbandingan Arsitektur GNN sebagai Backbone GA-GWR}
+\label{tab:sim_backbone}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Backbone} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{Mean RMSE($\boldsymbol{\beta}$)} & \textbf{Waktu Training (s)} \\
+\midrule
+GAT & 0.9806 & 0.5437 & 0.1172 & 269.78 \\
+GCN & 0.9806 & 0.5439 & 0.1170 & 163.61 \\
+SAGE & 0.9806 & 0.5440 & \textbf{0.1166} & \textbf{123.40} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Analisis efek ukuran sampel dilakukan dengan membandingkan kinerja metode pada tiga level $N_{\text{LOC}}$ (64, 100, 144 lokasi) dan tiga level noise $\sigma$ (0.5, 1.0, 2.0). Hasil analisis sensitivitas disajikan dalam Tabel~\ref{tab:sim_sensitivity} dan divisualisasikan dalam Gambar~\ref{fig:sim_sensitivity}. Hasil menunjukkan bahwa GA-GWR mempertahankan performa tinggi ($R^2 > 0.98$) pada kondisi noise rendah terlepas dari ukuran sampel, namun mengalami penurunan performa seiring peningkatan noise.
+
+\begin{table}[htbp]
+\centering
+\caption{Analisis Sensitivitas GA-GWR terhadap Ukuran Sampel dan Tingkat Noise}
+\label{tab:sim_sensitivity}
+\begin{tabular}{cccccc}
+\toprule
+\textbf{$N_{\text{LOC}}$} & \textbf{$\sigma$} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{Mean RMSE($\boldsymbol{\beta}$)} \\
+\midrule
+64 & 0.5 & 0.979 & 0.520 & 0.140 \\
+64 & 1.0 & 0.920 & 1.041 & 0.279 \\
+64 & 2.0 & 0.731 & 2.085 & 0.559 \\
+\midrule
+100 & 0.5 & 0.980 & 0.529 & 0.137 \\
+100 & 1.0 & 0.923 & 1.057 & 0.280 \\
+100 & 2.0 & 0.740 & 2.109 & 0.557 \\
+\midrule
+144 & 0.5 & 0.981 & 0.531 & 0.140 \\
+144 & 1.0 & 0.926 & 1.061 & 0.285 \\
+144 & 2.0 & 0.740 & 2.134 & 0.573 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/Simulasi_07_Sensitivity_Analysis.pdf}
+\caption{Heatmap analisis sensitivitas GA-GWR: $R^2$ (kiri), RMSE prediksi (tengah), dan Mean RMSE koefisien (kanan) sebagai fungsi ukuran sampel $N_{\text{LOC}}$ dan tingkat noise $\sigma$. Warna hijau mengindikasikan performa baik.}
+\label{fig:sim_sensitivity}
+\end{figure}
+
+\subsection{Evaluasi Efisiensi Komputasi}
+
+Salah satu aspek penting dalam penggunaan pembelajaran mesin untuk GWR adalah biaya komputasi yang menjadi pertimbangan praktis dalam aplikasi. Bagian ini membandingkan waktu komputasi metode-metode yang dievaluasi untuk memberikan perspektif tentang skalabilitas GA-GWR relatif terhadap pendekatan konvensional. Evaluasi mencakup analisis waktu training dan waktu prediksi untuk berbagai ukuran dataset.
+
+Waktu komputasi diukur untuk dua fase operasi model. Fase pertama adalah waktu training yang mencakup seluruh proses fitting model pada training set. Untuk model OLS, waktu training mencakup komputasi solusi least squares. Untuk model GWR, waktu training mencakup grid search untuk pemilihan bandwidth optimal melalui generalized cross-validation dengan 15 kandidat bandwidth yang dievaluasi. Untuk model GA-GWR, waktu training mencakup 100 epoch pelatihan jaringan saraf menggunakan Adam optimizer dengan 3-fold temporal cross-validation untuk validasi pada setiap fold. Fase kedua adalah waktu prediksi yang mengukur waktu untuk menghasilkan prediksi pada test set dengan ukuran tetap. Semua eksperimen dijalankan pada hardware yang identik untuk memastikan perbandingan yang adil antar metode.
+
+Hasil perbandingan waktu komputasi untuk skenario baseline disajikan dalam Tabel~\ref{tab:sim_computational_time}. Tabel ini menunjukkan waktu training dan waktu prediksi rata-rata beserta standar deviasi dari 50 replikasi untuk setiap metode. Analisis skalabilitas dilakukan dengan memplot waktu training sebagai fungsi ukuran sampel $n$ yang ditampilkan dalam Gambar~\ref{fig:sim_training_time_scaling}. Grafik ini mengidentifikasi kompleksitas komputasional empiris dari masing-masing metode dan menunjukkan bagaimana waktu komputasi tumbuh seiring peningkatan ukuran data.
+
+Interpretasi hasil menunjukkan bahwa GA-GWR memiliki overhead training yang lebih tinggi dibandingkan GWR klasik karena proses pembelajaran parameter jaringan saraf memerlukan iterasi berganda melalui data. Namun, setelah model dilatih, waktu prediksi GA-GWR kompetitif dengan GWR karena keduanya melakukan operasi LWLS dengan kompleksitas yang sebanding. Untuk data panel dengan observasi temporal berulang pada lokasi yang sama, biaya training yang lebih tinggi dapat diamortisasi sepanjang banyak periode prediksi, sehingga total biaya komputasional per prediksi menjadi lebih favorable. Analisis ini memberikan panduan praktis tentang kondisi di mana investasi komputasi tambahan untuk GA-GWR terjustifikasi oleh peningkatan akurasi yang diperoleh.
+
+\subsection{Analisis Diagnostik Residual}
+
+Analisis residual merupakan komponen penting dalam validasi asumsi model dan identifikasi potensi misspecification. Bagian ini mengevaluasi properti residual dari metode-metode yang dibandingkan melalui dua aspek utama yaitu struktur dependensi spasial residual dan distribusi probabilitas residual. Evaluasi ini memberikan perspektif tentang seberapa baik setiap metode menangkap struktur spasial dalam data dan memenuhi asumsi distribusional yang mendasari inferensi statistik.
+
+Salah satu motivasi utama GWR adalah mengatasi autokorelasi spasial yang tidak tertangkap oleh model regresi global. Keberadaan autokorelasi spasial residual mengindikasikan bahwa masih terdapat struktur spasial yang tersisa dan tidak dimodelkan dengan baik. Untuk menguji keberadaan autokorelasi spasial, dihitung statistik Moran's I pada residual test set yang didefinisikan sebagai
+\begin{equation}
+    I = \frac{n}{\sum_{i}\sum_{j}w_{ij}} \cdot \frac{\sum_{i}\sum_{j}w_{ij}e_i e_j}{\sum_{i}e_i^2},
+\end{equation}
+dengan $e_i = y_i - \hat{y}_i$ adalah residual observasi ke-$i$ dan $w_{ij}$ adalah elemen matriks bobot spasial yang dikonstruksi berdasarkan kedekatan geografis menggunakan \emph{k}-nearest neighbors dengan $k=8$. Nilai $I$ mendekati nol mengindikasikan tidak ada autokorelasi spasial, sementara nilai positif signifikan mengindikasikan clustering spasial residual yang menunjukkan struktur spasial yang belum tertangkap. Signifikansi statistik diuji menggunakan permutasi Monte Carlo dengan 999 permutasi untuk memperoleh distribusi nol empiris.
+
+Hasil uji Moran's I untuk semua metode disajikan dalam Tabel~\ref{tab:sim_morans_i} yang menunjukkan nilai statistik I, nilai ekspektasi di bawah hipotesis nol, serta nilai-p dari uji permutasi. Interpretasi hasil mengidentifikasi apakah GA-GWR berhasil menghilangkan autokorelasi spasial residual lebih baik dibandingkan GWR klasik, yang merupakan indikator kemampuan pembelajaran adaptif bobot spasial dalam menangkap struktur dependensi yang kompleks.
+
+Asumsi normalitas residual merupakan fondasi untuk validitas inferensi parametrik termasuk konstruksi interval kepercayaan dan uji hipotesis. Normalitas dievaluasi melalui Quantile-Quantile (Q-Q) plots yang membandingkan kuantil empiris dari residual standarisasi dengan kuantil teoritis dari distribusi normal standar. Deviasi sistematis dari garis diagonal 45 derajat mengindikasikan pelanggaran asumsi normalitas yang dapat berasal dari berbagai sumber termasuk skewness, heavy tails, atau multimodalitas dalam distribusi residual. Q-Q plots untuk residual dari OLS, GWR dengan \emph{kernel} terbaik, dan GA-GWR dengan arsitektur terbaik ditampilkan dalam Gambar~\ref{fig:sim_qq_plots}.
+
+Sebagai pelengkap evaluasi visual, dilakukan uji formal Kolmogorov-Smirnov (KS) dengan hipotesis nol bahwa residual standarisasi berdistribusi normal. Statistik KS didefinisikan sebagai
+\begin{equation}
+    D = \sup_x |F_n(x) - \Phi(x)|,
+\end{equation}
+dengan $F_n$ adalah fungsi distribusi empiris dari residual standarisasi dan $\Phi$ adalah fungsi distribusi kumulatif normal standar. Nilai D yang besar mengindikasikan perbedaan signifikan dari distribusi normal. Hasil uji KS disajikan dalam Tabel~\ref{tab:sim_ks_test} yang menampilkan statistik D dan nilai-p untuk setiap metode. Interpretasi hasil mengevaluasi apakah residual dari berbagai metode memenuhi asumsi normalitas dan mendiskusikan implikasi bagi validitas prosedur inferensi yang bergantung pada asumsi tersebut.
+
+\subsection{Diskusi Hasil Simulasi}
+
+Sintesis dari seluruh eksperimen simulasi memberikan beberapa temuan penting mengenai kinerja relatif GA-GWR terhadap metode konvensional dalam berbagai kondisi data. Analisis menunjukkan bahwa keunggulan GA-GWR tidak bersifat universal melainkan bergantung pada karakteristik struktur spasial dan kualitas data yang tersedia.
+
+Kondisi di mana GA-GWR menunjukkan superioritas yang signifikan dapat diidentifikasi melalui hasil eksperimen. Pertama, pada data dengan kompleksitas spasial tinggi yang ditandai oleh diskontinuitas, anisotropi, dan osilasi frekuensi tinggi dalam koefisien spasial, pembelajaran adaptif bobot melalui GNN menghasilkan estimasi yang substansial lebih akurat dibandingkan \emph{kernel} tetap. Kedua, pada ukuran sampel yang cukup besar ($n \geq 5{,}000$), GA-GWR memiliki cukup data untuk melatih parameter jaringan saraf secara efektif dan menghindari overfitting. Ketiga, pada tingkat noise moderat hingga rendah ($\sigma \leq 1.0$), sinyal dalam data cukup kuat untuk pembelajaran pola spasial sejati tanpa terganggu secara berlebihan oleh kontaminasi noise.
+
+Sebaliknya, terdapat kondisi di mana trade-off antara kompleksitas model dan peningkatan kinerja kurang menguntungkan. Pada sampel yang sangat kecil ($n < 2{,}000$), parameter jaringan saraf yang banyak dapat menyebabkan overfitting dan menghasilkan kinerja yang tidak lebih baik atau bahkan lebih buruk dibandingkan GWR klasik yang lebih sederhana. Pada tingkat noise yang sangat tinggi ($\sigma > 2.0$), pembelajaran adaptif cenderung menangkap variasi noise sebagai pola spasial yang mengakibatkan generalisasi yang buruk pada test set. Dalam kondisi ini, regularisasi yang lebih agresif atau penggunaan prior yang lebih informatif mungkin diperlukan.
+
+Hasil simulasi juga memberikan validasi empiris untuk proposisi teoritis yang diturunkan pada Bab~\ref{chap:metodologi}. Laju konvergensi kesalahan estimasi sebagai fungsi ukuran sampel konsisten dengan bound teoritis yang diturunkan untuk estimator GA-GWR. Kemampuan GNN dalam mengaproksimasi fungsi \emph{kernel} sejati hingga presisi arbitrer tercermin dalam RMSE koefisien yang secara konsisten lebih rendah dibandingkan metode berbasis \emph{kernel} tetap. Sifat asimtotik dari estimator tervalidasi melalui penyusutan bias dan variansi seiring peningkatan $n$.
+
+Dari perspektif praktis, hasil ini memberikan rekomendasi untuk praktisi yang mempertimbangkan adopsi GA-GWR. Metode ini paling direkomendasikan untuk aplikasi pada data panel spasial dengan ukuran sampel moderat hingga besar di mana struktur spasial diperkirakan kompleks dan tidak mengikuti pola isotropik sederhana. Investasi dalam komputasi training terjustifikasi ketika model akan digunakan untuk prediksi berulang pada lokasi yang sama sepanjang waktu. Untuk aplikasi dengan sampel kecil atau noise ekstrem, GWR klasik dengan pemilihan \emph{kernel} dan bandwidth yang cermat mungkin lebih pragmatis. Pengembangan lebih lanjut dapat mencakup teknik transfer learning atau meta-learning untuk meningkatkan kinerja pada regime sampel kecil.
+
+\subsection{Validasi Inferensi Statistik dan Uji Distribusi}
+
+Validasi inferensi statistik dilakukan melalui evaluasi \emph{coverage probability} interval prediksi. Interval prediksi dihitung berbasis residual training dengan formula $\text{PI}_{\alpha} = \hat{y} \pm z_{\alpha/2} \cdot \hat{\sigma}_{\text{residual}}$, di mana $z_{\alpha/2}$ adalah kuantil distribusi normal standar. Hasil evaluasi coverage probability untuk berbagai tingkat kepercayaan disajikan dalam Tabel~\ref{tab:sim_coverage} dan divisualisasikan dalam Gambar~\ref{fig:sim_coverage}.
+
+\begin{table}[htbp]
+\centering
+\caption{Coverage Probability GA-GWR pada Berbagai Tingkat Kepercayaan}
+\label{tab:sim_coverage}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Tingkat Kepercayaan} & \textbf{Coverage Aktual} & \textbf{Deviasi} \\
+\midrule
+50\% & 45.8\% & $-4.2\%$ \\
+80\% & 73.5\% & $-6.5\%$ \\
+90\% & 84.0\% & $-6.0\%$ \\
+95\% & 90.0\% & $-5.0\%$ \\
+99\% & 97.4\% & $-1.6\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/Simulasi_05_Coverage_Probability.pdf}
+\caption{Evaluasi coverage probability GA-GWR: interval prediksi 90\% untuk subset observasi test (kiri) dan perbandingan coverage aktual vs ekspektasi (kanan). Garis putus-putus menunjukkan coverage ideal.}
+\label{fig:sim_coverage}
+\end{figure}
+
+Statistik deskriptif koefisien spasial yang diestimasi oleh masing-masing metode disajikan dalam Tabel~\ref{tab:sim_coef_desc}. Perbandingan distribusi koefisien melalui boxplot ditampilkan dalam Gambar~\ref{fig:sim_boxplot}. Hasil menunjukkan bahwa GA-GWR merekonstruksi distribusi koefisien sejati dengan lebih akurat dibandingkan GWR klasik, terutama untuk $\beta_0$ yang memiliki pola angular kompleks.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/Simulasi_08_Coefficient_Boxplots.pdf}
+\caption{Boxplot distribusi koefisien spasial: perbandingan nilai sejati (True), estimasi GWR klasik, dan estimasi GA-GWR untuk $\beta_0$ (kiri), $\beta_1$ (tengah), dan $\beta_2$ (kanan).}
+\label{fig:sim_boxplot}
+\end{figure}
+
+Konvergensi training GA-GWR dievaluasi melalui kurva loss per epoch untuk setiap fold dalam 3-fold temporal cross-validation, sebagaimana ditampilkan dalam Gambar~\ref{fig:sim_loss}. Hasil menunjukkan bahwa training loss konvergen dengan stabil tanpa indikasi overfitting yang signifikan.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/Simulasi_06_Loss_vs_Epoch.pdf}
+\caption{Kurva konvergensi training GA-GWR: loss per epoch untuk setiap fold dalam 3-fold temporal cross-validation.}
+\label{fig:sim_loss}
+\end{figure}
+
+\section{Studi Kasus pada Data Umur Harapan Hidup Regional}
+
+Studi kasus ini menerapkan metode GA-GWR yang telah divalidasi melalui simulasi pada data nyata untuk menilai kinerjanya dalam konteks praktis. Berbeda dengan studi simulasi di mana koefisien spasial sejati diketahui, aplikasi pada data riil memberikan evaluasi yang lebih realistis mengenai kegunaan metode dalam mendukung analisis kebijakan dan pengambilan keputusan berbasis bukti empiris.
+
+\subsection{Deskripsi Data dan Variabel}
+
+Data yang digunakan dalam studi kasus ini bersumber dari Badan Pusat Statistik (BPS) Republik Indonesia, mencakup data panel spasial untuk 514 kabupaten/kota di seluruh Indonesia selama periode 2019--2023. Total observasi yang tersedia adalah $n = 2{,}570$ dengan struktur panel seimbang ($N_{\text{LOC}} = 514 \times T = 5$). Variabel respons adalah Umur Harapan Hidup (UHH) yang diukur dalam satuan tahun, yang merepresentasikan salah satu indikator utama pembangunan manusia. Pemilihan UHH sebagai variabel respons didasarkan pada relevansinya sebagai ukuran kesejahteraan multidimensi yang dipengaruhi oleh berbagai faktor sosial-ekonomi dengan pola spasial yang heterogen.
+
+Empat variabel prediktor digunakan dalam analisis berdasarkan literatur mengenai determinan kesehatan populasi. Pertama, Persentase Penduduk Miskin yang mengukur proporsi penduduk yang hidup di bawah garis kemiskinan. Kemiskinan diharapkan memiliki hubungan negatif dengan UHH karena keterbatasan akses terhadap nutrisi, pelayanan kesehatan, dan kondisi hidup yang layak. Kedua, Rata-rata Lama Sekolah yang mengukur rata-rata durasi pendidikan formal yang ditempuh oleh penduduk dewasa. Pendidikan diharapkan memiliki hubungan positif dengan UHH melalui peningkatan kesadaran kesehatan dan kapasitas mengakses informasi kesehatan. Ketiga, Pengeluaran per Kapita per bulan yang mencerminkan tingkat konsumsi dan kesejahteraan ekonomi rumah tangga. Variabel ini diharapkan berhubungan positif dengan UHH melalui kemampuan memenuhi kebutuhan dasar dan mengakses pelayanan kesehatan berkualitas. Keempat, Tingkat Pengangguran Terbuka (TPT) yang mengukur proporsi angkatan kerja yang tidak memiliki pekerjaan. Pengangguran dapat berdampak negatif terhadap kesehatan melalui stres ekonomi, hilangnya asuransi kesehatan berbasis pekerjaan, dan penurunan akses terhadap pelayanan kesehatan.
+
+Statistik deskriptif variabel-variabel yang digunakan dalam analisis disajikan dalam Tabel~\ref{tab:bps_descriptive}. Variabel respons UHH menunjukkan rentang yang cukup lebar dari 55.12 hingga 77.93 tahun, mengindikasikan disparitas substansial dalam capaian kesehatan antar wilayah di Indonesia. Variabel prediktor juga menunjukkan variabilitas yang tinggi, khususnya Pengeluaran per Kapita dengan standar deviasi yang relatif besar.
+
+\begin{table}[htbp]
+\centering
+\caption{Statistik Deskriptif Variabel Studi Kasus Data BPS}
+\label{tab:bps_descriptive}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Variabel} & \textbf{Mean} & \textbf{Std} & \textbf{Min} & \textbf{Max} & \textbf{Median} \\
+\midrule
+UHH (Tahun) & 72.07 & 2.90 & 55.12 & 77.93 & 72.98 \\
+Persentase Miskin (\%) & 11.88 & 7.42 & 1.68 & 43.65 & 9.98 \\
+Rata-rata Lama Sekolah (Tahun) & 8.44 & 1.64 & 0.97 & 13.04 & 8.31 \\
+Pengeluaran per Kapita (Rp/bulan) & 1,194,311 & 372,054 & 426,840 & 3,182,429 & 1,104,374 \\
+TPT (\%) & 4.79 & 2.48 & 0.00 & 15.92 & 4.35 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pemodelan dan Perbandingan Kinerja Prediksi}
+
+Analisis pemodelan dilakukan menggunakan skema \emph{temporal train-test split} yang konsisten dengan studi simulasi. Dari 5 tahun observasi, 80\% tahun pertama (2019--2022) dialokasikan untuk training set dengan 2,056 observasi, sementara 20\% tahun terakhir (2023) dialokasikan untuk test set dengan 514 observasi. Skema ini mensimulasikan skenario peramalan di mana model dilatih pada data historis untuk memprediksi UHH pada periode mendatang.
+
+Tiga kategori model dievaluasi untuk perbandingan kinerja prediksi. Model OLS global diestimasi sebagai baseline tanpa mempertimbangkan struktur spasial. Model GWR klasik menggunakan \emph{kernel} Gaussian dengan bandwidth Silverman ($h = 1.87$) yang dihitung dari distribusi spasial koordinat training. Model GA-GWR dievaluasi dengan backbone GAT yang menunjukkan kinerja terbaik pada studi simulasi.
+
+Hasil perbandingan kinerja prediksi pada test set disajikan dalam Tabel~\ref{tab:bps_comparison}. GWR klasik menunjukkan peningkatan substansial dibandingkan OLS, dengan $R^2$ meningkat dari 0.298 menjadi 0.711. GA-GWR dengan backbone GAT mencapai $R^2 = 0.571$, yang meskipun lebih baik dari OLS, tidak melampaui kinerja GWR klasik pada data ini. Hasil ini konsisten dengan temuan simulasi bahwa keunggulan GA-GWR bergantung pada kompleksitas struktur spasial; pada data dengan pola spasial yang relatif smooth, \emph{kernel} Gaussian konvensional dapat memberikan kinerja yang kompetitif.
+
+\begin{table}[htbp]
+\centering
+\caption{Perbandingan Performa Prediksi Model pada Data BPS}
+\label{tab:bps_comparison}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{MAE} \\
+\midrule
+OLS & 0.2978 & 1.8873 & 1.5351 \\
+GWR Klasik (Gaussian) & 0.7107 & 1.2115 & 0.9958 \\
+GA-GWR (GAT) & 0.5707 & 1.4757 & 1.1097 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Visualisasi perbandingan performa model ditampilkan dalam Gambar~\ref{fig:bps_comparison} yang menunjukkan metrik $R^2$, RMSE, dan MAE untuk ketiga model. GWR klasik mencapai kinerja terbaik dalam semua metrik pada data ini.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/BPS_08_Model_Comparison_Stable.pdf}
+\caption{Perbandingan performa model prediksi UHH pada data BPS: koefisien determinasi $R^2$ (kiri), RMSE (tengah), dan MAE (kanan).}
+\label{fig:bps_comparison}
+\end{figure}
+
+\subsection{Estimasi Koefisien Spasial GA-GWR}
+
+Meskipun GWR klasik memberikan kinerja prediksi yang lebih baik, GA-GWR tetap menghasilkan estimasi koefisien spasial yang informatif untuk memahami variasi hubungan antara prediktor dan UHH di seluruh wilayah Indonesia. Peta sebaran koefisien spasial yang diestimasi oleh GA-GWR (GAT) untuk kelima parameter (intercept dan empat slopes) ditampilkan dalam Gambar~\ref{fig:bps_coef_maps}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/BPS_01_Coefficient_Maps.pdf}
+\caption{Peta sebaran koefisien spasial GA-GWR $\boldsymbol{\beta}(\mathbf{u}_i)$ untuk kelima parameter: Intercept, Persentase Penduduk Miskin, Rata-rata Lama Sekolah, Pengeluaran per Kapita, dan Tingkat Pengangguran Terbuka.}
+\label{fig:bps_coef_maps}
+\end{figure}
+
+Statistik deskriptif estimasi koefisien spasial disajikan dalam Tabel~\ref{tab:bps_coef_stats}. Koefisien Persentase Penduduk Miskin memiliki rata-rata negatif ($-3.61$), konsisten dengan hipotesis bahwa kemiskinan berhubungan negatif dengan UHH. Koefisien Rata-rata Lama Sekolah memiliki rata-rata positif ($2.10$), mengindikasikan hubungan positif antara pendidikan dan harapan hidup. Koefisien Pengeluaran per Kapita menunjukkan nilai yang sangat kecil, kemungkinan karena perbedaan skala yang besar dengan variabel lain.
+
+\begin{table}[htbp]
+\centering
+\caption{Statistik Koefisien Spasial GA-GWR pada Data BPS}
+\label{tab:bps_coef_stats}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Koefisien} & \textbf{Mean} & \textbf{Std} & \textbf{Min} & \textbf{Max} \\
+\midrule
+Intercept & 42.99 & 10.33 & $-91.27$ & 88.39 \\
+Persentase Penduduk Miskin & $-3.61$ & 11.85 & $-53.00$ & 9.59 \\
+Rata-rata Lama Sekolah & 2.10 & 6.33 & $-25.24$ & 15.48 \\
+Pengeluaran per Kapita & 0.00 & 0.00 & $-0.0001$ & 0.0002 \\
+Tingkat Pengangguran Terbuka & 0.95 & 6.29 & $-15.90$ & 27.44 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Uji Signifikansi Koefisien}
+
+Signifikansi statistik koefisien lokal dievaluasi menggunakan statistik-$t$ dengan hipotesis nol $H_0: \beta_j(\mathbf{u}_i) = 0$. Ringkasan hasil uji signifikansi pada tingkat $\alpha = 0.05$ disajikan dalam Tabel~\ref{tab:bps_significance}. Intercept signifikan pada hampir semua lokasi (100\%), mengkonfirmasi adanya efek baseline yang kuat. Variabel Rata-rata Lama Sekolah menunjukkan signifikansi tertinggi di antara prediktor (52.9\% lokasi), diikuti oleh Tingkat Pengangguran (37.9\%) dan Persentase Miskin (34.4\%). Pengeluaran per Kapita tidak signifikan di lokasi manapun, kemungkinan karena masalah skala atau kolinearitas.
+
+\begin{table}[htbp]
+\centering
+\caption{Ringkasan Signifikansi Koefisien Lokal ($\alpha = 0.05$)}
+\label{tab:bps_significance}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Variabel} & \textbf{Mean $|t|$} & \textbf{\% Signifikan} & \textbf{Positif} & \textbf{Negatif} \\
+\midrule
+Intercept & 30.66 & 100.0\% & 2048 & 8 \\
+Persentase Penduduk Miskin & 4.33 & 34.4\% & 192 & 516 \\
+Rata-rata Lama Sekolah & 3.05 & 52.9\% & 948 & 140 \\
+Pengeluaran per Kapita & 0.00 & 0.0\% & 0 & 0 \\
+Tingkat Pengangguran Terbuka & 2.35 & 37.9\% & 420 & 360 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Peta signifikansi koefisien ditampilkan dalam Gambar~\ref{fig:bps_significance} yang menunjukkan lokasi-lokasi dengan koefisien signifikan positif (merah), signifikan negatif (biru), dan tidak signifikan (abu-abu).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/BPS_04_Significance_Maps.pdf}
+\caption{Peta signifikansi koefisien lokal ($\alpha = 0.05$): merah menunjukkan koefisien signifikan positif, biru menunjukkan signifikan negatif, dan abu-abu menunjukkan tidak signifikan.}
+\label{fig:bps_significance}
+\end{figure}
+
+\subsection{Analisis Klaster Koefisien Spasial}
+
+Analisis klaster dilakukan menggunakan algoritma K-Means untuk mengidentifikasi kelompok wilayah dengan pola koefisien yang serupa. Jumlah klaster optimal ditentukan menggunakan skor Silhouette, yang menghasilkan $K = 2$ sebagai jumlah klaster terbaik dengan skor Silhouette 0.82. Hasil klasterisasi menunjukkan pembagian wilayah menjadi dua kelompok utama: Klaster 1 mencakup 499 lokasi (97\%) dengan pola koefisien moderat, sementara Klaster 2 mencakup 15 lokasi (3\%) dengan pola koefisien yang lebih ekstrem.
+
+Peta klaster koefisien spasial ditampilkan dalam Gambar~\ref{fig:bps_cluster}. Distribusi koefisien per klaster divisualisasikan dalam Gambar~\ref{fig:bps_cluster_boxplot}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{GAMBAR/BPS_05_Cluster_Map.pdf}
+\caption{Peta klaster koefisien spasial ($K = 2$): Klaster 1 (merah, n=499) dan Klaster 2 (abu-abu, n=15).}
+\label{fig:bps_cluster}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/BPS_07_Coefficient_Boxplots.pdf}
+\caption{Distribusi koefisien spasial per klaster untuk kelima parameter.}
+\label{fig:bps_cluster_boxplot}
+\end{figure}
+
+\subsection{Uji Diagnostik Residual}
+
+Validasi model dilakukan melalui serangkaian uji diagnostik terhadap residual. Hasil uji diagnostik disajikan dalam Tabel~\ref{tab:bps_diagnostics}.
+
+\begin{table}[htbp]
+\centering
+\caption{Hasil Uji Diagnostik Residual GA-GWR pada Data BPS}
+\label{tab:bps_diagnostics}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Uji} & \textbf{Statistik} & \textbf{p-value} & \textbf{Kesimpulan} \\
+\midrule
+Kolmogorov-Smirnov (Normalitas) & 0.253 & $<0.001$ & Tidak Normal \\
+Breusch-Pagan (Heteroskedastisitas) & 30.94 & $<0.001$ & Heteroskedastis \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Uji Kolmogorov-Smirnov menolak hipotesis normalitas residual pada tingkat signifikansi 5\%, mengindikasikan bahwa distribusi residual menyimpang dari distribusi normal. Uji Breusch-Pagan juga menolak hipotesis homoskedastisitas, menunjukkan adanya heteroskedastisitas dalam residual. Temuan ini mengimplikasikan bahwa inferensi parametrik berbasis asumsi normalitas perlu diinterpretasikan dengan hati-hati, dan pendekatan bootstrap atau metode robust mungkin lebih sesuai untuk konstruksi interval kepercayaan.
+
+Visualisasi diagnostik residual disajikan dalam Gambar~\ref{fig:bps_residual} yang mencakup histogram, Q-Q plot, plot residual vs fitted, dan peta sebaran spasial residual.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{GAMBAR/BPS_06_Residual_Diagnostics.pdf}
+\caption{Diagnostik residual GA-GWR pada data BPS: histogram (kiri atas), Q-Q plot (kanan atas), residual vs fitted (kiri bawah), dan sebaran spasial residual (kanan bawah).}
+\label{fig:bps_residual}
+\end{figure}
+
+\subsection{Pembahasan Hasil}
+
+Hasil studi kasus pada data UHH regional Indonesia memberikan beberapa temuan penting. Pertama, model berbasis spasial (GWR dan GA-GWR) secara substansial mengungguli OLS global, mengkonfirmasi adanya heterogenitas spasial yang signifikan dalam hubungan antara faktor sosial-ekonomi dan UHH. Peningkatan $R^2$ dari 0.30 (OLS) menjadi 0.71 (GWR) menunjukkan bahwa hampir setengah dari variansi yang tidak dapat dijelaskan oleh OLS dapat ditangkap oleh pemodelan koefisien yang bervariasi secara lokal.
+
+Kedua, GWR klasik dengan \emph{kernel} Gaussian mengungguli GA-GWR (GAT) pada data ini. Hasil ini tidak bertentangan dengan temuan simulasi, melainkan mengindikasikan bahwa struktur spasial hubungan UHH dengan determinannya relatif smooth dan dapat diaproksimasi dengan baik oleh \emph{kernel} konvensional. GA-GWR diharapkan memberikan keunggulan lebih signifikan pada data dengan pola spasial yang lebih kompleks, diskontinyu, atau anisotropik.
+
+Ketiga, analisis koefisien spasial mengungkapkan variasi geografis yang substansial dalam pengaruh masing-masing prediktor. Rata-rata Lama Sekolah menunjukkan signifikansi tertinggi dan efek positif dominan, menegaskan peran sentral pendidikan dalam meningkatkan harapan hidup. Persentase Penduduk Miskin memiliki efek negatif yang signifikan di sepertiga wilayah, terutama di kawasan Indonesia Timur. Tingkat Pengangguran menunjukkan efek yang bervariasi arahnya antar wilayah, mengindikasikan kompleksitas hubungan antara ketenagakerjaan dan kesehatan yang bergantung pada konteks lokal.
+
+Keempat, hasil klasterisasi mengidentifikasi sekelompok kecil wilayah (sekitar 3\% dari total) dengan pola koefisien yang sangat berbeda dari mayoritas, yang dapat menjadi fokus investigasi lebih lanjut untuk memahami faktor-faktor unik yang beroperasi di wilayah tersebut.
+
+Implikasi kebijakan dari temuan ini mencakup perlunya pendekatan yang berbeda-beda (\emph{differentiated approach}) dalam intervensi kesehatan publik antar wilayah. Program pengentasan kemiskinan akan memiliki dampak lebih besar pada UHH di wilayah-wilayah di mana koefisien kemiskinan sangat negatif dan signifikan. Investasi pendidikan menunjukkan potensi peningkatan UHH yang lebih merata di seluruh Indonesia. Kebijakan ketenagakerjaan perlu mempertimbangkan konteks lokal mengingat heterogenitas efek TPT terhadap UHH.

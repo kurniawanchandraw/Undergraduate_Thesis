@@ -434,13 +434,13 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.v
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmro7t.tfm
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.toc
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.toc
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.toc
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri7t.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmro7t.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmbi7t.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmbi7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmbi8r.tfm
@@ -452,7 +452,10 @@ OUTPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.lot
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.lof
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.lof
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.lof
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
 OUTPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.lof
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb7t.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
@@ -461,16 +464,16 @@ INPUT ..\BAB 1, 2, 5\Bab1.tex
 INPUT ..\BAB 1, 2, 5\Bab1.tex
 INPUT ..\BAB 1, 2, 5\Bab1.tex
 INPUT ..\BAB 1, 2, 5\Bab1.tex
-INPUT ..\BAB 1, 2, 5\Bab2.tex
-INPUT ..\BAB 1, 2, 5\Bab2.tex
-INPUT ..\BAB 1, 2, 5\Bab2.tex
-INPUT ..\BAB 1, 2, 5\Bab2.tex
-INPUT ..\BAB 1, 2, 5\Bab2.tex
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmbi7t.tfm
+INPUT ..\BAB 1, 2, 5\Bab2.tex
+INPUT ..\BAB 1, 2, 5\Bab2.tex
+INPUT ..\BAB 1, 2, 5\Bab2.tex
+INPUT ..\BAB 1, 2, 5\Bab2.tex
+INPUT ..\BAB 1, 2, 5\Bab2.tex
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmbi7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmbi8r.tfm
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
@@ -551,13 +554,82 @@ INPUT .\Bab4TA2.tex
 INPUT .\Bab4TA2.tex
 INPUT .\Bab4TA2.tex
 INPUT Bab4TA2.tex
-INPUT .\GAMBAR\patrick.jpeg
-INPUT .\GAMBAR\patrick.jpeg
-INPUT .\GAMBAR\patrick.jpeg
-INPUT .\GAMBAR\patrick.jpeg
-INPUT .\GAMBAR\patrick.jpeg
-INPUT .\GAMBAR\patrick.jpeg
-INPUT .\GAMBAR\patrick.jpeg
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
+INPUT .\GAMBAR\Simulasi_02_Heatmap_Coefficients.pdf
+INPUT .\GAMBAR\Simulasi_02_Heatmap_Coefficients.pdf
+INPUT .\GAMBAR\Simulasi_02_Heatmap_Coefficients.pdf
+INPUT .\GAMBAR\Simulasi_02_Heatmap_Coefficients.pdf
+INPUT .\GAMBAR\Simulasi_02_Heatmap_Coefficients.pdf
+INPUT .\GAMBAR\Simulasi_02_Heatmap_Coefficients.pdf
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb7t.tfm
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb7t.tfm
+INPUT .\GAMBAR\Simulasi_07_Sensitivity_Analysis.pdf
+INPUT .\GAMBAR\Simulasi_07_Sensitivity_Analysis.pdf
+INPUT .\GAMBAR\Simulasi_07_Sensitivity_Analysis.pdf
+INPUT .\GAMBAR\Simulasi_07_Sensitivity_Analysis.pdf
+INPUT .\GAMBAR\Simulasi_07_Sensitivity_Analysis.pdf
+INPUT .\GAMBAR\Simulasi_07_Sensitivity_Analysis.pdf
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb7t.tfm
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb7t.tfm
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
+INPUT .\GAMBAR\Simulasi_05_Coverage_Probability.pdf
+INPUT .\GAMBAR\Simulasi_05_Coverage_Probability.pdf
+INPUT .\GAMBAR\Simulasi_05_Coverage_Probability.pdf
+INPUT .\GAMBAR\Simulasi_05_Coverage_Probability.pdf
+INPUT .\GAMBAR\Simulasi_05_Coverage_Probability.pdf
+INPUT .\GAMBAR\Simulasi_05_Coverage_Probability.pdf
+INPUT .\GAMBAR\Simulasi_08_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\Simulasi_08_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\Simulasi_08_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\Simulasi_08_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\Simulasi_08_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\Simulasi_08_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\Simulasi_06_Loss_vs_Epoch.pdf
+INPUT .\GAMBAR\Simulasi_06_Loss_vs_Epoch.pdf
+INPUT .\GAMBAR\Simulasi_06_Loss_vs_Epoch.pdf
+INPUT .\GAMBAR\Simulasi_06_Loss_vs_Epoch.pdf
+INPUT .\GAMBAR\Simulasi_06_Loss_vs_Epoch.pdf
+INPUT .\GAMBAR\Simulasi_06_Loss_vs_Epoch.pdf
+INPUT .\GAMBAR\BPS_08_Model_Comparison_Stable.pdf
+INPUT .\GAMBAR\BPS_08_Model_Comparison_Stable.pdf
+INPUT .\GAMBAR\BPS_08_Model_Comparison_Stable.pdf
+INPUT .\GAMBAR\BPS_08_Model_Comparison_Stable.pdf
+INPUT .\GAMBAR\BPS_08_Model_Comparison_Stable.pdf
+INPUT .\GAMBAR\BPS_08_Model_Comparison_Stable.pdf
+INPUT .\GAMBAR\BPS_01_Coefficient_Maps.pdf
+INPUT .\GAMBAR\BPS_01_Coefficient_Maps.pdf
+INPUT .\GAMBAR\BPS_01_Coefficient_Maps.pdf
+INPUT .\GAMBAR\BPS_01_Coefficient_Maps.pdf
+INPUT .\GAMBAR\BPS_01_Coefficient_Maps.pdf
+INPUT .\GAMBAR\BPS_01_Coefficient_Maps.pdf
+INPUT .\GAMBAR\BPS_04_Significance_Maps.pdf
+INPUT .\GAMBAR\BPS_04_Significance_Maps.pdf
+INPUT .\GAMBAR\BPS_04_Significance_Maps.pdf
+INPUT .\GAMBAR\BPS_04_Significance_Maps.pdf
+INPUT .\GAMBAR\BPS_04_Significance_Maps.pdf
+INPUT .\GAMBAR\BPS_04_Significance_Maps.pdf
+INPUT .\GAMBAR\BPS_05_Cluster_Map.pdf
+INPUT .\GAMBAR\BPS_05_Cluster_Map.pdf
+INPUT .\GAMBAR\BPS_05_Cluster_Map.pdf
+INPUT .\GAMBAR\BPS_05_Cluster_Map.pdf
+INPUT .\GAMBAR\BPS_05_Cluster_Map.pdf
+INPUT .\GAMBAR\BPS_05_Cluster_Map.pdf
+INPUT .\GAMBAR\BPS_07_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\BPS_07_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\BPS_07_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\BPS_07_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\BPS_07_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\BPS_07_Coefficient_Boxplots.pdf
+INPUT .\GAMBAR\BPS_06_Residual_Diagnostics.pdf
+INPUT .\GAMBAR\BPS_06_Residual_Diagnostics.pdf
+INPUT .\GAMBAR\BPS_06_Residual_Diagnostics.pdf
+INPUT .\GAMBAR\BPS_06_Residual_Diagnostics.pdf
+INPUT .\GAMBAR\BPS_06_Residual_Diagnostics.pdf
+INPUT .\GAMBAR\BPS_06_Residual_Diagnostics.pdf
 INPUT ..\BAB 1, 2, 5\Bab5.tex
 INPUT ..\BAB 1, 2, 5\Bab5.tex
 INPUT ..\BAB 1, 2, 5\Bab5.tex
@@ -584,7 +656,6 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang3.st
 INPUT .\syntax R template.R
 INPUT .\syntax R template.R
 INPUT syntax R template.R
-INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT d:\Semester VII\Tugas Akhir\Naskah\FILE SKRIPSI\TA 2\out\TA2.aux
@@ -606,8 +677,12 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib8.pfb
@@ -622,6 +697,18 @@ INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss10.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss10.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss12.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss12.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss8.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss8.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss9.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmss9.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmssbx10.pfb
+INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmssbx10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\ASUS\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb

@@ -5,6 +5,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Perbandingan Performa Prediksi Model Baseline ($n = 3{,}600$, $\sigma = 0.5$)}}{268}{table.caption.20}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces RMSE Estimasi Koefisien Spasial}}{268}{table.caption.21}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Perbandingan Arsitektur GNN sebagai Backbone GA-GWR}}{269}{table.caption.23}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Analisis Sensitivitas GA-GWR terhadap Ukuran Sampel dan Tingkat Noise}}{269}{table.caption.24}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Coverage Probability GA-GWR pada Berbagai Tingkat Kepercayaan}}{274}{table.caption.26}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Statistik Deskriptif Variabel Studi Kasus Data BPS}}{277}{table.caption.30}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Perbandingan Performa Prediksi Model pada Data BPS}}{278}{table.caption.31}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Statistik Koefisien Spasial GA-GWR pada Data BPS}}{279}{table.caption.34}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Ringkasan Signifikansi Koefisien Lokal ($\alpha = 0.05$)}}{281}{table.caption.35}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Hasil Uji Diagnostik Residual GA-GWR pada Data BPS}}{283}{table.caption.39}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
