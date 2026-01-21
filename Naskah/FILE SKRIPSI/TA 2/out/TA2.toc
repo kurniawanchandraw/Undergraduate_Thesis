@@ -8,9 +8,9 @@
 \contentsline {chapter}{DAFTAR ISI}{viii}{section*.7}%
 \contentsline {chapter}{DAFTAR TABEL}{xii}{section*.9}%
 \contentsline {chapter}{DAFTAR GAMBAR}{xiii}{section*.11}%
-\contentsline {chapter}{INTISARI}{xv}{chapter*.13}%
+\contentsline {chapter}{INTISARI}{xiv}{chapter*.13}%
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{ABSTRACT}{xvi}{chapter*.14}%
+\contentsline {chapter}{ABSTRACT}{xv}{chapter*.14}%
 \babel@toc {bahasa}{}\relax 
 \contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Latar Belakang}{1}{section.1.1}%
@@ -65,7 +65,7 @@
 \contentsline {subsection}{\numberline {2.8.1}Model Dasar dan Notasi}{167}{subsection.2.8.1}%
 \contentsline {subsection}{\numberline {2.8.2}Fungsi Aktivasi}{168}{subsection.2.8.2}%
 \contentsline {subsection}{\numberline {2.8.3}Fungsi Kerugian dan Kriteria Pembelajaran}{171}{subsection.2.8.3}%
-\contentsline {subsection}{\numberline {2.8.4}Pembelajaran dengan Propagasi Mundur}{172}{subsection.2.8.4}%
+\contentsline {subsection}{\numberline {2.8.4}Pembelajaran dengan Propagasi Mundur}{173}{subsection.2.8.4}%
 \contentsline {subsection}{\numberline {2.8.5}Optimisasi Parameter}{174}{subsection.2.8.5}%
 \contentsline {subsection}{\numberline {2.8.6}Jaringan Saraf Tiruan sebagai Aproksimasi Universal}{180}{subsection.2.8.6}%
 \contentsline {section}{\numberline {2.9}Jaringan Saraf Graf}{183}{section.2.9}%
@@ -105,22 +105,25 @@
 \contentsline {chapter}{\numberline {IV}STUDI KASUS}{261}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Studi Simulasi}{261}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Desain Eksperimen Simulasi}{262}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Evaluasi Akurasi Estimasi Titik}{266}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Evaluasi Efisiensi Komputasi}{269}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Analisis Diagnostik Residual}{271}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Diskusi Hasil Simulasi}{273}{subsection.4.1.5}%
-\contentsline {subsection}{\numberline {4.1.6}Validasi Inferensi Statistik dan Uji Distribusi}{274}{subsection.4.1.6}%
-\contentsline {section}{\numberline {4.2}Studi Kasus pada Data Umur Harapan Hidup Regional}{276}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Deskripsi Data dan Variabel}{276}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Pemodelan dan Perbandingan Kinerja Prediksi}{278}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Estimasi Koefisien Spasial GA-GWR}{279}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Uji Signifikansi Koefisien}{280}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Analisis Klaster Koefisien Spasial}{282}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}Uji Diagnostik Residual}{282}{subsection.4.2.6}%
-\contentsline {subsection}{\numberline {4.2.7}Pembahasan Hasil}{284}{subsection.4.2.7}%
-\contentsline {chapter}{\numberline {V}PENUTUP}{286}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Kesimpulan}{286}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Saran}{286}{section.5.2}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{287}{section.5.2}%
-\contentsline {chapter}{\numberline {A}Data}{291}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Syntax R}{292}{appendix.B}%
+\contentsline {subsection}{\numberline {4.1.2}Evaluasi Akurasi Estimasi Titik}{267}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Analisis Diagnostik Residual}{272}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Validasi Inferensi Statistik}{274}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Analisis Bias Estimator Cross-Fitted}{277}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Pengujian Hipotesis dan Kualitas Estimasi Variance}{278}{subsection.4.1.6}%
+\contentsline {section}{\numberline {4.2}Studi Kasus pada Data Kredit UMKM dan Harga Pangan Indonesia}{280}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Deskripsi Data dan Variabel}{280}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Analisis Multikolinearitas}{282}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Pemodelan dan Perbandingan Kinerja Prediksi}{285}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Estimasi Koefisien Spasial GWR}{287}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Uji Signifikansi Koefisien Lokal}{287}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Uji Diagnostik Residual dan Validasi Model}{289}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Pembahasan Hasil dan Implikasi untuk Kebijakan}{290}{subsection.4.2.7}%
+\contentsline {subsection}{\numberline {4.2.8}Estimasi T-Statistics Lokal dengan Sandwich Estimator}{292}{subsection.4.2.8}%
+\contentsline {subsection}{\numberline {4.2.9}Tipologi Spasial melalui Analisis Clustering}{293}{subsection.4.2.9}%
+\contentsline {subsection}{\numberline {4.2.10}Validasi Diagnostik Model GA-GWR dengan Backbone GAT}{295}{subsection.4.2.10}%
+\contentsline {chapter}{\numberline {V}PENUTUP}{297}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kesimpulan}{297}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Saran}{297}{section.5.2}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{298}{section.5.2}%
+\contentsline {chapter}{\numberline {A}Data}{302}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Syntax R}{303}{appendix.B}%

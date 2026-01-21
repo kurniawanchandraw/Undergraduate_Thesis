@@ -10,17 +10,12 @@
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Diagram hubungan antarmode konvergensi}}{89}{figure.caption.19}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Perbandingan koefisien spasial sejati (baris atas), estimasi GWR klasik (baris tengah), dan estimasi GA-GWR (baris bawah) untuk $\beta _0$ (kolom kiri), $\beta _1$ (kolom tengah), dan $\beta _2$ (kolom kanan). GA-GWR menangkap pola spasial dengan lebih akurat termasuk diskontinuitas tajam pada $\beta _1$.}}{268}{figure.caption.22}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Heatmap analisis sensitivitas GA-GWR: $R^2$ (kiri), RMSE prediksi (tengah), dan Mean RMSE koefisien (kanan) sebagai fungsi ukuran sampel $N_{\text {LOC}}$ dan tingkat noise $\sigma $. Warna hijau mengindikasikan performa baik.}}{270}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Evaluasi coverage probability GA-GWR: interval prediksi 90\% untuk subset observasi test (kiri) dan perbandingan coverage aktual vs ekspektasi (kanan). Garis putus-putus menunjukkan coverage ideal.}}{275}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Boxplot distribusi koefisien spasial: perbandingan nilai sejati (True), estimasi GWR klasik, dan estimasi GA-GWR untuk $\beta _0$ (kiri), $\beta _1$ (tengah), dan $\beta _2$ (kanan).}}{275}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Kurva konvergensi training GA-GWR: loss per epoch untuk setiap fold dalam 3-fold temporal cross-validation.}}{276}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Perbandingan performa model prediksi UHH pada data BPS: koefisien determinasi $R^2$ (kiri), RMSE (tengah), dan MAE (kanan).}}{279}{figure.caption.32}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Peta sebaran koefisien spasial GA-GWR $\bm {\beta }(\mathbf {u}_i)$ untuk kelima parameter: Intercept, Persentase Penduduk Miskin, Rata-rata Lama Sekolah, Pengeluaran per Kapita, dan Tingkat Pengangguran Terbuka.}}{280}{figure.caption.33}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Peta signifikansi koefisien lokal ($\alpha = 0.05$): merah menunjukkan koefisien signifikan positif, biru menunjukkan signifikan negatif, dan abu-abu menunjukkan tidak signifikan.}}{281}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Peta klaster koefisien spasial ($K = 2$): Klaster 1 (merah, n=499) dan Klaster 2 (abu-abu, n=15).}}{282}{figure.caption.37}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Distribusi koefisien spasial per klaster untuk kelima parameter.}}{283}{figure.caption.38}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Diagnostik residual GA-GWR pada data BPS: histogram (kiri atas), Q-Q plot (kanan atas), residual vs fitted (kiri bawah), dan sebaran spasial residual (kanan bawah).}}{284}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Perbandingan koefisien spasial sejati (baris atas), estimasi GWR klasik (baris tengah), dan estimasi GA-GWR (baris bawah) untuk $\beta _0$ (kolom kiri), $\beta _1$ (kolom tengah), dan $\beta _2$ (kolom kanan). GA-GWR menangkap pola spasial dengan lebih akurat termasuk diskontinuitas tajam pada $\beta _1$.}}{270}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \emph {Heatmap} analisis sensitivitas GA-GWR.}}{272}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Analisis diagnostik residual GA-GWR (GraphSAGE backbone): (kiri atas) histogram residual standarisasi dengan overlay kurva normal, (kanan atas) Q-Q plot, (kiri bawah) residual vs fitted values, (tengah bawah) scale-location plot, (bawah kiri) residual autocorrelation, (bawah kanan) peta sebaran spasial residual.}}{275}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Evaluasi \emph {coverage probability} GA-GWR.}}{276}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Kurva konvergensi pelatihan GA-GWR, kerugian tiap \emph {epoch} untuk setiap \emph {fold} dalam 3-\emph {fold temporal cross-fitting}.}}{277}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Peta clustering elastisitas harga koefisien lokal GWR yang menunjukkan 3 cluster sensitivitas: Tinggi (merah), Moderat (hijau), dan Rendah (biru) di 34 provinsi Indonesia.}}{294}{figure.caption.46}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

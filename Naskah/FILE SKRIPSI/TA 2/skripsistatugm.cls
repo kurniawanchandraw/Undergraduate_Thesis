@@ -31,7 +31,7 @@
 
 \RequirePackage{booktabs}
 \RequirePackage[natbibapa]{apacite}
-\RequirePackage[natbibapa]{apacite}
+
 
 % ganti and -> dan
 \renewcommand{\BBA}{dan}

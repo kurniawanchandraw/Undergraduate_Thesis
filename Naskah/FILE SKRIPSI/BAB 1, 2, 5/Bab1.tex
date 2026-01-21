@@ -2,7 +2,7 @@
 \chapter{PENDAHULUAN}
 
 \section{Latar Belakang}
-Dalam ranah statistika spasial dan ekonometrika, tantangan fundamental yang terus dihadapi adalah pemodelan ketidakstasioneran spasial (\emph{spatial non-stationarity}), yaitu suatu kondisi ketika parameter hubungan antarvariabel tidak bersifat konstan melainkan bervariasi melintasi ruang geografis. Pendekatan konvensional yang dominan selama dua dekade terakhir, yaitu \emph{Geographically Weighted Regression} (GWR), beroperasi di atas asumsi dasar bahwa heterogenitas spasial dapat ditangkap melalui fungsi pembobot (\emph{kernel}) yang bersifat tetap dan deterministik. Asumsi ini, yang berakar pada Hukum Pertama Geografi Tobler, menyatakan bahwa
+Dalam ranah statistika spasial dan ekonometrika, tantangan fundamental yang terus dihadapi adalah pemodelan ketidakstasioneran spasial, yaitu suatu kondisi ketika parameter hubungan antarvariabel tidak bersifat konstan melainkan bervariasi melintasi ruang geografis. Pendekatan konvensional yang dominan selama dua dekade terakhir, yaitu \emph{Geographically Weighted Regression} (GWR), beroperasi di atas asumsi dasar bahwa heterogenitas spasial dapat ditangkap melalui fungsi pembobot (\emph{kernel}) yang bersifat tetap dan deterministik. Asumsi ini, yang berakar pada Hukum Pertama Geografi Tobler, menyatakan bahwa
 ``segala sesuatu saling berhubungan, tetapi hal-hal yang dekat lebih berhubungan daripada hal-hal yang jauh" \citep{fotheringham2002}. Namun, dalam kenyataannya, data modern semakin kompleks sehingga asumsi kaku mengenai peluruhan jarak (\emph{distance decay}) yang monotonik dan isotropik ini menjadi batasan metodologis yang serius. 
 
 Penelitian ini tidak hanya berangkat dari fenomena empiris, melainkan dari kebutuhan mendesak untuk merevisi arsitektur matematis dari mekanisme pembobotan itu sendiri. GWR klasik, meskipun elegan dalam kesederhanaannya, mengalami apa yang disebut sebagai bias induktif (\emph{inductive bias}) yang sempit. Metode ini memaksakan struktur lingkungan Euclidean pada data yang seringkali berada pada Manifold non-Euclidean, seperti jaringan transportasi perkotaan, kepulauan yang terpisah laut, atau interaksi sosial-ekonomi yang tidak terikat jarak fisik semata. Ketergantungan pada kernel tetap (seperti \emph{Gaussian} atau \emph{exponential}) dengan bandwidth yang seringkali global atau adaptif secara terbatas, gagal menangkap dinamika dependensi spasial yang bersifat asimetris dan multi-skala. \citep{murakami2021}
@@ -13,7 +13,7 @@ Perkembangan terkini di bidang \emph{geospatial artificial intelligence} (GeoAI)
 
 Di sisi lain, \citet{zhu2022srgcnn} mengusulkan \emph{Spatial Regression Graph Convolutional Neural Networks} (SRGCNN) yang mengintegrasikan \emph{graph convolutional neural network} (GCN) ke dalam paradigma regresi spasial. Pendekatan ini memperlakukan data spasial sebagai graf, dengan simpul merepresentasikan lokasi dan sisi (\emph{edges}) merepresentasikan keterhubungan spasial antarunit observasi. Dengan mekanisme \emph{message passing} yang mengagregasi informasi dari tetangga terdekat, SRGCNN tidak hanya mampu menangani struktur data non-Euclidean, tetapi juga mendukung pembelajaran semi-terawasi (\emph{semi-supervised learning}) yang memungkinkan model belajar dari data yang sebagian tidak teramati. Pendekatan ini membuka peluang besar untuk memperkuat model regresi spasial konvensional melalui pembobotan berbasis graf.
 
-Berdasarkan keterbatasan fungsi \emph{kernel} klasik dan juga perkembangan-perkembangan tersebut, penelitian ini berupaya mengintegrasikan prinsip pembobotan adaptif berbasis GNN ke dalam kerangka GWR. Namun, penggunaan \emph{kernel} terestimasi dengan GNN dapat menyebabkan suatu permasalahan yang dinamakan sebagai endogenitas. Endogenitas terjadi ketika
+Berdasarkan keterbatasan fungsi \emph{kernel} klasik dan juga perkembangan tersebut, penelitian ini berupaya mengintegrasikan prinsip pembobotan adaptif berbasis GNN ke dalam kerangka GWR. Namun, penggunaan \emph{kernel} terestimasi dengan GNN dapat menyebabkan suatu permasalahan yang dinamakan sebagai endogenitas. Endogenitas terjadi ketika
 \begin{equation}
     \text{Cov}(w_{ij}, \varepsilon_i) \neq 0,
 \end{equation}
@@ -52,8 +52,8 @@ Pada penyusunan skripsi ini, penulis mengacu pada sistematika penulisan sebagai 
 \newline \textbf{BAB II LANDASAN TEORI}
 \par Bab ini membahas dasar-dasar teori yang digunakan, termasuk teori regresi spasial-temporal, jaringan saraf graf, dan pembelajaran semi-terawasi.\\
 \newline \textbf{BAB III KERANGKA METODOLOGIS DAN ANALISIS ASIMTOTIK \emph{GRAPH ATTENTION-BASED GEOGRAPHICALLY WEIGHTED REGRESSION}}
-\par Bab ini menjelaskan rancangan model GNN-GTVC dan GNN-GTWR, formulasi matematis, serta prosedur estimasi dan validasi model.\\
+\par Bab ini menjelaskan rancangan model GA-GWR, formulasi matematis, analisis asimtotik, dan analisis komputasi.\\
 \newline \textbf{BAB IV STUDI KASUS}
-\par Bab ini berisi studi simulasi untuk \emph{stress test} dan hasil implementasi model pada data Umur Harapan Hidup (UHH) antarkabupaten/kota di Indonesia periode 2023--2025 serta perbandingan kinerja model.\\
+\par Bab ini berisi studi simulasi untuk \emph{stress test} dan hasil implementasi model pada data kredit UMKM di Indonesia.\\
 \newline \textbf{BAB V PENUTUP}
 \par Bab ini menyajikan kesimpulan yang diperoleh dari hasil penelitian dan memberikan saran untuk penelitian selanjutnya.

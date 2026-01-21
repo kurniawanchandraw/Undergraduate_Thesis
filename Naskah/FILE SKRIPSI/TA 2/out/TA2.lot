@@ -5,16 +5,27 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Perbandingan Performa Prediksi Model Baseline ($n = 3{,}600$, $\sigma = 0.5$)}}{268}{table.caption.20}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces RMSE Estimasi Koefisien Spasial}}{268}{table.caption.21}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Perbandingan Arsitektur GNN sebagai Backbone GA-GWR}}{269}{table.caption.23}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Analisis Sensitivitas GA-GWR terhadap Ukuran Sampel dan Tingkat Noise}}{269}{table.caption.24}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Coverage Probability GA-GWR pada Berbagai Tingkat Kepercayaan}}{274}{table.caption.26}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Statistik Deskriptif Variabel Studi Kasus Data BPS}}{277}{table.caption.30}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Perbandingan Performa Prediksi Model pada Data BPS}}{278}{table.caption.31}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Statistik Koefisien Spasial GA-GWR pada Data BPS}}{279}{table.caption.34}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Ringkasan Signifikansi Koefisien Lokal ($\alpha = 0.05$)}}{281}{table.caption.35}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Hasil Uji Diagnostik Residual GA-GWR pada Data BPS}}{283}{table.caption.39}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Perbandingan Kernel GWR Gaussian dan Exponential}}{264}{table.caption.20}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Konfigurasi Hyperparameter Model GA-GWR}}{266}{table.caption.21}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Perbandingan Performa Prediksi Model ($n = 3.600$, $\sigma = 0.5$)}}{268}{table.caption.22}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces RMSE Estimasi Koefisien Spasial}}{269}{table.caption.23}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Perbandingan Arsitektur GNN sebagai \emph {Backbone} GA-GWR}}{269}{table.caption.25}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Analisis Sensitivitas GA-GWR terhadap Ukuran Sampel dan Tingkat Noise}}{271}{table.caption.26}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Hasil Uji Normalitas Residual GA-GWR}}{273}{table.caption.28}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces \emph {Coverage Probability} GA-GWR pada Berbagai Tingkat Kepercayaan}}{276}{table.caption.30}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Analisis Bias Estimator GA-GWR vs GWR - Skenario Baseline ($n = 3600$, $\sigma = 0{,}5$)}}{278}{table.caption.33}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Coverage Probability Hypothesis Test: $\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \beta $}\mathaccent "0362{\beta }^{\mathrm {CF}}(\mathbf {u}) = \beta ^*(\mathbf {u})$}}{279}{table.caption.34}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Analisis Estimasi Variance: $\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma }^2$ vs $\sigma ^2_{\mathrm {true}} = 0{,}25$}}{279}{table.caption.35}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Statistik Deskriptif Variabel Studi Kasus Data BI dan SEKDA}}{282}{table.caption.36}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Variance Inflation Factor (VIF) dan Korelasi Variabel Prediktor}}{284}{table.caption.37}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Ringkasan Kondisi Angka Lokal GWR}}{284}{table.caption.38}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces Spesifikasi Konfigurasi GA-GWR pada Data BI-SEKDA}}{286}{table.caption.39}%
+\contentsline {table}{\numberline {4.16}{\ignorespaces Perbandingan Performa Prediksi Model pada Data BI-SEKDA}}{286}{table.caption.40}%
+\contentsline {table}{\numberline {4.17}{\ignorespaces Statistik Koefisien Spasial GWR (Kernel Exponential) pada Data BI-SEKDA}}{288}{table.caption.41}%
+\contentsline {table}{\numberline {4.18}{\ignorespaces Ringkasan Signifikansi Koefisien Lokal GWR ($\alpha = 0{,}05$)}}{289}{table.caption.42}%
+\contentsline {table}{\numberline {4.19}{\ignorespaces Hasil Uji Diagnostik Residual GWR pada Data BI-SEKDA}}{289}{table.caption.43}%
+\contentsline {table}{\numberline {4.20}{\ignorespaces Ringkasan T-Statistics Lokal dengan Sandwich Estimator}}{292}{table.caption.44}%
+\contentsline {table}{\numberline {4.21}{\ignorespaces Karakterisasi Cluster Koefisien Elastisitas Harga}}{293}{table.caption.45}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

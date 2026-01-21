@@ -479,7 +479,7 @@ Untuk setiap \emph{fold} $k$, dapat didefinisikan estimator parsial yang hanya m
     \begin{equation}
         \widehat{\boldsymbol{\beta}}^{(k)}(\mathbf{u}_0) = \bigl(\mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{X}_k\bigr)^{-1} \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{y}_k,
     \end{equation}
-    dengan $\mathbf{X}_k$ dan $\mathbf{y}_k$ adalah matriks desain dan vektor respons untuk observasi di $\mathcal{I}_k$, serta $\mathbf{W}^{(-k)}_k(\mathbf{u}_0)$ adalah matriks bobot diagonal yang dihitung menggunakan parameter $\widehat{\boldsymbol{\theta}}^{(-k)}$.
+    dengan $\mathbf{X}_k \in \mathbb{R}^{m_k \times p}$ adalah matriks desain untuk observasi di $\mathcal{I}_k$, $\mathbf{y}_k \in \mathbb{R}^{m_k}$ adalah vektor respons untuk fold $k$ dengan $m_k = |\mathcal{I}_k|$, dan $\mathbf{W}^{(-k)}_k(\mathbf{u}_0) = \mathrm{diag}(w^{(-k)}_{i_1}, \ldots, w^{(-k)}_{i_{m_k}})$ adalah matriks bobot diagonal (\emph{cross-fitted}) untuk observasi di fold $k$ dengan parameter GNN $\widehat{\boldsymbol{\theta}}^{(-k)}$ yang dilatih tanpa data dari fold $k$.
 \end{definisi}
 
 Estimator parsial $\widehat{\boldsymbol{\beta}}^{(k)}(\mathbf{u}_0)$ bersifat valid dalam arti eksogenitas terpenuhi, namun hanya menggunakan sebagian kecil data (sekitar $n/K$ observasi). Untuk memanfaatkan seluruh data sambil mempertahankan validitas inferensi, estimator-estimator parsial digabungkan melalui skema rata-rata tertimbang.
@@ -497,6 +497,7 @@ Estimator parsial $\widehat{\boldsymbol{\beta}}^{(k)}(\mathbf{u}_0)$ bersifat va
     \begin{equation}
         \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{X}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{y}_k\Biggr).
     \end{equation}
+    Notasi blockwise di atas menunjukkan bahwa matriks desain $\mathbf{X}_k$, vektor respons $\mathbf{y}_k$, dan matriks bobot $\mathbf{W}^{(-k)}_k$ disusun sesuai partisi fold, dengan penjumlahan diakumulasikan lintas semua $K$ fold untuk mengintegrasikan informasi dari seluruh data sambil mempertahankan independensi struktur cross-fitting.
 \end{teorema}
 
 \begin{proof}
@@ -523,11 +524,16 @@ Estimator parsial $\widehat{\boldsymbol{\beta}}^{(k)}(\mathbf{u}_0)$ bersifat va
         \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) \mathbf{x}_i \mathbf{x}_i^\top = \sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{X}_k.
     \end{equation}
     
+    Struktur blockwise memberikan:
+    \begin{align}
+        \mathbf{X}^\top \mathbf{W}_{\text{block}} \mathbf{X} &= \sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k \mathbf{X}_k, \\
+        \mathbf{X}^\top \mathbf{W}_{\text{block}} \mathbf{y} &= \sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k \mathbf{y}_k.
+    \end{align}
     Dengan demikian, persamaan normal menjadi
     \begin{equation}
-        \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{X}_k\Biggr) \widehat{\boldsymbol{\beta}} = \sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{y}_k.
+        \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k \mathbf{X}_k\Biggr) \widehat{\boldsymbol{\beta}} = \sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k \mathbf{y}_k,
     \end{equation}
-    Dengan asumsi bahwa matriks $\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{X}_k$ invertibel, solusinya adalah
+    yang secara kompak dapat ditulis sebagai $(\mathbf{X}^\top \mathbf{W}_{\text{block}} \mathbf{X}) \widehat{\boldsymbol{\beta}} = \mathbf{X}^\top \mathbf{W}_{\text{block}} \mathbf{y}$. Dengan asumsi bahwa matriks $\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k \mathbf{X}_k$ invertibel, solusinya adalah
     \begin{equation}
         \label{eq:cf_closedform}
         \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{X}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k(\mathbf{u}_0) \mathbf{y}_k\Biggr).
@@ -732,13 +738,12 @@ Analisis bias dimulai dengan dekomposisi estimator \emph{cross-fitted} ke dalam 
     \end{equation}
     dengan suku bias
     \begin{equation}
-        \mathbf{B}_n(\mathbf{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k \mathbf{X}_k \bigl(\boldsymbol{\beta}(\mathbf{U}_k) - \boldsymbol{\beta}(\mathbf{u}_0)\bigr)\Biggr)
+        \mathbf{B}_n(\mathbf{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \mathbf{x}_i \mathbf{x}_i^\top \bigl(\boldsymbol{\beta}(\mathbf{u}_i) - \boldsymbol{\beta}(\mathbf{u}_0)\bigr)\Biggr)
     \end{equation}
     dan suku galat (\emph{noise term})
     \begin{equation}
-        \mathbf{V}_n(\mathbf{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \mathbf{X}_k^\top \mathbf{W}^{(-k)}_k \boldsymbol{\varepsilon}_k\Biggr),
+        \mathbf{V}_n(\mathbf{u}_0) = \Biggl(\sum_{k=1}^K \mathbf{H}_k\Biggr)^{-1} \Biggl(\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i \mathbf{x}_i \varepsilon_i\Biggr),
     \end{equation}
-    dengan $\boldsymbol{\beta}(\mathbf{U}_k) - \boldsymbol{\beta}(\mathbf{u}_0)$ adalah vektor yang elemen ke-$i$-nya (untuk $i \in \mathcal{I}_k$) adalah $\boldsymbol{\beta}(\mathbf{u}_i) - \boldsymbol{\beta}(\mathbf{u}_0)$.
 \end{teorema}
 
 \begin{proof}
@@ -873,45 +878,122 @@ Hasil $\mathbf{B}_n(\mathbf{u}_0) = \mathcal{O}_p(h^2)$ berlaku secara umum untu
 
 \subsection{Analisis Bias Asimtotik Variansi Galat}
 
-Selain estimasi koefisien lokal, diperlukan pula estimasi variansi galat $\sigma^2$ untuk konstruksi interval konfidensi dan uji statistik.
+Selain estimasi koefisien lokal, diperlukan pula estimasi variansi galat $\sigma^2$
+untuk konstruksi interval konfidensi dan uji statistik pada model GA-GWR berbasis
+\emph{cross-fitting}.
 
 \begin{teorema}
-    Estimator variansi galat \emph{cross-fitted} yang diperoleh dari minimisasi fungsi \emph{log-likelihood} tertimbang Gaussian diberikan oleh
-    \begin{equation}
-        \widehat{\sigma}^2_{\mathrm{CF}}(\mathbf{u}_0) = \frac{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) \bigl(y_i - \mathbf{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0)\bigr)^2}{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) - p},
-    \end{equation}
-    dengan $p$ adalah jumlah parameter (dimensi $\boldsymbol{\beta}$).
+Estimator variansi galat \emph{cross-fitted} pada lokasi $\mathbf{u}_0$ diberikan oleh
+\begin{equation}
+\widehat{\sigma}^2_{\mathrm{CF}}(\mathbf{u}_0)
+=
+\frac{
+\mathbf{e}^\top \mathbf{W}_{\text{block}} \mathbf{e}
+}{
+\operatorname{tr}(\mathbf{W}_{\text{block}}) - \operatorname{tr}\!\bigl(\mathbf{H}_{\mathrm{CF}}(\mathbf{u}_0)\bigr)
+},
+\end{equation}
+dengan notasi blockwise $\mathbf{e} = \mathbf{y} - \mathbf{X} \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0)$ adalah vektor residual full (tumpukan dari $\mathbf{e}_k = \mathbf{y}_k - \mathbf{X}_k \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}$ untuk setiap fold), $\mathbf{W}_{\text{block}}$ adalah matriks bobot blok diagonal terdiri dari blok-blok $\mathbf{W}^{(-k)}_k$, dan $\mathbf{H}_{\mathrm{CF}}(\mathbf{u}_0)$ adalah \emph{hat matrix} efektif pada skema \emph{cross-fitting}.
 \end{teorema}
 
 \begin{proof}
-    Diasumsikan galat berdistribusi normal $\varepsilon_i \mid \mathbf{x}_i, \mathbf{u}_i \sim \mathcal{N}(0, \sigma^2)$. Fungsi \emph{log-likelihood} tertimbang lokal untuk lokasi $\mathbf{u}_0$ diberikan oleh
-    \begin{equation}
-        \ell(\boldsymbol{\beta}, \sigma^2; \mathbf{u}_0) = -\frac{1}{2} \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) \left[ \log(2\pi\sigma^2) + \frac{(y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2}{\sigma^2} \right].
-    \end{equation}
-    Dengan mendefinisikan $W_{\mathrm{tot}} = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0)$ dan $$\mathrm{RSS}_w = \sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) (y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2,$$ fungsi \emph{log-likelihood} dapat ditulis sebagai
-    \begin{equation}
-        \ell(\boldsymbol{\beta}, \sigma^2; \mathbf{u}_0) = -\frac{W_{\mathrm{tot}}}{2} \log(2\pi) - \frac{W_{\mathrm{tot}}}{2} \log(\sigma^2) - \frac{\mathrm{RSS}_w}{2\sigma^2}.
-    \end{equation}
-    Untuk memperoleh estimator $\sigma^2$, dihitung turunan parsial terhadap $\sigma^2$ dan disamakan dengan nol:
-    \begin{equation}
-        \frac{\partial \ell}{\partial \sigma^2} = -\frac{W_{\mathrm{tot}}}{2\sigma^2} + \frac{\mathrm{RSS}_w}{2(\sigma^2)^2} = 0.
-    \end{equation}
-    Dengan mengalikan kedua ruas dengan $2(\sigma^2)^2$ dan menyusun ulang, diperoleh
-    \begin{equation}
-        \mathrm{RSS}_w = W_{\mathrm{tot}} \cdot \sigma^2,
-    \end{equation}
-    sehingga estimator \emph{maximum likelihood} tertimbang adalah
-    \begin{equation}
-        \widehat{\sigma}^2_{\mathrm{ML}} = \frac{\mathrm{RSS}_w}{W_{\mathrm{tot}}} = \frac{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) \bigl(y_i - \mathbf{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0)\bigr)^2}{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0)}.
-    \end{equation}
-    Namun, estimator MLE ini bersifat bias ke bawah karena tidak memperhitungkan derajat kebebasan yang hilang akibat estimasi $p$ parameter dalam $\boldsymbol{\beta}$. Koreksi bias dilakukan dengan mengganti penyebut $W_{\mathrm{tot}}$ dengan $W_{\mathrm{tot}} - p$, yang menghasilkan estimator tak-bias (atau mendekati tak-bias)
-    \begin{equation}
-        \widehat{\sigma}^2_{\mathrm{CF}}(\mathbf{u}_0) = \frac{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) \bigl(y_i - \mathbf{x}_i^\top \widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0)\bigr)^2}{\displaystyle\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0) - p}.
-    \end{equation}    
-    Koreksi ini analog dengan pembagi $(n - p)$ pada estimator variansi OLS klasik $\widehat{\sigma}^2 = \mathrm{RSS}/(n - p)$.
+Diasumsikan bahwa galat bersyarat berdistribusi normal
+$\varepsilon_i \mid \mathbf{x}_i, \mathbf{u}_i \sim \mathcal{N}(0,\sigma^2)$
+dan saling bebas antar observasi.
+Fungsi \emph{log-likelihood} Gaussian tertimbang lokal pada lokasi $\mathbf{u}_0$
+dapat dituliskan sebagai
+\begin{equation}
+\ell(\boldsymbol{\beta}, \sigma^2; \mathbf{u}_0)
+=
+-\frac{1}{2}
+\sum_{k=1}^K \sum_{i \in \mathcal{I}_k}
+w^{(-k)}_i(\mathbf{u}_0)
+\left[
+\log(2\pi\sigma^2)
++
+\frac{(y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2}{\sigma^2}
+\right].
+\end{equation}
+
+Dengan mendefinisikan total bobot
+\[
+W_{\mathrm{tot}}(\mathbf{u}_0)
+=
+\sum_{k=1}^K \sum_{i \in \mathcal{I}_k} w^{(-k)}_i(\mathbf{u}_0),
+\]
+serta \emph{weighted residual sum of squares}
+\[
+\mathrm{RSS}_w(\boldsymbol{\beta})
+=
+\sum_{k=1}^K \sum_{i \in \mathcal{I}_k}
+w^{(-k)}_i(\mathbf{u}_0)
+\bigl(y_i - \mathbf{x}_i^\top \boldsymbol{\beta}\bigr)^2,
+\]
+fungsi \emph{log-likelihood} dapat ditulis ulang sebagai
+\begin{equation}
+\ell(\boldsymbol{\beta}, \sigma^2; \mathbf{u}_0)
+=
+-\frac{W_{\mathrm{tot}}}{2}\log(2\pi)
+-
+\frac{W_{\mathrm{tot}}}{2}\log(\sigma^2)
+-
+\frac{\mathrm{RSS}_w(\boldsymbol{\beta})}{2\sigma^2}.
+\end{equation}
+
+Turunan parsial terhadap $\sigma^2$ menghasilkan
+\begin{equation}
+\frac{\partial \ell}{\partial \sigma^2}
+=
+-\frac{W_{\mathrm{tot}}}{2\sigma^2}
++
+\frac{\mathrm{RSS}_w(\boldsymbol{\beta})}{2(\sigma^2)^2}.
+\end{equation}
+Dengan menyamakan turunan tersebut dengan nol dan menyusun ulang, diperoleh
+\begin{equation}
+\widehat{\sigma}^2_{\mathrm{ML}}(\mathbf{u}_0)
+=
+\frac{\mathrm{RSS}_w(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}})}{W_{\mathrm{tot}}}.
+\end{equation}
+
+Estimator \emph{maximum likelihood} ini bersifat bias ke bawah karena
+$\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0)$ diperoleh melalui
+estimasi parameter regresi yang mengurangi derajat kebebasan efektif.
+Dalam kerangka regresi linear tertimbang, bias ini dapat dikarakterisasi oleh
+\emph{hat matrix} efektif $\mathbf{H}_{\mathrm{CF}}(\mathbf{u}_0)$, sehingga
+\begin{equation}
+\mathbb{E}\!\left[\mathrm{RSS}_w(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}})\right]
+=
+\sigma^2
+\left(
+W_{\mathrm{tot}}
+-
+\operatorname{tr}\!\bigl(\mathbf{H}_{\mathrm{CF}}(\mathbf{u}_0)\bigr)
+\right).
+\end{equation}
+
+Dengan demikian, estimator variansi galat yang dikoreksi derajat kebebasan
+diberikan oleh
+\begin{equation}
+\widehat{\sigma}^2_{\mathrm{CF}}(\mathbf{u}_0)
+=
+\frac{
+\mathrm{RSS}_w(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}})
+}{
+W_{\mathrm{tot}}
+-
+\operatorname{tr}\!\bigl(\mathbf{H}_{\mathrm{CF}}(\mathbf{u}_0)\bigr)
+},
+\end{equation}
+yang bersifat tak-bias secara asimtotik.
 \end{proof}
 
-Estimator ini merupakan generalisasi dari estimator variansi GWR klasik dengan koreksi derajat kebebasan. Sebab $\sum_i w_i = 1$, penyebut menjadi $1 - p \cdot \bar{w}$ dengan $\bar{w}$ adalah rata-rata bobot, yang untuk sampel besar mendekati $1$.
+Estimator ini merupakan generalisasi alami dari estimator variansi GWR klasik
+dengan koreksi derajat kebebasan.
+Dalam kasus khusus satu lokasi dan satu skema pembobotan,
+$\operatorname{tr}(\mathbf{H}) \approx p$ sehingga penyebut mereduksi ke bentuk
+$(\sum_i w_i - p)$, analog dengan estimator variansi OLS klasik
+$\widehat{\sigma}^2 = \mathrm{RSS}/(n - p)$.
+
 
 Untuk menganalisis sifat asimtotik $\widehat{\sigma}^2_{\mathrm{CF}}$, residual didekomposisikan sebagai berikut.
 
@@ -1199,6 +1281,7 @@ Untuk melakukan inferensi statistik, diperlukan estimasi variansi dari estimator
 Estimator ini menggantikan variansi galat sejati $\sigma^2$ dengan estimator konsistennya $\widehat{\sigma}^2_{\mathrm{CF}}$. Bentuk \emph{sandwich} menjamin \emph{robustness} terhadap spesifikasi yang tidak tepat pada struktur variansi.
 
 \begin{teorema}
+    \label{thm:gagwr_konsistensi_variansi_cf}
     Di bawah Asumsi \ref{asumsi:gagwr_independensi}--\ref{asumsi:gagwr_kontinuitas_bobot}, estimator variansi bersifat konsisten dalam arti
     \begin{equation}
         (nh^d) \cdot \widehat{\mathrm{Var}}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}(\mathbf{u}_0)\bigr) \xrightarrow{p} \mathbf{Q}(\mathbf{u}_0)^{-1} \boldsymbol{\Omega}(\mathbf{u}_0) \mathbf{Q}(\mathbf{u}_0)^{-1},
@@ -1465,7 +1548,7 @@ dengan $\beta_{j,0}$ adalah nilai tertentu, yang biasanya adalah nol untuk mengu
         \sqrt{nh^d}\bigl(\widehat{\beta}_{\mathrm{CF},j} - \beta_j\bigr) \xrightarrow{d} \mathcal{N}\bigl(0, \sigma^2_j\bigr),
     \end{equation}
     dengan $\sigma^2_j = [\mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1}]_{jj}$.
-    Selanjutnya, dari Teorema~\ref{thm:gagwr_konsistensi_variansi_cf} juga didapatkan
+    Selanjutnya, dari Teorema~\ref{thm:gagwr_konsistensi_variansi} juga didapatkan
     \begin{equation}
         (nh^d) \cdot \widehat{\mathrm{Var}}(\widehat{\beta}_{\mathrm{CF},j}) \xrightarrow{p} \sigma^2_j.
     \end{equation}
@@ -1538,7 +1621,7 @@ dengan $\mathbf{R}$ adalah matriks $q \times p$ yang menentukan kombinasi linier
     \begin{equation}
         \sqrt{nh^d} \mathbf{\delta}_n = \mathbf{R} \sqrt{nh^d}\bigl(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}} - \boldsymbol{\beta}\bigr) \xrightarrow{d} \mathcal{N}\bigl(\mathbf{0}, \mathbf{R} \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1} \mathbf{R}^\top\bigr).
     \end{equation}
-    Didefinisikan $\boldsymbol{\Sigma}_R := \mathbf{R} \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1} \mathbf{R}^\top$. Dari Teorema~\ref{thm:gagwr_konsistensi_variansi_cf} didapatkan
+    Didefinisikan $\boldsymbol{\Sigma}_R := \mathbf{R} \mathbf{Q}^{-1} \boldsymbol{\Omega} \mathbf{Q}^{-1} \mathbf{R}^\top$. Dari Teorema~\ref{thm:gagwr_konsistensi_variansi} didapatkan
     \begin{equation}
         (nh^d) \mathbf{R} \widehat{\mathrm{Var}}(\widehat{\boldsymbol{\beta}}_{\mathrm{CF}}) \mathbf{R}^\top \xrightarrow{p} \boldsymbol{\Sigma}_R.
     \end{equation}
